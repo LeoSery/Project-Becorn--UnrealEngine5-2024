@@ -18,6 +18,17 @@ if not defined PROJECT_PATH (
 :: Extract the project folder
 for %%I in ("%PROJECT_PATH%") do set "PROJECT_FOLDER=%%~dpI"
 
+:: Ask user if they want to clean the project
+set /p CLEAN_PROJECT="Do you want to clean the project before rebuilding? (Y/N): "
+if /i "%CLEAN_PROJECT%"=="Y" (
+    echo Cleaning project...
+    if exist "%PROJECT_FOLDER%.vs" rmdir /s /q "%PROJECT_FOLDER%.vs"
+    if exist "%PROJECT_FOLDER%DerivedDataCache" rmdir /s /q "%PROJECT_FOLDER%DerivedDataCache"
+    if exist "%PROJECT_FOLDER%Intermediate" rmdir /s /q "%PROJECT_FOLDER%Intermediate"
+    if exist "%PROJECT_FOLDER%Saved" rmdir /s /q "%PROJECT_FOLDER%Saved"
+    echo Project cleaned.
+)
+
 :: Search for the Unreal Engine 5.4 Build.bat file
 set "BUILD_BAT="
 if exist "C:\Program Files\Epic Games\UE_5.4\Engine\Build\BatchFiles\Build.bat" (
