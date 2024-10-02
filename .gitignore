@@ -1,10 +1,3 @@
-# Created by https://www.toptal.com/developers/gitignore/api/unrealengine,visualstudio,rider
-# Edit at https://www.toptal.com/developers/gitignore?templates=unrealengine,visualstudio,rider
-
-### Rider ###
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
-
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
@@ -127,10 +120,6 @@ fabric.properties
 # Precompiled Assets
 SourceArt/**/*.png
 SourceArt/**/*.tga
-
-# Binary Files
-Binaries/*
-Plugins/*/Binaries/*
 
 # Builds
 Build/*
@@ -562,8 +551,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-
-### VisualStudio Patch ###
-# Additional files built by Visual Studio
-
-# End of https://www.toptal.com/developers/gitignore/api/unrealengine,visualstudio,rider
