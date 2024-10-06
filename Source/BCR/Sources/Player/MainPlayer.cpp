@@ -1,4 +1,4 @@
-#include "BCRCharacter.h"
+#include "BCR/Headers/Player/MainPlayer.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -12,9 +12,9 @@
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 //////////////////////////////////////////////////////////////////////////
-// ABCRCharacter
+// AMainPlayer
 
-ABCRCharacter::ABCRCharacter()
+AMainPlayer::AMainPlayer()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -41,7 +41,7 @@ ABCRCharacter::ABCRCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
-void ABCRCharacter::BeginPlay()
+void AMainPlayer::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
@@ -50,7 +50,7 @@ void ABCRCharacter::BeginPlay()
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void ABCRCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Add Input Mapping Context
 	if (APlayerController* PlayerController = Cast<APlayerController>(GetController()))
@@ -69,10 +69,10 @@ void ABCRCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		// Moving
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ABCRCharacter::Move);
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMainPlayer::Move);
 
 		// Looking
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ABCRCharacter::Look);
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMainPlayer::Look);
 	}
 	else
 	{
@@ -80,7 +80,7 @@ void ABCRCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	}
 }
 
-void ABCRCharacter::Move(const FInputActionValue& Value)
+void AMainPlayer::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D MovementVector = Value.Get<FVector2D>();
@@ -103,7 +103,7 @@ void ABCRCharacter::Move(const FInputActionValue& Value)
 	}
 }
 
-void ABCRCharacter::Look(const FInputActionValue& Value)
+void AMainPlayer::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
