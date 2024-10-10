@@ -4,6 +4,7 @@
 #include "GameFramework/Actor.h"
 #include <Camera/CameraComponent.h>
 #include <GameFramework/SpringArmComponent.h>
+#include "BCR/Headers/Player/MainPlayer.h"
 #include "MainCamera.generated.h"
 
 UCLASS()
@@ -36,4 +37,26 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+// Design parameters
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters)
+	bool EnableVerticalMovement = true;
+
+// Private variables
+private:
+
+	TArray<AMainPlayer*> Players;
+	float CameraBaseHeight = 0.f;
+
+//Public functions
+public:
+
+	void SetPlayers(TArray<AMainPlayer*> players);
+
+private:
+
+	void UpdatePosition();
+	void UpdateSpringArmLenght();
 };

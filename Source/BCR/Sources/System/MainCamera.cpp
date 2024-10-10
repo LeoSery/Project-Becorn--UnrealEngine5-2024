@@ -22,7 +22,8 @@ AMainCamera::AMainCamera()
 void AMainCamera::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	CameraBaseHeight = GetActorLocation().Z;
 }
 
 // Called every frame
@@ -30,5 +31,39 @@ void AMainCamera::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	UpdatePosition();
+	UpdateSpringArmLenght();
 }
+
+void AMainCamera::SetPlayers(TArray<AMainPlayer*> players)
+{
+	Players = players;
+}
+
+void AMainCamera::UpdatePosition()
+{
+	FVector AveragePosition;
+	for (AMainPlayer* player : Players)
+	{
+		if (!player)
+		{
+			return;
+		}
+		AveragePosition += player->GetActorLocation();
+	}
+	AveragePosition = AveragePosition / Players.Num();
+
+	if (!EnableVerticalMovement)
+	{
+		AveragePosition.Z = CameraBaseHeight;
+	}
+
+	SetActorLocation(AveragePosition);
+}
+
+void AMainCamera::UpdateSpringArmLenght()
+{
+}
+
+//	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("Number of player = %i"), GetWorld()->GetNumPlayerControllers()));
 
