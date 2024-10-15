@@ -9,8 +9,6 @@ AMainCamera::AMainCamera()
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 400.0f; // The camera follows at this distance behind the character	
-	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
 
 	// Create a follow camera
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
@@ -23,7 +21,7 @@ void AMainCamera::BeginPlay()
 {
 	Super::BeginPlay();
 
-	CameraBaseHeight = GetActorLocation().Z;
+	InitParam();
 }
 
 // Called every frame
@@ -32,12 +30,18 @@ void AMainCamera::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	UpdatePosition();
-	UpdateSpringArmLenght();
+	UpdateArmLenght();
 }
 
 void AMainCamera::SetPlayers(TArray<AMainPlayer*> players)
 {
 	Players = players;
+}
+
+void AMainCamera::InitParam()
+{
+	CameraBaseHeight = GetActorLocation().Z;
+	ArmBaseLength = CameraBoom->TargetArmLength;
 }
 
 void AMainCamera::UpdatePosition()
@@ -61,8 +65,14 @@ void AMainCamera::UpdatePosition()
 	SetActorLocation(AveragePosition);
 }
 
-void AMainCamera::UpdateSpringArmLenght()
+void AMainCamera::UpdateArmLenght()
 {
+	float ArmLengthOffset = ((Players[0]->GetActorLocation() - Players[1]->GetActorLocation()).Size() - MinimumDistanceToZoom) / 2;
+	if (ArmLengthOffset < 0.f)
+	{
+		ArmLengthOffset = 0.f;
+	}
+	CameraBoom->TargetArmLength = ArmBaseLength + ArmLengthOffset;
 }
 
 //	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("Number of player = %i"), GetWorld()->GetNumPlayerControllers()));

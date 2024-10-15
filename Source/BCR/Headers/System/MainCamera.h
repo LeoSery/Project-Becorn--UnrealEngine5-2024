@@ -44,11 +44,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters)
 	bool EnableVerticalMovement = true;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters, meta = (UIMin = 0.f))
+	float MinimumDistanceToZoom = 300.f;
+
 // Private variables
 private:
 
 	TArray<AMainPlayer*> Players;
 	float CameraBaseHeight = 0.f;
+	float ArmBaseLength = 0.f;
 
 //Public functions
 public:
@@ -57,6 +61,7 @@ public:
 
 private:
 
+	void InitParam();
 	void UpdatePosition();
-	void UpdateSpringArmLenght();
+	void UpdateArmLenght();
 };
