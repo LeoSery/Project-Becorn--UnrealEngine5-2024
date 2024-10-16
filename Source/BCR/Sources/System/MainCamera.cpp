@@ -6,6 +6,9 @@ AMainCamera::AMainCamera()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	DefaultRootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultRootComponent"));
+	SetRootComponent(DefaultRootComponent);
+
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
@@ -14,6 +17,9 @@ AMainCamera::AMainCamera()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
+	DebugSphere = CreateDefaultSubobject<USphereComponent>(TEXT("DebugSphere"));
+	DebugSphere->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -31,6 +37,7 @@ void AMainCamera::Tick(float DeltaTime)
 
 	UpdatePosition();
 	UpdateArmLenght();
+	UpdateArmAngle();
 }
 
 void AMainCamera::SetPlayers(TArray<AMainPlayer*> players)
@@ -41,7 +48,8 @@ void AMainCamera::SetPlayers(TArray<AMainPlayer*> players)
 void AMainCamera::InitParam()
 {
 	CameraBaseHeight = GetActorLocation().Z;
-	ArmBaseLength = CameraBoom->TargetArmLength;
+
+	DebugSphere->SetHiddenInGame(!DebugLocation);
 }
 
 void AMainCamera::UpdatePosition()
@@ -67,13 +75,24 @@ void AMainCamera::UpdatePosition()
 
 void AMainCamera::UpdateArmLenght()
 {
-	float ArmLengthOffset = ((Players[0]->GetActorLocation() - Players[1]->GetActorLocation()).Size() - MinimumDistanceToZoom) / 2;
-	if (ArmLengthOffset < 0.f)
+	float PlayerDist = (Players[0]->GetActorLocation() - Players[1]->GetActorLocation()).Size();
+
+	if (DebugVariables)
 	{
-		ArmLengthOffset = 0.f;
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Spring arm length offset = %f"), PlayerDist / 2));
 	}
-	CameraBoom->TargetArmLength = ArmBaseLength + ArmLengthOffset;
+
+	CameraBoom->TargetArmLength = MinimumArmLength + (PlayerDist / 2);
 }
 
-//	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("Number of player = %i"), GetWorld()->GetNumPlayerControllers()));
+void AMainCamera::UpdateArmAngle()
+{
+	float Alpha = (CameraBoom->TargetArmLength - MinAngleReachedAtArmLength) / (MaxAngleReachedAtArmLength - MinAngleReachedAtArmLength);
+	Alpha = FMath::Clamp(Alpha, 0.f, 1.f);
+	SetActorRotation({ -FMath::InterpEaseInOut(MinArmAngle, MaxArmAngle, Alpha, EasingAngleExp), 0.f, 0.f});
 
+	if (DebugVariables)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Camera angle = %f"), GetActorRotation().Pitch));
+	}
+}
