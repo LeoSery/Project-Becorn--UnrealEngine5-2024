@@ -14,7 +14,7 @@ AMainCamera::AMainCamera()
 	CameraBoom->SetupAttachment(RootComponent);
 
 	// Create a follow camera
-	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+	FollowCamera = CreateDefaultSubobject<UCineCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
@@ -48,7 +48,7 @@ void AMainCamera::SetPlayers(TArray<AMainPlayer*> players)
 void AMainCamera::InitParam()
 {
 	CameraBaseHeight = GetActorLocation().Z;
-
+	FollowCamera->FocusSettings.TrackingFocusSettings.ActorToTrack = this;
 	DebugSphere->SetHiddenInGame(!DebugLocation);
 }
 
@@ -87,6 +87,11 @@ void AMainCamera::UpdateArmLenght()
 
 void AMainCamera::UpdateArmAngle()
 {
+	if (!UseAngleChange)
+	{
+		return;
+	}
+
 	float Alpha = (CameraBoom->TargetArmLength - MinAngleReachedAtArmLength) / (MaxAngleReachedAtArmLength - MinAngleReachedAtArmLength);
 	Alpha = FMath::Clamp(Alpha, 0.f, 1.f);
 	SetActorRotation({ -FMath::InterpEaseInOut(MinArmAngle, MaxArmAngle, Alpha, EasingAngleExp), 0.f, 0.f});

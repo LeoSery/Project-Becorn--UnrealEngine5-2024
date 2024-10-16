@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include <Camera/CameraComponent.h>
+#include "CineCameraComponent.h"
 #include <GameFramework/SpringArmComponent.h>
 #include <Components/SphereComponent.h>
 #include "BCR/Headers/Player/MainPlayer.h"
@@ -22,7 +23,7 @@ class BCR_API AMainCamera : public AActor
 
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	UCameraComponent* FollowCamera;
+	UCineCameraComponent* FollowCamera;
 
 	/** Debug sphere */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -49,31 +50,34 @@ public:
 // Design parameters
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Debug")
 	bool DebugLocation = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Debug")
 	bool DebugVariables = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Movement")
 	bool EnableVerticalMovement = true;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters, meta = (UIMin = 0.f))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Movement", meta = (UIMin = 0.f))
 	float MinimumArmLength = 400.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters, meta = (UIMin = 0.f))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle")
+	bool UseAngleChange = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle", meta = (UIMin = 0.f))
 	float MinAngleReachedAtArmLength = 400.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters, meta = (UIMin = 0.f))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle", meta = (UIMin = 0.f))
 	float MaxAngleReachedAtArmLength = 1200.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters, meta = (UIMin = 0.f, UIMax = 90.f))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle", meta = (UIMin = 0.f, UIMax = 90.f))
 	float MinArmAngle = 10.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters, meta = (UIMin = 0.f, UIMax = 90.f))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle", meta = (UIMin = 0.f, UIMax = 90.f))
 	float MaxArmAngle = 40.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Parameters)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle")
 	float EasingAngleExp = 1.f;
 
 // Private variables
