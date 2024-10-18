@@ -60,22 +60,28 @@ public:
 	bool EnableVerticalMovement = true;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Movement", meta = (UIMin = 0.f))
-	float MinimumArmLength = 400.f;
+	float MinimumArmLength = 4000.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Distance", meta = (UIMin = 0.f))
+	float VerticalBuffer = 200.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Distance", meta = (UIMin = 0.f))
+	float HorizontalBuffer = 200.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle")
 	bool UseAngleChange = true;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle", meta = (UIMin = 0.f))
-	float MinAngleReachedAtArmLength = 400.f;
+	float MinAngleReachedAtArmLength = 4000.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle", meta = (UIMin = 0.f))
-	float MaxAngleReachedAtArmLength = 1200.f;
+	float MaxAngleReachedAtArmLength = 20000.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle", meta = (UIMin = 0.f, UIMax = 90.f))
 	float MinArmAngle = 10.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle", meta = (UIMin = 0.f, UIMax = 90.f))
-	float MaxArmAngle = 40.f;
+	float MaxArmAngle = 20.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle")
 	float EasingAngleExp = 1.f;
@@ -97,4 +103,6 @@ private:
 	void UpdatePosition();
 	void UpdateArmLenght();
 	void UpdateArmAngle();
+
+	FVector2D Get2DVect(FVector vect3d);
 };
