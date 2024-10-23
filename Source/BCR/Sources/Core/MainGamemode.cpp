@@ -74,6 +74,7 @@ void AMainGamemode::SetupCamera()
 			}
 		}
 
+		GetWorld()->GetFirstPlayerController()->SetViewTarget(MainCamera);
 		MainCamera->SetPlayers(Players);
 	}
 }
