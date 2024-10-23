@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "BCR/Headers/Interfaces/BCR_Helper.h"
 #include "MainPlayer.generated.h"
 
 class USpringArmComponent;
@@ -14,7 +15,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
-class AMainPlayer : public ACharacter
+class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper
 {
 	GENERATED_BODY()
 	
@@ -53,5 +54,11 @@ protected:
 	
 	// To add mapping context
 	virtual void BeginPlay();
+
+	virtual FString GetCustomLogInfo() const override
+	{
+		return FString::Printf(TEXT("Velocity: %.1f"),
+			GetVelocity().Size());
+	}
 };
 
