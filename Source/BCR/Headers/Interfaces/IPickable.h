@@ -26,5 +26,5 @@ public:
 	UFUNCTION(BlueprintCallable,BlueprintNativeEvent)
 	void PickedUp(AActor* Player, AActor* Object);
 
-	void PickedUp_Implementation(AActor* Player, AActor* Object);
+	virtual void PickedUp_Implementation(AActor* Player, AActor* Object);
 };
