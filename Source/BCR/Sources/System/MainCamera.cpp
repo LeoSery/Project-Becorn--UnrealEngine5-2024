@@ -49,8 +49,11 @@ void AMainCamera::SetPlayers(TArray<AMainPlayer*> players)
 void AMainCamera::InitParam()
 {
 	CameraBaseHeight = GetActorLocation().Z;
-	FollowCamera->FocusSettings.TrackingFocusSettings.ActorToTrack = this;
 	DebugSphere->SetHiddenInGame(!DebugLocation);
+
+	FollowCamera->FocusSettings.TrackingFocusSettings.ActorToTrack = this;
+	FollowCamera->LensSettings.MinFStop = MinFStop;
+	FollowCamera->LensSettings.MaxFStop = MaxFStop;
 }
 
 void AMainCamera::UpdatePosition()
@@ -115,6 +118,8 @@ void AMainCamera::UpdateArmLenght()
 
 	CameraBoom->TargetArmLength = FMath::Max3(TotalArmLengthHor, TotalArmLengthVer, MinimumArmLength);
 
+	UpdateBlur(PlayerDistVer);
+
 	if (DebugVariables)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Horizontal FOV = %f"), FollowCamera->GetHorizontalFieldOfView()));
@@ -148,7 +153,24 @@ void AMainCamera::UpdateArmAngle()
 	}
 }
 
+void AMainCamera::UpdateBlur(float VerticalPlayerDistance)
+{
+	float FStopAlpha = GetAlpha(VerticalPlayerDistance, MaxBlurAtDistance, MinBlurAtDistance);
+	float Aperture = GetValue(FStopAlpha, MinFStop, MaxFStop);
+	FollowCamera->CurrentAperture = Aperture / BlurMultiplier;
+}
+
 FVector2D AMainCamera::Get2DVect(FVector vect3d)
 {
 	return { vect3d.X, vect3d.Y };
+}
+
+float AMainCamera::GetAlpha(float value, float min, float max)
+{
+	return (value - min) / (max - min);
+}
+
+float AMainCamera::GetValue(float alpha, float min, float max)
+{
+	return alpha * (max - min) + min;
 }
