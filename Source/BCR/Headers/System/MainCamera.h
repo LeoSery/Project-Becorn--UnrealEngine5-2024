@@ -63,7 +63,7 @@ public:
 	float MinimumArmLength = 4000.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Distance", meta = (UIMin = 0.f))
-	float VerticalBuffer = 200.f;
+	float VerticalBuffer = 400.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Distance", meta = (UIMin = 0.f))
 	float HorizontalBuffer = 200.f;
@@ -86,6 +86,21 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Angle")
 	float EasingAngleExp = 1.f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Tilt shift")
+	float MinFStop = 0.2f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Tilt shift")
+	float MaxFStop = 2.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Tilt shift")
+	float MaxBlurAtDistance = 100.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Tilt shift")
+	float MinBlurAtDistance = 1500;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Tilt shift")
+	float BlurMultiplier = 1.f;
+
 // Private variables
 private:
 
@@ -103,6 +118,9 @@ private:
 	void UpdatePosition();
 	void UpdateArmLenght();
 	void UpdateArmAngle();
+	void UpdateBlur(float VerticalPlayerDistance);
 
 	FVector2D Get2DVect(FVector vect3d);
+	float GetAlpha(float value, float min, float max);
+	float GetValue(float alpha, float min, float max);
 };
