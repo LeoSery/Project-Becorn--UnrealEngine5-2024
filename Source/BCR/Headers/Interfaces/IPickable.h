@@ -27,4 +27,10 @@ public:
 	void PickedUp(AActor* Player, AActor* Object);
 
 	virtual void PickedUp_Implementation(AActor* Player, AActor* Object);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void Drop(AActor* Player, AActor* Object);
+
+	virtual void Drop_Implementation(AActor* Player, AActor* Object);
+
 };

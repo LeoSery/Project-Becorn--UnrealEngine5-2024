@@ -10,3 +10,9 @@ void IIPickable::PickedUp_Implementation(AActor* Player, AActor* Object)
 	FAttachmentTransformRules rules = FAttachmentTransformRules(EAttachmentRule::KeepWorld, EAttachmentRule::KeepWorld, EAttachmentRule::KeepWorld,false);
 	Object->AttachToActor(Player, rules);
 }
+
+void IIPickable::Drop_Implementation(AActor* Player, AActor* Object)
+{
+	FDetachmentTransformRules rules = FDetachmentTransformRules(EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, false);
+	Object->DetachFromActor(rules);
+}

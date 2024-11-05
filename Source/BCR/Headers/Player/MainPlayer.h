@@ -35,6 +35,12 @@ class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* PickUpAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* InteractAction;
+
 public:
 	AMainPlayer();
 	
@@ -47,6 +53,13 @@ protected:
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 			
+	void PickUp();
+
+	void Interact();
+
+
+	bool PickedUpSomething = false;
+	AActor* PickedUpObject;
 
 protected:
 	// APawn interface

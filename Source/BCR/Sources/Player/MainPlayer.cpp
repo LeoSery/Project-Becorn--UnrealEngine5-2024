@@ -9,6 +9,10 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 
+#include "BCR/Headers/Interfaces/IPickable.h"
+#include "BCR/Headers/Interfaces/Interactable.h"
+#include "BCR/Headers/Interfaces/BCR_Helper.h"
+
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 //////////////////////////////////////////////////////////////////////////
@@ -78,6 +82,9 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMainPlayer::Look);
+
+		EnhancedInputComponent->BindAction(PickUpAction, ETriggerEvent::Triggered, this, &AMainPlayer::PickUp);
+		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AMainPlayer::Interact);
 	}
 	else
 	{
@@ -118,5 +125,56 @@ void AMainPlayer::Look(const FInputActionValue& Value)
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+
+TArray<FHitResult> Detect_Object(AActor* Player) {
+	const FVector Pos = Player->GetActorLocation() + Player->GetActorForwardVector();
+	const FName ProfileName = "BlockAll";
+	constexpr ECollisionChannel Channel = ECC_Visibility;
+	const FCollisionShape ColCapsule = FCollisionShape::MakeBox(FVector(100));
+	const TArray<AActor*> ActorsToIgnore = { Player };
+	TArray<FHitResult> OutHits = {};
+	DrawDebugBox(Player->GetWorld(), Pos + Player->GetActorForwardVector() * 100, ColCapsule.GetBox(), Player->GetActorForwardVector().ToOrientationQuat(), FColor::Orange);
+	if (Player->GetWorld()->SweepMultiByChannel(OutHits, Pos, Pos, Player->GetActorUpVector().ToOrientationQuat(), Channel, ColCapsule))
+	{
+		return OutHits;
+	}
+
+	return OutHits;
+}
+
+void AMainPlayer::PickUp() {
+	if (PickedUpSomething) {
+		IIPickable::Execute_Drop(PickedUpObject, this, PickedUpObject);
+		PickedUpSomething = false;
+		PickedUpObject = __nullptr;
+	}
+	else {
+		TArray<FHitResult> OutHits = Detect_Object(this);
+		for (const FHitResult OutHit : OutHits)
+		{
+			if (Cast<IIPickable>(OutHit.GetActor())) {
+				IBCR_Helper::LogScreen(this, OutHit.GetActor()->GetActorLabel());
+				IIPickable::Execute_PickedUp(OutHit.GetActor(), this, OutHit.GetActor());
+					PickedUpSomething = true;
+				PickedUpObject = OutHit.GetActor();
+			}
+				
+		}
+		
+	}
+}
+
+void AMainPlayer::Interact() {
+	TArray<FHitResult> OutHits = Detect_Object(this);
+	for (const FHitResult OutHit : OutHits)
+	{
+		if (Cast<IInteractable>(OutHit.GetActor())) {
+			IBCR_Helper::LogScreen(this, OutHit.GetActor()->GetActorLabel());
+			IInteractable::Execute_Interact(OutHit.GetActor(), this);
+
+		}
+
 	}
 }
