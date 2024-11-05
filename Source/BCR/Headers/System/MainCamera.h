@@ -6,7 +6,7 @@
 #include "CineCameraComponent.h"
 #include <GameFramework/SpringArmComponent.h>
 #include <Components/SphereComponent.h>
-#include "BCR/Headers/Player/MainPlayer.h"
+#include "GameFramework/Character.h"
 #include "MainCamera.generated.h"
 
 UCLASS()
@@ -104,13 +104,14 @@ public:
 // Private variables
 private:
 
-	TArray<AMainPlayer*> Players;
+	TArray<ACharacter*> Players;
 	float CameraBaseHeight = 0.f;
 
 //Public functions
 public:
 
-	void SetPlayers(TArray<AMainPlayer*> players);
+	UFUNCTION(BlueprintCallable)
+	void SetPlayers(ACharacter* Player1, ACharacter* Player2);
 
 private:
 

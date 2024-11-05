@@ -1,5 +1,6 @@
 #include "BCR/Headers/System/MainCamera.h"
 #include "Kismet/KismetMathLibrary.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values
 AMainCamera::AMainCamera()
@@ -36,14 +37,19 @@ void AMainCamera::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (!Players[0] || !Players[1])
+	{
+		return;
+	}
+
 	UpdatePosition();
 	UpdateArmLenght();
 	UpdateArmAngle();
 }
 
-void AMainCamera::SetPlayers(TArray<AMainPlayer*> players)
+void AMainCamera::SetPlayers(ACharacter* Player1, ACharacter* Player2)
 {
-	Players = players;
+	Players = { Player1, Player2 };
 }
 
 void AMainCamera::InitParam()
@@ -59,7 +65,7 @@ void AMainCamera::InitParam()
 void AMainCamera::UpdatePosition()
 {
 	FVector AveragePosition;
-	for (AMainPlayer* player : Players)
+	for (ACharacter* player : Players)
 	{
 		if (!player)
 		{

@@ -22,16 +22,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-private:
-
 	/** Create second player and add a mapping context
 	*/
+	UFUNCTION(BlueprintCallable)
 	void CreateLocalPlayer();
 
-	/** Gets the camera and gives it the players
-	*/
+private:
+
 	void SetupCamera();
 };
-
-
-
