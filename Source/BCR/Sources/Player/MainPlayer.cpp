@@ -140,6 +140,8 @@ TArray<FHitResult> Detect_Object(AActor* Player) {
 	{
 		return OutHits;
 	}
+
+	return OutHits;
 }
 
 void AMainPlayer::PickUp() {
