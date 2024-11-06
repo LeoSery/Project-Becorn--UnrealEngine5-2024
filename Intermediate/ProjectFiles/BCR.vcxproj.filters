@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\BCR.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\BCR.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\BCREditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.gitignore" />
+    <None Include="..\..\.vsconfig" />
+    <None Include="..\..\BuildSolution.bat" />
+    <None Include="..\..\README.md" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\BCR">
+      <UniqueIdentifier>{E7F8E3BB-A0BA-32A2-83DD-C07273E09EDA}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\BCR\BCR.Build.cs">
+      <Filter>Source\BCR</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\BCR\BCR.cpp">
+      <Filter>Source\BCR</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\BCR.h">
+      <Filter>Source\BCR</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BCR\BCRCharacter.cpp">
+      <Filter>Source\BCR</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\BCRCharacter.h">
+      <Filter>Source\BCR</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BCR\BCRGameMode.cpp">
+      <Filter>Source\BCR</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\BCRGameMode.h">
+      <Filter>Source\BCR</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BCR\MainCamera.cpp">
+      <Filter>Source\BCR</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\MainCamera.h">
+      <Filter>Source\BCR</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
