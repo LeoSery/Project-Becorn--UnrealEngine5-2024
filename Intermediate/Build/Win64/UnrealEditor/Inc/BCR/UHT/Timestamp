@@ -1,3 +1,10 @@
-C:\Users\thiba\Desktop\M2Project\M2_Project\Source\BCR\BCRCharacter.h
-C:\Users\thiba\Desktop\M2Project\M2_Project\Source\BCR\BCRGameMode.h
-C:\Users\thiba\Desktop\M2Project\M2_Project\Source\BCR\MainCamera.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\Core\MainGamemode.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\Interfaces\Interactable.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\System\AWood.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\Interfaces\BCR_Helper.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\Player\MainPlayer.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\Interfaces\IPickable.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\System\QTE\QTE_Data.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\System\Pickable\PickableItem.h
+C:\Users\mathi\Documents\GitHub\M2_Project\Source\BCR\Headers\System\MainCamera.h
