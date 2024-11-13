@@ -4,6 +4,7 @@
 #include "Delegates/Delegate.h"
 #include "BCR/Headers/System/Pickable/PickableItem.h"
 #include "BCR/Headers/System/QTE/QTE_Data.h"
+#include "BCR/Headers/Interfaces/Interactable.h"
 #include "GameFramework/Actor.h"
 #include "MiniGameSystem.generated.h"
 
@@ -11,7 +12,7 @@ UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEndQTESignature, bool, _resultStatus);
 
 UCLASS()
-class BCR_API AMiniGameSystem : public AActor
+class BCR_API AMiniGameSystem : public AActor, public IInteractable
 {
 	GENERATED_BODY()
 	
@@ -24,14 +25,20 @@ public:
 
 	//// Game
 	// Setters
-	virtual void SetInputItem(TArray<APickableItem> _items);
-	virtual void SetQTE(TArray<UQTE_Data> _datas);
-	virtual void SetOutputItem(TArray<APickableItem> _items);
+	virtual void SetInputItem(TArray<TSubclassOf<APickableItem>> _items);
+	virtual void SetQTE(TArray<UQTE_Data*> _datas);
+	virtual void SetOutputItem(TArray<TSubclassOf<APickableItem>> _items);
 
 	// Methods
 	void StartExecute();
 	void CallQTEReader();
-	void FinishExecute();
+	void FinishExecute(int i);
+	void Reset();
+
+
+	// Interface Methods
+	void Interact_Implementation(AMainPlayer* Player);
+	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
 
 	// Delegates
 	UPROPERTY(BlueprintAssignable)
@@ -39,8 +46,15 @@ public:
 
 private:
 
-	TArray<APickableItem> inputItems;
-	TArray<APickableItem> outputItems;
+	UPROPERTY(EditAnywhere)
+	TArray<TSubclassOf<APickableItem>> inputItems;
+	TArray<TSubclassOf<APickableItem>> itemList; /*Copy of inputItems*/
+	UPROPERTY(EditAnywhere)
+	TArray<TSubclassOf<APickableItem>> outputItems;
+	UPROPERTY(EditAnywhere)
+	TArray<UQTE_Data*> qteList;
+
+	FVector3f outputSpawnPoint;
 
 protected:
 	// Called when the game starts or when spawned

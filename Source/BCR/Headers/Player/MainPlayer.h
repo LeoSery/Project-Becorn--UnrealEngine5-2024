@@ -43,7 +43,10 @@ class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper
 
 public:
 	AMainPlayer();
+
+	void PickUp();
 	
+	void Interact();
 
 protected:
 
@@ -53,9 +56,9 @@ protected:
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 			
-	void PickUp();
+	
 
-	void Interact();
+	
 
 
 	bool PickedUpSomething = false;

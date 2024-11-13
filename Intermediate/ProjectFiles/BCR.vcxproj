@@ -279,17 +279,8 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\AWood.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h"/>
-    <ClCompile Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h"/>
-    <ClCompile Include="..\..\Source\BCR\Headers\System\Pickable\PickableItem.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\Pickable\PickableItem.h"/>
-    <ClCompile Include="..\..\Source\BCR\Headers\System\QTE\QTE_Data.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Data.h"/>
     <ClCompile Include="..\..\Source\BCR\Sources\Core\MainGamemode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -304,6 +295,15 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\MainCamera.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\MiniGame\MiniGameSystem.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\Pickable\PickableItem.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTE_Data.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemGroup>
