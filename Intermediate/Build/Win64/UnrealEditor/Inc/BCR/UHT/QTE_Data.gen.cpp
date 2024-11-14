@@ -77,14 +77,14 @@ UQTE_Data::~UQTE_Data() {}
 // End Class UQTE_Data
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_QTE_QTE_Data_h_Statics
+struct Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTE_Data_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UQTE_Data, UQTE_Data::StaticClass, TEXT("UQTE_Data"), &Z_Registration_Info_UClass_UQTE_Data, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQTE_Data), 2470520102U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_QTE_QTE_Data_h_735510622(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_QTE_QTE_Data_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_QTE_QTE_Data_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTE_Data_h_735510622(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTE_Data_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTE_Data_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
