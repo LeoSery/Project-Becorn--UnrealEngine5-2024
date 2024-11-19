@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "InputCoreTypes.h"
+#include "Blueprint/UserWidget.h"
 #include "QTETypes.generated.h"
 
 class AMainPlayer;
