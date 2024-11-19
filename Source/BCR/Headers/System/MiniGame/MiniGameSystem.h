@@ -6,7 +6,9 @@
 #include "BCR/Headers/System/QTE/QTE_Data.h"
 #include "BCR/Headers/Interfaces/Interactable.h"
 #include "GameFramework/Actor.h"
+#include <Components/BoxComponent.h>
 #include "MiniGameSystem.generated.h"
+
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEndQTESignature, bool, _resultStatus);
@@ -44,6 +46,8 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnEndQTESignature OnEndQTEDelegate;
 
+	TMap<UBillboardComponent*, AMainPlayer*> snapPointMap;
+
 private:
 
 	UPROPERTY(EditAnywhere)
@@ -54,7 +58,22 @@ private:
 	UPROPERTY(EditAnywhere)
 	TArray<UQTE_Data*> qteList;
 
-	FVector3f outputSpawnPoint;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	USceneComponent* DefaultRootComponent;
+
+	UPROPERTY(EditAnywhere)
+	UBillboardComponent* snapPlayerPoint1;
+
+	UPROPERTY(EditAnywhere)
+	UBillboardComponent* snapPlayerPoint2;
+
+	UPROPERTY(EditAnywhere)
+	UBillboardComponent* outputSpawnPoint;
+
+	UPROPERTY(EditAnywhere)
+	UBoxComponent* inputBox;
+
 
 protected:
 	// Called when the game starts or when spawned
