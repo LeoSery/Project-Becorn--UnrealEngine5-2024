@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "QTETypes.h"
+#include "GameFramework/PlayerController.h"
 #include "QTE_System.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnPlayerSubSequenceCompleteSignature, AMainPlayer*, Player, int32, SequenceIndex);
@@ -10,6 +11,8 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnPlayerSubSequenceFailedSignature
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSequenceCompleteSignature, int32, SequenceIndex);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSequenceFailedSignature, int32, SequenceIndex);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnQTECompleteSignature, bool, bSuccess);
+
+class AMainPlayer;
 
 UCLASS(Blueprintable)
 class BCR_API UQTE_System : public UObject
@@ -48,4 +51,15 @@ private:
 	
 	FQTEConfiguration CurrentConfig;
 	bool bIsPaused;
+	
+	TMap<AMainPlayer*, float> CurrentHoldTimes;
+
+	void ProcessInputs(float DeltaTime);
+	bool ValidateInput(const FQTEInputStep& Step, AMainPlayer* Player, float DeltaTime);
+	bool CheckHoldInput(const FQTEInputStep& Step, AMainPlayer* Player);
+	bool CheckTapInput(const FQTEInputStep& Step, AMainPlayer* Player);
+	bool CheckReleaseInput(const FQTEInputStep& Step, AMainPlayer* Player);
+	bool CheckStickMoveInput(const FQTEInputStep& Step, AMainPlayer* Player);
+
+	FTimerHandle TickTimerHandle;
 };
