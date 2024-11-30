@@ -34,7 +34,13 @@ struct Z_Construct_UDelegateFunction_BCR_OnPlayerSubSequenceCompleteSignature__D
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/** Broadcast when a player completes their part of a sequence */" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTE_System.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Broadcast when a player completes their part of a sequence" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
@@ -84,7 +90,13 @@ struct Z_Construct_UDelegateFunction_BCR_OnPlayerSubSequenceFailedSignature__Del
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/** Fired when a player fails their part of a sequence */" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTE_System.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Fired when a player fails their part of a sequence" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
@@ -133,7 +145,13 @@ struct Z_Construct_UDelegateFunction_BCR_OnSequenceCompleteSignature__DelegateSi
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/** Fired when all players complete a sequence successfully */" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTE_System.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Fired when all players complete a sequence successfully" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FIntPropertyParams NewProp_SequenceIndex;
@@ -177,7 +195,13 @@ struct Z_Construct_UDelegateFunction_BCR_OnSequenceFailedSignature__DelegateSign
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/** Fired when a sequence fails */" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTE_System.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Fired when a sequence fails" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FIntPropertyParams NewProp_SequenceIndex;
@@ -221,7 +245,13 @@ struct Z_Construct_UDelegateFunction_BCR_OnQTECompleteSignature__DelegateSignatu
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/** Fired when the entire QTE completes (success or failure) */" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTE_System.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Fired when the entire QTE completes (success or failure)" },
+#endif
 	};
 #endif // WITH_METADATA
 	static void NewProp_bSuccess_SetBit(void* Obj);
@@ -319,7 +349,13 @@ struct Z_Construct_UFunction_UQTE_System_StartQTE_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "QTE" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// METHODS ////////\n/// QTE Execution flow\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTE_System.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "METHODS\nQTE Execution flow" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Config_MetaData[] = {
 		{ "NativeConst", "" },
@@ -329,7 +365,7 @@ struct Z_Construct_UFunction_UQTE_System_StartQTE_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UQTE_System_StartQTE_Statics::NewProp_Config = { "Config", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(QTE_System_eventStartQTE_Parms, Config), Z_Construct_UScriptStruct_FQTEConfiguration, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Config_MetaData), NewProp_Config_MetaData) }; // 3397164208
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UQTE_System_StartQTE_Statics::NewProp_Config = { "Config", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(QTE_System_eventStartQTE_Parms, Config), Z_Construct_UScriptStruct_FQTEConfiguration, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Config_MetaData), NewProp_Config_MetaData) }; // 3649445843
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UQTE_System_StartQTE_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UQTE_System_StartQTE_Statics::NewProp_Config,
 };
@@ -406,13 +442,25 @@ struct Z_Construct_UClass_UQTE_System_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/** \n * QTE System that manages cooperative quick time events between players\n * Handles input validation, sequence progression, and timing\n */" },
+#endif
 		{ "IncludePath", "Headers/System/QTE/QTE_System.h" },
 		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Headers/System/QTE/QTE_System.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "QTE System that manages cooperative quick time events between players\nHandles input validation, sequence progression, and timing" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnPlayerSubSequenceComplete_MetaData[] = {
 		{ "Category", "QTE" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// DELEGATES ////////\n//// QTE Event delegates\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTE_System.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "DELEGATES\n/ QTE Event delegates" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnPlayerSubSequenceFailed_MetaData[] = {
 		{ "Category", "QTE" },
@@ -440,7 +488,7 @@ struct Z_Construct_UClass_UQTE_System_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UQTE_System_SetQTEPaused, "SetQTEPaused" }, // 3077488815
-		{ &Z_Construct_UFunction_UQTE_System_StartQTE, "StartQTE" }, // 2517079536
+		{ &Z_Construct_UFunction_UQTE_System_StartQTE, "StartQTE" }, // 440176842
 		{ &Z_Construct_UFunction_UQTE_System_StopQTE, "StopQTE" }, // 4000964844
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -449,11 +497,11 @@ struct Z_Construct_UClass_UQTE_System_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnPlayerSubSequenceComplete = { "OnPlayerSubSequenceComplete", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnPlayerSubSequenceComplete), Z_Construct_UDelegateFunction_BCR_OnPlayerSubSequenceCompleteSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnPlayerSubSequenceComplete_MetaData), NewProp_OnPlayerSubSequenceComplete_MetaData) }; // 1037608065
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnPlayerSubSequenceFailed = { "OnPlayerSubSequenceFailed", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnPlayerSubSequenceFailed), Z_Construct_UDelegateFunction_BCR_OnPlayerSubSequenceFailedSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnPlayerSubSequenceFailed_MetaData), NewProp_OnPlayerSubSequenceFailed_MetaData) }; // 2849854489
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnSequenceComplete = { "OnSequenceComplete", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnSequenceComplete), Z_Construct_UDelegateFunction_BCR_OnSequenceCompleteSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnSequenceComplete_MetaData), NewProp_OnSequenceComplete_MetaData) }; // 2237625643
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnSequenceFailed = { "OnSequenceFailed", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnSequenceFailed), Z_Construct_UDelegateFunction_BCR_OnSequenceFailedSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnSequenceFailed_MetaData), NewProp_OnSequenceFailed_MetaData) }; // 3622424426
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnQTEComplete = { "OnQTEComplete", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnQTEComplete), Z_Construct_UDelegateFunction_BCR_OnQTECompleteSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnQTEComplete_MetaData), NewProp_OnQTEComplete_MetaData) }; // 3272354555
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnPlayerSubSequenceComplete = { "OnPlayerSubSequenceComplete", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnPlayerSubSequenceComplete), Z_Construct_UDelegateFunction_BCR_OnPlayerSubSequenceCompleteSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnPlayerSubSequenceComplete_MetaData), NewProp_OnPlayerSubSequenceComplete_MetaData) }; // 1658395676
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnPlayerSubSequenceFailed = { "OnPlayerSubSequenceFailed", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnPlayerSubSequenceFailed), Z_Construct_UDelegateFunction_BCR_OnPlayerSubSequenceFailedSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnPlayerSubSequenceFailed_MetaData), NewProp_OnPlayerSubSequenceFailed_MetaData) }; // 668196791
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnSequenceComplete = { "OnSequenceComplete", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnSequenceComplete), Z_Construct_UDelegateFunction_BCR_OnSequenceCompleteSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnSequenceComplete_MetaData), NewProp_OnSequenceComplete_MetaData) }; // 339958565
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnSequenceFailed = { "OnSequenceFailed", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnSequenceFailed), Z_Construct_UDelegateFunction_BCR_OnSequenceFailedSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnSequenceFailed_MetaData), NewProp_OnSequenceFailed_MetaData) }; // 1789997991
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQTE_System_Statics::NewProp_OnQTEComplete = { "OnQTEComplete", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQTE_System, OnQTEComplete), Z_Construct_UDelegateFunction_BCR_OnQTECompleteSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnQTEComplete_MetaData), NewProp_OnQTEComplete_MetaData) }; // 198194420
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UQTE_System_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQTE_System_Statics::NewProp_OnPlayerSubSequenceComplete,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQTE_System_Statics::NewProp_OnPlayerSubSequenceFailed,
@@ -503,10 +551,10 @@ UQTE_System::~UQTE_System() {}
 struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTE_System_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UQTE_System, UQTE_System::StaticClass, TEXT("UQTE_System"), &Z_Registration_Info_UClass_UQTE_System, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQTE_System), 4263479636U) },
+		{ Z_Construct_UClass_UQTE_System, UQTE_System::StaticClass, TEXT("UQTE_System"), &Z_Registration_Info_UClass_UQTE_System, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQTE_System), 377055321U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTE_System_h_2661183077(TEXT("/Script/BCR"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTE_System_h_1952917073(TEXT("/Script/BCR"),
 	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTE_System_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTE_System_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
