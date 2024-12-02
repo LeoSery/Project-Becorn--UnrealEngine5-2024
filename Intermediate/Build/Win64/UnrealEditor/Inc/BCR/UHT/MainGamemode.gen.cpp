@@ -122,14 +122,14 @@ AMainGamemode::~AMainGamemode() {}
 // End Class AMainGamemode
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_AMainGamemode, AMainGamemode::StaticClass, TEXT("AMainGamemode"), &Z_Registration_Info_UClass_AMainGamemode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainGamemode), 3861842392U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_326226366(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_326226366(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
