@@ -166,7 +166,11 @@ void AMainPlayer::Interact() {
 	TArray<FHitResult> OutHits = Detect_Object(this);
 	for (const FHitResult OutHit : OutHits)
 	{
-		if (Cast<IInteractable>(OutHit.GetActor())) {
+		if(PickedUpObject && Cast<IInteractable>(OutHit.GetActor())){
+			IBCR_Helper::LogScreen(this, OutHit.GetActor()->GetActorLabel());
+			IInteractable::Execute_InteractWithObject(OutHit.GetActor(), this,PickedUpObject);
+		}
+		else if (Cast<IInteractable>(OutHit.GetActor())) {
 			IBCR_Helper::LogScreen(this, OutHit.GetActor()->GetActorLabel());
 			IInteractable::Execute_Interact(OutHit.GetActor(), this);
 
