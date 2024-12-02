@@ -151,7 +151,6 @@ void AMainPlayer::PickUp() {
 		for (const FHitResult OutHit : OutHits)
 		{
 			if (Cast<IIPickable>(OutHit.GetActor())) {
-				IBCR_Helper::LogScreen(this, OutHit.GetActor()->GetActorLabel());
 				IIPickable::Execute_PickedUp(OutHit.GetActor(), this, OutHit.GetActor());
 					PickedUpSomething = true;
 				PickedUpObject = OutHit.GetActor();
@@ -167,11 +166,9 @@ void AMainPlayer::Interact() {
 	for (const FHitResult OutHit : OutHits)
 	{
 		if(PickedUpObject && Cast<IInteractable>(OutHit.GetActor())){
-			IBCR_Helper::LogScreen(this, OutHit.GetActor()->GetActorLabel());
 			IInteractable::Execute_InteractWithObject(OutHit.GetActor(), this,PickedUpObject);
 		}
 		else if (Cast<IInteractable>(OutHit.GetActor())) {
-			IBCR_Helper::LogScreen(this, OutHit.GetActor()->GetActorLabel());
 			IInteractable::Execute_Interact(OutHit.GetActor(), this);
 
 		}

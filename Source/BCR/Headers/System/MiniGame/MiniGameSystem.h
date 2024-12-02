@@ -7,6 +7,7 @@
 #include "BCR/Headers/Interfaces/Interactable.h"
 #include "GameFramework/Actor.h"
 #include <Components/BoxComponent.h>
+#include <Components/BillboardComponent.h>
 #include "MiniGameSystem.generated.h"
 
 
