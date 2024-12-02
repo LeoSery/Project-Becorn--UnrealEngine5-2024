@@ -14,28 +14,28 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define BCR_QTETypes_generated_h
 
-#define FID_Users_Shadow_Documents_GitHub_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_43_GENERATED_BODY \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_43_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FQTEInputStep_Statics; \
 	static class UScriptStruct* StaticStruct();
 
 
 template<> BCR_API UScriptStruct* StaticStruct<struct FQTEInputStep>();
 
-#define FID_Users_Shadow_Documents_GitHub_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_68_GENERATED_BODY \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_68_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FPlayerSubSequence_Statics; \
 	static class UScriptStruct* StaticStruct();
 
 
 template<> BCR_API UScriptStruct* StaticStruct<struct FPlayerSubSequence>();
 
-#define FID_Users_Shadow_Documents_GitHub_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_90_GENERATED_BODY \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_90_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FQTESequence_Statics; \
 	static class UScriptStruct* StaticStruct();
 
 
 template<> BCR_API UScriptStruct* StaticStruct<struct FQTESequence>();
 
-#define FID_Users_Shadow_Documents_GitHub_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_106_GENERATED_BODY \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_106_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FQTEConfiguration_Statics; \
 	static class UScriptStruct* StaticStruct();
 
@@ -43,7 +43,7 @@ template<> BCR_API UScriptStruct* StaticStruct<struct FQTESequence>();
 template<> BCR_API UScriptStruct* StaticStruct<struct FQTEConfiguration>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Users_Shadow_Documents_GitHub_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h
+#define CURRENT_FILE_ID FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h
 
 
 #define FOREACH_ENUM_EQTEINPUTTYPE(op) \

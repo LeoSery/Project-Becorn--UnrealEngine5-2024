@@ -90,9 +90,6 @@
     <Filter Include="Source\BCR\Headers\System\MiniGame">
       <UniqueIdentifier>{57BF3B9B-AEE4-3E36-9795-9514F2DDDC8A}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.cpp">
-      <Filter>Source\BCR\Headers\System\MiniGame</Filter>
-    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h">
       <Filter>Source\BCR\Headers\System\MiniGame</Filter>
     </ClInclude>
