@@ -4,6 +4,9 @@
 #include "UObject/Interface.h"
 #include "Interactable.generated.h"
 
+class AMainPlayer;
+
+
 UINTERFACE(MinimalAPI)
 class UInteractable : public UInterface
 {
@@ -16,6 +19,9 @@ class BCR_API IInteractable
 
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	void Interact(AActor* Player);
+	void Interact(AMainPlayer* Player);
 
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void InteractWithObject(AMainPlayer* Player, AActor* Object);
 };

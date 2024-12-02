@@ -22,7 +22,7 @@ void AMiniGameSystem::SetInputItem(TArray<APickableItem> _items)
 
 }
 
-void AMiniGameSystem::SetQTE(TArray<UQTE_Data> _datas)
+void AMiniGameSystem::SetQTE(TArray<FQTEConfiguration> _datas)
 {
 
 }

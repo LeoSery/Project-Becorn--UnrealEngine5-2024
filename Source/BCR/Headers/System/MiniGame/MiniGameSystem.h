@@ -3,7 +3,7 @@
 #include "CoreMinimal.h"
 #include "Delegates/Delegate.h"
 #include "BCR/Headers/System/Pickable/PickableItem.h"
-#include "BCR/Headers/System/QTE/QTE_Data.h"
+#include "BCR/Headers/System/QTE/QTETypes.h"
 #include "GameFramework/Actor.h"
 #include "MiniGameSystem.generated.h"
 
@@ -25,7 +25,7 @@ public:
 	//// Game
 	// Setters
 	virtual void SetInputItem(TArray<APickableItem> _items);
-	virtual void SetQTE(TArray<UQTE_Data> _datas);
+	virtual void SetQTE(TArray<FQTEConfiguration> _datas);
 	virtual void SetOutputItem(TArray<APickableItem> _items);
 
 	// Methods
