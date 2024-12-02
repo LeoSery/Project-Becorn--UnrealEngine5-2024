@@ -90,6 +90,9 @@
     <Filter Include="Source\BCR\Headers\System\MiniGame">
       <UniqueIdentifier>{57BF3B9B-AEE4-3E36-9795-9514F2DDDC8A}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.cpp">
+      <Filter>Source\BCR\Headers\System\MiniGame</Filter>
+    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h">
       <Filter>Source\BCR\Headers\System\MiniGame</Filter>
     </ClInclude>
@@ -102,7 +105,10 @@
     <Filter Include="Source\BCR\Headers\System\QTE">
       <UniqueIdentifier>{0624CC9C-23FA-373F-9BCD-5769E5C03798}</UniqueIdentifier>
     </Filter>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Data.h">
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTETypes.h">
+      <Filter>Source\BCR\Headers\System\QTE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_System.h">
       <Filter>Source\BCR\Headers\System\QTE</Filter>
     </ClInclude>
     <Filter Include="Source\BCR\Sources">
@@ -150,7 +156,7 @@
     <Filter Include="Source\BCR\Sources\System\QTE">
       <UniqueIdentifier>{568C2636-A9C1-3C1D-9FAE-71DC7F638051}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTE_Data.cpp">
+    <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTE_System.cpp">
       <Filter>Source\BCR\Sources\System\QTE</Filter>
     </ClCompile>
   </ItemGroup>

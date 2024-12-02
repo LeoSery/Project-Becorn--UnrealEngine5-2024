@@ -10,18 +10,21 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
+class AMainPlayer;
 #ifdef BCR_Interactable_generated_h
 #error "Interactable.generated.h already included, missing '#pragma once' in Interactable.h"
 #endif
 #define BCR_Interactable_generated_h
 
-#define FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_RPC_WRAPPERS_NO_PURE_DECLS \
-	virtual void Interact_Implementation(AActor* Player) {}; \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object) {}; \
+	virtual void Interact_Implementation(AMainPlayer* Player) {}; \
+	DECLARE_FUNCTION(execInteractWithObject); \
 	DECLARE_FUNCTION(execInteract);
 
 
-#define FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_CALLBACK_WRAPPERS
-#define FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_ENHANCED_CONSTRUCTORS \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_CALLBACK_WRAPPERS
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	BCR_API UInteractable(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -35,7 +38,7 @@ public: \
 	BCR_API virtual ~UInteractable();
 
 
-#define FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_GENERATED_UINTERFACE_BODY() \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_GENERATED_UINTERFACE_BODY() \
 private: \
 	static void StaticRegisterNativesUInteractable(); \
 	friend struct Z_Construct_UClass_UInteractable_Statics; \
@@ -44,31 +47,32 @@ public: \
 	DECLARE_SERIALIZER(UInteractable)
 
 
-#define FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_GENERATED_BODY \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_GENERATED_BODY \
 	PRAGMA_DISABLE_DEPRECATION_WARNINGS \
-	FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_GENERATED_UINTERFACE_BODY() \
-	FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_ENHANCED_CONSTRUCTORS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_GENERATED_UINTERFACE_BODY() \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 	PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_INCLASS_IINTERFACE_NO_PURE_DECLS \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_INCLASS_IINTERFACE_NO_PURE_DECLS \
 protected: \
 	virtual ~IInteractable() {} \
 public: \
 	typedef UInteractable UClassType; \
 	typedef IInteractable ThisClass; \
-	static void Execute_Interact(UObject* O, AActor* Player); \
+	static void Execute_Interact(UObject* O, AMainPlayer* Player); \
+	static void Execute_InteractWithObject(UObject* O, AMainPlayer* Player, AActor* Object); \
 	virtual UObject* _getUObject() const { return nullptr; }
 
 
-#define FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_7_PROLOG
-#define FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_15_GENERATED_BODY \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_PROLOG
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_CALLBACK_WRAPPERS \
-	FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_10_INCLASS_IINTERFACE_NO_PURE_DECLS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_CALLBACK_WRAPPERS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_13_INCLASS_IINTERFACE_NO_PURE_DECLS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -76,7 +80,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> BCR_API UClass* StaticClass<class UInteractable>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h
+#define CURRENT_FILE_ID FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
