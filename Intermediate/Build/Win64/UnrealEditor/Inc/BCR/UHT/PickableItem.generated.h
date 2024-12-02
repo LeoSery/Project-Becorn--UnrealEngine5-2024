@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define BCR_PickableItem_generated_h
 
-#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_INCLASS_NO_PURE_DECLS \
+#define FID_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPickableItem(); \
 	friend struct Z_Construct_UClass_APickableItem_Statics; \
@@ -23,7 +23,7 @@ public: \
 	DECLARE_SERIALIZER(APickableItem)
 
 
-#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_ENHANCED_CONSTRUCTORS \
+#define FID_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	APickableItem(APickableItem&&); \
@@ -35,12 +35,12 @@ public: \
 	NO_API virtual ~APickableItem();
 
 
-#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_7_PROLOG
-#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_GENERATED_BODY \
+#define FID_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_7_PROLOG
+#define FID_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_INCLASS_NO_PURE_DECLS \
-	FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_ENHANCED_CONSTRUCTORS \
+	FID_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_INCLASS_NO_PURE_DECLS \
+	FID_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_10_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -48,7 +48,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> BCR_API UClass* StaticClass<class APickableItem>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h
+#define CURRENT_FILE_ID FID_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
