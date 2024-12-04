@@ -51,6 +51,18 @@ void UQTE_System::StartQTE(const FQTEConfiguration& Config)
 	SetQTEState(EQTEState::Running);
 }
 
+void UQTE_System::StartQTEFromAsset(UQTEConfigurationAsset* Config, const TArray<AMainPlayer*>& Players)
+{
+	if (!Config)
+	{
+		IBCR_Helper::LogScreen(this, "Configuration QTE invalide", 5.0f, FColor::Red);
+		return;
+	}
+
+	FQTEConfiguration RuntimeConfig = Config->ToRuntimeConfig(Players);
+	StartQTE(RuntimeConfig);
+}
+
 /** 
  * @brief Stops the current QTE sequence and resets state
  */
@@ -82,6 +94,11 @@ void UQTE_System::SetQTEPaused(bool bPause)
 
 	HandleTimersPause(bPause);
 	SetQTEState(bPause ? EQTEState::Paused : EQTEState::Running);
+}
+
+void UQTE_System::ValidateAndStartQTE(const FQTEConfiguration& Config)
+{
+	
 }
 
 /** 

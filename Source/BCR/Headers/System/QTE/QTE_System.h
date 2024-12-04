@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "QTETypes.h"
+#include "BCR/Headers/System/QTE/QTEConfigurationTypes.h"
 #include "GameFramework/PlayerController.h"
 #include "QTE_System.generated.h"
 
@@ -38,6 +39,10 @@ public:
 	/// QTE Execution flow
 	UFUNCTION(BlueprintCallable, Category = "QTE")
 	void StartQTE(const FQTEConfiguration& Config);
+	UFUNCTION(BlueprintCallable, Category = "QTE", 
+		Meta = (DisplayName = "Start QTE From Asset"))
+	void StartQTEFromAsset(UQTEConfigurationAsset* Config, const TArray<AMainPlayer*>& Players);
+	
 	UFUNCTION(BlueprintCallable, Category = "QTE")
 	void StopQTE();
 	UFUNCTION(BlueprintCallable, Category = "QTE")
@@ -77,6 +82,9 @@ private:
 	FTimerHandle GlobalTimerHandle;
 
 	//////// METHODS ////////
+	/// Asset Processing
+	void ValidateAndStartQTE(const FQTEConfiguration& Config);
+	
 	/// Input Processing
 	void ProcessInputs(float DeltaTime);
 	bool ValidateInput(const FQTEInputStep& Step, AMainPlayer* Player, float DeltaTime);

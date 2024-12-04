@@ -289,8 +289,81 @@
     <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\Pickable\PickableItem.h"/>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.h" />
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTETypes.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_System.h"/>
+    <ClCompile Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.cpp">
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</BrowseInformationFile>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <CompileAs>Default</CompileAs>
+      <ConformanceMode>Default</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <ForcedIncludeFiles>;C:\Users\seryl\Desktop\Fichiers\Ynov\cours\M2\ProjetM2\M2_Project\Intermediate\Build\Win64\x64\BCREditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h;C:\Users\seryl\Desktop\Fichiers\Ynov\cours\M2\ProjetM2\M2_Project\Intermediate\Build\Win64\x64\UnrealEditor\Development\BCR\Definitions.BCR.h</ForcedIncludeFiles>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</ModuleDependenciesFile>
+      <ModuleOutputFile>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <Optimization>MaxSpeed</Optimization>
+      <ObjectFileName>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\BCR.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDll</RuntimeLibrary>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level1</WarningLevel>
+      <XMLDocumentationFileName>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</XMLDocumentationFileName>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <AdditionalOptions>/std:c++20  /DSAL_NO_ATTRIBUTE_DECLARATIONS=1 /permissive- /Zc:strictStrings- /Zc:__cplusplus /Yu"C:\Users\seryl\Desktop\Fichiers\Ynov\cours\M2\ProjetM2\M2_Project\Intermediate\Build\Win64\x64\BCREditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\Core\MainGamemode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
