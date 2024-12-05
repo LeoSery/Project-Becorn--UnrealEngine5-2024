@@ -1,11 +1,11 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+#include "Subsystems/GameInstanceSubsystem.h"
 #include "QTETypes.h"
 #include "BCR/Headers/System/QTE/QTEConfigurationTypes.h"
 #include "GameFramework/PlayerController.h"
-#include "QTE_System.generated.h"
+#include "QTE_Subsystem.generated.h"
 
 //////// DELEGATES ////////
 //// QTE Event delegates
@@ -27,15 +27,16 @@ class AMainPlayer;
  * Handles input validation, sequence progression, and timing
  */
 UCLASS(Blueprintable)
-class BCR_API UQTE_System : public UObject
+class BCR_API UQTE_Subsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
 public:
-	//////// SINGLETON GETTER ////////
-	static UQTE_System* Get();
-
 	//////// METHODS ////////
+	/// Subsystem interface
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	virtual void Deinitialize() override;
+	
 	/// QTE Execution flow
 	UFUNCTION(BlueprintCallable, Category = "QTE")
 	void StartQTE(const FQTEConfiguration& Config);
@@ -60,11 +61,8 @@ public:
 	FOnSequenceFailedSignature OnSequenceFailed;
 	UPROPERTY(BlueprintAssignable, Category = "QTE")
 	FOnQTECompleteSignature OnQTEComplete;
-
+	
 private:
-	//////// SINGLETON INSTANCE ////////
-	static UQTE_System* Instance;
-
 	//////// FIELDS ////////
 	/// QTE Config
 	/** Current QTE configuration being executed */

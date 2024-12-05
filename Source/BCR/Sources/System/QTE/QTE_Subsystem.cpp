@@ -1,28 +1,25 @@
-﻿#include "BCR/Headers/System/QTE/QTE_System.h"
+﻿#include "BCR/Headers/System/QTE/QTE_Subsystem.h"
 #include "BCR/Headers/Player/MainPlayer.h"
 #include "BCR/Headers/Interfaces/BCR_Helper.h"
 
-UQTE_System* UQTE_System::Instance = nullptr;
-
-/** 
- * @brief Gets the singleton instance of the QTE System
- * @return The singleton instance
- */
-UQTE_System* UQTE_System::Get()
+void UQTE_Subsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
-	if (!Instance)
-	{
-		Instance = NewObject<UQTE_System>();
-		Instance->AddToRoot(); // Prevents garbage collectors from destroying it
-	}
-	return Instance;
+	Super::Initialize(Collection);
+	ResetQTEState();
+	CurrentState = EQTEState::Inactive;
+}
+
+void UQTE_Subsystem::Deinitialize()
+{
+	StopQTE();
+	Super::Deinitialize();
 }
 
 /** 
  * @brief Starts a new QTE sequence if none is currently running
  * @param Config The configuration for this QTE sequence
  */
-void UQTE_System::StartQTE(const FQTEConfiguration& Config)
+void UQTE_Subsystem::StartQTE(const FQTEConfiguration& Config)
 {
 	// Validate no existing QTE is running
 	if (IsQTERunning())
@@ -51,7 +48,7 @@ void UQTE_System::StartQTE(const FQTEConfiguration& Config)
 	SetQTEState(EQTEState::Running);
 }
 
-void UQTE_System::StartQTEFromAsset(UQTEConfigurationAsset* Config, const TArray<AMainPlayer*>& Players)
+void UQTE_Subsystem::StartQTEFromAsset(UQTEConfigurationAsset* Config, const TArray<AMainPlayer*>& Players)
 {
 	if (!Config)
 	{
@@ -66,7 +63,7 @@ void UQTE_System::StartQTEFromAsset(UQTEConfigurationAsset* Config, const TArray
 /** 
  * @brief Stops the current QTE sequence and resets state
  */
-void UQTE_System::StopQTE()
+void UQTE_Subsystem::StopQTE()
 {
 	if (!IsQTERunning())
 	{
@@ -83,9 +80,9 @@ void UQTE_System::StopQTE()
 
 /** 
  * @brief Pauses or resumes the current QTE sequence
- * @param bPaused True to pause, false to resume
+ * @param bPause True to pause, false to resume
  */
-void UQTE_System::SetQTEPaused(bool bPause)
+void UQTE_Subsystem::SetQTEPaused(bool bPause)
 {
 	if (CurrentConfig.Sequences.IsEmpty())
 	{
@@ -96,7 +93,7 @@ void UQTE_System::SetQTEPaused(bool bPause)
 	SetQTEState(bPause ? EQTEState::Paused : EQTEState::Running);
 }
 
-void UQTE_System::ValidateAndStartQTE(const FQTEConfiguration& Config)
+void UQTE_Subsystem::ValidateAndStartQTE(const FQTEConfiguration& Config)
 {
 	
 }
@@ -105,7 +102,7 @@ void UQTE_System::ValidateAndStartQTE(const FQTEConfiguration& Config)
  * @brief Processes inputs for the current tick
  * @param DeltaTime Time elapsed since last tick
  */
-void UQTE_System::ProcessInputs(float DeltaTime)
+void UQTE_Subsystem::ProcessInputs(float DeltaTime)
 {
 	if (CurrentState == EQTEState::Paused || CurrentConfig.Sequences.IsEmpty())
 	{
@@ -122,7 +119,7 @@ void UQTE_System::ProcessInputs(float DeltaTime)
  * @param DeltaTime Time elapsed since last tick
  * @return True if input is valid, false otherwise
  */
-bool UQTE_System::ValidateInput(const FQTEInputStep& Step, AMainPlayer* Player, float DeltaTime)
+bool UQTE_Subsystem::ValidateInput(const FQTEInputStep& Step, AMainPlayer* Player, float DeltaTime)
 {
 	if (!Player)
 	{
@@ -150,7 +147,7 @@ bool UQTE_System::ValidateInput(const FQTEInputStep& Step, AMainPlayer* Player, 
 * @param Player The player to check input for
 * @return True if hold is valid, false otherwise
 */
-bool UQTE_System::CheckHoldInput(const FQTEInputStep& Step, AMainPlayer* Player)
+bool UQTE_Subsystem::CheckHoldInput(const FQTEInputStep& Step, AMainPlayer* Player)
 {
 	if (APlayerController* PC = Player->GetController<APlayerController>())
 	{
@@ -173,7 +170,7 @@ bool UQTE_System::CheckHoldInput(const FQTEInputStep& Step, AMainPlayer* Player)
 * @param Player The player to check input for
 * @return True if tap is valid, false otherwise
 */
-bool UQTE_System::CheckTapInput(const FQTEInputStep& Step, AMainPlayer* Player)
+bool UQTE_Subsystem::CheckTapInput(const FQTEInputStep& Step, AMainPlayer* Player)
 {
 	if (APlayerController* PC = Player->GetController<APlayerController>())
 	{
@@ -188,7 +185,7 @@ bool UQTE_System::CheckTapInput(const FQTEInputStep& Step, AMainPlayer* Player)
 * @param Player The player to check input for
 * @return True if release is valid, false otherwise
 */
-bool UQTE_System::CheckReleaseInput(const FQTEInputStep& Step, AMainPlayer* Player)
+bool UQTE_Subsystem::CheckReleaseInput(const FQTEInputStep& Step, AMainPlayer* Player)
 {
 	if (APlayerController* PC = Player->GetController<APlayerController>())
 	{
@@ -203,7 +200,7 @@ bool UQTE_System::CheckReleaseInput(const FQTEInputStep& Step, AMainPlayer* Play
 * @param Player The player to check input for
 * @return True if movement is in correct direction, false otherwise
 */
-bool UQTE_System::CheckStickMoveInput(const FQTEInputStep& Step, AMainPlayer* Player)
+bool UQTE_Subsystem::CheckStickMoveInput(const FQTEInputStep& Step, AMainPlayer* Player)
 {
 	if (APlayerController* PC = Player->GetController<APlayerController>())
 	{
@@ -228,7 +225,7 @@ bool UQTE_System::CheckStickMoveInput(const FQTEInputStep& Step, AMainPlayer* Pl
 /** 
 * @brief Advances to next sequence or completes QTE
 */
-void UQTE_System::AdvanceToNextSequence()
+void UQTE_Subsystem::AdvanceToNextSequence()
 {
 	CurrentConfig.Sequences[CurrentSequenceIndex].bIsCompleted = true;
 
@@ -259,7 +256,7 @@ void UQTE_System::AdvanceToNextSequence()
 * @param Sequence The sequence to validate
 * @return True if sequence is complete, false otherwise
 */
-bool UQTE_System::ValidateSequenceCompletion(const FQTESequence& Sequence)
+bool UQTE_Subsystem::ValidateSequenceCompletion(const FQTESequence& Sequence)
 {
 	for (const auto& PlayerSubSeq : Sequence.PlayerSubSequences)
 	{
@@ -275,7 +272,7 @@ bool UQTE_System::ValidateSequenceCompletion(const FQTESequence& Sequence)
 * @brief Processes the current sequence for all players
 * @param DeltaTime Time elapsed since last tick
 */
-void UQTE_System::ProcessSequence(float DeltaTime)
+void UQTE_Subsystem::ProcessSequence(float DeltaTime)
 {
 	FQTESequence& CurrentSequence = CurrentConfig.Sequences[CurrentSequenceIndex];
 
@@ -333,7 +330,7 @@ void UQTE_System::ProcessSequence(float DeltaTime)
 /** 
 * @brief Resets the current sequence state for all players
 */
-void UQTE_System::ResetCurrentSequence()
+void UQTE_Subsystem::ResetCurrentSequence()
 {
 	for (auto& PlayerSubSeq : CurrentConfig.Sequences[CurrentSequenceIndex].PlayerSubSequences)
 	{
@@ -347,7 +344,7 @@ void UQTE_System::ResetCurrentSequence()
 * @brief Completes the QTE and handles cleanup
 * @param bSuccess Whether the QTE was completed successfully
 */
-void UQTE_System::CompleteQTE(bool bSuccess)
+void UQTE_Subsystem::CompleteQTE(bool bSuccess)
 {
 	ClearTimers();
 	ResetQTEState();
@@ -361,7 +358,7 @@ void UQTE_System::CompleteQTE(bool bSuccess)
 /** 
 * @brief Clears all active timers
 */
-void UQTE_System::ClearTimers()
+void UQTE_Subsystem::ClearTimers()
 {
 	if (UWorld* World = GEngine->GetWorld())
 	{
@@ -374,7 +371,7 @@ void UQTE_System::ClearTimers()
 * @brief Sets up the global timeout timer
 * @param Config The QTE configuration containing timeout settings
 */
-void UQTE_System::SetupGlobalTimer(const FQTEConfiguration& Config)
+void UQTE_Subsystem::SetupGlobalTimer(const FQTEConfiguration& Config)
 {
 	if (Config.TotalTime > 0.0f && GEngine->GetWorld())
 	{
@@ -393,7 +390,7 @@ void UQTE_System::SetupGlobalTimer(const FQTEConfiguration& Config)
 /** 
 * @brief Sets up the main processing timer
 */
-void UQTE_System::SetupProcessTimer()
+void UQTE_Subsystem::SetupProcessTimer()
 {
 	if (UWorld* World = GEngine->GetWorld())
 	{
@@ -410,7 +407,7 @@ void UQTE_System::SetupProcessTimer()
 * @brief Handles pausing/unpausing of all timers
 * @param bPause True to pause, false to resume
 */
-void UQTE_System::HandleTimersPause(bool bPause)
+void UQTE_Subsystem::HandleTimersPause(bool bPause)
 {
 	if (UWorld* World = GEngine->GetWorld())
 	{
@@ -433,7 +430,7 @@ void UQTE_System::HandleTimersPause(bool bPause)
 /** 
 * @brief Resets all QTE state to initial values
 */
-void UQTE_System::ResetQTEState()
+void UQTE_Subsystem::ResetQTEState()
 {
 	CurrentConfig.Sequences.Empty();
 	bIsPaused = false;
@@ -446,7 +443,7 @@ void UQTE_System::ResetQTEState()
 * @brief Updates and logs QTE state changes
 * @param NewState The new state to set
 */
-void UQTE_System::SetQTEState(EQTEState NewState)
+void UQTE_Subsystem::SetQTEState(EQTEState NewState)
 {
 	if (CurrentState != NewState)
 	{
@@ -461,7 +458,7 @@ void UQTE_System::SetQTEState(EQTEState NewState)
 * @brief Checks if a QTE is currently active
 * @return True if QTE is running or paused, false otherwise
 */
-bool UQTE_System::IsQTERunning() const
+bool UQTE_Subsystem::IsQTERunning() const
 {
 	return CurrentState == EQTEState::Running || CurrentState == EQTEState::Paused;
 }
@@ -470,7 +467,7 @@ bool UQTE_System::IsQTERunning() const
 * @brief Validates QTE configuration
 * @return True if configuration is valid, false otherwise
 */
-bool UQTE_System::IsQTEConfigValid() const
+bool UQTE_Subsystem::IsQTEConfigValid() const
 {
 	return !CurrentConfig.Sequences.IsEmpty();
 }
