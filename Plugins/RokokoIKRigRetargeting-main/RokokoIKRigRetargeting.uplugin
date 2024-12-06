@@ -1,0 +1,17 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "RokokoIKRigRetargeting",
+	"Description": "Rokoko Retargeting Assets",
+	"Category": "Rokoko",
+	"CreatedBy": "Klian",
+	"CreatedByURL": "https://dev.epicgames.com/community/profile/doaEp/Klian",
+	"DocsURL": "https://dev.epicgames.com/community/learning/tutorials/8On6/unreal-engine-rokoko-studio-to-ue5",
+	"MarketplaceURL": "https://github.com/Klian326/RokokoIKRigRetargeting",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false
+}
