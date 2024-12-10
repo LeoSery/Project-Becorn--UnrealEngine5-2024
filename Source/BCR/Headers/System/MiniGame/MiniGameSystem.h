@@ -33,14 +33,14 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void SetInputItem(TArray<TSubclassOf<APickableItem>> _items);
 	UFUNCTION(BlueprintCallable)
-	virtual void SetQTE(FQTEConfiguration _datas, TArray< FPlayerSubSequence> snapSequencePoint1, TArray< FPlayerSubSequence> snapSequencePoint2);
+	virtual void SetQTE(UQTEConfigurationAsset* _datas, TArray< FPlayerSubSequence> snapSequencePoint1, TArray< FPlayerSubSequence> snapSequencePoint2);
 	UFUNCTION(BlueprintCallable)
 	virtual void SetOutputItem(TArray<TSubclassOf<APickableItem>> _items);
 
 	// Methods
 	UFUNCTION(BlueprintCallable)
 	void StartExecute();
-	UFUNCTION(BlueprintCallable,BlueprintImplementableEvent)
+	UFUNCTION(BlueprintCallable)
 	void CallQTEReader();
 	UFUNCTION(BlueprintCallable)
 	void FinishExecute(bool _success);
@@ -67,7 +67,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<APickableItem>> outputItems;
 	UPROPERTY(EditAnywhere)
-	FQTEConfiguration qteList;
+	UQTEConfigurationAsset* QTEConfig;
 
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))

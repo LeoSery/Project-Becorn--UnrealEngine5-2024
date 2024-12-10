@@ -5,6 +5,7 @@
 #include <Components/BillboardComponent.h>
 #include <Kismet/KismetMathLibrary.h>
 #include <Kismet/KismetSystemLibrary.h>
+#include "BCR/Headers/System/QTE/QTE_Subsystem.h"
 #include "BCR/Headers/Player/MainPlayer.h"
 
 AMiniGameSystem::AMiniGameSystem()
@@ -32,7 +33,9 @@ void AMiniGameSystem::BeginPlay()
 {
 	snapPointMap.Add(snapPlayerPoint1,nullptr);
 	snapPointMap.Add(snapPlayerPoint2, nullptr);
-	
+
+	snapPointSequence.Add(snapPlayerPoint1, {});
+	snapPointSequence.Add(snapPlayerPoint2, {});
 	itemList = inputItems;
 	Super::BeginPlay();
 }
@@ -49,9 +52,12 @@ void AMiniGameSystem::SetInputItem(TArray<TSubclassOf<APickableItem>> _items)
 	itemList = _items;
 }
 
-void AMiniGameSystem::SetQTE(TArray<FQTEConfiguration> _datas)
+void AMiniGameSystem::SetQTE(UQTEConfigurationAsset* _datas, TArray< FPlayerSubSequence> snapSequencePoint1, TArray< FPlayerSubSequence> snapSequencePoint2)
 {
-	
+	QTEConfig = _datas;
+	snapPointSequence[snapPlayerPoint1] = snapSequencePoint1;
+	snapPointSequence[snapPlayerPoint2] = snapSequencePoint2;
+
 }
 
 void AMiniGameSystem::SetOutputItem(TArray<TSubclassOf<APickableItem>> _items)
@@ -61,7 +67,7 @@ void AMiniGameSystem::SetOutputItem(TArray<TSubclassOf<APickableItem>> _items)
 
 void AMiniGameSystem::StartExecute()
 {
-	//check if item are the right one from the inputItems Array
+
 	if (itemList.IsEmpty())
 	{
 		// lock in the player with the state machine
@@ -73,6 +79,7 @@ void AMiniGameSystem::StartExecute()
 	}
 }
 
+
 void AMiniGameSystem::CallQTEReader()
 {
 	//Call the Qte Reader with qteList as an argument
@@ -80,31 +87,35 @@ void AMiniGameSystem::CallQTEReader()
 	{
 		if (UQTE_Subsystem* QTESystem = GameInstance->GetSubsystem<UQTE_Subsystem>())
 		{
-			FQTEConfiguration Config;
-			QTESystem->StartQTE(Config);
+			QTESystem->StartQTEFromAsset(QTEConfig,{snapPointMap.Find(snapPlayerPoint1)[0],snapPointMap.Find(snapPlayerPoint2)[0]});
 		}
 	}
 }
 
+void AMiniGameSystem::FinishExecute(bool _success)
+{
+}
 
-void AMiniGameSystem::FinishExecute(int i)
+void AMiniGameSystem::SpawnItem(int i)
 {
 	if (i >= outputItems.Num())
 	{
 		IBCR_Helper::LogScreen(this, "Finished execution");
 		Reset();
-		return;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+		return;
 	}
 	
 	FTimerHandle TimerHandle;
-	FTimerDelegate TimerDelegate = FTimerDelegate::CreateUObject(this, &AMiniGameSystem::FinishExecute, i+1);
+	FTimerDelegate TimerDelegate = FTimerDelegate::CreateUObject(this, &AMiniGameSystem::SpawnItem, i+1);
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 3, false);
 	IBCR_Helper::LogScreen(this, outputItems[i].GetDefaultObject()->GetItemName());
 
 	FRotator Rotation(0.0f, 0.0f, 0.0f);
 	FActorSpawnParameters SpawnInfo;
-	GetWorld()->SpawnActor<APickableItem>(outputItems[i], outputSpawnPoint->GetComponentLocation() , GetActorRotation());
+	GetWorld()->SpawnActor<APickableItem>(outputItems[i], outputSpawnPoint->GetComponentLocation(), GetActorRotation());
 }
+
+
 
 void AMiniGameSystem::Reset()
 {
