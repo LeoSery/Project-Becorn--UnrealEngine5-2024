@@ -29,14 +29,25 @@ public:
 
 	//// Game
 	// Setters
+
+	UFUNCTION(BlueprintCallable)
 	virtual void SetInputItem(TArray<TSubclassOf<APickableItem>> _items);
-	virtual void SetQTE(TArray<FQTEConfiguration> _datas);
+	UFUNCTION(BlueprintCallable)
+	virtual void SetQTE(FQTEConfiguration _datas, TArray< FPlayerSubSequence> snapSequencePoint1, TArray< FPlayerSubSequence> snapSequencePoint2);
+	UFUNCTION(BlueprintCallable)
 	virtual void SetOutputItem(TArray<TSubclassOf<APickableItem>> _items);
 
 	// Methods
+	UFUNCTION(BlueprintCallable)
 	void StartExecute();
+	UFUNCTION(BlueprintCallable,BlueprintImplementableEvent)
 	void CallQTEReader();
-	void FinishExecute(int i);
+	UFUNCTION(BlueprintCallable)
+	void FinishExecute(bool _success);
+
+	UFUNCTION()
+	void SpawnItem(int _i);
+	UFUNCTION(BlueprintCallable)
 	void Reset();
 
 
@@ -44,11 +55,9 @@ public:
 	void Interact_Implementation(AMainPlayer* Player);
 	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
 
-	// Delegates
-	UPROPERTY(BlueprintAssignable)
-	FOnEndQTESignature OnEndQTEDelegate;
 
 	TMap<UBillboardComponent*, AMainPlayer*> snapPointMap;
+	TMap<UBillboardComponent*, TArray<FPlayerSubSequence>> snapPointSequence;
 
 private:
 
@@ -58,7 +67,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<APickableItem>> outputItems;
 	UPROPERTY(EditAnywhere)
-	TArray<FQTEConfiguration> qteList;
+	FQTEConfiguration qteList;
 
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))

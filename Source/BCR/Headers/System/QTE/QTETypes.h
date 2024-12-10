@@ -79,6 +79,9 @@ struct BCR_API FPlayerSubSequence
 
     UPROPERTY(Transient) 
     bool bIsCompleted = false;
+
+    UPROPERTY()
+    FGuid id = FGuid::NewGuid();
 };
 
 /** 
@@ -95,6 +98,15 @@ struct BCR_API FQTESequence
 
     UPROPERTY(Transient)
     bool bIsCompleted = false;
+
+    void BindPlayerToSubsequences(AMainPlayer* Player, FPlayerSubSequence SubSequence) {
+        for (auto [Key, Value] : PlayerSubSequences) {
+            if (Value.id == SubSequence.id) {
+                PlayerSubSequences.Remove(Key);
+                PlayerSubSequences.Add(Player, SubSequence);
+            }
+        }
+    }
 };
 
 /** 
