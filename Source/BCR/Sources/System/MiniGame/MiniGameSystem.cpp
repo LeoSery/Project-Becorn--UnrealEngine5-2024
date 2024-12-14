@@ -28,6 +28,22 @@ AMiniGameSystem::AMiniGameSystem()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
+void AMiniGameSystem::OnFirstSnapPointResult(bool bSuccess)
+{
+	if (bSuccess)
+	{
+		IBCR_Helper::LogScreen(this, "Player 1 action success!", 1.0f, FColor::Green);
+	}
+}
+
+void AMiniGameSystem::OnSecondSnapPointResult(bool bSuccess)
+{
+	if (bSuccess)
+	{
+		IBCR_Helper::LogScreen(this, "Player 1 action success!", 1.0f, FColor::Green);
+	}
+}
+
 // Called when the game starts or when spawned
 void AMiniGameSystem::BeginPlay()
 {
@@ -38,7 +54,6 @@ void AMiniGameSystem::BeginPlay()
 	Super::BeginPlay();
 }
 
-// Called every frame
 void AMiniGameSystem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -64,7 +79,36 @@ void AMiniGameSystem::StartExecute()
 {
 	if (itemList.IsEmpty())
 	{
-		CallQTEReader();
+		if (!QTEConfig)
+		{
+			IBCR_Helper::LogScreen(this, "No QTE Configuration assigned!", 3.0f, FColor::Red);
+			return;
+		}
+
+		if (UGameInstance* GameInstance = GetGameInstance())
+		{
+			if (UQTE_Subsystem* QTESystem = GameInstance->GetSubsystem<UQTE_Subsystem>())
+			{
+				if (QTESystem->GetCurrentState() != EQTEState::Running)
+				{
+					// Binding callbacks
+					QTESystem->OnQTEComplete.AddDynamic(this, &AMiniGameSystem::FinishExecute);
+					QTESystem->OnSnapPointFirstResult.AddDynamic(this, &AMiniGameSystem::OnFirstSnapPointResult);
+					QTESystem->OnSnapPointSecondResult.AddDynamic(this, &AMiniGameSystem::OnSecondSnapPointResult);
+
+					CallQTEReader();
+				}
+				
+				if (snapPointMap[snapPlayerPoint1])
+				{
+					QTESystem->OnPlayerEnterSnapPoint(snapPointMap[snapPlayerPoint1], ESnapPointType::First);
+				}
+				if (snapPointMap[snapPlayerPoint2])
+				{
+					QTESystem->OnPlayerEnterSnapPoint(snapPointMap[snapPlayerPoint2], ESnapPointType::Second);
+				}
+			}
+		}
 	}
 	else
 	{
@@ -72,10 +116,8 @@ void AMiniGameSystem::StartExecute()
 	}
 }
 
-
 void AMiniGameSystem::CallQTEReader()
 {
-	//Call the Qte Reader with qteList as an argument
 	if (UGameInstance* GameInstance = GetGameInstance())
 	{
 		if (UQTE_Subsystem* QTESystem = GameInstance->GetSubsystem<UQTE_Subsystem>())
@@ -87,6 +129,26 @@ void AMiniGameSystem::CallQTEReader()
 
 void AMiniGameSystem::FinishExecute(bool _success)
 {
+	if (UGameInstance* GameInstance = GetGameInstance())
+	{
+		if (UQTE_Subsystem* QTESystem = GameInstance->GetSubsystem<UQTE_Subsystem>())
+		{
+			QTESystem->OnQTEComplete.RemoveDynamic(this, &AMiniGameSystem::FinishExecute);
+			QTESystem->OnSnapPointFirstResult.RemoveDynamic(this, &AMiniGameSystem::OnFirstSnapPointResult);
+			QTESystem->OnSnapPointSecondResult.RemoveDynamic(this, &AMiniGameSystem::OnSecondSnapPointResult);
+		}
+	}
+
+	if (_success)
+	{
+		IBCR_Helper::LogScreen(this, "QTE Completed Successfully!", 3.0f, FColor::Green);
+		SpawnItem(0);
+	}
+	else
+	{
+		IBCR_Helper::LogScreen(this, "QTE Failed!", 3.0f, FColor::Red);
+		Reset();
+	}
 }
 
 void AMiniGameSystem::SpawnItem(int i)
@@ -99,7 +161,7 @@ void AMiniGameSystem::SpawnItem(int i)
 	}
 	
 	FTimerHandle TimerHandle;
-	FTimerDelegate TimerDelegate = FTimerDelegate::CreateUObject(this, &AMiniGameSystem::SpawnItem, i+1);
+	FTimerDelegate TimerDelegate = FTimerDelegate::CreateUObject(this, &AMiniGameSystem::SpawnItem, i + 1);
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 3, false);
 	IBCR_Helper::LogScreen(this, outputItems[i].GetDefaultObject()->GetItemName());
 
@@ -115,40 +177,36 @@ void AMiniGameSystem::Reset()
 
 void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 {
-	if (snapPointMap.Find(snapPlayerPoint1)[0] == Player) {
+	if (snapPointMap.Find(snapPlayerPoint1)[0] == Player)
+	{
 		snapPointMap.Add(snapPlayerPoint1, nullptr);
-
 		//set state machine to liberate the player
 		return;
 	}
-	else if (snapPointMap.Find(snapPlayerPoint2)[0] == Player) {
+	if (snapPointMap.Find(snapPlayerPoint2)[0] == Player)
+	{
 		snapPointMap.Add(snapPlayerPoint2, nullptr);
-
 		//set state machine to liberate the player
 		return;
 	}
 	
-	if (snapPointMap.Find(snapPlayerPoint1)[0] == nullptr) {
+	if (snapPointMap.Find(snapPlayerPoint1)[0] == nullptr)
+	{
 		snapPointMap.Add(snapPlayerPoint1, Player);
 		Player->SetActorLocation(snapPlayerPoint1->GetComponentLocation());
-
 		//set state machine to stopped /occupied / not moving or something
 	}
-	else if (snapPointMap.Find(snapPlayerPoint2)[0] == nullptr) {
+	else if (snapPointMap.Find(snapPlayerPoint2)[0] == nullptr)
+	{
 		snapPointMap.Add(snapPlayerPoint2, Player);
 		Player->SetActorLocation(snapPlayerPoint2->GetComponentLocation());
-
 		//set state machine to stopped /occupied / not moving or something
 	}
-	else {
-		//Should not go here unless very wrong mistake are made
-		IBCR_Helper::LogScreen(this, "No Free Snap Point");
-		return;
-	}
-	if (snapPointMap.Find(snapPlayerPoint1) != nullptr && snapPointMap.Find(snapPlayerPoint2) != nullptr) {
+
+	if (snapPointMap.Find(snapPlayerPoint1) != nullptr && snapPointMap.Find(snapPlayerPoint2) != nullptr)
+	{
 		StartExecute();
 	}
-	
 }
 
 void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
@@ -157,11 +215,18 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 	FVector boxExtent;
 	float sphereRadius;
 	UKismetSystemLibrary::GetComponentBounds(inputBox, boxOrigin, boxExtent, sphereRadius);
-	if (UKismetMathLibrary::IsPointInBox(Player->GetActorLocation(), boxOrigin, boxExtent)) {
+	
+	if (UKismetMathLibrary::IsPointInBox(Player->GetActorLocation(), boxOrigin, boxExtent))
+	{
 		APickableItem* item = Cast<APickableItem>(Object);
-		if (item) {
-			for (int i = 0; i < itemList.Num(); i++) {
-				if (itemList[i].GetDefaultObject()->GetItemName() == item->GetItemName()) {/* Get the name of the Object (name is given by the class of the pickable */
+		
+		if (item)
+		{
+			for (int i = 0; i < itemList.Num(); i++)
+			{
+				if (itemList[i].GetDefaultObject()->GetItemName() == item->GetItemName())
+				{
+					/* Get the name of the Object (name is given by the class of the pickable */
 					itemList.RemoveAt(i);
 					Player->PickUp();
 					Object->Destroy();

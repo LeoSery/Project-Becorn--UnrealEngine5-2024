@@ -58,6 +58,8 @@ public:
     UPROPERTY(BlueprintAssignable, Category = "QTE")
     FOnQTEActionProgress OnQTEActionProgress;
 
+    EQTEState GetCurrentState() const { return CurrentState; }
+
 private:
     // État actuel
     EQTEState CurrentState;

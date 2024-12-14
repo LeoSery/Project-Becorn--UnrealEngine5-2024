@@ -40,7 +40,7 @@ public:
 	void FinishExecute(bool _success);
 
 	UFUNCTION()
-	void SpawnItem(int _i);
+	void SpawnItem(int i);
 	UFUNCTION(BlueprintCallable)
 	void Reset();
 
@@ -73,6 +73,12 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* inputBox;
+	
+	UFUNCTION()
+	void OnFirstSnapPointResult(bool bSuccess);
+    
+	UFUNCTION()
+	void OnSecondSnapPointResult(bool bSuccess);
 
 protected:
 	virtual void BeginPlay() override;
