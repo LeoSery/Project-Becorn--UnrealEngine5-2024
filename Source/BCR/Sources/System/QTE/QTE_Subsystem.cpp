@@ -1,473 +1,322 @@
-﻿#include "BCR/Headers/System/QTE/QTE_Subsystem.h"
+﻿// QTE_Subsystem.cpp
+#include "BCR/Headers/System/QTE/QTE_Subsystem.h"
 #include "BCR/Headers/Player/MainPlayer.h"
 #include "BCR/Headers/Interfaces/BCR_Helper.h"
 
 void UQTE_Subsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
-	Super::Initialize(Collection);
-	ResetQTEState();
-	CurrentState = EQTEState::Inactive;
+    Super::Initialize(Collection);
+    ResetState();
+    CurrentState = EQTEState::Inactive;
 }
 
 void UQTE_Subsystem::Deinitialize()
 {
-	StopQTE();
-	Super::Deinitialize();
+    StopQTE();
+    Super::Deinitialize();
 }
 
-/** 
- * @brief Starts a new QTE sequence if none is currently running
- * @param Config The configuration for this QTE sequence
- */
-void UQTE_Subsystem::StartQTE(const FQTEConfiguration& Config)
+void UQTE_Subsystem::StartQTEFromAsset(const UQTEConfigurationAsset* Config)
 {
-	// Validate no existing QTE is running
-	if (IsQTERunning())
-	{
-		IBCR_Helper::LogScreen(this, "Trying to start QTE while another is running", 5.0f, FColor::Red);
-		return;
-	}
-
-	// Initialize QTE state
-	CurrentConfig = Config;
-	CurrentSequenceIndex = 0;
-	CurrentRepeatCount = 0;
-	bIsPaused = false;
-
-	// check for valid configuration
-	if (!IsQTEConfigValid())
-	{
-		IBCR_Helper::LogScreen(this, "Invalid QTE Configuration: No sequences", 5.0f, FColor::Red);
-		CompleteQTE(false);
-		return;
-	}
-
-	// Setup timers and start
-	SetupGlobalTimer(Config);
-	SetupProcessTimer();
-	SetQTEState(EQTEState::Running);
+    if (!Config)
+    {
+        IBCR_Helper::LogScreen(this, TEXT("invalid QTE Configuration"), 5.0f, FColor::Red);
+    }
+    else
+    {
+        StartQTE(Config->ToRuntimeConfig());
+    }
 }
 
-void UQTE_Subsystem::StartQTEFromAsset(UQTEConfigurationAsset* Config, const TArray<AMainPlayer*>& Players)
+void UQTE_Subsystem::StartQTE(const FQTEConfiguration Config)
 {
-	if (!Config)
-	{
-		IBCR_Helper::LogScreen(this, "Configuration QTE invalide", 5.0f, FColor::Red);
-		return;
-	}
+    if (IsQTERunning())
+    {
+        IBCR_Helper::LogScreen(this, TEXT("QTE Already running"), 5.0f, FColor::Red);
+        return;
+    }
 
-	FQTEConfiguration RuntimeConfig = Config->ToRuntimeConfig(Players);
-	StartQTE(RuntimeConfig);
+    CurrentConfig = Config;
+    if (!IsQTEConfigValid())
+    {
+        IBCR_Helper::LogScreen(this, TEXT("invalid QTE Configuration"), 5.0f, FColor::Red);
+        return;
+    }
+    
+    SetQTEState(EQTEState::WaitingForPlayers);
+    
+    if (CurrentConfig.TotalTime > 0.0f)
+    {
+        SetupTimers();
+    }
 }
 
-/** 
- * @brief Stops the current QTE sequence and resets state
- */
-void UQTE_Subsystem::StopQTE()
+void UQTE_Subsystem::OnPlayerEnterSnapPoint(AMainPlayer* Player, ESnapPointType SnapPoint)
 {
-	if (!IsQTERunning())
-	{
-		return;
-	}
-	
-	ClearTimers();
-	ResetQTEState();
-	SetQTEState(EQTEState::Inactive);
-	OnQTEComplete.Broadcast(false);
-	
-	IBCR_Helper::LogScreen(this, "QTE Stopped", 2.0f, FColor::Yellow);
+    if (!Player || CurrentState != EQTEState::WaitingForPlayers)
+    {
+        return;
+    }
+
+    ActivePlayers.Add(SnapPoint, Player);
+
+    if (CanStartQTE())
+    {
+        SetQTEState(EQTEState::Running);
+        if (UWorld* World = GetWorld())
+        {
+            World->GetTimerManager().SetTimer(ProcessTimerHandle, 
+                [this]() { ProcessInputs(GetWorld()->GetDeltaSeconds()); },
+                0.0f, true);
+        }
+    }
 }
 
-/** 
- * @brief Pauses or resumes the current QTE sequence
- * @param bPause True to pause, false to resume
- */
-void UQTE_Subsystem::SetQTEPaused(bool bPause)
+void UQTE_Subsystem::OnPlayerLeaveSnapPoint(AMainPlayer* Player, ESnapPointType SnapPoint)
 {
-	if (CurrentConfig.Sequences.IsEmpty())
-	{
-		return;
-	}
+    if (!Player || !IsQTERunning())
+    {
+        return;
+    }
 
-	HandleTimersPause(bPause);
-	SetQTEState(bPause ? EQTEState::Paused : EQTEState::Running);
+    ActivePlayers.Remove(SnapPoint);
+
+    if (CurrentState == EQTEState::Running)
+    {
+        SetQTEState(EQTEState::WaitingForPlayers);
+        if (UWorld* World = GetWorld())
+        {
+            World->GetTimerManager().PauseTimer(ProcessTimerHandle);
+        }
+    }
 }
 
-void UQTE_Subsystem::ValidateAndStartQTE(const FQTEConfiguration& Config)
-{
-	
-}
-
-/** 
- * @brief Processes inputs for the current tick
- * @param DeltaTime Time elapsed since last tick
- */
 void UQTE_Subsystem::ProcessInputs(float DeltaTime)
 {
-	if (CurrentState == EQTEState::Paused || CurrentConfig.Sequences.IsEmpty())
-	{
-		return;
-	}
-	
-	ProcessSequence(DeltaTime);
-}
+    if (CurrentState != EQTEState::Running || bIsPaused)
+    {
+        return;
+    }
 
-/** 
- * @brief Validates an input step for a specific player
- * @param Step The input step to validate
- * @param Player The player to check input for
- * @param DeltaTime Time elapsed since last tick
- * @return True if input is valid, false otherwise
- */
-bool UQTE_Subsystem::ValidateInput(const FQTEInputStep& Step, AMainPlayer* Player, float DeltaTime)
-{
-	if (!Player)
-	{
-		return false;
-	}
-
-	switch (Step.InputType)
-	{
-	case EQTEInputType::Tap:
-		return CheckTapInput(Step, Player);
-	case EQTEInputType::Hold:
-		return CheckHoldInput(Step, Player);
-	case EQTEInputType::Release:
-		return CheckReleaseInput(Step, Player);
-	case EQTEInputType::StickMove:
-		return CheckStickMoveInput(Step, Player);
-	default:
-		return false;
-	}
-}
-
-/** 
-* @brief Validates hold input for specified duration
-* @param Step The input step containing hold parameters
-* @param Player The player to check input for
-* @return True if hold is valid, false otherwise
-*/
-bool UQTE_Subsystem::CheckHoldInput(const FQTEInputStep& Step, AMainPlayer* Player)
-{
-	if (APlayerController* PC = Player->GetController<APlayerController>())
-	{
-		float RequiredHoldTime = Step.Parameters.Contains("HoldTime") ?  Step.Parameters["HoldTime"] : Step.TimeWindow;
+    for (const auto& PlayerPair : ActivePlayers)
+    {
+        ESnapPointType SnapPoint = PlayerPair.Key;
+        AMainPlayer* Player = PlayerPair.Value.Get();
         
-		if (PC->IsInputKeyDown(Step.RequiredInput))
-		{
-			CurrentHoldTimes.FindOrAdd(Player) += GetWorld()->GetDeltaSeconds();
-			return CurrentHoldTimes[Player] >= RequiredHoldTime;
-		}
-		
-		CurrentHoldTimes.Remove(Player);
-	}
-	return false;
+        if (!Player)
+        {
+            continue;
+        }
+
+        if (const FSnapPointConfig* Config = CurrentConfig.SnapPoints.FindByPredicate(
+            [SnapPoint](const FSnapPointConfig& Cfg) { return Cfg.SnapPointType == SnapPoint; }))
+        {
+            ProcessPlayerInput(Player, SnapPoint, *Config, DeltaTime);
+        }
+    }
 }
 
-/** 
-* @brief Validates single tap input
-* @param Step The input step to validate
-* @param Player The player to check input for
-* @return True if tap is valid, false otherwise
-*/
-bool UQTE_Subsystem::CheckTapInput(const FQTEInputStep& Step, AMainPlayer* Player)
+void UQTE_Subsystem::ProcessPlayerInput(AMainPlayer* Player, ESnapPointType SnapPoint, const FSnapPointConfig& Config, float DeltaTime)
 {
-	if (APlayerController* PC = Player->GetController<APlayerController>())
-	{
-		return PC->WasInputKeyJustPressed(Step.RequiredInput);
-	}
-	return false;
-}
-
-/** 
-* @brief Validates input release
-* @param Step The input step to validate
-* @param Player The player to check input for
-* @return True if release is valid, false otherwise
-*/
-bool UQTE_Subsystem::CheckReleaseInput(const FQTEInputStep& Step, AMainPlayer* Player)
-{
-	if (APlayerController* PC = Player->GetController<APlayerController>())
-	{
-		return PC->WasInputKeyJustReleased(Step.RequiredInput);
-	}
-	return false;
-}
-
-/** 
-* @brief Validates stick movement direction
-* @param Step The input step containing direction parameters
-* @param Player The player to check input for
-* @return True if movement is in correct direction, false otherwise
-*/
-bool UQTE_Subsystem::CheckStickMoveInput(const FQTEInputStep& Step, AMainPlayer* Player)
-{
-	if (APlayerController* PC = Player->GetController<APlayerController>())
-	{
-		// Get expected direction from parameters
-		FVector2D ExpectedDir(
-			Step.Parameters.Contains("DirX") ? Step.Parameters["DirX"] : 0.0f,
-			Step.Parameters.Contains("DirY") ? Step.Parameters["DirY"] : 0.0f
-		);
-
-		// Get current stick position
-		float X = 0.0f, Y = 0.0f;
-		PC->GetInputAnalogStickState(EControllerAnalogStick::CAS_LeftStick, X, Y);
-		FVector2D CurrentDir(X, Y);
-
-		// Compare directions with tolerance
-		float Tolerance = Step.Parameters.Contains("Tolerance") ? Step.Parameters["Tolerance"] : 0.3f;
-		return FVector2D::DotProduct(CurrentDir.GetSafeNormal(), ExpectedDir.GetSafeNormal()) > (1.0f - Tolerance);
-	}
-	return false;
-}
-
-/** 
-* @brief Advances to next sequence or completes QTE
-*/
-void UQTE_Subsystem::AdvanceToNextSequence()
-{
-	CurrentConfig.Sequences[CurrentSequenceIndex].bIsCompleted = true;
-
-	// Check if we need to repeat current sequence
-	if (CurrentRepeatCount + 1 < CurrentConfig.RepeatCount)
-	{
-		CurrentRepeatCount++;
-		ResetCurrentSequence();
-		return;
-	}
-
-	// Move to next sequence
-	CurrentSequenceIndex++;
-	CurrentRepeatCount = 0;
-
-	// Check if QTE is complete
-	if (CurrentSequenceIndex >= CurrentConfig.Sequences.Num())
-	{
-		CompleteQTE(true);
-		return;
-	}
+    bool bSuccess = ValidatePlayerAction(Player, Config);
     
-	ResetCurrentSequence();
-}
-
-/** 
-* @brief Checks if all players have completed their parts
-* @param Sequence The sequence to validate
-* @return True if sequence is complete, false otherwise
-*/
-bool UQTE_Subsystem::ValidateSequenceCompletion(const FQTESequence& Sequence)
-{
-	for (const auto& PlayerSubSeq : Sequence.PlayerSubSequences)
-	{
-		if (!PlayerSubSeq.Value.bIsCompleted)
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
-/** 
-* @brief Processes the current sequence for all players
-* @param DeltaTime Time elapsed since last tick
-*/
-void UQTE_Subsystem::ProcessSequence(float DeltaTime)
-{
-	FQTESequence& CurrentSequence = CurrentConfig.Sequences[CurrentSequenceIndex];
-
-	// Process each player's inputs
-	for (auto& PlayerSubSeq : CurrentSequence.PlayerSubSequences)
-	{
-		AMainPlayer* Player = PlayerSubSeq.Key;
-		FPlayerSubSequence& SubSeq = PlayerSubSeq.Value;
-
-		if (SubSeq.bIsCompleted)
-		{
-			continue;
-		}
-
-		// Process current step
-		if (SubSeq.Steps.IsValidIndex(SubSeq.CurrentStepIndex))
-		{
-			const FQTEInputStep& CurrentStep = SubSeq.Steps[SubSeq.CurrentStepIndex];
-            
-			if (ValidateInput(CurrentStep, Player, DeltaTime))
-			{
-				SubSeq.CurrentStepIndex++;
-				SubSeq.CurrentInputTime = 0.0f;
-
-				// Check if player completed their sequence
-				if (SubSeq.CurrentStepIndex >= SubSeq.Steps.Num())
-				{
-					SubSeq.bIsCompleted = true;
-					OnPlayerSubSequenceComplete.Broadcast(Player, CurrentSequenceIndex);
-				}
-			}
-			else
-			{
-				// Update step timer and check for timeout
-				SubSeq.CurrentInputTime += DeltaTime;
-				
-				if (SubSeq.CurrentInputTime > CurrentStep.TimeWindow)
-				{
-					OnPlayerSubSequenceFailed.Broadcast(Player, CurrentSequenceIndex);
-					OnSequenceFailed.Broadcast(CurrentSequenceIndex);
-					CompleteQTE(false);
-					return;
-				}
-			}
-		}
-	}
-	
-	if (ValidateSequenceCompletion(CurrentSequence))
-	{
-		OnSequenceComplete.Broadcast(CurrentSequenceIndex);
-		AdvanceToNextSequence();
-	}
-}
-
-/** 
-* @brief Resets the current sequence state for all players
-*/
-void UQTE_Subsystem::ResetCurrentSequence()
-{
-	for (auto& PlayerSubSeq : CurrentConfig.Sequences[CurrentSequenceIndex].PlayerSubSequences)
-	{
-		PlayerSubSeq.Value.CurrentStepIndex = 0;
-		PlayerSubSeq.Value.CurrentInputTime = 0.0f;
-		PlayerSubSeq.Value.bIsCompleted = false;
-	}
-}
-
-/** 
-* @brief Completes the QTE and handles cleanup
-* @param bSuccess Whether the QTE was completed successfully
-*/
-void UQTE_Subsystem::CompleteQTE(bool bSuccess)
-{
-	ClearTimers();
-	ResetQTEState();
-	OnQTEComplete.Broadcast(bSuccess);
+    switch (SnapPoint)
+    {
+    case ESnapPointType::First:
+        OnSnapPointFirstResult.Broadcast(bSuccess);
+        break;
+    case ESnapPointType::Second:
+        OnSnapPointSecondResult.Broadcast(bSuccess);
+        break;
+    }
     
-	IBCR_Helper::LogScreen(this, FString::Printf(TEXT("QTE %s"), 
-		bSuccess ? TEXT("Completed Successfully") : TEXT("Failed")), 
-		2.0f, bSuccess ? FColor::Green : FColor::Red);
+    UpdateActionProgress(Player, SnapPoint, Config);
 }
 
-/** 
-* @brief Clears all active timers
-*/
-void UQTE_Subsystem::ClearTimers()
+bool UQTE_Subsystem::ValidatePlayerAction(AMainPlayer* Player, const FSnapPointConfig& Config)
 {
-	if (UWorld* World = GEngine->GetWorld())
-	{
-		World->GetTimerManager().ClearTimer(TickTimerHandle);
-		World->GetTimerManager().ClearTimer(GlobalTimerHandle);
-	}
+    switch (Config.ActionType)
+    {
+    case EQTEActionType::Press:
+        return ValidatePressAction(Player, Config);
+    case EQTEActionType::Hold:
+        return ValidateHoldAction(Player, Config);
+    case EQTEActionType::Release:
+        return ValidateReleaseAction(Player, Config);
+    case EQTEActionType::Rotate:
+        return ValidateRotateAction(Player, Config);
+    default:
+        return false;
+    }
 }
 
-/** 
-* @brief Sets up the global timeout timer
-* @param Config The QTE configuration containing timeout settings
-*/
-void UQTE_Subsystem::SetupGlobalTimer(const FQTEConfiguration& Config)
+bool UQTE_Subsystem::ValidateHoldAction(const AMainPlayer* Player, const FSnapPointConfig& Config)
 {
-	if (Config.TotalTime > 0.0f && GEngine->GetWorld())
-	{
-		GEngine->GetWorld()->GetTimerManager().SetTimer(
-			GlobalTimerHandle,
-			[this]() { 
-				OnSequenceFailed.Broadcast(CurrentSequenceIndex);
-				CompleteQTE(false); 
-			},
-			Config.TotalTime,
-			false
-		);
-	}
+    if (auto PC = Player->GetController<APlayerController>())
+    {
+        return PC->IsInputKeyDown(Config.RequiredInput);
+    }
+    return false;
 }
 
-/** 
-* @brief Sets up the main processing timer
-*/
-void UQTE_Subsystem::SetupProcessTimer()
+bool UQTE_Subsystem::ValidateRotateAction(const AMainPlayer* Player, const FSnapPointConfig& Config)
 {
-	if (UWorld* World = GEngine->GetWorld())
-	{
-		World->GetTimerManager().SetTimer(
-			TickTimerHandle,
-			[this]() { ProcessInputs(GetWorld()->GetDeltaSeconds()); },
-			0.0f,
-			true
-		);
-	}
+    if (auto PC = Player->GetController<APlayerController>())
+    {
+        float X = 0.0f, Y = 0.0f;
+        PC->GetInputAnalogStickState(EControllerAnalogStick::CAS_LeftStick, X, Y);
+        float RotationSpeed = FVector2D(X, Y).Size();
+        return RotationSpeed >= Config.MinRotationSpeed;
+    }
+    return false;
 }
 
-/** 
-* @brief Handles pausing/unpausing of all timers
-* @param bPause True to pause, false to resume
-*/
-void UQTE_Subsystem::HandleTimersPause(bool bPause)
+bool UQTE_Subsystem::ValidatePressAction(const AMainPlayer* Player, const FSnapPointConfig& Config)
 {
-	if (UWorld* World = GEngine->GetWorld())
-	{
-		if (CurrentConfig.TotalTime > 0.0f)
-		{
-			if (bPause)
-			{
-				World->GetTimerManager().PauseTimer(TickTimerHandle);
-				World->GetTimerManager().PauseTimer(GlobalTimerHandle);
-			}
-			else
-			{
-				World->GetTimerManager().UnPauseTimer(TickTimerHandle);
-				World->GetTimerManager().UnPauseTimer(GlobalTimerHandle);
-			}
-		}
-	}
+    if (auto PC = Player->GetController<APlayerController>())
+    {
+        return PC->WasInputKeyJustPressed(Config.RequiredInput);
+    }
+    return false;
 }
 
-/** 
-* @brief Resets all QTE state to initial values
-*/
-void UQTE_Subsystem::ResetQTEState()
+bool UQTE_Subsystem::ValidateReleaseAction(const AMainPlayer* Player, const FSnapPointConfig& Config)
 {
-	CurrentConfig.Sequences.Empty();
-	bIsPaused = false;
-	CurrentSequenceIndex = 0;
-	CurrentRepeatCount = 0;
-	CurrentHoldTimes.Empty();
+    if (auto PC = Player->GetController<APlayerController>())
+    {
+        return PC->WasInputKeyJustReleased(Config.RequiredInput);
+    }
+    return false;
 }
 
-/** 
-* @brief Updates and logs QTE state changes
-* @param NewState The new state to set
-*/
-void UQTE_Subsystem::SetQTEState(EQTEState NewState)
+void UQTE_Subsystem::UpdateActionProgress(const AMainPlayer* Player, ESnapPointType SnapPoint, 
+    const FSnapPointConfig& Config)
 {
-	if (CurrentState != NewState)
-	{
-		CurrentState = NewState;
-		
-		IBCR_Helper::LogScreen(this, FString::Printf(TEXT("QTE State changed to: %s"), 
-			*UEnum::GetValueAsString(NewState)), 2.0f, FColor::White);
-	}
+    FQTEActionProgress Progress;
+
+    if (auto PC = Player->GetController<APlayerController>())
+    {
+        switch (Config.ActionType)
+        {
+            case EQTEActionType::Rotate:
+            {
+                float X = 0.0f, Y = 0.0f;
+                PC->GetInputAnalogStickState(EControllerAnalogStick::CAS_LeftStick, X, Y);
+                Progress.StickPosition = FVector2D(X, Y);
+                Progress.Progress = Progress.StickPosition.Size() / Config.MinRotationSpeed;
+                Progress.bIsActive = Progress.Progress > 0.0f;
+                break;
+            }
+            case EQTEActionType::Hold:
+            case EQTEActionType::Press:
+            case EQTEActionType::Release:
+            {
+                Progress.bIsActive = PC->IsInputKeyDown(Config.RequiredInput);
+                Progress.Progress = Progress.bIsActive ? 1.0f : 0.0f;
+                break;
+            }
+            case EQTEActionType::None:
+            default:
+            {
+                break;
+            }
+        }
+    }
+
+    OnQTEActionProgress.Broadcast(SnapPoint, Progress);
 }
 
-/** 
-* @brief Checks if a QTE is currently active
-* @return True if QTE is running or paused, false otherwise
-*/
+void UQTE_Subsystem::StopQTE()
+{
+    if (!IsQTERunning()) return;
+
+    ClearTimers();
+    ResetState();
+    SetQTEState(EQTEState::Inactive);
+    OnQTEComplete.Broadcast(false);
+}
+
+void UQTE_Subsystem::SetQTEPaused(bool bPause)
+{
+    if (bPause == bIsPaused || !IsQTERunning())
+    {
+        return;
+    }
+
+    bIsPaused = bPause;
+    
+    if (UWorld* World = GetWorld())
+    {
+        if (bPause)
+        {
+            World->GetTimerManager().PauseTimer(ProcessTimerHandle);
+            World->GetTimerManager().PauseTimer(GlobalTimerHandle);
+        }
+        else
+        {
+            World->GetTimerManager().UnPauseTimer(ProcessTimerHandle);
+            World->GetTimerManager().UnPauseTimer(GlobalTimerHandle);
+        }
+    }
+}
+
 bool UQTE_Subsystem::IsQTERunning() const
 {
-	return CurrentState == EQTEState::Running || CurrentState == EQTEState::Paused;
+    return CurrentState == EQTEState::Running || CurrentState == EQTEState::WaitingForPlayers;
 }
 
-/** 
-* @brief Validates QTE configuration
-* @return True if configuration is valid, false otherwise
-*/
 bool UQTE_Subsystem::IsQTEConfigValid() const
 {
-	return !CurrentConfig.Sequences.IsEmpty();
+    return CurrentConfig.SnapPoints.Num() > 0 && CurrentConfig.SnapPoints.Num() <= 2;
+}
+
+bool UQTE_Subsystem::CanStartQTE() const
+{
+    return ActivePlayers.Num() == CurrentConfig.SnapPoints.Num();
+}
+
+void UQTE_Subsystem::SetupTimers()
+{
+    if (UWorld* World = GetWorld())
+    {
+        World->GetTimerManager().SetTimer(GlobalTimerHandle,
+            [this]() { CompleteQTE(false); },
+            CurrentConfig.TotalTime,
+            false);
+    }
+}
+
+void UQTE_Subsystem::ClearTimers()
+{
+    if (UWorld* World = GetWorld())
+    {
+        World->GetTimerManager().ClearTimer(GlobalTimerHandle);
+        World->GetTimerManager().ClearTimer(ProcessTimerHandle);
+    }
+}
+
+void UQTE_Subsystem::ResetState()
+{
+    CurrentConfig = FQTEConfiguration();
+    ActivePlayers.Empty();
+    bIsPaused = false;
+}
+
+void UQTE_Subsystem::SetQTEState(EQTEState NewState)
+{
+    if (CurrentState != NewState)
+    {
+        CurrentState = NewState;
+        IBCR_Helper::LogScreen(this, 
+            FString::Printf(TEXT("QTE State: %s"), 
+                *UEnum::GetValueAsString(NewState)), 
+            2.0f, FColor::White);
+    }
+}
+
+void UQTE_Subsystem::CompleteQTE(bool bSuccess)
+{
+    ClearTimers();
+    SetQTEState(bSuccess ? EQTEState::Completed : EQTEState::Failed);
+    OnQTEComplete.Broadcast(bSuccess);
 }

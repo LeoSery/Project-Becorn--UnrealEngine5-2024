@@ -7,10 +7,7 @@
 #include "GameFramework/Actor.h"
 #include <Components/BoxComponent.h>
 #include <Components/BillboardComponent.h>
-#include <BCR/Headers/System/QTE/QTETypes.h>
 #include "MiniGameSystem.generated.h"
-
-
 
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEndQTESignature, bool, _resultStatus);
@@ -21,19 +18,16 @@ class BCR_API AMiniGameSystem : public AActor, public IInteractable
 	GENERATED_BODY()
 
 public:
-
 	//// Unreal
 	AMiniGameSystem();
 	virtual void Tick(float DeltaTime) override;
 
-
 	//// Game
 	// Setters
-
 	UFUNCTION(BlueprintCallable)
 	virtual void SetInputItem(TArray<TSubclassOf<APickableItem>> _items);
 	UFUNCTION(BlueprintCallable)
-	virtual void SetQTE(UQTEConfigurationAsset* _datas, TArray< FPlayerSubSequence> snapSequencePoint1, TArray< FPlayerSubSequence> snapSequencePoint2);
+	virtual void SetQTE(UQTEConfigurationAsset* _datas);
 	UFUNCTION(BlueprintCallable)
 	virtual void SetOutputItem(TArray<TSubclassOf<APickableItem>> _items);
 
@@ -50,17 +44,13 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Reset();
 
-
 	// Interface Methods
 	void Interact_Implementation(AMainPlayer* Player);
 	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
 
-
 	TMap<UBillboardComponent*, AMainPlayer*> snapPointMap;
-	TMap<UBillboardComponent*, TArray<FPlayerSubSequence>> snapPointSequence;
 
 private:
-
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<APickableItem>> inputItems;
 	TArray<TSubclassOf<APickableItem>> itemList; /*Copy of inputItems*/
@@ -68,8 +58,7 @@ private:
 	TArray<TSubclassOf<APickableItem>> outputItems;
 	UPROPERTY(EditAnywhere)
 	UQTEConfigurationAsset* QTEConfig;
-
-
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* DefaultRootComponent;
 
@@ -85,9 +74,6 @@ private:
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* inputBox;
 
-
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
 };

@@ -33,9 +33,7 @@ void AMiniGameSystem::BeginPlay()
 {
 	snapPointMap.Add(snapPlayerPoint1,nullptr);
 	snapPointMap.Add(snapPlayerPoint2, nullptr);
-
-	snapPointSequence.Add(snapPlayerPoint1, {});
-	snapPointSequence.Add(snapPlayerPoint2, {});
+	
 	itemList = inputItems;
 	Super::BeginPlay();
 }
@@ -52,12 +50,9 @@ void AMiniGameSystem::SetInputItem(TArray<TSubclassOf<APickableItem>> _items)
 	itemList = _items;
 }
 
-void AMiniGameSystem::SetQTE(UQTEConfigurationAsset* _datas, TArray< FPlayerSubSequence> snapSequencePoint1, TArray< FPlayerSubSequence> snapSequencePoint2)
+void AMiniGameSystem::SetQTE(UQTEConfigurationAsset* _datas)
 {
 	QTEConfig = _datas;
-	snapPointSequence[snapPlayerPoint1] = snapSequencePoint1;
-	snapPointSequence[snapPlayerPoint2] = snapSequencePoint2;
-
 }
 
 void AMiniGameSystem::SetOutputItem(TArray<TSubclassOf<APickableItem>> _items)
@@ -67,10 +62,8 @@ void AMiniGameSystem::SetOutputItem(TArray<TSubclassOf<APickableItem>> _items)
 
 void AMiniGameSystem::StartExecute()
 {
-
 	if (itemList.IsEmpty())
 	{
-		// lock in the player with the state machine
 		CallQTEReader();
 	}
 	else
@@ -87,7 +80,7 @@ void AMiniGameSystem::CallQTEReader()
 	{
 		if (UQTE_Subsystem* QTESystem = GameInstance->GetSubsystem<UQTE_Subsystem>())
 		{
-			QTESystem->StartQTEFromAsset(QTEConfig,{snapPointMap.Find(snapPlayerPoint1)[0],snapPointMap.Find(snapPlayerPoint2)[0]});
+			QTESystem->StartQTEFromAsset(QTEConfig);
 		}
 	}
 }
@@ -114,8 +107,6 @@ void AMiniGameSystem::SpawnItem(int i)
 	FActorSpawnParameters SpawnInfo;
 	GetWorld()->SpawnActor<APickableItem>(outputItems[i], outputSpawnPoint->GetComponentLocation(), GetActorRotation());
 }
-
-
 
 void AMiniGameSystem::Reset()
 {
@@ -181,4 +172,3 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 		}
 	}
 }
-
