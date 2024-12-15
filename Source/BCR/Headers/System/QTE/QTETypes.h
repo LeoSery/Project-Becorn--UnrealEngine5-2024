@@ -40,6 +40,17 @@ enum class ESnapPointType : uint8 {
     Second
 };
 
+USTRUCT()
+struct FQTEProgressData 
+{
+    GENERATED_BODY()
+    
+    int32 SuccessCount = 0;
+    bool bIsComplete = false;
+    
+    FQTEProgressData() {}
+};
+
 //////// STRUCTS ////////
 /** 
 * @brief Configuration d'un point d'interaction

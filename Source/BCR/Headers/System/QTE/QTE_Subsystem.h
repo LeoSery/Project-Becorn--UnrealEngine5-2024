@@ -70,6 +70,7 @@ private:
     
     // Map des joueurs actifs par snap point
     TMap<ESnapPointType, TWeakObjectPtr<AMainPlayer>> ActivePlayers;
+    TMap<ESnapPointType, FQTEProgressData> ActionProgress;
     
     // Timers
     FTimerHandle GlobalTimerHandle;
@@ -100,4 +101,5 @@ private:
     bool IsQTERunning() const;
     bool IsQTEConfigValid() const;
     bool CanStartQTE() const;
+    bool CheckQTECompletion();
 };
