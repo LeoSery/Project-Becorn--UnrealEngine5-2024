@@ -29,7 +29,7 @@ void UQTE_Subsystem::StartQTEFromAsset(const UQTEConfigurationAsset* Config)
     }
 
     IBCR_Helper::LogAll(this, 
-    FString::Printf(TEXT("▶️ Starting QTE: %s"), 
+    FString::Printf(TEXT("Starting QTE: %s"), 
         *Config->ConfigurationName),
     3.0f, FColor::Green);
     
@@ -57,7 +57,7 @@ void UQTE_Subsystem::StartQTE(const FQTEConfiguration Config)
     for (const auto& SnapPoint : Config.SnapPoints)
     {
         IBCR_Helper::LogAll(this, 
-            FString::Printf(TEXT("📍 Snap Point %s: Action=%s, RepeatCount=%d"), 
+            FString::Printf(TEXT("Snap Point %s: Action=%s, RepeatCount=%d"), 
                 *UEnum::GetValueAsString(SnapPoint.SnapPointType),
                 *UEnum::GetValueAsString(SnapPoint.ActionType),
                 SnapPoint.RepeatCount),
@@ -69,7 +69,7 @@ void UQTE_Subsystem::StartQTE(const FQTEConfiguration Config)
     if (CurrentConfig.TotalTime > 0.0f)
     {
         IBCR_Helper::LogAll(this, 
-            FString::Printf(TEXT("⏱️ QTE Time Limit: %.1f seconds"), 
+            FString::Printf(TEXT("QTE Time Limit: %.1f seconds"), 
                 CurrentConfig.TotalTime),
             3.0f, FColor::Yellow);
         
@@ -86,6 +86,21 @@ void UQTE_Subsystem::OnPlayerEnterSnapPoint(AMainPlayer* Player, ESnapPointType 
 
     ActivePlayers.Add(SnapPoint, Player);
 
+    if (auto PC = Player->GetController<APlayerController>())
+    {
+        IBCR_Helper::LogAll(this, 
+            FString::Printf(TEXT("Player at %s has valid controller"), 
+                *UEnum::GetValueAsString(SnapPoint)),
+            1.0f, FColor::Green);
+    }
+    else
+    {
+        IBCR_Helper::LogAll(this, 
+            FString::Printf(TEXT("Player at %s has NO valid controller!"), 
+                *UEnum::GetValueAsString(SnapPoint)),
+            1.0f, FColor::Red);
+    }
+
     FString snapPointStr = (SnapPoint == ESnapPointType::First) ? TEXT("First") : TEXT("Second");
     IBCR_Helper::LogAll(this, 
         FString::Printf(TEXT("Player entered %s point (%d/%d players)"), 
@@ -94,16 +109,39 @@ void UQTE_Subsystem::OnPlayerEnterSnapPoint(AMainPlayer* Player, ESnapPointType 
             CurrentConfig.SnapPoints.Num()),
         2.0f, FColor::Cyan);
     
-    if (CurrentState == EQTEState::Running)
+    if (ActivePlayers.Num() == CurrentConfig.SnapPoints.Num())
     {
+        SetQTEState(EQTEState::Running);
+        IBCR_Helper::LogAll(this, TEXT("QTE Starting - All players ready!"), 2.0f, FColor::Green);
+    
         if (UWorld* World = GetWorld())
         {
+            IBCR_Helper::LogAll(this, TEXT("World valid - Setting up timer"), 1.0f, FColor::Cyan);
+        
             if (!World->GetTimerManager().IsTimerActive(ProcessTimerHandle))
             {
                 World->GetTimerManager().SetTimer(ProcessTimerHandle, 
-                    [this]() { ProcessInputs(GetWorld()->GetDeltaSeconds()); },
-                    0.0f, true);
+                    [this]() 
+                    { 
+                        if (GetWorld())
+                        {
+
+                            ProcessInputs(GetWorld()->GetDeltaSeconds()); 
+                        }
+                    },
+                    0.016f,
+                    true);
+            
+                IBCR_Helper::LogAll(this, TEXT("Timer setup complete"), 1.0f, FColor::Green);
             }
+            else
+            {
+                IBCR_Helper::LogAll(this, TEXT("Timer already active"), 1.0f, FColor::Orange);
+            }
+        }
+        else
+        {
+            IBCR_Helper::LogAll(this, TEXT("World invalid"), 1.0f, FColor::Red);
         }
     }
 }
@@ -140,7 +178,7 @@ void UQTE_Subsystem::ProcessInputs(float DeltaTime)
     {
         return;
     }
-
+    
     for (const auto& PlayerPair : ActivePlayers)
     {
         ESnapPointType SnapPoint = PlayerPair.Key;
@@ -148,29 +186,43 @@ void UQTE_Subsystem::ProcessInputs(float DeltaTime)
         
         if (!Player)
         {
+            IBCR_Helper::LogAll(this, TEXT("Invalid player reference!"), 1.0f, FColor::Red);
             continue;
         }
-
+        
         if (const FSnapPointConfig* Config = CurrentConfig.SnapPoints.FindByPredicate(
             [SnapPoint](const FSnapPointConfig& Cfg) { return Cfg.SnapPointType == SnapPoint; }))
         {
             ProcessPlayerInput(Player, SnapPoint, *Config, DeltaTime);
+        }
+        else
+        {
+            IBCR_Helper::LogAll(this, TEXT("No config found for snap point!"), 1.0f, FColor::Red);
         }
     }
 }
 
 void UQTE_Subsystem::ProcessPlayerInput(AMainPlayer* Player, ESnapPointType SnapPoint, const FSnapPointConfig& Config, float DeltaTime)
 {
+    if (CurrentState != EQTEState::Running)
+    {
+        return;
+    }
+    
     bool bSuccess = ValidatePlayerAction(Player, Config);
 
-    FString snapPointStr = (SnapPoint == ESnapPointType::First) ? TEXT("First") : TEXT("Second");
-    FString actionStr = UEnum::GetValueAsString(Config.ActionType);
-    IBCR_Helper::LogAll(this, 
-        FString::Printf(TEXT("Action %s at %s: %s"), 
-            *actionStr,
-            *snapPointStr,
-            bSuccess ? TEXT("Success") : TEXT("Failed")),
-        1.0f, bSuccess ? FColor::Green : FColor::Red);
+    if (bSuccess)
+    {
+        FString snapPointStr = (SnapPoint == ESnapPointType::First) ? TEXT("First") : TEXT("Second");
+        FString actionStr = UEnum::GetValueAsString(Config.ActionType);
+        IBCR_Helper::LogAll(this, 
+            FString::Printf(TEXT("Action %s at %s: %s [Input: %s]"), 
+                *actionStr,
+                *snapPointStr,
+                bSuccess ? TEXT("Success") : TEXT("Failed"),
+                *Config.RequiredInput.ToString()),
+            1.0f, bSuccess ? FColor::Green : FColor::Red);
+    }
     
     switch (SnapPoint)
     {
@@ -212,12 +264,15 @@ bool UQTE_Subsystem::ValidatePlayerAction(AMainPlayer* Player, const FSnapPointC
         debugInfo = TEXT("Unknown Action");
     }
 
-    IBCR_Helper::LogAll(this, 
-        FString::Printf(TEXT("Validating %s: %s [Key:%s]"), 
-            *debugInfo,
-            result ? TEXT("Valid") : TEXT("Invalid"),
-            *Config.RequiredInput.ToString()),
-        1.0f, result ? FColor::Green : FColor::Red);
+    if (result)
+    {
+        IBCR_Helper::LogAll(this, 
+    FString::Printf(TEXT("Validating %s: %s [Key:%s]"), 
+        *debugInfo,
+        result ? TEXT("Valid") : TEXT("Invalid"),
+        *Config.RequiredInput.ToString()),
+    1.0f, result ? FColor::Green : FColor::Red);   
+    }
 
     return result;
 }
@@ -247,8 +302,13 @@ bool UQTE_Subsystem::ValidatePressAction(const AMainPlayer* Player, const FSnapP
 {
     if (auto PC = Player->GetController<APlayerController>())
     {
-        return PC->WasInputKeyJustPressed(Config.RequiredInput);
+        float analogValue = PC->GetInputAnalogKeyState(Config.RequiredInput);
+        bool bWasPressed = PC->WasInputKeyJustPressed(Config.RequiredInput);
+        bool bIsPressed = analogValue > 0.5f;
+
+        return bWasPressed || bIsPressed;
     }
+
     return false;
 }
 

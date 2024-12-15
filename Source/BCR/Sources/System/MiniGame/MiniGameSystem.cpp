@@ -89,7 +89,7 @@ void AMiniGameSystem::StartExecute()
 		{
 			if (UQTE_Subsystem* QTESystem = GameInstance->GetSubsystem<UQTE_Subsystem>())
 			{
-				if (QTESystem->GetCurrentState() != EQTEState::Running)
+				if (QTESystem->GetCurrentState() != EQTEState::Running && QTESystem->GetCurrentState() != EQTEState::WaitingForPlayers)
 				{
 					// Binding callbacks
 					QTESystem->OnQTEComplete.AddDynamic(this, &AMiniGameSystem::FinishExecute);
