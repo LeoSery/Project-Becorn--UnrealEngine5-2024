@@ -18,7 +18,7 @@ AMiniGameSystem::AMiniGameSystem()
 	outputSpawnPoint = CreateDefaultSubobject<UBillboardComponent>(TEXT("OutPut Spawn Point"));
 
 	snapPlayerPoint1->SetupAttachment(RootComponent);
-	snapPlayerPoint2->SetupAttachment(RootComponent);
+	snapPlayerPoint1->SetupAttachment(RootComponent);
 	outputSpawnPoint->SetupAttachment(RootComponent);
 
 	inputBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Input Box"));
@@ -30,18 +30,14 @@ AMiniGameSystem::AMiniGameSystem()
 
 void AMiniGameSystem::OnFirstSnapPointResult(bool bSuccess)
 {
-	if (bSuccess)
-	{
-		IBCR_Helper::LogScreen(this, "Player 1 action success!", 1.0f, FColor::Green);
-	}
+	// technical log
+	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 1 action: %s"), bSuccess ? TEXT("Success") : TEXT("Failed")));
 }
 
 void AMiniGameSystem::OnSecondSnapPointResult(bool bSuccess)
 {
-	if (bSuccess)
-	{
-		IBCR_Helper::LogScreen(this, "Player 1 action success!", 1.0f, FColor::Green);
-	}
+	// technical log
+	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 2 action: %s"), bSuccess ? TEXT("Success") : TEXT("Failed")));
 }
 
 // Called when the game starts or when spawned
@@ -81,7 +77,8 @@ void AMiniGameSystem::StartExecute()
 	{
 		if (!QTEConfig)
 		{
-			IBCR_Helper::LogScreen(this, "No QTE Configuration assigned!", 3.0f, FColor::Red);
+			// technical log
+			IBCR_Helper::LogConsole(this, "No QTE Configuration assigned!");
 			return;
 		}
 
@@ -91,6 +88,9 @@ void AMiniGameSystem::StartExecute()
 			{
 				if (QTESystem->GetCurrentState() != EQTEState::Running && QTESystem->GetCurrentState() != EQTEState::WaitingForPlayers)
 				{
+					// technical log
+					IBCR_Helper::LogConsole(this, "Setting up QTE");
+					
 					// Binding callbacks
 					QTESystem->OnQTEComplete.AddDynamic(this, &AMiniGameSystem::FinishExecute);
 					QTESystem->OnSnapPointFirstResult.AddDynamic(this, &AMiniGameSystem::OnFirstSnapPointResult);
@@ -112,7 +112,11 @@ void AMiniGameSystem::StartExecute()
 	}
 	else
 	{
-		IBCR_Helper::LogScreen(this, "Missing Ingredients");
+		// visual log for demonstration
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, TEXT("Need more resources!"));
+		}
 	}
 }
 
@@ -139,14 +143,28 @@ void AMiniGameSystem::FinishExecute(bool _success)
 		}
 	}
 
+	// technical log
+	IBCR_Helper::LogConsole(this, 
+		FString::Printf(TEXT("QTE Execution finished with result: %s"), 
+			_success ? TEXT("Success") : TEXT("Failure")));
+	
 	if (_success)
 	{
-		IBCR_Helper::LogScreen(this, "QTE Completed Successfully!", 3.0f, FColor::Green);
+		// visual log for demonstration
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Green, TEXT("Machine active!"));
+		}
+		
 		SpawnItem(0);
 	}
 	else
 	{
-		IBCR_Helper::LogScreen(this, "QTE Failed!", 3.0f, FColor::Red);
+		// visual log for demonstration
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, TEXT("Machine failed!"));
+		}
 		Reset();
 	}
 }
@@ -155,7 +173,12 @@ void AMiniGameSystem::SpawnItem(int i)
 {
 	if (i >= outputItems.Num())
 	{
-		IBCR_Helper::LogScreen(this, "Finished execution");
+		// visual log for demonstration
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Production complete"));
+		}
+		
 		Reset();
 		return;
 	}
@@ -163,7 +186,9 @@ void AMiniGameSystem::SpawnItem(int i)
 	FTimerHandle TimerHandle;
 	FTimerDelegate TimerDelegate = FTimerDelegate::CreateUObject(this, &AMiniGameSystem::SpawnItem, i + 1);
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 3, false);
-	IBCR_Helper::LogScreen(this, outputItems[i].GetDefaultObject()->GetItemName());
+
+	// technical log
+	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Spawning item: %s"), *outputItems[i].GetDefaultObject()->GetItemName()));
 
 	FRotator Rotation(0.0f, 0.0f, 0.0f);
 	FActorSpawnParameters SpawnInfo;
