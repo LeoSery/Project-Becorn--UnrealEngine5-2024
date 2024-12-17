@@ -18,7 +18,7 @@ AMiniGameSystem::AMiniGameSystem()
 	outputSpawnPoint = CreateDefaultSubobject<UBillboardComponent>(TEXT("OutPut Spawn Point"));
 
 	snapPlayerPoint1->SetupAttachment(RootComponent);
-	snapPlayerPoint1->SetupAttachment(RootComponent);
+	snapPlayerPoint2->SetupAttachment(RootComponent);
 	outputSpawnPoint->SetupAttachment(RootComponent);
 
 	inputBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Input Box"));
