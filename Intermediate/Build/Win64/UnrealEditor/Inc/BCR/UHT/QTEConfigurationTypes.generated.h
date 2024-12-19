@@ -9,39 +9,19 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-class AMainPlayer;
-struct FQTEConfiguration;
 #ifdef BCR_QTEConfigurationTypes_generated_h
 #error "QTEConfigurationTypes.generated.h already included, missing '#pragma once' in QTEConfigurationTypes.h"
 #endif
 #define BCR_QTEConfigurationTypes_generated_h
 
-#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_17_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FQTEActionData_Statics; \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_16_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FQTESnapPointData_Statics; \
 	BCR_API static class UScriptStruct* StaticStruct();
 
 
-template<> BCR_API UScriptStruct* StaticStruct<struct FQTEActionData>();
+template<> BCR_API UScriptStruct* StaticStruct<struct FQTESnapPointData>();
 
-#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_44_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FQTEPlayerSequenceData_Statics; \
-	BCR_API static class UScriptStruct* StaticStruct();
-
-
-template<> BCR_API UScriptStruct* StaticStruct<struct FQTEPlayerSequenceData>();
-
-#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_59_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FQTESequenceData_Statics; \
-	BCR_API static class UScriptStruct* StaticStruct();
-
-
-template<> BCR_API UScriptStruct* StaticStruct<struct FQTESequenceData>();
-
-#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_79_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execToRuntimeConfig);
-
-
-#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_79_INCLASS_NO_PURE_DECLS \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_31_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUQTEConfigurationAsset(); \
 	friend struct Z_Construct_UClass_UQTEConfigurationAsset_Statics; \
@@ -50,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(UQTEConfigurationAsset)
 
 
-#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_79_ENHANCED_CONSTRUCTORS \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_31_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UQTEConfigurationAsset(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -64,13 +44,12 @@ public: \
 	NO_API virtual ~UQTEConfigurationAsset();
 
 
-#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_76_PROLOG
-#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_79_GENERATED_BODY \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_28_PROLOG
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_31_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_79_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_79_INCLASS_NO_PURE_DECLS \
-	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_79_ENHANCED_CONSTRUCTORS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_31_INCLASS_NO_PURE_DECLS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTEConfigurationTypes_h_31_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

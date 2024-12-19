@@ -9,16 +9,31 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class APickableItem;
+class UQTEConfigurationAsset;
 #ifdef BCR_MiniGameSystem_generated_h
 #error "MiniGameSystem.generated.h already included, missing '#pragma once' in MiniGameSystem.h"
 #endif
 #define BCR_MiniGameSystem_generated_h
 
-#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_16_DELEGATE \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_13_DELEGATE \
 BCR_API void FOnEndQTESignature_DelegateWrapper(const FMulticastScriptDelegate& OnEndQTESignature, bool _resultStatus);
 
 
-#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_21_INCLASS_NO_PURE_DECLS \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execOnSecondSnapPointResult); \
+	DECLARE_FUNCTION(execOnFirstSnapPointResult); \
+	DECLARE_FUNCTION(execReset); \
+	DECLARE_FUNCTION(execSpawnItem); \
+	DECLARE_FUNCTION(execFinishExecute); \
+	DECLARE_FUNCTION(execCallQTEReader); \
+	DECLARE_FUNCTION(execStartExecute); \
+	DECLARE_FUNCTION(execSetOutputItem); \
+	DECLARE_FUNCTION(execSetQTE); \
+	DECLARE_FUNCTION(execSetInputItem);
+
+
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMiniGameSystem(); \
 	friend struct Z_Construct_UClass_AMiniGameSystem_Statics; \
@@ -28,7 +43,7 @@ public: \
 	virtual UObject* _getUObject() const override { return const_cast<AMiniGameSystem*>(this); }
 
 
-#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_21_ENHANCED_CONSTRUCTORS \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AMiniGameSystem(AMiniGameSystem&&); \
@@ -40,12 +55,13 @@ public: \
 	NO_API virtual ~AMiniGameSystem();
 
 
-#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_18_PROLOG
-#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_21_GENERATED_BODY \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_15_PROLOG
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_21_INCLASS_NO_PURE_DECLS \
-	FID_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_21_ENHANCED_CONSTRUCTORS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_18_INCLASS_NO_PURE_DECLS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -53,7 +69,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> BCR_API UClass* StaticClass<class AMiniGameSystem>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h
+#define CURRENT_FILE_ID FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

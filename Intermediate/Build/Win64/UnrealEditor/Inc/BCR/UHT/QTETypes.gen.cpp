@@ -11,87 +11,88 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeQTETypes() {}
 
 // Begin Cross Module References
-BCR_API UClass* Z_Construct_UClass_AMainPlayer_NoRegister();
-BCR_API UEnum* Z_Construct_UEnum_BCR_EQTEInputType();
+BCR_API UEnum* Z_Construct_UEnum_BCR_EQTEActionType();
 BCR_API UEnum* Z_Construct_UEnum_BCR_EQTEState();
-BCR_API UScriptStruct* Z_Construct_UScriptStruct_FPlayerSubSequence();
+BCR_API UEnum* Z_Construct_UEnum_BCR_ESnapPointType();
+BCR_API UScriptStruct* Z_Construct_UScriptStruct_FQTEActionProgress();
 BCR_API UScriptStruct* Z_Construct_UScriptStruct_FQTEConfiguration();
-BCR_API UScriptStruct* Z_Construct_UScriptStruct_FQTEInputStep();
-BCR_API UScriptStruct* Z_Construct_UScriptStruct_FQTESequence();
+BCR_API UScriptStruct* Z_Construct_UScriptStruct_FQTEProgressData();
+BCR_API UScriptStruct* Z_Construct_UScriptStruct_FSnapPointConfig();
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector2D();
 INPUTCORE_API UScriptStruct* Z_Construct_UScriptStruct_FKey();
 UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 UPackage* Z_Construct_UPackage__Script_BCR();
 // End Cross Module References
 
-// Begin Enum EQTEInputType
-static FEnumRegistrationInfo Z_Registration_Info_UEnum_EQTEInputType;
-static UEnum* EQTEInputType_StaticEnum()
+// Begin Enum EQTEActionType
+static FEnumRegistrationInfo Z_Registration_Info_UEnum_EQTEActionType;
+static UEnum* EQTEActionType_StaticEnum()
 {
-	if (!Z_Registration_Info_UEnum_EQTEInputType.OuterSingleton)
+	if (!Z_Registration_Info_UEnum_EQTEActionType.OuterSingleton)
 	{
-		Z_Registration_Info_UEnum_EQTEInputType.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_BCR_EQTEInputType, (UObject*)Z_Construct_UPackage__Script_BCR(), TEXT("EQTEInputType"));
+		Z_Registration_Info_UEnum_EQTEActionType.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_BCR_EQTEActionType, (UObject*)Z_Construct_UPackage__Script_BCR(), TEXT("EQTEActionType"));
 	}
-	return Z_Registration_Info_UEnum_EQTEInputType.OuterSingleton;
+	return Z_Registration_Info_UEnum_EQTEActionType.OuterSingleton;
 }
-template<> BCR_API UEnum* StaticEnum<EQTEInputType>()
+template<> BCR_API UEnum* StaticEnum<EQTEActionType>()
 {
-	return EQTEInputType_StaticEnum();
+	return EQTEActionType_StaticEnum();
 }
-struct Z_Construct_UEnum_BCR_EQTEInputType_Statics
+struct Z_Construct_UEnum_BCR_EQTEActionType_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/** \n* @brief Types of input actions required for QTE steps\n*/" },
+		{ "Comment", "/** \n* @brief Types d'actions possibles dans le QTE \n*/" },
 #endif
 		{ "Hold.DisplayName", "Hold" },
-		{ "Hold.Name", "EQTEInputType::Hold" },
+		{ "Hold.Name", "EQTEActionType::Hold" },
 		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
 		{ "None.DisplayName", "None" },
-		{ "None.Name", "EQTEInputType::None" },
+		{ "None.Name", "EQTEActionType::None" },
+		{ "Press.DisplayName", "Press" },
+		{ "Press.Name", "EQTEActionType::Press" },
 		{ "Release.DisplayName", "Release" },
-		{ "Release.Name", "EQTEInputType::Release" },
-		{ "StickMove.DisplayName", "Stick Movement" },
-		{ "StickMove.Name", "EQTEInputType::StickMove" },
-		{ "Tap.DisplayName", "Tap" },
-		{ "Tap.Name", "EQTEInputType::Tap" },
+		{ "Release.Name", "EQTEActionType::Release" },
+		{ "Rotate.DisplayName", "Rotate" },
+		{ "Rotate.Name", "EQTEActionType::Rotate" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "@brief Types of input actions required for QTE steps" },
+		{ "ToolTip", "@brief Types d'actions possibles dans le QTE" },
 #endif
 	};
 #endif // WITH_METADATA
 	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
-		{ "EQTEInputType::None", (int64)EQTEInputType::None },
-		{ "EQTEInputType::Tap", (int64)EQTEInputType::Tap },
-		{ "EQTEInputType::Hold", (int64)EQTEInputType::Hold },
-		{ "EQTEInputType::Release", (int64)EQTEInputType::Release },
-		{ "EQTEInputType::StickMove", (int64)EQTEInputType::StickMove },
+		{ "EQTEActionType::None", (int64)EQTEActionType::None },
+		{ "EQTEActionType::Press", (int64)EQTEActionType::Press },
+		{ "EQTEActionType::Hold", (int64)EQTEActionType::Hold },
+		{ "EQTEActionType::Release", (int64)EQTEActionType::Release },
+		{ "EQTEActionType::Rotate", (int64)EQTEActionType::Rotate },
 	};
 	static const UECodeGen_Private::FEnumParams EnumParams;
 };
-const UECodeGen_Private::FEnumParams Z_Construct_UEnum_BCR_EQTEInputType_Statics::EnumParams = {
+const UECodeGen_Private::FEnumParams Z_Construct_UEnum_BCR_EQTEActionType_Statics::EnumParams = {
 	(UObject*(*)())Z_Construct_UPackage__Script_BCR,
 	nullptr,
-	"EQTEInputType",
-	"EQTEInputType",
-	Z_Construct_UEnum_BCR_EQTEInputType_Statics::Enumerators,
+	"EQTEActionType",
+	"EQTEActionType",
+	Z_Construct_UEnum_BCR_EQTEActionType_Statics::Enumerators,
 	RF_Public|RF_Transient|RF_MarkAsNative,
-	UE_ARRAY_COUNT(Z_Construct_UEnum_BCR_EQTEInputType_Statics::Enumerators),
+	UE_ARRAY_COUNT(Z_Construct_UEnum_BCR_EQTEActionType_Statics::Enumerators),
 	EEnumFlags::None,
 	(uint8)UEnum::ECppForm::EnumClass,
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_BCR_EQTEInputType_Statics::Enum_MetaDataParams), Z_Construct_UEnum_BCR_EQTEInputType_Statics::Enum_MetaDataParams)
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_BCR_EQTEActionType_Statics::Enum_MetaDataParams), Z_Construct_UEnum_BCR_EQTEActionType_Statics::Enum_MetaDataParams)
 };
-UEnum* Z_Construct_UEnum_BCR_EQTEInputType()
+UEnum* Z_Construct_UEnum_BCR_EQTEActionType()
 {
-	if (!Z_Registration_Info_UEnum_EQTEInputType.InnerSingleton)
+	if (!Z_Registration_Info_UEnum_EQTEActionType.InnerSingleton)
 	{
-		UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_EQTEInputType.InnerSingleton, Z_Construct_UEnum_BCR_EQTEInputType_Statics::EnumParams);
+		UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_EQTEActionType.InnerSingleton, Z_Construct_UEnum_BCR_EQTEActionType_Statics::EnumParams);
 	}
-	return Z_Registration_Info_UEnum_EQTEInputType.InnerSingleton;
+	return Z_Registration_Info_UEnum_EQTEActionType.InnerSingleton;
 }
-// End Enum EQTEInputType
+// End Enum EQTEActionType
 
 // Begin Enum EQTEState
 static FEnumRegistrationInfo Z_Registration_Info_UEnum_EQTEState;
@@ -113,7 +114,7 @@ struct Z_Construct_UEnum_BCR_EQTEState_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/** \n* @brief Current state of the QTE system\n*/" },
+		{ "Comment", "/** \n* @brief \xc3\x89tat actuel du syst\xc3\xa8me QTE\n*/" },
 #endif
 		{ "Completed.Name", "EQTEState::Completed" },
 		{ "Failed.Name", "EQTEState::Failed" },
@@ -122,12 +123,14 @@ struct Z_Construct_UEnum_BCR_EQTEState_Statics
 		{ "Paused.Name", "EQTEState::Paused" },
 		{ "Running.Name", "EQTEState::Running" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "@brief Current state of the QTE system" },
+		{ "ToolTip", "@brief \xc3\x89tat actuel du syst\xc3\xa8me QTE" },
 #endif
+		{ "WaitingForPlayers.Name", "EQTEState::WaitingForPlayers" },
 	};
 #endif // WITH_METADATA
 	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
 		{ "EQTEState::Inactive", (int64)EQTEState::Inactive },
+		{ "EQTEState::WaitingForPlayers", (int64)EQTEState::WaitingForPlayers },
 		{ "EQTEState::Running", (int64)EQTEState::Running },
 		{ "EQTEState::Paused", (int64)EQTEState::Paused },
 		{ "EQTEState::Completed", (int64)EQTEState::Completed },
@@ -157,324 +160,226 @@ UEnum* Z_Construct_UEnum_BCR_EQTEState()
 }
 // End Enum EQTEState
 
-// Begin ScriptStruct FQTEInputStep
-static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_QTEInputStep;
-class UScriptStruct* FQTEInputStep::StaticStruct()
+// Begin Enum ESnapPointType
+static FEnumRegistrationInfo Z_Registration_Info_UEnum_ESnapPointType;
+static UEnum* ESnapPointType_StaticEnum()
 {
-	if (!Z_Registration_Info_UScriptStruct_QTEInputStep.OuterSingleton)
+	if (!Z_Registration_Info_UEnum_ESnapPointType.OuterSingleton)
 	{
-		Z_Registration_Info_UScriptStruct_QTEInputStep.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FQTEInputStep, (UObject*)Z_Construct_UPackage__Script_BCR(), TEXT("QTEInputStep"));
+		Z_Registration_Info_UEnum_ESnapPointType.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_BCR_ESnapPointType, (UObject*)Z_Construct_UPackage__Script_BCR(), TEXT("ESnapPointType"));
 	}
-	return Z_Registration_Info_UScriptStruct_QTEInputStep.OuterSingleton;
+	return Z_Registration_Info_UEnum_ESnapPointType.OuterSingleton;
 }
-template<> BCR_API UScriptStruct* StaticStruct<FQTEInputStep>()
+template<> BCR_API UEnum* StaticEnum<ESnapPointType>()
 {
-	return FQTEInputStep::StaticStruct();
+	return ESnapPointType_StaticEnum();
 }
-struct Z_Construct_UScriptStruct_FQTEInputStep_Statics
+struct Z_Construct_UEnum_BCR_ESnapPointType_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/** \n* @brief Point d'interaction sur une machine\n*/" },
+#endif
+		{ "First.Name", "ESnapPointType::First" },
+		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
+		{ "Second.Name", "ESnapPointType::Second" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Point d'interaction sur une machine" },
+#endif
+	};
+#endif // WITH_METADATA
+	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
+		{ "ESnapPointType::First", (int64)ESnapPointType::First },
+		{ "ESnapPointType::Second", (int64)ESnapPointType::Second },
+	};
+	static const UECodeGen_Private::FEnumParams EnumParams;
+};
+const UECodeGen_Private::FEnumParams Z_Construct_UEnum_BCR_ESnapPointType_Statics::EnumParams = {
+	(UObject*(*)())Z_Construct_UPackage__Script_BCR,
+	nullptr,
+	"ESnapPointType",
+	"ESnapPointType",
+	Z_Construct_UEnum_BCR_ESnapPointType_Statics::Enumerators,
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	UE_ARRAY_COUNT(Z_Construct_UEnum_BCR_ESnapPointType_Statics::Enumerators),
+	EEnumFlags::None,
+	(uint8)UEnum::ECppForm::EnumClass,
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_BCR_ESnapPointType_Statics::Enum_MetaDataParams), Z_Construct_UEnum_BCR_ESnapPointType_Statics::Enum_MetaDataParams)
+};
+UEnum* Z_Construct_UEnum_BCR_ESnapPointType()
+{
+	if (!Z_Registration_Info_UEnum_ESnapPointType.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_ESnapPointType.InnerSingleton, Z_Construct_UEnum_BCR_ESnapPointType_Statics::EnumParams);
+	}
+	return Z_Registration_Info_UEnum_ESnapPointType.InnerSingleton;
+}
+// End Enum ESnapPointType
+
+// Begin ScriptStruct FQTEProgressData
+static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_QTEProgressData;
+class UScriptStruct* FQTEProgressData::StaticStruct()
+{
+	if (!Z_Registration_Info_UScriptStruct_QTEProgressData.OuterSingleton)
+	{
+		Z_Registration_Info_UScriptStruct_QTEProgressData.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FQTEProgressData, (UObject*)Z_Construct_UPackage__Script_BCR(), TEXT("QTEProgressData"));
+	}
+	return Z_Registration_Info_UScriptStruct_QTEProgressData.OuterSingleton;
+}
+template<> BCR_API UScriptStruct* StaticStruct<FQTEProgressData>()
+{
+	return FQTEProgressData::StaticStruct();
+}
+struct Z_Construct_UScriptStruct_FQTEProgressData_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
+	};
+#endif // WITH_METADATA
+	static void* NewStructOps()
+	{
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FQTEProgressData>();
+	}
+	static const UECodeGen_Private::FStructParams StructParams;
+};
+const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FQTEProgressData_Statics::StructParams = {
+	(UObject* (*)())Z_Construct_UPackage__Script_BCR,
+	nullptr,
+	&NewStructOps,
+	"QTEProgressData",
+	nullptr,
+	0,
+	sizeof(FQTEProgressData),
+	alignof(FQTEProgressData),
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	EStructFlags(0x00000001),
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTEProgressData_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FQTEProgressData_Statics::Struct_MetaDataParams)
+};
+UScriptStruct* Z_Construct_UScriptStruct_FQTEProgressData()
+{
+	if (!Z_Registration_Info_UScriptStruct_QTEProgressData.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_QTEProgressData.InnerSingleton, Z_Construct_UScriptStruct_FQTEProgressData_Statics::StructParams);
+	}
+	return Z_Registration_Info_UScriptStruct_QTEProgressData.InnerSingleton;
+}
+// End ScriptStruct FQTEProgressData
+
+// Begin ScriptStruct FSnapPointConfig
+static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_SnapPointConfig;
+class UScriptStruct* FSnapPointConfig::StaticStruct()
+{
+	if (!Z_Registration_Info_UScriptStruct_SnapPointConfig.OuterSingleton)
+	{
+		Z_Registration_Info_UScriptStruct_SnapPointConfig.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FSnapPointConfig, (UObject*)Z_Construct_UPackage__Script_BCR(), TEXT("SnapPointConfig"));
+	}
+	return Z_Registration_Info_UScriptStruct_SnapPointConfig.OuterSingleton;
+}
+template<> BCR_API UScriptStruct* StaticStruct<FSnapPointConfig>()
+{
+	return FSnapPointConfig::StaticStruct();
+}
+struct Z_Construct_UScriptStruct_FSnapPointConfig_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/** \n* @brief Single input action within a QTE sequence\n*/" },
+		{ "Comment", "/** \n* @brief Configuration d'un point d'interaction\n*/" },
 #endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "@brief Single input action within a QTE sequence" },
+		{ "ToolTip", "@brief Configuration d'un point d'interaction" },
 #endif
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InputType_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SnapPointType_MetaData[] = {
 		{ "Category", "QTE" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Type of input required for this step */" },
-#endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Type of input required for this step" },
-#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ActionType_MetaData[] = {
+		{ "Category", "QTE" },
+		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RequiredInput_MetaData[] = {
 		{ "Category", "QTE" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Specific key or button that must be pressed */" },
-#endif
+		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RepeatCount_MetaData[] = {
+		{ "Category", "QTE" },
+		{ "ClampMin", "-1" },
 		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Specific key or button that must be pressed" },
+		{ "ToolTip", "Nombre de r\xc3\xa9p\xc3\xa9titions (-1 pour infini)" },
 #endif
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TimeWindow_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MinRotationSpeed_MetaData[] = {
 		{ "Category", "QTE" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Time allowed to complete this input (in seconds) */" },
+		{ "Comment", "// Pour les actions de rotation uniquement : vitesse minimale requise\n" },
 #endif
+		{ "EditCondition", "ActionType == EQTEActionType::Rotate" },
 		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Time allowed to complete this input (in seconds)" },
-#endif
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Parameters_MetaData[] = {
-		{ "Category", "QTE" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Additional parameters (stick direction, hold duration) */" },
-#endif
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Additional parameters (stick direction, hold duration)" },
+		{ "ToolTip", "Pour les actions de rotation uniquement : vitesse minimale requise" },
 #endif
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FBytePropertyParams NewProp_InputType_Underlying;
-	static const UECodeGen_Private::FEnumPropertyParams NewProp_InputType;
+	static const UECodeGen_Private::FBytePropertyParams NewProp_SnapPointType_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_SnapPointType;
+	static const UECodeGen_Private::FBytePropertyParams NewProp_ActionType_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_ActionType;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_RequiredInput;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_TimeWindow;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Parameters_ValueProp;
-	static const UECodeGen_Private::FStrPropertyParams NewProp_Parameters_Key_KeyProp;
-	static const UECodeGen_Private::FMapPropertyParams NewProp_Parameters;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_RepeatCount;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_MinRotationSpeed;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static void* NewStructOps()
 	{
-		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FQTEInputStep>();
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FSnapPointConfig>();
 	}
 	static const UECodeGen_Private::FStructParams StructParams;
 };
-const UECodeGen_Private::FBytePropertyParams Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_InputType_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_InputType = { "InputType", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEInputStep, InputType), Z_Construct_UEnum_BCR_EQTEInputType, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InputType_MetaData), NewProp_InputType_MetaData) }; // 3713181205
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_RequiredInput = { "RequiredInput", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEInputStep, RequiredInput), Z_Construct_UScriptStruct_FKey, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RequiredInput_MetaData), NewProp_RequiredInput_MetaData) }; // 658672854
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_TimeWindow = { "TimeWindow", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEInputStep, TimeWindow), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TimeWindow_MetaData), NewProp_TimeWindow_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_Parameters_ValueProp = { "Parameters", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_Parameters_Key_KeyProp = { "Parameters_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_Parameters = { "Parameters", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEInputStep, Parameters), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Parameters_MetaData), NewProp_Parameters_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FQTEInputStep_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_InputType_Underlying,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_InputType,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_RequiredInput,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_TimeWindow,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_Parameters_ValueProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_Parameters_Key_KeyProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewProp_Parameters,
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_SnapPointType_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_SnapPointType = { "SnapPointType", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSnapPointConfig, SnapPointType), Z_Construct_UEnum_BCR_ESnapPointType, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SnapPointType_MetaData), NewProp_SnapPointType_MetaData) }; // 3685084137
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_ActionType_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_ActionType = { "ActionType", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSnapPointConfig, ActionType), Z_Construct_UEnum_BCR_EQTEActionType, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ActionType_MetaData), NewProp_ActionType_MetaData) }; // 430712991
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_RequiredInput = { "RequiredInput", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSnapPointConfig, RequiredInput), Z_Construct_UScriptStruct_FKey, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RequiredInput_MetaData), NewProp_RequiredInput_MetaData) }; // 658672854
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_RepeatCount = { "RepeatCount", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSnapPointConfig, RepeatCount), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RepeatCount_MetaData), NewProp_RepeatCount_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_MinRotationSpeed = { "MinRotationSpeed", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FSnapPointConfig, MinRotationSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MinRotationSpeed_MetaData), NewProp_MinRotationSpeed_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FSnapPointConfig_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_SnapPointType_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_SnapPointType,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_ActionType_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_ActionType,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_RequiredInput,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_RepeatCount,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewProp_MinRotationSpeed,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTEInputStep_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FQTEInputStep_Statics::StructParams = {
+static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSnapPointConfig_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FSnapPointConfig_Statics::StructParams = {
 	(UObject* (*)())Z_Construct_UPackage__Script_BCR,
 	nullptr,
 	&NewStructOps,
-	"QTEInputStep",
-	Z_Construct_UScriptStruct_FQTEInputStep_Statics::PropPointers,
-	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTEInputStep_Statics::PropPointers),
-	sizeof(FQTEInputStep),
-	alignof(FQTEInputStep),
+	"SnapPointConfig",
+	Z_Construct_UScriptStruct_FSnapPointConfig_Statics::PropPointers,
+	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSnapPointConfig_Statics::PropPointers),
+	sizeof(FSnapPointConfig),
+	alignof(FSnapPointConfig),
 	RF_Public|RF_Transient|RF_MarkAsNative,
 	EStructFlags(0x00000201),
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTEInputStep_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FQTEInputStep_Statics::Struct_MetaDataParams)
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FSnapPointConfig_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FSnapPointConfig_Statics::Struct_MetaDataParams)
 };
-UScriptStruct* Z_Construct_UScriptStruct_FQTEInputStep()
+UScriptStruct* Z_Construct_UScriptStruct_FSnapPointConfig()
 {
-	if (!Z_Registration_Info_UScriptStruct_QTEInputStep.InnerSingleton)
+	if (!Z_Registration_Info_UScriptStruct_SnapPointConfig.InnerSingleton)
 	{
-		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_QTEInputStep.InnerSingleton, Z_Construct_UScriptStruct_FQTEInputStep_Statics::StructParams);
+		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_SnapPointConfig.InnerSingleton, Z_Construct_UScriptStruct_FSnapPointConfig_Statics::StructParams);
 	}
-	return Z_Registration_Info_UScriptStruct_QTEInputStep.InnerSingleton;
+	return Z_Registration_Info_UScriptStruct_SnapPointConfig.InnerSingleton;
 }
-// End ScriptStruct FQTEInputStep
-
-// Begin ScriptStruct FPlayerSubSequence
-static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_PlayerSubSequence;
-class UScriptStruct* FPlayerSubSequence::StaticStruct()
-{
-	if (!Z_Registration_Info_UScriptStruct_PlayerSubSequence.OuterSingleton)
-	{
-		Z_Registration_Info_UScriptStruct_PlayerSubSequence.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FPlayerSubSequence, (UObject*)Z_Construct_UPackage__Script_BCR(), TEXT("PlayerSubSequence"));
-	}
-	return Z_Registration_Info_UScriptStruct_PlayerSubSequence.OuterSingleton;
-}
-template<> BCR_API UScriptStruct* StaticStruct<FPlayerSubSequence>()
-{
-	return FPlayerSubSequence::StaticStruct();
-}
-struct Z_Construct_UScriptStruct_FPlayerSubSequence_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
-		{ "BlueprintType", "true" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/** \n* @brief Sequence of inputs for a single player\n*/" },
-#endif
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "@brief Sequence of inputs for a single player" },
-#endif
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Steps_MetaData[] = {
-		{ "Category", "QTE" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/** List of input steps for this player */" },
-#endif
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "List of input steps for this player" },
-#endif
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CurrentStepIndex_MetaData[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "// Indicates that it does not save/serialize data. (use only in realtime and must not be saved)\n" },
-#endif
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Indicates that it does not save/serialize data. (use only in realtime and must not be saved)" },
-#endif
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CurrentInputTime_MetaData[] = {
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bIsCompleted_MetaData[] = {
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FStructPropertyParams NewProp_Steps_Inner;
-	static const UECodeGen_Private::FArrayPropertyParams NewProp_Steps;
-	static const UECodeGen_Private::FIntPropertyParams NewProp_CurrentStepIndex;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_CurrentInputTime;
-	static void NewProp_bIsCompleted_SetBit(void* Obj);
-	static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsCompleted;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static void* NewStructOps()
-	{
-		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FPlayerSubSequence>();
-	}
-	static const UECodeGen_Private::FStructParams StructParams;
-};
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_Steps_Inner = { "Steps", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FQTEInputStep, METADATA_PARAMS(0, nullptr) }; // 4103455845
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_Steps = { "Steps", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlayerSubSequence, Steps), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Steps_MetaData), NewProp_Steps_MetaData) }; // 4103455845
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_CurrentStepIndex = { "CurrentStepIndex", nullptr, (EPropertyFlags)0x0010000000002000, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlayerSubSequence, CurrentStepIndex), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurrentStepIndex_MetaData), NewProp_CurrentStepIndex_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_CurrentInputTime = { "CurrentInputTime", nullptr, (EPropertyFlags)0x0010000000002000, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FPlayerSubSequence, CurrentInputTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurrentInputTime_MetaData), NewProp_CurrentInputTime_MetaData) };
-void Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_bIsCompleted_SetBit(void* Obj)
-{
-	((FPlayerSubSequence*)Obj)->bIsCompleted = 1;
-}
-const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_bIsCompleted = { "bIsCompleted", nullptr, (EPropertyFlags)0x0010000000002000, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(FPlayerSubSequence), &Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_bIsCompleted_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bIsCompleted_MetaData), NewProp_bIsCompleted_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_Steps_Inner,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_Steps,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_CurrentStepIndex,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_CurrentInputTime,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewProp_bIsCompleted,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::StructParams = {
-	(UObject* (*)())Z_Construct_UPackage__Script_BCR,
-	nullptr,
-	&NewStructOps,
-	"PlayerSubSequence",
-	Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::PropPointers,
-	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::PropPointers),
-	sizeof(FPlayerSubSequence),
-	alignof(FPlayerSubSequence),
-	RF_Public|RF_Transient|RF_MarkAsNative,
-	EStructFlags(0x00000201),
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::Struct_MetaDataParams)
-};
-UScriptStruct* Z_Construct_UScriptStruct_FPlayerSubSequence()
-{
-	if (!Z_Registration_Info_UScriptStruct_PlayerSubSequence.InnerSingleton)
-	{
-		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_PlayerSubSequence.InnerSingleton, Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::StructParams);
-	}
-	return Z_Registration_Info_UScriptStruct_PlayerSubSequence.InnerSingleton;
-}
-// End ScriptStruct FPlayerSubSequence
-
-// Begin ScriptStruct FQTESequence
-static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_QTESequence;
-class UScriptStruct* FQTESequence::StaticStruct()
-{
-	if (!Z_Registration_Info_UScriptStruct_QTESequence.OuterSingleton)
-	{
-		Z_Registration_Info_UScriptStruct_QTESequence.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FQTESequence, (UObject*)Z_Construct_UPackage__Script_BCR(), TEXT("QTESequence"));
-	}
-	return Z_Registration_Info_UScriptStruct_QTESequence.OuterSingleton;
-}
-template<> BCR_API UScriptStruct* StaticStruct<FQTESequence>()
-{
-	return FQTESequence::StaticStruct();
-}
-struct Z_Construct_UScriptStruct_FQTESequence_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
-		{ "BlueprintType", "true" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/** \n* @brief Sequence requiring multiple players' inputs\n*/" },
-#endif
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "@brief Sequence requiring multiple players' inputs" },
-#endif
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlayerSubSequences_MetaData[] = {
-		{ "Category", "QTE" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Map of players to their required input sequences */" },
-#endif
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Map of players to their required input sequences" },
-#endif
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bIsCompleted_MetaData[] = {
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FStructPropertyParams NewProp_PlayerSubSequences_ValueProp;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_PlayerSubSequences_Key_KeyProp;
-	static const UECodeGen_Private::FMapPropertyParams NewProp_PlayerSubSequences;
-	static void NewProp_bIsCompleted_SetBit(void* Obj);
-	static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsCompleted;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static void* NewStructOps()
-	{
-		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FQTESequence>();
-	}
-	static const UECodeGen_Private::FStructParams StructParams;
-};
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_PlayerSubSequences_ValueProp = { "PlayerSubSequences", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UScriptStruct_FPlayerSubSequence, METADATA_PARAMS(0, nullptr) }; // 311708398
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_PlayerSubSequences_Key_KeyProp = { "PlayerSubSequences_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AMainPlayer_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_PlayerSubSequences = { "PlayerSubSequences", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTESequence, PlayerSubSequences), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlayerSubSequences_MetaData), NewProp_PlayerSubSequences_MetaData) }; // 311708398
-void Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_bIsCompleted_SetBit(void* Obj)
-{
-	((FQTESequence*)Obj)->bIsCompleted = 1;
-}
-const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_bIsCompleted = { "bIsCompleted", nullptr, (EPropertyFlags)0x0010000000002000, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(FQTESequence), &Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_bIsCompleted_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bIsCompleted_MetaData), NewProp_bIsCompleted_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FQTESequence_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_PlayerSubSequences_ValueProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_PlayerSubSequences_Key_KeyProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_PlayerSubSequences,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTESequence_Statics::NewProp_bIsCompleted,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTESequence_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FQTESequence_Statics::StructParams = {
-	(UObject* (*)())Z_Construct_UPackage__Script_BCR,
-	nullptr,
-	&NewStructOps,
-	"QTESequence",
-	Z_Construct_UScriptStruct_FQTESequence_Statics::PropPointers,
-	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTESequence_Statics::PropPointers),
-	sizeof(FQTESequence),
-	alignof(FQTESequence),
-	RF_Public|RF_Transient|RF_MarkAsNative,
-	EStructFlags(0x00000201),
-	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTESequence_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FQTESequence_Statics::Struct_MetaDataParams)
-};
-UScriptStruct* Z_Construct_UScriptStruct_FQTESequence()
-{
-	if (!Z_Registration_Info_UScriptStruct_QTESequence.InnerSingleton)
-	{
-		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_QTESequence.InnerSingleton, Z_Construct_UScriptStruct_FQTESequence_Statics::StructParams);
-	}
-	return Z_Registration_Info_UScriptStruct_QTESequence.InnerSingleton;
-}
-// End ScriptStruct FQTESequence
+// End ScriptStruct FSnapPointConfig
 
 // Begin ScriptStruct FQTEConfiguration
 static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_QTEConfiguration;
@@ -496,47 +401,59 @@ struct Z_Construct_UScriptStruct_FQTEConfiguration_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/** \n* @brief Complete configuration for a QTE event\n*/" },
+		{ "Comment", "/** \n* @brief Configuration compl\xc3\xa8te d'une s\xc3\xa9quence QTE\n*/" },
 #endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "@brief Complete configuration for a QTE event" },
+		{ "ToolTip", "@brief Configuration compl\xc3\xa8te d'une s\xc3\xa9quence QTE" },
 #endif
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Sequences_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SnapPoints_MetaData[] = {
 		{ "Category", "QTE" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Array of sequences to complete */" },
+		{ "Comment", "// Configuration pour chaque point d'interaction\n" },
 #endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Array of sequences to complete" },
+		{ "ToolTip", "Configuration pour chaque point d'interaction" },
 #endif
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RepeatCount_MetaData[] = {
-		{ "Category", "QTE" },
-		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TotalTime_MetaData[] = {
 		{ "Category", "QTE" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Total time allowed for QTE (-1 for unlimited) */" },
+		{ "Comment", "// Temps total allou\xc3\xa9 pour compl\xc3\xa9ter le QTE (-1 pour illimit\xc3\xa9)\n" },
 #endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Total time allowed for QTE (-1 for unlimited)" },
+		{ "ToolTip", "Temps total allou\xc3\xa9 pour compl\xc3\xa9ter le QTE (-1 pour illimit\xc3\xa9)" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WidgetClass_MetaData[] = {
 		{ "Category", "QTE" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Widget \xc3\xa0 afficher pendant le QTE\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Widget \xc3\xa0 afficher pendant le QTE" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ConfigurationName_MetaData[] = {
+		{ "Category", "QTE" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Nom pour l'identification (optionnel)\n" },
+#endif
+		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Nom pour l'identification (optionnel)" },
+#endif
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FStructPropertyParams NewProp_Sequences_Inner;
-	static const UECodeGen_Private::FArrayPropertyParams NewProp_Sequences;
-	static const UECodeGen_Private::FIntPropertyParams NewProp_RepeatCount;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SnapPoints_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_SnapPoints;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_TotalTime;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_WidgetClass;
+	static const UECodeGen_Private::FStrPropertyParams NewProp_ConfigurationName;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static void* NewStructOps()
 	{
@@ -544,17 +461,17 @@ struct Z_Construct_UScriptStruct_FQTEConfiguration_Statics
 	}
 	static const UECodeGen_Private::FStructParams StructParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_Sequences_Inner = { "Sequences", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FQTESequence, METADATA_PARAMS(0, nullptr) }; // 3805758435
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_Sequences = { "Sequences", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEConfiguration, Sequences), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Sequences_MetaData), NewProp_Sequences_MetaData) }; // 3805758435
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_RepeatCount = { "RepeatCount", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEConfiguration, RepeatCount), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RepeatCount_MetaData), NewProp_RepeatCount_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_SnapPoints_Inner = { "SnapPoints", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FSnapPointConfig, METADATA_PARAMS(0, nullptr) }; // 796225583
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_SnapPoints = { "SnapPoints", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEConfiguration, SnapPoints), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SnapPoints_MetaData), NewProp_SnapPoints_MetaData) }; // 796225583
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_TotalTime = { "TotalTime", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEConfiguration, TotalTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TotalTime_MetaData), NewProp_TotalTime_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_WidgetClass = { "WidgetClass", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEConfiguration, WidgetClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WidgetClass_MetaData), NewProp_WidgetClass_MetaData) };
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_ConfigurationName = { "ConfigurationName", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEConfiguration, ConfigurationName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ConfigurationName_MetaData), NewProp_ConfigurationName_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FQTEConfiguration_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_Sequences_Inner,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_Sequences,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_RepeatCount,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_SnapPoints_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_SnapPoints,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_TotalTime,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_WidgetClass,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewProp_ConfigurationName,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTEConfiguration_Statics::PropPointers) < 2048);
 const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FQTEConfiguration_Statics::StructParams = {
@@ -580,23 +497,129 @@ UScriptStruct* Z_Construct_UScriptStruct_FQTEConfiguration()
 }
 // End ScriptStruct FQTEConfiguration
 
+// Begin ScriptStruct FQTEActionProgress
+static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_QTEActionProgress;
+class UScriptStruct* FQTEActionProgress::StaticStruct()
+{
+	if (!Z_Registration_Info_UScriptStruct_QTEActionProgress.OuterSingleton)
+	{
+		Z_Registration_Info_UScriptStruct_QTEActionProgress.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FQTEActionProgress, (UObject*)Z_Construct_UPackage__Script_BCR(), TEXT("QTEActionProgress"));
+	}
+	return Z_Registration_Info_UScriptStruct_QTEActionProgress.OuterSingleton;
+}
+template<> BCR_API UScriptStruct* StaticStruct<FQTEActionProgress>()
+{
+	return FQTEActionProgress::StaticStruct();
+}
+struct Z_Construct_UScriptStruct_FQTEActionProgress_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/** \n* @brief Information de progression d'une action\n*/" },
+#endif
+		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Information de progression d'une action" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Progress_MetaData[] = {
+		{ "Category", "QTEActionProgress" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Progression normalis\xc3\xa9""e (0-1)\n" },
+#endif
+		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Progression normalis\xc3\xa9""e (0-1)" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_StickPosition_MetaData[] = {
+		{ "Category", "QTEActionProgress" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Position du stick pour les actions de rotation\n" },
+#endif
+		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Position du stick pour les actions de rotation" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bIsActive_MetaData[] = {
+		{ "Category", "QTEActionProgress" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// \xc3\x89tat actif/inactif de l'action\n" },
+#endif
+		{ "ModuleRelativePath", "Headers/System/QTE/QTETypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "\xc3\x89tat actif/inactif de l'action" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_Progress;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_StickPosition;
+	static void NewProp_bIsActive_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bIsActive;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static void* NewStructOps()
+	{
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FQTEActionProgress>();
+	}
+	static const UECodeGen_Private::FStructParams StructParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FQTEActionProgress_Statics::NewProp_Progress = { "Progress", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEActionProgress, Progress), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Progress_MetaData), NewProp_Progress_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FQTEActionProgress_Statics::NewProp_StickPosition = { "StickPosition", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQTEActionProgress, StickPosition), Z_Construct_UScriptStruct_FVector2D, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StickPosition_MetaData), NewProp_StickPosition_MetaData) };
+void Z_Construct_UScriptStruct_FQTEActionProgress_Statics::NewProp_bIsActive_SetBit(void* Obj)
+{
+	((FQTEActionProgress*)Obj)->bIsActive = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FQTEActionProgress_Statics::NewProp_bIsActive = { "bIsActive", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(FQTEActionProgress), &Z_Construct_UScriptStruct_FQTEActionProgress_Statics::NewProp_bIsActive_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bIsActive_MetaData), NewProp_bIsActive_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FQTEActionProgress_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEActionProgress_Statics::NewProp_Progress,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEActionProgress_Statics::NewProp_StickPosition,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQTEActionProgress_Statics::NewProp_bIsActive,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTEActionProgress_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FQTEActionProgress_Statics::StructParams = {
+	(UObject* (*)())Z_Construct_UPackage__Script_BCR,
+	nullptr,
+	&NewStructOps,
+	"QTEActionProgress",
+	Z_Construct_UScriptStruct_FQTEActionProgress_Statics::PropPointers,
+	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTEActionProgress_Statics::PropPointers),
+	sizeof(FQTEActionProgress),
+	alignof(FQTEActionProgress),
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	EStructFlags(0x00000201),
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FQTEActionProgress_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FQTEActionProgress_Statics::Struct_MetaDataParams)
+};
+UScriptStruct* Z_Construct_UScriptStruct_FQTEActionProgress()
+{
+	if (!Z_Registration_Info_UScriptStruct_QTEActionProgress.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_QTEActionProgress.InnerSingleton, Z_Construct_UScriptStruct_FQTEActionProgress_Statics::StructParams);
+	}
+	return Z_Registration_Info_UScriptStruct_QTEActionProgress.InnerSingleton;
+}
+// End ScriptStruct FQTEActionProgress
+
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics
 {
 	static constexpr FEnumRegisterCompiledInInfo EnumInfo[] = {
-		{ EQTEInputType_StaticEnum, TEXT("EQTEInputType"), &Z_Registration_Info_UEnum_EQTEInputType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3713181205U) },
-		{ EQTEState_StaticEnum, TEXT("EQTEState"), &Z_Registration_Info_UEnum_EQTEState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2973021642U) },
+		{ EQTEActionType_StaticEnum, TEXT("EQTEActionType"), &Z_Registration_Info_UEnum_EQTEActionType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 430712991U) },
+		{ EQTEState_StaticEnum, TEXT("EQTEState"), &Z_Registration_Info_UEnum_EQTEState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 303231836U) },
+		{ ESnapPointType_StaticEnum, TEXT("ESnapPointType"), &Z_Registration_Info_UEnum_ESnapPointType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3685084137U) },
 	};
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FQTEInputStep::StaticStruct, Z_Construct_UScriptStruct_FQTEInputStep_Statics::NewStructOps, TEXT("QTEInputStep"), &Z_Registration_Info_UScriptStruct_QTEInputStep, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQTEInputStep), 4103455845U) },
-		{ FPlayerSubSequence::StaticStruct, Z_Construct_UScriptStruct_FPlayerSubSequence_Statics::NewStructOps, TEXT("PlayerSubSequence"), &Z_Registration_Info_UScriptStruct_PlayerSubSequence, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FPlayerSubSequence), 311708398U) },
-		{ FQTESequence::StaticStruct, Z_Construct_UScriptStruct_FQTESequence_Statics::NewStructOps, TEXT("QTESequence"), &Z_Registration_Info_UScriptStruct_QTESequence, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQTESequence), 3805758435U) },
-		{ FQTEConfiguration::StaticStruct, Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewStructOps, TEXT("QTEConfiguration"), &Z_Registration_Info_UScriptStruct_QTEConfiguration, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQTEConfiguration), 3649445843U) },
+		{ FQTEProgressData::StaticStruct, Z_Construct_UScriptStruct_FQTEProgressData_Statics::NewStructOps, TEXT("QTEProgressData"), &Z_Registration_Info_UScriptStruct_QTEProgressData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQTEProgressData), 3793634775U) },
+		{ FSnapPointConfig::StaticStruct, Z_Construct_UScriptStruct_FSnapPointConfig_Statics::NewStructOps, TEXT("SnapPointConfig"), &Z_Registration_Info_UScriptStruct_SnapPointConfig, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FSnapPointConfig), 796225583U) },
+		{ FQTEConfiguration::StaticStruct, Z_Construct_UScriptStruct_FQTEConfiguration_Statics::NewStructOps, TEXT("QTEConfiguration"), &Z_Registration_Info_UScriptStruct_QTEConfiguration, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQTEConfiguration), 2591637879U) },
+		{ FQTEActionProgress::StaticStruct, Z_Construct_UScriptStruct_FQTEActionProgress_Statics::NewStructOps, TEXT("QTEActionProgress"), &Z_Registration_Info_UScriptStruct_QTEActionProgress, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQTEActionProgress), 2649691905U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_559581803(TEXT("/Script/BCR"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_560116261(TEXT("/Script/BCR"),
 	nullptr, 0,
-	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics::ScriptStructInfo),
-	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics::EnumInfo));
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics::ScriptStructInfo),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_QTE_QTETypes_h_Statics::EnumInfo));
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

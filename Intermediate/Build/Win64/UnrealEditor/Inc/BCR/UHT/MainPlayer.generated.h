@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define BCR_MainPlayer_generated_h
 
-#define FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_INCLASS_NO_PURE_DECLS \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMainPlayer(); \
 	friend struct Z_Construct_UClass_AMainPlayer_Statics; \
@@ -24,7 +24,7 @@ public: \
 	virtual UObject* _getUObject() const override { return const_cast<AMainPlayer*>(this); }
 
 
-#define FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_ENHANCED_CONSTRUCTORS \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AMainPlayer(AMainPlayer&&); \
@@ -36,12 +36,12 @@ public: \
 	NO_API virtual ~AMainPlayer();
 
 
-#define FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_17_PROLOG
-#define FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_GENERATED_BODY \
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_17_PROLOG
+#define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_INCLASS_NO_PURE_DECLS \
-	FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_ENHANCED_CONSTRUCTORS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_INCLASS_NO_PURE_DECLS \
+	FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -49,7 +49,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> BCR_API UClass* StaticClass<class AMainPlayer>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h
+#define CURRENT_FILE_ID FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

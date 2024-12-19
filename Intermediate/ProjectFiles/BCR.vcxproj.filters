@@ -102,10 +102,16 @@
     <Filter Include="Source\BCR\Headers\System\QTE">
       <UniqueIdentifier>{0624CC9C-23FA-373F-9BCD-5769E5C03798}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.cpp">
+      <Filter>Source\BCR\Headers\System\QTE</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.h">
+      <Filter>Source\BCR\Headers\System\QTE</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTETypes.h">
       <Filter>Source\BCR\Headers\System\QTE</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_System.h">
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Subsystem.h">
       <Filter>Source\BCR\Headers\System\QTE</Filter>
     </ClInclude>
     <Filter Include="Source\BCR\Sources">
@@ -153,8 +159,23 @@
     <Filter Include="Source\BCR\Sources\System\QTE">
       <UniqueIdentifier>{568C2636-A9C1-3C1D-9FAE-71DC7F638051}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTE_System.cpp">
+    <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTE_Subsystem.cpp">
       <Filter>Source\BCR\Sources\System\QTE</Filter>
     </ClCompile>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{BB38096A-B391-30DC-A0D4-4F3EA6B44507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\RokokoIKRigRetargeting-main">
+      <UniqueIdentifier>{559379EC-179E-3BF7-A2D2-AC4648495624}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\RokokoIKRigRetargeting.uplugin">
+      <Filter>Plugins\RokokoIKRigRetargeting-main</Filter>
+    </None>
+    <Filter Include="Plugins\RokokoIKRigRetargeting-main\Resources">
+      <UniqueIdentifier>{13929219-600B-34FC-A44F-7AEDD125DFF3}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\Resources\Icon128.png">
+      <Filter>Plugins\RokokoIKRigRetargeting-main\Resources</Filter>
+    </None>
   </ItemGroup>
 </Project>
