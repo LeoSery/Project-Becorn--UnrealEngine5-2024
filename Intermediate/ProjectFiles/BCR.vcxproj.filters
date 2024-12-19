@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\BCR.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\BCR.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\BCREditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.gitignore" />
+    <None Include="..\..\.vsconfig" />
+    <None Include="..\..\BuildSolution.bat" />
+    <None Include="..\..\README.md" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\BCR">
+      <UniqueIdentifier>{E7F8E3BB-A0BA-32A2-83DD-C07273E09EDA}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\BCR\BCR.Build.cs">
+      <Filter>Source\BCR</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\BCR\BCR.cpp">
+      <Filter>Source\BCR</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\BCR.h">
+      <Filter>Source\BCR</Filter>
+    </ClInclude>
+    <Filter Include="Source\BCR\Headers">
+      <UniqueIdentifier>{FC8D6630-6198-316B-99B8-84FB87C1DAD1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\BCR\Headers\Core">
+      <UniqueIdentifier>{A720B684-4ED6-3860-8C57-4AFF812D9121}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\BCR\Headers\Core\MainGamemode.h">
+      <Filter>Source\BCR\Headers\Core</Filter>
+    </ClInclude>
+    <Filter Include="Source\BCR\Headers\Interfaces">
+      <UniqueIdentifier>{4E95A235-9E41-34F5-AF1E-11EF1607E799}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Headers\Interfaces\BCR_Helper.cpp">
+      <Filter>Source\BCR\Headers\Interfaces</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\BCR_Helper.h">
+      <Filter>Source\BCR\Headers\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\Interactable.h">
+      <Filter>Source\BCR\Headers\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\IPickable.h">
+      <Filter>Source\BCR\Headers\Interfaces</Filter>
+    </ClInclude>
+    <Filter Include="Source\BCR\Headers\Player">
+      <UniqueIdentifier>{4FC3233E-4FD2-3CE2-9567-E61E443E7FA5}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\BCR\Headers\Player\MainPlayer.h">
+      <Filter>Source\BCR\Headers\Player</Filter>
+    </ClInclude>
+    <Filter Include="Source\BCR\Headers\System">
+      <UniqueIdentifier>{48404AA9-D3F8-33FA-8131-FD108759B11F}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Headers\System\AWood.cpp">
+      <Filter>Source\BCR\Headers\System</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\AWood.h">
+      <Filter>Source\BCR\Headers\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h">
+      <Filter>Source\BCR\Headers\System</Filter>
+    </ClInclude>
+    <Filter Include="Source\BCR\Headers\System\MiniGame">
+      <UniqueIdentifier>{57BF3B9B-AEE4-3E36-9795-9514F2DDDC8A}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h">
+      <Filter>Source\BCR\Headers\System\MiniGame</Filter>
+    </ClInclude>
+    <Filter Include="Source\BCR\Headers\System\Pickable">
+      <UniqueIdentifier>{076DEAF4-5A62-3C3F-B58B-9A70A8330360}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\Pickable\PickableItem.h">
+      <Filter>Source\BCR\Headers\System\Pickable</Filter>
+    </ClInclude>
+    <Filter Include="Source\BCR\Headers\System\QTE">
+      <UniqueIdentifier>{0624CC9C-23FA-373F-9BCD-5769E5C03798}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.cpp">
+      <Filter>Source\BCR\Headers\System\QTE</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.h">
+      <Filter>Source\BCR\Headers\System\QTE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTETypes.h">
+      <Filter>Source\BCR\Headers\System\QTE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Subsystem.h">
+      <Filter>Source\BCR\Headers\System\QTE</Filter>
+    </ClInclude>
+    <Filter Include="Source\BCR\Sources">
+      <UniqueIdentifier>{A091F1B4-EB37-3D7C-8B60-3BC3FD2E36B1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\BCR\Sources\Core">
+      <UniqueIdentifier>{412CEF9E-2291-3837-B931-7E172A8BE7E1}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\Core\MainGamemode.cpp">
+      <Filter>Source\BCR\Sources\Core</Filter>
+    </ClCompile>
+    <Filter Include="Source\BCR\Sources\Interfaces">
+      <UniqueIdentifier>{16C9F7A9-90CA-3A60-AD74-3464E1BC5D86}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\Interfaces\Interactable.cpp">
+      <Filter>Source\BCR\Sources\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\Interfaces\IPickable.cpp">
+      <Filter>Source\BCR\Sources\Interfaces</Filter>
+    </ClCompile>
+    <Filter Include="Source\BCR\Sources\Player">
+      <UniqueIdentifier>{E5D6F347-5BFB-32B4-A487-53783C226D9A}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\Player\MainPlayer.cpp">
+      <Filter>Source\BCR\Sources\Player</Filter>
+    </ClCompile>
+    <Filter Include="Source\BCR\Sources\System">
+      <UniqueIdentifier>{BF6DD5EA-E1BE-3243-9A84-1639932B18EE}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\MainCamera.cpp">
+      <Filter>Source\BCR\Sources\System</Filter>
+    </ClCompile>
+    <Filter Include="Source\BCR\Sources\System\MiniGame">
+      <UniqueIdentifier>{A35DB486-DB2D-3F66-970C-B3563008B97E}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\MiniGame\MiniGameSystem.cpp">
+      <Filter>Source\BCR\Sources\System\MiniGame</Filter>
+    </ClCompile>
+    <Filter Include="Source\BCR\Sources\System\Pickable">
+      <UniqueIdentifier>{1AF821FB-8E43-37D4-AAB1-8D4DEE7367E2}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\Pickable\PickableItem.cpp">
+      <Filter>Source\BCR\Sources\System\Pickable</Filter>
+    </ClCompile>
+    <Filter Include="Source\BCR\Sources\System\QTE">
+      <UniqueIdentifier>{568C2636-A9C1-3C1D-9FAE-71DC7F638051}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTE_Subsystem.cpp">
+      <Filter>Source\BCR\Sources\System\QTE</Filter>
+    </ClCompile>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{BB38096A-B391-30DC-A0D4-4F3EA6B44507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\RokokoIKRigRetargeting-main">
+      <UniqueIdentifier>{559379EC-179E-3BF7-A2D2-AC4648495624}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\RokokoIKRigRetargeting.uplugin">
+      <Filter>Plugins\RokokoIKRigRetargeting-main</Filter>
+    </None>
+    <Filter Include="Plugins\RokokoIKRigRetargeting-main\Resources">
+      <UniqueIdentifier>{13929219-600B-34FC-A44F-7AEDD125DFF3}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\Resources\Icon128.png">
+      <Filter>Plugins\RokokoIKRigRetargeting-main\Resources</Filter>
+    </None>
+  </ItemGroup>
+</Project>
