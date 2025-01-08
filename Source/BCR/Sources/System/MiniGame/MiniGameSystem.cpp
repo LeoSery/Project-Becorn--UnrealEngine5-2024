@@ -9,6 +9,7 @@
 #include "BCR/Headers/Player/MainPlayer.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "BCR/Headers/System/QTE/QTETypes.h"
 
 AMiniGameSystem::AMiniGameSystem()
 {
@@ -222,22 +223,33 @@ UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TA
 
 void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 {
-	if (!itemList.IsEmpty())
-		return;
-
-	if (snapPointMap.Find(snapPlayerPoint1)[0] == Player)
+	if (!itemList.IsEmpty() && (snapPointMap.Find(snapPlayerPoint1)[0] != Player && snapPointMap.Find(snapPlayerPoint2)[0] != Player))
 	{
-		snapPointMap.Add(snapPlayerPoint1, nullptr);
-		//set state machine to liberate the player
-		Player->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+		IBCR_Helper::LogConsole(this, FString::Printf(TEXT("ca pue")));
 		return;
 	}
-	if (snapPointMap.Find(snapPlayerPoint2)[0] == Player)
+
+	if (UGameInstance* GameInstance = GetGameInstance())
 	{
-		snapPointMap.Add(snapPlayerPoint2, nullptr);
-		//set state machine to liberate the player
-		Player->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
-		return;
+		UQTE_Subsystem* QTESystem;
+		QTESystem = GameInstance->GetSubsystem<UQTE_Subsystem>();
+
+		if (snapPointMap.Find(snapPlayerPoint1)[0] == Player)
+		{
+			snapPointMap.Add(snapPlayerPoint1, nullptr);
+			QTESystem->OnPlayerLeaveSnapPoint(Player, ESnapPointType::First);
+			//set state machine to liberate the player
+			Player->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+			return;
+		}
+		if (snapPointMap.Find(snapPlayerPoint2)[0] == Player)
+		{
+			snapPointMap.Add(snapPlayerPoint2, nullptr);
+			QTESystem->OnPlayerLeaveSnapPoint(Player, ESnapPointType::Second);
+			//set state machine to liberate the player
+			Player->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+			return;
+		}
 	}
 	
 	Player->GetCharacterMovement()->SetMovementMode(MOVE_None);
@@ -280,7 +292,6 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 					/* Get the name of the Object (name is given by the class of the pickable */
 					itemList.RemoveAt(i);
 					Player->PickUp();
-					Object->Destroy();
 					return;
 				}
 			}

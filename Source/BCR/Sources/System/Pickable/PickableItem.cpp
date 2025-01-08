@@ -24,7 +24,7 @@ void APickableItem::Tick(float DeltaTime)
 
 void APickableItem::PickedUp_Implementation(AActor* _player, AActor* _object)
 {
-	SetActorLocation(FVector(_player->GetActorLocation().X, _player->GetActorLocation().Y, _player->GetActorLocation().Z + 150));
+
 	IIPickable::PickedUp_Implementation(_player, _object);
 }
 

@@ -104,7 +104,7 @@ void UQTE_Subsystem::OnPlayerEnterSnapPoint(AMainPlayer* Player, ESnapPointType 
                             ProcessInputs(GetWorld()->GetDeltaSeconds()); 
                         }
                     },
-                    0.016f,
+                    0.006f,
                     true);
             }
         }
@@ -119,6 +119,7 @@ void UQTE_Subsystem::OnPlayerLeaveSnapPoint(AMainPlayer* Player, ESnapPointType 
     }
 
     ActivePlayers.Remove(SnapPoint);
+    StopQTE();
     CompleteQTE(false);
 }
 
