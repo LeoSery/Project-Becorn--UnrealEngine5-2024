@@ -44,6 +44,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Reset();
 
+	UBillboardComponent* GetNearestComponent(FVector ToLocation, TArray<UBillboardComponent*> Components);
+
 	// Interface Methods
 	void Interact_Implementation(AMainPlayer* Player);
 	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
@@ -73,12 +75,19 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* inputBox;
-	
-	UFUNCTION()
+
+	UPROPERTY(EditAnywhere)
+	float MaxSnapPointDistance = 200.f;
+
+public:
+
+	UFUNCTION(BlueprintNativeEvent)
 	void OnFirstSnapPointResult(bool bSuccess);
+	void OnFirstSnapPointResult_Implementation(bool bSuccess);
     
-	UFUNCTION()
+	UFUNCTION(BlueprintNativeEvent)
 	void OnSecondSnapPointResult(bool bSuccess);
+	void OnSecondSnapPointResult_Implementation(bool bSuccess);
 
 protected:
 	virtual void BeginPlay() override;

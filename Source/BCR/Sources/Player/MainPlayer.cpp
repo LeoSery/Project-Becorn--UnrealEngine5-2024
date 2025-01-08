@@ -167,10 +167,11 @@ void AMainPlayer::Interact() {
 	{
 		if(PickedUpObject && Cast<IInteractable>(OutHit.GetActor())){
 			IInteractable::Execute_InteractWithObject(OutHit.GetActor(), this,PickedUpObject);
+			return;
 		}
 		else if (Cast<IInteractable>(OutHit.GetActor())) {
 			IInteractable::Execute_Interact(OutHit.GetActor(), this);
-
+			return;
 		}
 
 	}

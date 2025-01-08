@@ -7,6 +7,8 @@
 #include <Kismet/KismetSystemLibrary.h>
 #include "BCR/Headers/System/QTE/QTE_Subsystem.h"
 #include "BCR/Headers/Player/MainPlayer.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 
 AMiniGameSystem::AMiniGameSystem()
 {
@@ -28,13 +30,13 @@ AMiniGameSystem::AMiniGameSystem()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-void AMiniGameSystem::OnFirstSnapPointResult(bool bSuccess)
+void AMiniGameSystem::OnFirstSnapPointResult_Implementation(bool bSuccess)
 {
 	// technical log
 	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 1 action: %s"), bSuccess ? TEXT("Success") : TEXT("Failed")));
 }
 
-void AMiniGameSystem::OnSecondSnapPointResult(bool bSuccess)
+void AMiniGameSystem::OnSecondSnapPointResult_Implementation(bool bSuccess)
 {
 	// technical log
 	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 2 action: %s"), bSuccess ? TEXT("Success") : TEXT("Failed")));
@@ -200,35 +202,59 @@ void AMiniGameSystem::Reset()
 	itemList = inputItems;
 }
 
+UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TArray<UBillboardComponent*> Components)
+{
+	float MinDistance = MAX_FLT;
+	UBillboardComponent* ClosestComponent = nullptr;
+
+	for (UBillboardComponent* component : Components)
+	{
+		float distance = UKismetMathLibrary::Vector_Distance(component->GetComponentLocation(), ToLocation);
+		if (distance < MinDistance)
+		{
+			MinDistance = distance;
+			ClosestComponent = component;
+		}
+	}
+
+	return ClosestComponent;
+}
+
 void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 {
+	if (!itemList.IsEmpty())
+		return;
+
 	if (snapPointMap.Find(snapPlayerPoint1)[0] == Player)
 	{
 		snapPointMap.Add(snapPlayerPoint1, nullptr);
 		//set state machine to liberate the player
+		Player->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
 		return;
 	}
 	if (snapPointMap.Find(snapPlayerPoint2)[0] == Player)
 	{
 		snapPointMap.Add(snapPlayerPoint2, nullptr);
 		//set state machine to liberate the player
+		Player->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
 		return;
 	}
 	
-	if (snapPointMap.Find(snapPlayerPoint1)[0] == nullptr)
+	Player->GetCharacterMovement()->SetMovementMode(MOVE_None);
+	TArray<UBillboardComponent*> SnapArray;
+	SnapArray.Add(snapPlayerPoint1);
+	SnapArray.Add(snapPlayerPoint2);
+
+	UBillboardComponent* closestBillBoard = GetNearestComponent(Player->GetActorLocation(), SnapArray);
+
+	if (snapPointMap.Find(closestBillBoard)[0] == nullptr)
 	{
-		snapPointMap.Add(snapPlayerPoint1, Player);
-		Player->SetActorLocation(snapPlayerPoint1->GetComponentLocation());
-		//set state machine to stopped /occupied / not moving or something
-	}
-	else if (snapPointMap.Find(snapPlayerPoint2)[0] == nullptr)
-	{
-		snapPointMap.Add(snapPlayerPoint2, Player);
-		Player->SetActorLocation(snapPlayerPoint2->GetComponentLocation());
+		snapPointMap.Add(closestBillBoard, Player);
+		Player->SetActorLocation(closestBillBoard->GetComponentLocation());
 		//set state machine to stopped /occupied / not moving or something
 	}
 
-	if (snapPointMap.Find(snapPlayerPoint1) != nullptr && snapPointMap.Find(snapPlayerPoint2) != nullptr)
+	if (snapPointMap.FindRef(snapPlayerPoint1) != nullptr && snapPointMap.FindRef(snapPlayerPoint2) != nullptr)
 	{
 		StartExecute();
 	}
