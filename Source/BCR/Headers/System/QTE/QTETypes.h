@@ -101,6 +101,9 @@ struct BCR_API FQTEConfiguration {
     // Nom pour l'identification (optionnel)
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "QTE")
     FString ConfigurationName = TEXT("New QTE");
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "QTE")
+    bool ActionShouldWaitOtherPlayer = false;
 };
 
 /** 

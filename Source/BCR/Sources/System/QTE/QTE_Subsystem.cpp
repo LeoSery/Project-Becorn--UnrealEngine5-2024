@@ -160,9 +160,22 @@ void UQTE_Subsystem::ProcessPlayerInput(AMainPlayer* Player, ESnapPointType Snap
     }
     
     FQTEProgressData* Progress = ActionProgress.Find(SnapPoint);
-    if (Progress && Progress->bIsComplete)
+
+    if (CurrentConfig.ActionShouldWaitOtherPlayer)
     {
-        return;
+        ESnapPointType OtherPoint = (SnapPoint == ESnapPointType::First) ? ESnapPointType::Second : ESnapPointType::First;
+                                  
+        const FQTEProgressData* OtherProgress = ActionProgress.Find(OtherPoint);
+        
+        if (Progress && Progress->SuccessCount > 0 && 
+            (!OtherProgress || OtherProgress->SuccessCount < Progress->SuccessCount))
+        {
+            IBCR_Helper::LogConsole(this, 
+                            FString::Printf(TEXT("Waiting for other player. Current: %d, Other: %d"), 
+                                Progress->SuccessCount,
+                                OtherProgress ? OtherProgress->SuccessCount : 0));
+            return;
+        }
     }
     
     bool bSuccess = ValidatePlayerAction(Player, Config);
@@ -197,16 +210,16 @@ void UQTE_Subsystem::ProcessPlayerInput(AMainPlayer* Player, ESnapPointType Snap
         }
         ////////////////////////////////////////////////
         
-        if (NewProgress.SuccessCount >= Config.RepeatCount)
+        if (Config.RepeatCount != -1 && NewProgress.SuccessCount >= Config.RepeatCount)
         {
             NewProgress.bIsComplete = true;
-        }
-        
-        if (CheckQTECompletion())
-        {
-            CompleteQTE(true);
-            return;
-        }
+
+            if (CheckQTECompletion())
+            {
+                CompleteQTE(true);
+                return;
+            }
+        }        
     }
     UpdateActionProgress(Player, SnapPoint, Config);
 }
@@ -367,6 +380,11 @@ bool UQTE_Subsystem::CheckQTECompletion()
     
     for (const auto& Config : CurrentConfig.SnapPoints)
     {
+        if (Config.RepeatCount == -1)
+        {
+            continue;
+        }
+
         const FQTEProgressData* Progress = ActionProgress.Find(Config.SnapPointType);
         if (!Progress || !Progress->bIsComplete)
         {
