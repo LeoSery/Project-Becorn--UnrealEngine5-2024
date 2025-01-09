@@ -309,6 +309,9 @@ void AMiniGameSystem::RemoveItem(int index)
 {
 	APickableItem* item = presentItem[index];
 	presentItem.Remove(item);
-	item->Destroy();
+	if (IsValid(item)) {
+		item->Destroy();
+	}
+	
 
 }
