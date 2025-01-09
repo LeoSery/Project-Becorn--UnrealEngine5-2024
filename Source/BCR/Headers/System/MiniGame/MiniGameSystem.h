@@ -44,6 +44,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Reset();
 
+	UFUNCTION(BlueprintCallable)
+	void PartialReset(TSubclassOf<APickableItem> itemClass);
+
 	UBillboardComponent* GetNearestComponent(FVector ToLocation, TArray<UBillboardComponent*> Components);
 
 	// Interface Methods
@@ -54,6 +57,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void RemoveItem(int index);
+
+	UFUNCTION(BlueprintCallable)
+	bool checkItemPresent();
+
 private:
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<APickableItem>> inputItems;
@@ -61,7 +68,7 @@ private:
 
 
 	UPROPERTY(EditAnywhere)
-	TArray<APickableItem*> presentItem;
+	TMap<APickableItem*,TSubclassOf<APickableItem>> presentItem;
 
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<APickableItem>> outputItems;

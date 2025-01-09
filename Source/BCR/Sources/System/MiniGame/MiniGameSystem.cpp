@@ -168,7 +168,6 @@ void AMiniGameSystem::FinishExecute(bool _success)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, TEXT("Machine failed!"));
 		}
-		Reset();
 	}
 }
 
@@ -203,6 +202,11 @@ void AMiniGameSystem::Reset()
 	itemList = inputItems;
 }
 
+void AMiniGameSystem::PartialReset(TSubclassOf<APickableItem> itemClass)
+{
+	itemList.Add(itemClass);
+}
+
 UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TArray<UBillboardComponent*> Components)
 {
 	float MinDistance = MAX_FLT;
@@ -223,6 +227,8 @@ UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TA
 
 void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 {
+	checkItemPresent;
+
 	if (!itemList.IsEmpty() && (snapPointMap.Find(snapPlayerPoint1)[0] != Player && snapPointMap.Find(snapPlayerPoint2)[0] != Player))
 	{
 		IBCR_Helper::LogConsole(this, FString::Printf(TEXT("ca pue")));
@@ -294,7 +300,7 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 				{
 					/* Get the name of the Object (name is given by the class of the pickable */
 					itemList.RemoveAt(i);
-					presentItem.Add(item);
+					presentItem.Add(item,item->GetClass());
 					Player->PickUp();
 					
 					return;
@@ -314,4 +320,18 @@ void AMiniGameSystem::RemoveItem(int index)
 	}
 	
 
+}
+
+bool AMiniGameSystem::checkItemPresent()
+{
+	for (auto [item,CLASS] : presentItem){
+		if(IsValid(item)){
+			presentItem.Remove(item);
+			PartialReset(CLASS);
+		}
+	}
+	if (presentItem.IsEmpty()) {
+		return false;
+	}
+	return true;
 }
