@@ -31,16 +31,18 @@ AMiniGameSystem::AMiniGameSystem()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-void AMiniGameSystem::OnFirstSnapPointResult_Implementation(bool bSuccess)
+void AMiniGameSystem::OnFirstSnapPointResult_Implementation(EQTEResult Result)
 {
-	// technical log
-	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 1 action: %s"), bSuccess ? TEXT("Success") : TEXT("Failed")));
+	// Technical log
+	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 1 action: %s"), 
+		*UEnum::GetValueAsString(Result)));
 }
 
-void AMiniGameSystem::OnSecondSnapPointResult_Implementation(bool bSuccess)
+void AMiniGameSystem::OnSecondSnapPointResult_Implementation(EQTEResult Result)
 {
-	// technical log
-	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 2 action: %s"), bSuccess ? TEXT("Success") : TEXT("Failed")));
+	// Technical log
+	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 2 action: %s"), 
+		*UEnum::GetValueAsString(Result)));
 }
 
 // Called when the game starts or when spawned
@@ -227,11 +229,10 @@ UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TA
 
 void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 {
-	checkItemPresent;
+	checkItemPresent();
 
 	if (!itemList.IsEmpty() && (snapPointMap.Find(snapPlayerPoint1)[0] != Player && snapPointMap.Find(snapPlayerPoint2)[0] != Player))
 	{
-		IBCR_Helper::LogConsole(this, FString::Printf(TEXT("ca pue")));
 		return;
 	}
 
@@ -278,9 +279,6 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 	}
 }
 
-
-
-
 void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
 {
 	FVector boxOrigin;
@@ -311,26 +309,18 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 	}
 }
 
-void AMiniGameSystem::RemoveItem(int index)
-{
-	APickableItem* item = presentItem[index];
-	presentItem.Remove(item);
-	if (IsValid(item)) {
-		item->Destroy();
-	}
-	
-
-}
-
 bool AMiniGameSystem::checkItemPresent()
 {
-	for (auto [item,CLASS] : presentItem){
-		if(IsValid(item)){
+	for (auto [item,CLASS] : presentItem)
+	{
+		if(IsValid(item))
+		{
 			presentItem.Remove(item);
 			PartialReset(CLASS);
 		}
 	}
-	if (presentItem.IsEmpty()) {
+	if (presentItem.IsEmpty())
+	{
 		return false;
 	}
 	return true;

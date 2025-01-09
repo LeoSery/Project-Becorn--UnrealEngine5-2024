@@ -11,7 +11,7 @@ class AMiniGameSystem;
 class AMainPlayer;
 
 // Délégués pour communiquer les résultats
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSnapPointQTEResult, bool, bSuccess);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSnapPointQTEResult, EQTEResult, Result);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnQTEComplete, bool, bSuccess);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnQTEActionProgress, ESnapPointType, SnapPoint, const FQTEActionProgress&, Progress);
 

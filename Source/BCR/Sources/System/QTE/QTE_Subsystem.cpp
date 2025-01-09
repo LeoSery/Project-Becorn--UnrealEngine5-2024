@@ -178,20 +178,49 @@ void UQTE_Subsystem::ProcessPlayerInput(AMainPlayer* Player, ESnapPointType Snap
             return;
         }
     }
-    
-    bool bSuccess = ValidatePlayerAction(Player, Config);
 
+    // Vérifie d'abord si le joueur fait une action
+    bool isActing = false;
+    if (auto PC = Player->GetController<APlayerController>())
+    {
+        switch(Config.ActionType)
+        {
+            case EQTEActionType::Press:
+            case EQTEActionType::Release:
+                isActing = PC->WasInputKeyJustPressed(Config.RequiredInput) || 
+                          PC->WasInputKeyJustReleased(Config.RequiredInput);
+                break;
+            case EQTEActionType::Hold:
+                isActing = PC->IsInputKeyDown(Config.RequiredInput);
+                break;
+            case EQTEActionType::Rotate:
+                float X = 0.0f, Y = 0.0f;
+                PC->GetInputAnalogStickState(EControllerAnalogStick::CAS_LeftStick, X, Y);
+                isActing = FVector2D(X, Y).Size() > 0;
+                break;
+        }
+    }
+
+    // Détermine le résultat
+    EQTEResult result = EQTEResult::None;
+    if (isActing)
+    {
+        bool bSuccess = ValidatePlayerAction(Player, Config);
+        result = bSuccess ? EQTEResult::Success : EQTEResult::Failure;
+    }
+
+    // Broadcast le résultat
     switch (SnapPoint)
     {
-    case ESnapPointType::First:
-        OnSnapPointFirstResult.Broadcast(bSuccess);
-        break;
-    case ESnapPointType::Second:
-        OnSnapPointSecondResult.Broadcast(bSuccess);
-        break;
+        case ESnapPointType::First:
+            OnSnapPointFirstResult.Broadcast(result);
+            break;
+        case ESnapPointType::Second:
+            OnSnapPointSecondResult.Broadcast(result);
+            break;
     }
     
-    if (bSuccess)
+    if (result == EQTEResult::Success)
     {
         FQTEProgressData& NewProgress = ActionProgress.FindOrAdd(SnapPoint);
         NewProgress.SuccessCount++;
@@ -222,6 +251,7 @@ void UQTE_Subsystem::ProcessPlayerInput(AMainPlayer* Player, ESnapPointType Snap
             }
         }        
     }
+
     UpdateActionProgress(Player, SnapPoint, Config);
 }
 

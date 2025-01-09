@@ -6,6 +6,17 @@
 #include "QTETypes.generated.h"
 
 //////// ENUMS ////////
+
+/** 
+* @brief Résultats possibles d'une action QTE
+*/
+UENUM(BlueprintType)
+enum class EQTEResult : uint8 {
+    None        UMETA(DisplayName = "None"),
+    Success     UMETA(DisplayName = "Success"),
+    Failure     UMETA(DisplayName = "Failure")
+};
+
 /** 
 * @brief Types d'actions possibles dans le QTE 
 */

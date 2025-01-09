@@ -56,17 +56,13 @@ public:
 	TMap<UBillboardComponent*, AMainPlayer*> snapPointMap;
 
 	UFUNCTION(BlueprintCallable)
-	void RemoveItem(int index);
-
-	UFUNCTION(BlueprintCallable)
 	bool checkItemPresent();
 
 private:
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<APickableItem>> inputItems;
 	TArray<TSubclassOf<APickableItem>> itemList; /*Copy of inputItems*/
-
-
+	
 	UPROPERTY(EditAnywhere)
 	TMap<APickableItem*,TSubclassOf<APickableItem>> presentItem;
 
@@ -96,12 +92,12 @@ private:
 public:
 
 	UFUNCTION(BlueprintNativeEvent)
-	void OnFirstSnapPointResult(bool bSuccess);
-	void OnFirstSnapPointResult_Implementation(bool bSuccess);
+	void OnFirstSnapPointResult(EQTEResult Result);
+	void OnFirstSnapPointResult_Implementation(EQTEResult Result);
     
 	UFUNCTION(BlueprintNativeEvent)
-	void OnSecondSnapPointResult(bool bSuccess);
-	void OnSecondSnapPointResult_Implementation(bool bSuccess);
+	void OnSecondSnapPointResult(EQTEResult Result);
+	void OnSecondSnapPointResult_Implementation(EQTEResult Result);
 
 protected:
 	virtual void BeginPlay() override;
