@@ -272,6 +272,9 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 	}
 }
 
+
+
+
 void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
 {
 	FVector boxOrigin;
@@ -291,11 +294,21 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 				{
 					/* Get the name of the Object (name is given by the class of the pickable */
 					itemList.RemoveAt(i);
+					presentItem.Add(item);
 					Player->PickUp();
+					
 					return;
 				}
 			}
 			IBCR_Helper::LogScreen(this, "Item not in itemList");
 		}
 	}
+}
+
+void AMiniGameSystem::RemoveItem(int index)
+{
+	APickableItem* item = presentItem[index];
+	presentItem.Remove(item);
+	item->Destroy();
+
 }

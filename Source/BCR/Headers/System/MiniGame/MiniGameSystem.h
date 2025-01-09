@@ -52,10 +52,17 @@ public:
 
 	TMap<UBillboardComponent*, AMainPlayer*> snapPointMap;
 
+	UFUNCTION(BlueprintCallable)
+	void RemoveItem(int index);
 private:
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<APickableItem>> inputItems;
 	TArray<TSubclassOf<APickableItem>> itemList; /*Copy of inputItems*/
+
+
+	UPROPERTY(EditAnywhere)
+	TArray<APickableItem*> presentItem;
+
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<APickableItem>> outputItems;
 	UPROPERTY(EditAnywhere)
