@@ -16,6 +16,24 @@ void UQTE_Subsystem::Deinitialize()
     Super::Deinitialize();
 }
 
+void UQTE_Subsystem::Tick(float DeltaTime)
+{
+    if (CurrentState == EQTEState::Running && !bIsPaused)
+    {
+        ProcessInputs(DeltaTime);
+    }
+}
+
+bool UQTE_Subsystem::IsTickable() const
+{
+    return IsQTERunning() && !bIsPaused;
+}
+
+TStatId UQTE_Subsystem::GetStatId() const
+{
+    RETURN_QUICK_DECLARE_CYCLE_STAT(UQTE_Subsystem, STATGROUP_Tickables);
+}
+
 void UQTE_Subsystem::StartQTEFromAsset(const UQTEConfigurationAsset* Config)
 {
     if (!Config)
@@ -25,6 +43,7 @@ void UQTE_Subsystem::StartQTEFromAsset(const UQTEConfigurationAsset* Config)
 
     if (IsQTERunning())
     {
+        IBCR_Helper::LogAll(this, TEXT("StartQTEFromAsset: Invalid Starting > Already running"), 5.0f, FColor::Red);
         return;
     }
     
@@ -79,8 +98,7 @@ void UQTE_Subsystem::OnPlayerEnterSnapPoint(AMainPlayer* Player, ESnapPointType 
     IBCR_Helper::LogConsole(this, 
         FString::Printf(TEXT("Player registered at %s"), 
         *UEnum::GetValueAsString(SnapPoint)));
-
-    // visual log for demonstration
+    ////////////////////////////////////////////////
     
     if (GEngine)
     {
@@ -91,22 +109,7 @@ void UQTE_Subsystem::OnPlayerEnterSnapPoint(AMainPlayer* Player, ESnapPointType 
         if (ActivePlayers.Num() == 2)
         {
             GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Play the QTE !"));
-            
             SetQTEState(EQTEState::Running);
-        
-            if (UWorld* World = GetWorld())
-            {
-                World->GetTimerManager().SetTimer(ProcessTimerHandle, 
-                    [this]() 
-                    { 
-                        if (GetWorld())
-                        {
-                            ProcessInputs(GetWorld()->GetDeltaSeconds()); 
-                        }
-                    },
-                    0.006f,
-                    true);
-            }
         }
     }
 }
@@ -168,13 +171,9 @@ void UQTE_Subsystem::ProcessPlayerInput(AMainPlayer* Player, ESnapPointType Snap
                                   
         const FQTEProgressData* OtherProgress = ActionProgress.Find(OtherPoint);
         
-        if (Progress && Progress->SuccessCount > 0 && 
-            (!OtherProgress || OtherProgress->SuccessCount < Progress->SuccessCount))
+        if (Progress && Progress->SuccessCount > 0 && (!OtherProgress || OtherProgress->SuccessCount < Progress->SuccessCount))
         {
-            IBCR_Helper::LogConsole(this, 
-                            FString::Printf(TEXT("Waiting for other player. Current: %d, Other: %d"), 
-                                Progress->SuccessCount,
-                                OtherProgress ? OtherProgress->SuccessCount : 0));
+            IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Waiting for other player. Current: %d, Other: %d"), Progress->SuccessCount, OtherProgress ? OtherProgress->SuccessCount : 0));
             return;
         }
     }
@@ -350,7 +349,15 @@ void UQTE_Subsystem::UpdateActionProgress(const AMainPlayer* Player, ESnapPointT
         }
     }
 
-    OnQTEActionProgress.Broadcast(SnapPoint, Progress);
+    switch (SnapPoint)
+    {
+    case ESnapPointType::First:
+        OnSnapPointFirstProgress.Broadcast(Progress);
+        break;
+    case ESnapPointType::Second:
+        OnSnapPointSecondProgress.Broadcast(Progress);
+        break;
+    }
 }
 
 void UQTE_Subsystem::StopQTE()
@@ -379,12 +386,10 @@ void UQTE_Subsystem::SetQTEPaused(bool bPause)
     {
         if (bPause)
         {
-            World->GetTimerManager().PauseTimer(ProcessTimerHandle);
             World->GetTimerManager().PauseTimer(GlobalTimerHandle);
         }
         else
         {
-            World->GetTimerManager().UnPauseTimer(ProcessTimerHandle);
             World->GetTimerManager().UnPauseTimer(GlobalTimerHandle);
         }
     }
@@ -442,7 +447,6 @@ void UQTE_Subsystem::ClearTimers()
     if (UWorld* World = GetWorld())
     {
         World->GetTimerManager().ClearTimer(GlobalTimerHandle);
-        World->GetTimerManager().ClearTimer(ProcessTimerHandle);
     }
 }
 

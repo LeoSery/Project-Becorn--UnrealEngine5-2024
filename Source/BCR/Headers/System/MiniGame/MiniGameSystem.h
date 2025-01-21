@@ -99,6 +99,14 @@ public:
 	void OnSecondSnapPointResult(EQTEResult Result);
 	void OnSecondSnapPointResult_Implementation(EQTEResult Result);
 
+	UFUNCTION(BlueprintNativeEvent)
+	void OnFirstSnapPointProgress(const FQTEActionProgress& Progress);
+	void OnFirstSnapPointProgress_Implementation(const FQTEActionProgress& Progress);
+
+	UFUNCTION(BlueprintNativeEvent)
+	void OnSecondSnapPointProgress(const FQTEActionProgress& Progress);
+	void OnSecondSnapPointProgress_Implementation(const FQTEActionProgress& Progress);
+
 protected:
 	virtual void BeginPlay() override;
 };

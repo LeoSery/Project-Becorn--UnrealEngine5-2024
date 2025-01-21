@@ -45,6 +45,16 @@ void AMiniGameSystem::OnSecondSnapPointResult_Implementation(EQTEResult Result)
 		*UEnum::GetValueAsString(Result)));
 }
 
+void AMiniGameSystem::OnFirstSnapPointProgress_Implementation(const FQTEActionProgress& Progress)
+{
+
+}
+
+void AMiniGameSystem::OnSecondSnapPointProgress_Implementation(const FQTEActionProgress& Progress)
+{
+
+}
+
 // Called when the game starts or when spawned
 void AMiniGameSystem::BeginPlay()
 {
@@ -98,8 +108,12 @@ void AMiniGameSystem::StartExecute()
 					
 					// Binding callbacks
 					QTESystem->OnQTEComplete.AddDynamic(this, &AMiniGameSystem::FinishExecute);
+					
 					QTESystem->OnSnapPointFirstResult.AddDynamic(this, &AMiniGameSystem::OnFirstSnapPointResult);
 					QTESystem->OnSnapPointSecondResult.AddDynamic(this, &AMiniGameSystem::OnSecondSnapPointResult);
+
+					QTESystem->OnSnapPointFirstProgress.AddDynamic(this, &AMiniGameSystem::OnFirstSnapPointProgress);
+					QTESystem->OnSnapPointSecondProgress.AddDynamic(this, &AMiniGameSystem::OnSecondSnapPointProgress);
 
 					CallQTEReader();
 				}
@@ -143,8 +157,12 @@ void AMiniGameSystem::FinishExecute(bool _success)
 		if (UQTE_Subsystem* QTESystem = GameInstance->GetSubsystem<UQTE_Subsystem>())
 		{
 			QTESystem->OnQTEComplete.RemoveDynamic(this, &AMiniGameSystem::FinishExecute);
+			
 			QTESystem->OnSnapPointFirstResult.RemoveDynamic(this, &AMiniGameSystem::OnFirstSnapPointResult);
 			QTESystem->OnSnapPointSecondResult.RemoveDynamic(this, &AMiniGameSystem::OnSecondSnapPointResult);
+
+			QTESystem->OnSnapPointFirstProgress.RemoveDynamic(this, &AMiniGameSystem::OnFirstSnapPointProgress);
+			QTESystem->OnSnapPointSecondProgress.RemoveDynamic(this, &AMiniGameSystem::OnSecondSnapPointProgress);
 		}
 	}
 

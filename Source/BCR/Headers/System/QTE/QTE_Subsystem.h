@@ -13,10 +13,10 @@ class AMainPlayer;
 // Délégués pour communiquer les résultats
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSnapPointQTEResult, EQTEResult, Result);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnQTEComplete, bool, bSuccess);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnQTEActionProgress, ESnapPointType, SnapPoint, const FQTEActionProgress&, Progress);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnQTEProgress, const FQTEActionProgress&, Progress);
 
 UCLASS()
-class BCR_API UQTE_Subsystem : public UGameInstanceSubsystem
+class BCR_API UQTE_Subsystem : public UGameInstanceSubsystem, public FTickableGameObject
 {
     GENERATED_BODY()
 
@@ -24,6 +24,11 @@ public:
     // Initialisation/Deinitialisation
     virtual void Initialize(FSubsystemCollectionBase& Collection) override;
     virtual void Deinitialize() override;
+
+    // TickableGameObject
+    virtual void Tick(float DeltaTime) override;
+    virtual bool IsTickable() const override;
+    virtual TStatId GetStatId() const override;
 
     // Contrôle du QTE
     UFUNCTION(BlueprintCallable, Category = "QTE")
@@ -56,7 +61,10 @@ public:
     FOnQTEComplete OnQTEComplete;
     
     UPROPERTY(BlueprintAssignable, Category = "QTE")
-    FOnQTEActionProgress OnQTEActionProgress;
+    FOnQTEProgress OnSnapPointFirstProgress;
+    
+    UPROPERTY(BlueprintAssignable, Category = "QTE")
+    FOnQTEProgress OnSnapPointSecondProgress;
 
     EQTEState GetCurrentState() const { return CurrentState; }
 
@@ -74,7 +82,6 @@ private:
     
     // Timers
     FTimerHandle GlobalTimerHandle;
-    FTimerHandle ProcessTimerHandle;
 
     // Méthodes privées de traitement des inputs
     void ProcessInputs(float DeltaTime);
