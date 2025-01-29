@@ -39,7 +39,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void FinishExecute(bool _success);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void SpawnItem(int i);
 	UFUNCTION(BlueprintCallable)
 	void Reset();

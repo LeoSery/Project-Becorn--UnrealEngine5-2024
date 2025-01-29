@@ -47,12 +47,12 @@ void AMiniGameSystem::OnSecondSnapPointResult_Implementation(EQTEResult Result)
 
 void AMiniGameSystem::OnFirstSnapPointProgress_Implementation(const FQTEActionProgress& Progress)
 {
-
+	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 1 action")));
 }
 
 void AMiniGameSystem::OnSecondSnapPointProgress_Implementation(const FQTEActionProgress& Progress)
 {
-
+	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 2 action")));
 }
 
 // Called when the game starts or when spawned
@@ -178,8 +178,6 @@ void AMiniGameSystem::FinishExecute(bool _success)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Green, TEXT("Machine active!"));
 		}
-		
-		SpawnItem(0);
 	}
 	else
 	{
@@ -200,11 +198,13 @@ void AMiniGameSystem::SpawnItem(int i)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Production complete"));
 		}
-		
-		Reset();
 		return;
 	}
 	
+	FRotator Rotation(0.0f, 0.0f, 0.0f);
+	FActorSpawnParameters SpawnInfo;
+	GetWorld()->SpawnActor<APickableItem>(outputItems[i], outputSpawnPoint->GetComponentLocation(), GetActorRotation());
+
 	FTimerHandle TimerHandle;
 	FTimerDelegate TimerDelegate = FTimerDelegate::CreateUObject(this, &AMiniGameSystem::SpawnItem, i + 1);
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 3, false);
@@ -212,9 +212,7 @@ void AMiniGameSystem::SpawnItem(int i)
 	// technical log
 	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Spawning item: %s"), *outputItems[i].GetDefaultObject()->GetItemName()));
 
-	FRotator Rotation(0.0f, 0.0f, 0.0f);
-	FActorSpawnParameters SpawnInfo;
-	GetWorld()->SpawnActor<APickableItem>(outputItems[i], outputSpawnPoint->GetComponentLocation(), GetActorRotation());
+	
 }
 
 void AMiniGameSystem::Reset()
@@ -331,7 +329,7 @@ bool AMiniGameSystem::checkItemPresent()
 {
 	for (auto [item,CLASS] : presentItem)
 	{
-		if(IsValid(item))
+		if(!IsValid(item))
 		{
 			presentItem.Remove(item);
 			PartialReset(CLASS);
