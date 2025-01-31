@@ -329,8 +329,22 @@ void UQTE_Subsystem::UpdateActionProgress(const AMainPlayer* Player, ESnapPointT
                 float X = 0.0f, Y = 0.0f;
                 PC->GetInputAnalogStickState(EControllerAnalogStick::CAS_LeftStick, X, Y);
                 Progress.StickPosition = FVector2D(X, Y);
-                Progress.Progress = Progress.StickPosition.Size() / Config.MinRotationSpeed;
-                Progress.bIsActive = Progress.Progress > 0.0f;
+
+                const float MIN_STICK_THRESHOLD = 0.1f;
+                float stickMagnitude = Progress.StickPosition.Size();
+
+
+                if (stickMagnitude > MIN_STICK_THRESHOLD)
+                {
+                    Progress.Progress = Progress.StickPosition.Size() / Config.MinRotationSpeed;
+                    Progress.bIsActive = Progress.Progress > 0.0f;
+                }
+                else
+                {
+                    Progress.Progress = 0.0f;
+                    Progress.bIsActive = false;
+                }
+
                 break;
             }
             case EQTEActionType::Hold:
