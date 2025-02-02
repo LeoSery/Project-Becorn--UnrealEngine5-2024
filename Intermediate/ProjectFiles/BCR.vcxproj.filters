@@ -57,9 +57,6 @@
     <Filter Include="Source\BCR\Headers\Interfaces">
       <UniqueIdentifier>{4E95A235-9E41-34F5-AF1E-11EF1607E799}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\BCR\Headers\Interfaces\BCR_Helper.cpp">
-      <Filter>Source\BCR\Headers\Interfaces</Filter>
-    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\BCR_Helper.h">
       <Filter>Source\BCR\Headers\Interfaces</Filter>
     </ClInclude>
@@ -78,10 +75,10 @@
     <Filter Include="Source\BCR\Headers\System">
       <UniqueIdentifier>{48404AA9-D3F8-33FA-8131-FD108759B11F}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\BCR\Headers\System\AWood.cpp">
-      <Filter>Source\BCR\Headers\System</Filter>
-    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\AWood.h">
+      <Filter>Source\BCR\Headers\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\FurnitureAssembler.h">
       <Filter>Source\BCR\Headers\System</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h">
@@ -102,9 +99,6 @@
     <Filter Include="Source\BCR\Headers\System\QTE">
       <UniqueIdentifier>{0624CC9C-23FA-373F-9BCD-5769E5C03798}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.cpp">
-      <Filter>Source\BCR\Headers\System\QTE</Filter>
-    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.h">
       <Filter>Source\BCR\Headers\System\QTE</Filter>
     </ClInclude>
@@ -126,6 +120,9 @@
     <Filter Include="Source\BCR\Sources\Interfaces">
       <UniqueIdentifier>{16C9F7A9-90CA-3A60-AD74-3464E1BC5D86}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\Interfaces\BCR_Helper.cpp">
+      <Filter>Source\BCR\Sources\Interfaces</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\Interfaces\Interactable.cpp">
       <Filter>Source\BCR\Sources\Interfaces</Filter>
     </ClCompile>
@@ -141,6 +138,12 @@
     <Filter Include="Source\BCR\Sources\System">
       <UniqueIdentifier>{BF6DD5EA-E1BE-3243-9A84-1639932B18EE}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\AWood.cpp">
+      <Filter>Source\BCR\Sources\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\FurnitureAssembler.cpp">
+      <Filter>Source\BCR\Sources\System</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\MainCamera.cpp">
       <Filter>Source\BCR\Sources\System</Filter>
     </ClCompile>
@@ -159,6 +162,9 @@
     <Filter Include="Source\BCR\Sources\System\QTE">
       <UniqueIdentifier>{568C2636-A9C1-3C1D-9FAE-71DC7F638051}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTEConfigurationTypes.cpp">
+      <Filter>Source\BCR\Sources\System\QTE</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTE_Subsystem.cpp">
       <Filter>Source\BCR\Sources\System\QTE</Filter>
     </ClCompile>
