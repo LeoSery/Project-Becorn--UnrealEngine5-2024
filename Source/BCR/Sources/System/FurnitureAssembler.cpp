@@ -12,13 +12,13 @@ AFurnitureAssembler::AFurnitureAssembler()
 	
 	// Create Collision Box
 	AssemblerZone = CreateDefaultSubobject<UBoxComponent>(FName("Collision Zone"));
-	AssemblerZone->SetRelativeScale3D(FVector(10, 10, 2));
+	AssemblerZone->SetRelativeScale3D(FVector(2, 2, 2));
 	AssemblerZone->SetVisibility(true);
 	AssemblerZone->SetHiddenInGame(false);
 	AssemblerZone->SetVisibleInSceneCaptureOnly(false);
 
 	// Add event to the OnComponentBeginOverlap delegate
-	RootComponent = AssemblerZone;
+	RootComponent = CreateDefaultSubobject<USceneComponent>("Root");
 	AssemblerZone->OnComponentBeginOverlap.AddDynamic(this, &AFurnitureAssembler::OnOverlapBegin);
 
 	// Keep in memory the first recipie
