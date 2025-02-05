@@ -53,10 +53,21 @@ public:
 	void Interact_Implementation(AMainPlayer* Player);
 	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
 
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TMap<UBillboardComponent*, AMainPlayer*> snapPointMap;
 
 	UFUNCTION(BlueprintCallable)
 	bool checkItemPresent();
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UBillboardComponent* snapPlayerPoint1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UBillboardComponent* snapPlayerPoint2;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UBillboardComponent* outputSpawnPoint;
 
 private:
 	UPROPERTY(EditAnywhere)
@@ -74,14 +85,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* DefaultRootComponent;
 
-	UPROPERTY(EditAnywhere)
-	UBillboardComponent* snapPlayerPoint1;
-
-	UPROPERTY(EditAnywhere)
-	UBillboardComponent* snapPlayerPoint2;
-
-	UPROPERTY(EditAnywhere)
-	UBillboardComponent* outputSpawnPoint;
+	
 
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* inputBox;
