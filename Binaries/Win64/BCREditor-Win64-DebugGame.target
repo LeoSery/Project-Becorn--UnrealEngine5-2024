@@ -1,13 +1,13 @@
 {
 	"TargetName": "BCREditor",
 	"Platform": "Win64",
-	"Configuration": "Development",
+	"Configuration": "DebugGame",
 	"TargetType": "Editor",
 	"IsTestTarget": false,
 	"Architecture": "x64",
 	"Project": "../../BCR.uproject",
-	"Launch": "$(EngineDir)/Binaries/Win64/UnrealEditor.exe",
-	"LaunchCmd": "$(EngineDir)/Binaries/Win64/UnrealEditor-Cmd.exe",
+	"Launch": "$(EngineDir)/Binaries/Win64/UnrealEditor-Win64-DebugGame.exe",
+	"LaunchCmd": "$(EngineDir)/Binaries/Win64/UnrealEditor-Win64-DebugGame-Cmd.exe",
 	"Version": 
 	{
 		"MajorVersion": 5,
@@ -372,10 +372,6 @@
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealEditor-ClothingSystemRuntimeNv.dll",
 			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealEditor-Cmd.exe",
-			"Type": "Executable"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealEditor-CollectionManager.dll",
@@ -1682,6 +1678,14 @@
 			"Type": "DynamicLibrary"
 		},
 		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealEditor-Win64-DebugGame-Cmd.exe",
+			"Type": "Executable"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UnrealEditor-Win64-DebugGame.exe",
+			"Type": "Executable"
+		},
+		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealEditor-WindowsPlatformEditor.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -1712,10 +1716,6 @@
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealEditor-Zen.dll",
 			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UnrealEditor.exe",
-			"Type": "Executable"
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/UnrealEditor.modules",
@@ -3590,15 +3590,15 @@
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-BCR.dll",
+			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-BCR-Win64-DebugGame.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-BCR.pdb",
+			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-BCR-Win64-DebugGame.pdb",
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor.modules",
+			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-Win64-DebugGame.modules",
 			"Type": "RequiredResource"
 		}
 	],
