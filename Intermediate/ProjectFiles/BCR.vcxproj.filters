@@ -78,6 +78,9 @@
     <ClInclude Include="..\..\Source\BCR\Headers\System\AWood.h">
       <Filter>Source\BCR\Headers\System</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\DeliveryPoint.h">
+      <Filter>Source\BCR\Headers\System</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\BCR\Headers\System\FurnitureAssembler.h">
       <Filter>Source\BCR\Headers\System</Filter>
     </ClInclude>
@@ -139,6 +142,9 @@
       <UniqueIdentifier>{BF6DD5EA-E1BE-3243-9A84-1639932B18EE}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\BCR\Sources\System\AWood.cpp">
+      <Filter>Source\BCR\Sources\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\DeliveryPoint.cpp">
       <Filter>Source\BCR\Sources\System</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\FurnitureAssembler.cpp">

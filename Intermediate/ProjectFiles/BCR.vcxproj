@@ -272,6 +272,7 @@
     <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\IPickable.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\Player\MainPlayer.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\AWood.h"/>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\DeliveryPoint.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\FurnitureAssembler.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h"/>
@@ -295,6 +296,9 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\AWood.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\DeliveryPoint.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\FurnitureAssembler.cpp">
