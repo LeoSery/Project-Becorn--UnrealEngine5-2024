@@ -8,6 +8,7 @@
 #include "GameFramework/Actor.h"
 #include "BCR/Headers/System/Pickable/PickableItem.h"
 #include "BCR/Headers/Interfaces/Interactable.h"
+#include "BCR/Headers/System/DeliveryPoint.h"
 #include "FurnitureAssembler.generated.h"
 
 USTRUCT(BlueprintType)
@@ -18,7 +19,9 @@ struct FRecipiesInfo : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TMap<TSubclassOf<APickableItem>, int> Material;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<AActor> Out;
+	TSubclassOf<APickableItem> Out;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<ADeliveryPoint> DelivreryPoint;
 };
 
 UCLASS()
@@ -47,6 +50,9 @@ protected:
 	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
 
 public:
+	UFUNCTION(BlueprintCallable)
+	FRecipiesInfo GetActualRecipiesInfo();
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

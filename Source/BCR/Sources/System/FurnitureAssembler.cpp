@@ -2,6 +2,7 @@
 
 
 #include "BCR/Headers/System/FurnitureAssembler.h"
+#include "BCR/Headers/Player/MainPlayer.h"
 
 
 // Sets default values
@@ -19,16 +20,8 @@ AFurnitureAssembler::AFurnitureAssembler()
 
 	// Add event to the OnComponentBeginOverlap delegate
 	RootComponent = CreateDefaultSubobject<USceneComponent>("Root");
+	AssemblerZone->SetupAttachment(RootComponent);
 	AssemblerZone->OnComponentBeginOverlap.AddDynamic(this, &AFurnitureAssembler::OnOverlapBegin);
-
-	// Keep in memory the first recipie
-	AllRecipies = LoadObject<UDataTable>(nullptr, TEXT("/Game/Becorn/Data/DT_RecipiesList.DT_RecipiesList"));
-	if (AllRecipies)
-	{
-		RowsNames = AllRecipies->GetRowNames();
-		ActualRecipies = *AllRecipies->FindRow<FRecipiesInfo>(RowsNames[0], TEXT(""));
-		RowsNames.RemoveAt(0,1);
-	}
 }
 
 // Called when the game starts or when spawned
@@ -36,11 +29,24 @@ void AFurnitureAssembler::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	// Keep in memory the first recipie
+	AllRecipies = LoadObject<UDataTable>(nullptr, TEXT("/Game/Becorn/Data/DT_RecipiesList.DT_RecipiesList"));
+	if (AllRecipies)
+	{
+		RowsNames = AllRecipies->GetRowNames();
+		ActualRecipies = *AllRecipies->FindRow<FRecipiesInfo>(RowsNames[0], TEXT(""));
+		RowsNames.RemoveAt(0, 1);
+	}
 }
 
 void AFurnitureAssembler::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Poup"));
+}
+
+FRecipiesInfo AFurnitureAssembler::GetActualRecipiesInfo()
+{
+	return ActualRecipies;
 }
 
 void AFurnitureAssembler::CraftFurniture()
@@ -54,17 +60,17 @@ void AFurnitureAssembler::CraftFurniture()
 			return;
 		}
 	}
-
-	auto temp  = GetWorld()->SpawnActor<AActor>(ActualRecipies.Out);
-	temp->SetActorLocation(GetActorLocation());
+	auto temp = GetWorld()->SpawnActor<APickableItem>(ActualRecipies.Out, GetActorLocation(), FRotator(0.0f, 0.0f, 0.0f));
 }
 
 void AFurnitureAssembler::Interact_Implementation(AMainPlayer* Player)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("AAAAAAAAAAAAAAAAAAAAAAAAA")));
 }
 
 void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("POUP")));
 	if (Cast<IIPickable>(Object))
 	{
 		IIPickable::Execute_Drop(Object, this, Object);
@@ -73,11 +79,13 @@ void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player,
 		{
 			requieredMaterials[0]--;
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("requiered = %d"), requieredMaterials[0]));
+			Player->PickUp();
 			Object->Destroy();
 		}
 		else
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("ouille")));
+			Player->PickUp();
 			Object->Destroy();
 		}
 
