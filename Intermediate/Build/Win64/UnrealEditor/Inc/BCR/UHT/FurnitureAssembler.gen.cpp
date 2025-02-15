@@ -11,6 +11,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeFurnitureAssembler() {}
 
 // Begin Cross Module References
+BCR_API UClass* Z_Construct_UClass_ADeliveryPoint_NoRegister();
 BCR_API UClass* Z_Construct_UClass_AFurnitureAssembler();
 BCR_API UClass* Z_Construct_UClass_AFurnitureAssembler_NoRegister();
 BCR_API UClass* Z_Construct_UClass_APickableItem_NoRegister();
@@ -55,11 +56,16 @@ struct Z_Construct_UScriptStruct_FRecipiesInfo_Statics
 		{ "Category", "RecipiesInfo" },
 		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DelivreryPoint_MetaData[] = {
+		{ "Category", "RecipiesInfo" },
+		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FIntPropertyParams NewProp_Material_ValueProp;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_Material_Key_KeyProp;
 	static const UECodeGen_Private::FMapPropertyParams NewProp_Material;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_Out;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_DelivreryPoint;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static void* NewStructOps()
 	{
@@ -70,12 +76,14 @@ struct Z_Construct_UScriptStruct_FRecipiesInfo_Statics
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_Material_ValueProp = { "Material", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_Material_Key_KeyProp = { "Material_Key", nullptr, (EPropertyFlags)0x0004000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UClass, Z_Construct_UClass_APickableItem_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FMapPropertyParams Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_Material = { "Material", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FRecipiesInfo, Material), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Material_MetaData), NewProp_Material_MetaData) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_Out = { "Out", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FRecipiesInfo, Out), Z_Construct_UClass_UClass, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Out_MetaData), NewProp_Out_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_Out = { "Out", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FRecipiesInfo, Out), Z_Construct_UClass_UClass, Z_Construct_UClass_APickableItem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Out_MetaData), NewProp_Out_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_DelivreryPoint = { "DelivreryPoint", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FRecipiesInfo, DelivreryPoint), Z_Construct_UClass_UClass, Z_Construct_UClass_ADeliveryPoint_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DelivreryPoint_MetaData), NewProp_DelivreryPoint_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FRecipiesInfo_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_Material_ValueProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_Material_Key_KeyProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_Material,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_Out,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewProp_DelivreryPoint,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRecipiesInfo_Statics::PropPointers) < 2048);
 const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FRecipiesInfo_Statics::StructParams = {
@@ -129,6 +137,47 @@ DEFINE_FUNCTION(AFurnitureAssembler::execCraftFurniture)
 	P_NATIVE_END;
 }
 // End Class AFurnitureAssembler Function CraftFurniture
+
+// Begin Class AFurnitureAssembler Function GetActualRecipiesInfo
+struct Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics
+{
+	struct FurnitureAssembler_eventGetActualRecipiesInfo_Parms
+	{
+		FRecipiesInfo ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FurnitureAssembler_eventGetActualRecipiesInfo_Parms, ReturnValue), Z_Construct_UScriptStruct_FRecipiesInfo, METADATA_PARAMS(0, nullptr) }; // 1978195637
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFurnitureAssembler, nullptr, "GetActualRecipiesInfo", nullptr, nullptr, Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::PropPointers), sizeof(Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::FurnitureAssembler_eventGetActualRecipiesInfo_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::FurnitureAssembler_eventGetActualRecipiesInfo_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AFurnitureAssembler::execGetActualRecipiesInfo)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(FRecipiesInfo*)Z_Param__Result=P_THIS->GetActualRecipiesInfo();
+	P_NATIVE_END;
+}
+// End Class AFurnitureAssembler Function GetActualRecipiesInfo
 
 // Begin Class AFurnitureAssembler Function OnOverlapBegin
 struct Z_Construct_UFunction_AFurnitureAssembler_OnOverlapBegin_Statics
@@ -217,6 +266,7 @@ void AFurnitureAssembler::StaticRegisterNativesAFurnitureAssembler()
 	UClass* Class = AFurnitureAssembler::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "CraftFurniture", &AFurnitureAssembler::execCraftFurniture },
+		{ "GetActualRecipiesInfo", &AFurnitureAssembler::execGetActualRecipiesInfo },
 		{ "OnOverlapBegin", &AFurnitureAssembler::execOnOverlapBegin },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -243,6 +293,7 @@ struct Z_Construct_UClass_AFurnitureAssembler_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AFurnitureAssembler_CraftFurniture, "CraftFurniture" }, // 313351073
+		{ &Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo, "GetActualRecipiesInfo" }, // 1053763627
 		{ &Z_Construct_UFunction_AFurnitureAssembler_OnOverlapBegin, "OnOverlapBegin" }, // 1080084143
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -252,7 +303,7 @@ struct Z_Construct_UClass_AFurnitureAssembler_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_ActualRecipies = { "ActualRecipies", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFurnitureAssembler, ActualRecipies), Z_Construct_UScriptStruct_FRecipiesInfo, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ActualRecipies_MetaData), NewProp_ActualRecipies_MetaData) }; // 2786831274
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_ActualRecipies = { "ActualRecipies", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFurnitureAssembler, ActualRecipies), Z_Construct_UScriptStruct_FRecipiesInfo, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ActualRecipies_MetaData), NewProp_ActualRecipies_MetaData) }; // 1978195637
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFurnitureAssembler_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_ActualRecipies,
 };
@@ -297,18 +348,18 @@ AFurnitureAssembler::~AFurnitureAssembler() {}
 // End Class AFurnitureAssembler
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FRecipiesInfo::StaticStruct, Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewStructOps, TEXT("RecipiesInfo"), &Z_Registration_Info_UScriptStruct_RecipiesInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FRecipiesInfo), 2786831274U) },
+		{ FRecipiesInfo::StaticStruct, Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewStructOps, TEXT("RecipiesInfo"), &Z_Registration_Info_UScriptStruct_RecipiesInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FRecipiesInfo), 1978195637U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AFurnitureAssembler, AFurnitureAssembler::StaticClass, TEXT("AFurnitureAssembler"), &Z_Registration_Info_UClass_AFurnitureAssembler, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFurnitureAssembler), 3855372224U) },
+		{ Z_Construct_UClass_AFurnitureAssembler, AFurnitureAssembler::StaticClass, TEXT("AFurnitureAssembler"), &Z_Registration_Info_UClass_AFurnitureAssembler, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFurnitureAssembler), 255277653U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_3353108373(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_616045427(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo),
 	nullptr, 0);
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
