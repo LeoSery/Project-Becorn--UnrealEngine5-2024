@@ -56,14 +56,20 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Debug")
 	bool DebugVariables = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Movement")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Translation")
 	bool EnableVerticalMovement = true;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Movement", meta = (UIMin = 0.f))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Translation")
+	float VerticalOffset = 0.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Distance", meta = (UIMin = 0.f))
 	float MinimumArmLength = 4000.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Distance", meta = (UIMin = 0.f))
-	float VerticalBuffer = 400.f;
+	float MaximumArmLength = 16000.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Distance", meta = (UIMin = 0.f))
+	float DepthBuffer = 400.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Distance", meta = (UIMin = 0.f))
 	float HorizontalBuffer = 200.f;
@@ -105,7 +111,9 @@ public:
 private:
 
 	TArray<ACharacter*> Players;
-	float CameraBaseHeight = 0.f;
+
+	float MaxPlayerHorizontalDistance = MAX_FLT;
+	float MaxPlayerDepthDistance = MAX_FLT;
 
 //Public functions
 public:
@@ -119,7 +127,8 @@ private:
 	void UpdatePosition();
 	void UpdateArmLenght();
 	void UpdateArmAngle();
-	void UpdateBlur(float VerticalPlayerDistance);
+	void UpdateBlur(float DepthPlayerDistance);
+	void ConstrainPlayerPositions();
 
 	FVector2D Get2DVect(FVector vect3d);
 	float GetAlpha(float value, float min, float max);

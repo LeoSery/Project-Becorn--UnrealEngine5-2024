@@ -140,15 +140,24 @@ struct Z_Construct_UClass_AMainCamera_Statics
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_EnableVerticalMovement_MetaData[] = {
-		{ "Category", "Parameters|Movement" },
+		{ "Category", "Parameters|Translation" },
+		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_VerticalOffset_MetaData[] = {
+		{ "Category", "Parameters|Translation" },
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MinimumArmLength_MetaData[] = {
-		{ "Category", "Parameters|Movement" },
+		{ "Category", "Parameters|Distance" },
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
 		{ "UIMin", "0.000000" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_VerticalBuffer_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaximumArmLength_MetaData[] = {
+		{ "Category", "Parameters|Distance" },
+		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+		{ "UIMin", "0.000000" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DepthBuffer_MetaData[] = {
 		{ "Category", "Parameters|Distance" },
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
 		{ "UIMin", "0.000000" },
@@ -219,8 +228,10 @@ struct Z_Construct_UClass_AMainCamera_Statics
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_DebugVariables;
 	static void NewProp_EnableVerticalMovement_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_EnableVerticalMovement;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_VerticalOffset;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MinimumArmLength;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_VerticalBuffer;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaximumArmLength;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_DepthBuffer;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_HorizontalBuffer;
 	static void NewProp_UseAngleChange_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_UseAngleChange;
@@ -264,8 +275,10 @@ void Z_Construct_UClass_AMainCamera_Statics::NewProp_EnableVerticalMovement_SetB
 	((AMainCamera*)Obj)->EnableVerticalMovement = 1;
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_EnableVerticalMovement = { "EnableVerticalMovement", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AMainCamera), &Z_Construct_UClass_AMainCamera_Statics::NewProp_EnableVerticalMovement_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EnableVerticalMovement_MetaData), NewProp_EnableVerticalMovement_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_VerticalOffset = { "VerticalOffset", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, VerticalOffset), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_VerticalOffset_MetaData), NewProp_VerticalOffset_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_MinimumArmLength = { "MinimumArmLength", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, MinimumArmLength), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MinimumArmLength_MetaData), NewProp_MinimumArmLength_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_VerticalBuffer = { "VerticalBuffer", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, VerticalBuffer), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_VerticalBuffer_MetaData), NewProp_VerticalBuffer_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_MaximumArmLength = { "MaximumArmLength", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, MaximumArmLength), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaximumArmLength_MetaData), NewProp_MaximumArmLength_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_DepthBuffer = { "DepthBuffer", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, DepthBuffer), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DepthBuffer_MetaData), NewProp_DepthBuffer_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_HorizontalBuffer = { "HorizontalBuffer", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, HorizontalBuffer), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HorizontalBuffer_MetaData), NewProp_HorizontalBuffer_MetaData) };
 void Z_Construct_UClass_AMainCamera_Statics::NewProp_UseAngleChange_SetBit(void* Obj)
 {
@@ -290,8 +303,10 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainCame
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DebugLocation,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DebugVariables,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_EnableVerticalMovement,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_VerticalOffset,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_MinimumArmLength,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_VerticalBuffer,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_MaximumArmLength,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DepthBuffer,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_HorizontalBuffer,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_UseAngleChange,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_MinAngleReachedAtArmLength,
@@ -343,14 +358,14 @@ AMainCamera::~AMainCamera() {}
 // End Class AMainCamera
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainCamera, AMainCamera::StaticClass, TEXT("AMainCamera"), &Z_Registration_Info_UClass_AMainCamera, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainCamera), 1791858607U) },
+		{ Z_Construct_UClass_AMainCamera, AMainCamera::StaticClass, TEXT("AMainCamera"), &Z_Registration_Info_UClass_AMainCamera, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainCamera), 2812861535U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MainCamera_h_763950743(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MainCamera_h_4029123559(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
