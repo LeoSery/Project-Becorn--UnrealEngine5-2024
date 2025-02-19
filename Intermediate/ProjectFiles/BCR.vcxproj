@@ -275,11 +275,13 @@
     <ClInclude Include="..\..\Source\BCR\Headers\System\DeliveryPoint.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\FurnitureAssembler.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h"/>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.h" />
     <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\Pickable\PickableItem.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTETypes.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Subsystem.h"/>
+    <ClCompile Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.cpp" />
     <ClCompile Include="..\..\Source\BCR\Sources\Core\MainGamemode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
