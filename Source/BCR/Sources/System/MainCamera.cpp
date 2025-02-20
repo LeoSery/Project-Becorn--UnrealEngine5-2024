@@ -37,7 +37,7 @@ void AMainCamera::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (!Players[0] || !Players[1])
+	if (!IsValid(Players[0]) || !IsValid(Players[1]))
 	{
 		return;
 	}
@@ -45,6 +45,7 @@ void AMainCamera::Tick(float DeltaTime)
 	UpdatePosition();
 	UpdateArmLenght();
 	UpdateArmAngle();
+	ConstrainPlayerPositions();
 }
 
 void AMainCamera::SetPlayers(ACharacter* Player1, ACharacter* Player2)
@@ -54,7 +55,6 @@ void AMainCamera::SetPlayers(ACharacter* Player1, ACharacter* Player2)
 
 void AMainCamera::InitParam()
 {
-	CameraBaseHeight = GetActorLocation().Z;
 	DebugSphere->SetHiddenInGame(!DebugLocation);
 
 	FollowCamera->FocusSettings.TrackingFocusSettings.ActorToTrack = this;
@@ -75,9 +75,13 @@ void AMainCamera::UpdatePosition()
 	}
 	AveragePosition = AveragePosition / Players.Num();
 
-	if (!EnableVerticalMovement)
+	if (EnableVerticalMovement)
 	{
-		AveragePosition.Z = CameraBaseHeight;
+		AveragePosition.Z += VerticalOffset;
+	}
+	else
+	{
+		AveragePosition.Z = VerticalOffset;
 	}
 
 	SetActorLocation(AveragePosition);
@@ -113,25 +117,30 @@ void AMainCamera::UpdateArmLenght()
 
 	float TotalArmLengthHor = EdgeDistHor / TanDemiAngleHor;
 
-	//VERTICAL
+	//DEPTH
 	FVector BackVector = UKismetMathLibrary::RotateAngleAxis(-GetActorForwardVector(), GetActorRotation().Pitch, GetActorRightVector());
-	float PlayerDistVer = FMath::Abs(UKismetMathLibrary::DotProduct2D(Get2DVect(BackVector).GetSafeNormal(), Get2DVect(PlayerDistVec)));
-	float EdgeDistVer = (PlayerDistVer / 2) + VerticalBuffer;
-	float TanDemiAngleVer = UKismetMathLibrary::DegTan(FollowCamera->GetVerticalFieldOfView() / 2);
+	float PlayerDistDepth = FMath::Abs(UKismetMathLibrary::DotProduct2D(Get2DVect(BackVector).GetSafeNormal(), Get2DVect(PlayerDistVec)));
+	float EdgeDistDepth = (PlayerDistDepth / 2) + DepthBuffer;
+	float TanDemiAngleDepth = UKismetMathLibrary::DegTan(FollowCamera->GetVerticalFieldOfView() / 2);
 
-	float TotalArmLengthVer = (UKismetMathLibrary::DegSin(-GetActorRotation().Pitch) * EdgeDistVer / TanDemiAngleVer) +
-		(UKismetMathLibrary::DegCos(-GetActorRotation().Pitch) * EdgeDistVer);
+	float TotalArmLengthDepth = (UKismetMathLibrary::DegSin(-GetActorRotation().Pitch) * EdgeDistDepth / TanDemiAngleDepth) +
+		(UKismetMathLibrary::DegCos(-GetActorRotation().Pitch) * EdgeDistDepth);
 
-	CameraBoom->TargetArmLength = FMath::Max3(TotalArmLengthHor, TotalArmLengthVer, MinimumArmLength);
+	float UnclampedDistance = FMath::Max(TotalArmLengthHor, TotalArmLengthDepth);
+	float FinalArmLength = FMath::Clamp(UnclampedDistance, MinimumArmLength, MaximumArmLength);
+	CameraBoom->TargetArmLength = FinalArmLength;
 
-	UpdateBlur(PlayerDistVer);
+	MaxPlayerHorizontalDistance = MaximumArmLength * TanDemiAngleHor * 2;
+	MaxPlayerDepthDistance = (MaximumArmLength * TanDemiAngleDepth) / (UKismetMathLibrary::DegCos(-GetActorRotation().Pitch) * TanDemiAngleDepth + UKismetMathLibrary::DegSin(-GetActorRotation().Pitch));
+
+	UpdateBlur(PlayerDistDepth);
 
 	if (DebugVariables)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Horizontal FOV = %f"), FollowCamera->GetHorizontalFieldOfView()));
 		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Vertical FOV = %f"), FollowCamera->GetVerticalFieldOfView()));
 
-		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Player distance vertical = %f"), PlayerDistVer));
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Player distance vertical = %f"), PlayerDistDepth));
 		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Player distance horizontal = %f"), PlayerDistHor));
 		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Player distance = %f"), PlayerDistVec.Size()));
 		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Spring arm length offset = %f"), CameraBoom->TargetArmLength - MinimumArmLength));
@@ -159,11 +168,118 @@ void AMainCamera::UpdateArmAngle()
 	}
 }
 
-void AMainCamera::UpdateBlur(float VerticalPlayerDistance)
+void AMainCamera::UpdateBlur(float DepthPlayerDistance)
 {
-	float FStopAlpha = GetAlpha(VerticalPlayerDistance, MaxBlurAtDistance, MinBlurAtDistance);
+	float FStopAlpha = GetAlpha(DepthPlayerDistance, MaxBlurAtDistance, MinBlurAtDistance);
 	float Aperture = GetValue(FStopAlpha, MinFStop, MaxFStop);
 	FollowCamera->CurrentAperture = Aperture / BlurMultiplier;
+}
+
+void AMainCamera::ConstrainPlayerPositions()
+{
+	FVector player1Pos = Players[0]->GetActorLocation();
+	FVector player2Pos = Players[1]->GetActorLocation();
+
+	// Get camera's right and forward vectors (normalized)
+	FVector rightVector = GetActorRightVector();
+	FVector forwardVector = GetActorForwardVector();
+
+	// Calculate the delta vector between players
+	FVector deltaVector = player2Pos - player1Pos;
+
+	// Project the delta onto right and forward vectors
+	float horizontalDist = FMath::Abs(FVector::DotProduct(deltaVector, rightVector));
+	float depthDist = FMath::Abs(FVector::DotProduct(deltaVector, forwardVector));
+
+	// Get player velocities
+	FVector player1Vel = Players[0]->GetVelocity();
+	FVector player2Vel = Players[1]->GetVelocity();
+
+	bool isPlayer1Moving = player1Vel.SizeSquared() > 0;
+	bool isPlayer2Moving = player2Vel.SizeSquared() > 0;
+
+	// Store original positions
+	FVector newPos1 = player1Pos;
+	FVector newPos2 = player2Pos;
+
+	// Handle constraints
+	if (horizontalDist > MaxPlayerHorizontalDistance || depthDist > MaxPlayerDepthDistance)
+	{
+		// Determine which player to move based on velocity
+		bool movePlayer1 = false;
+		bool movePlayer2 = false;
+
+		if (isPlayer1Moving && !isPlayer2Moving)
+		{
+			movePlayer1 = true;
+		}
+		else if (isPlayer2Moving && !isPlayer1Moving)
+		{
+			movePlayer2 = true;
+		}
+		else if (isPlayer1Moving && isPlayer2Moving)
+		{
+			// If both are moving, move the one that traveled further
+			float dist1 = FVector::DistSquared(player1Pos - player1Vel * GetWorld()->GetDeltaSeconds(), player2Pos);
+			float dist2 = FVector::DistSquared(player2Pos - player2Vel * GetWorld()->GetDeltaSeconds(), player1Pos);
+			movePlayer1 = (dist1 > dist2);
+			movePlayer2 = !movePlayer1;
+		}
+
+		// Apply constraints
+		if (movePlayer1)
+		{
+			// Calculate the constrained position for player 1
+			FVector constrainedDelta = deltaVector;
+
+			if (horizontalDist > MaxPlayerHorizontalDistance)
+			{
+				float horizontalScale = MaxPlayerHorizontalDistance / horizontalDist;
+				FVector horizontalComponent = FVector::DotProduct(deltaVector, rightVector) * rightVector;
+				constrainedDelta = horizontalComponent * horizontalScale + (deltaVector - horizontalComponent);
+			}
+
+			if (depthDist > MaxPlayerDepthDistance)
+			{
+				float depthScale = MaxPlayerDepthDistance / depthDist;
+				FVector depthComponent = FVector::DotProduct(constrainedDelta, forwardVector) * forwardVector;
+				constrainedDelta = depthComponent * depthScale + (constrainedDelta - depthComponent);
+			}
+
+			newPos1 = player2Pos - constrainedDelta;
+		}
+		else if (movePlayer2)
+		{
+			// Calculate the constrained position for player 2
+			FVector constrainedDelta = deltaVector;
+
+			if (horizontalDist > MaxPlayerHorizontalDistance)
+			{
+				float horizontalScale = MaxPlayerHorizontalDistance / horizontalDist;
+				FVector horizontalComponent = FVector::DotProduct(deltaVector, rightVector) * rightVector;
+				constrainedDelta = horizontalComponent * horizontalScale + (deltaVector - horizontalComponent);
+			}
+
+			if (depthDist > MaxPlayerDepthDistance)
+			{
+				float depthScale = MaxPlayerDepthDistance / depthDist;
+				FVector depthComponent = FVector::DotProduct(constrainedDelta, forwardVector) * forwardVector;
+				constrainedDelta = depthComponent * depthScale + (constrainedDelta - depthComponent);
+			}
+
+			newPos2 = player1Pos + constrainedDelta;
+		}
+	}
+
+	// Apply the new positions
+	if (newPos1 != player1Pos)
+	{
+		Players[0]->SetActorLocation(newPos1, true);
+	}
+	if (newPos2 != player2Pos)
+	{
+		Players[1]->SetActorLocation(newPos2, true);
+	}
 }
 
 FVector2D AMainCamera::Get2DVect(FVector vect3d)

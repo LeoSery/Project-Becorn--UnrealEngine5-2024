@@ -16,7 +16,6 @@ BCR_API UClass* Z_Construct_UClass_AMiniGameSystem();
 BCR_API UClass* Z_Construct_UClass_AMiniGameSystem_NoRegister();
 BCR_API UClass* Z_Construct_UClass_APickableItem_NoRegister();
 BCR_API UClass* Z_Construct_UClass_UInteractable_NoRegister();
-BCR_API UClass* Z_Construct_UClass_ULocomotionConfigurationAsset_NoRegister();
 BCR_API UClass* Z_Construct_UClass_UQTEConfigurationAsset_NoRegister();
 BCR_API UEnum* Z_Construct_UEnum_BCR_EQTEResult();
 BCR_API UFunction* Z_Construct_UDelegateFunction_BCR_OnEndQTESignature__DelegateSignature();
@@ -769,10 +768,6 @@ struct Z_Construct_UClass_AMiniGameSystem_Statics
 		{ "Category", "MiniGameSystem" },
 		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_locomotionConfigs_MetaData[] = {
-		{ "Category", "MiniGameSystem" },
-		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
-	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DefaultRootComponent_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Camera" },
@@ -803,8 +798,6 @@ struct Z_Construct_UClass_AMiniGameSystem_Statics
 	static const UECodeGen_Private::FClassPropertyParams NewProp_outputItems_Inner;
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_outputItems;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_QTEConfig;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_locomotionConfigs_Inner;
-	static const UECodeGen_Private::FArrayPropertyParams NewProp_locomotionConfigs;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultRootComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_inputBox;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxSnapPointDistance;
@@ -847,8 +840,6 @@ const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_AMiniGameSystem_S
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_outputItems_Inner = { "outputItems", nullptr, (EPropertyFlags)0x0004000000000000, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UClass, Z_Construct_UClass_APickableItem_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_outputItems = { "outputItems", nullptr, (EPropertyFlags)0x0044000000000001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, outputItems), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_outputItems_MetaData), NewProp_outputItems_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_QTEConfig = { "QTEConfig", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, QTEConfig), Z_Construct_UClass_UQTEConfigurationAsset_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_QTEConfig_MetaData), NewProp_QTEConfig_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_locomotionConfigs_Inner = { "locomotionConfigs", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_ULocomotionConfigurationAsset_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_locomotionConfigs = { "locomotionConfigs", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, locomotionConfigs), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_locomotionConfigs_MetaData), NewProp_locomotionConfigs_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_DefaultRootComponent = { "DefaultRootComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, DefaultRootComponent), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DefaultRootComponent_MetaData), NewProp_DefaultRootComponent_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_inputBox = { "inputBox", nullptr, (EPropertyFlags)0x0040000000080009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, inputBox), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_inputBox_MetaData), NewProp_inputBox_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_MaxSnapPointDistance = { "MaxSnapPointDistance", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, MaxSnapPointDistance), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxSnapPointDistance_MetaData), NewProp_MaxSnapPointDistance_MetaData) };
@@ -867,8 +858,6 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMiniGame
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_outputItems_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_outputItems,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_QTEConfig,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_locomotionConfigs_Inner,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_locomotionConfigs,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_DefaultRootComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_inputBox,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_MaxSnapPointDistance,
@@ -914,14 +903,14 @@ AMiniGameSystem::~AMiniGameSystem() {}
 // End Class AMiniGameSystem
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 1268120866U) },
+		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 3032759448U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_2426155328(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_4119501644(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
