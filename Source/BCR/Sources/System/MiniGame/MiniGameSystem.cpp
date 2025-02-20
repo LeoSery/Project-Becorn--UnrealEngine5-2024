@@ -265,7 +265,9 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 
 			if (Cast<ILocomotional>(Player))
 			{
-				ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[0]);
+				if (locomotionConfigs.Num() > 0) {
+					ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[0]);
+				}
 			}
 			
 			//set state machine to liberate the player
@@ -279,7 +281,9 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 
 			if (Cast<ILocomotional>(Player))
 			{
-				ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[1]);
+				if (locomotionConfigs.Num() > 0) {
+					ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[1]);
+				}
 			}
 			
 			//set state machine to liberate the player
