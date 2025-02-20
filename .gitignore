@@ -501,6 +501,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-Intermediate/ShaderAutogen/PCD3D_SM6/AutogenShaderHeaders.ush
-Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush
-Intermediate/CachedAssetRegistry_0.bin
+
