@@ -4,6 +4,7 @@
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
 #include "BCR/Headers/Interfaces/BCR_Helper.h"
+#include "BCR/Headers/Interfaces/Locomotional.h"
 #include "MainPlayer.generated.h"
 
 class USpringArmComponent;
@@ -11,11 +12,12 @@ class UCameraComponent;
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
+class ULocomotionConfigurationAsset;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
-class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper
+class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper, public ILocomotional
 {
 	GENERATED_BODY()
 	
@@ -45,8 +47,9 @@ public:
 	AMainPlayer();
 
 	void PickUp();
-	
 	void Interact();
+	
+	virtual FLocomotionConfiguration SetLocomotionConfig_Implementation(ULocomotionConfigurationAsset* NewConfig) override;
 
 protected:
 
@@ -55,16 +58,12 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
-			
 	
-
-	
-
-
 	bool PickedUpSomething = false;
 	AActor* PickedUpObject;
 
-protected:
+	ULocomotionConfigurationAsset* LocomotionConfig;
+	
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	

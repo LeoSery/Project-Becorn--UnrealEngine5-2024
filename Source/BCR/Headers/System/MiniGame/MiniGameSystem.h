@@ -9,6 +9,9 @@
 #include <Components/BillboardComponent.h>
 #include "MiniGameSystem.generated.h"
 
+class UQTEConfigurationAsset;
+class ULocomotionConfigurationAsset;
+
 UDELEGATE()
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEndQTESignature, bool, _resultStatus);
 
@@ -53,7 +56,6 @@ public:
 	void Interact_Implementation(AMainPlayer* Player);
 	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
 
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TMap<UBillboardComponent*, AMainPlayer*> snapPointMap;
 
@@ -81,11 +83,11 @@ private:
 	TArray<TSubclassOf<APickableItem>> outputItems;
 	UPROPERTY(EditAnywhere)
 	UQTEConfigurationAsset* QTEConfig;
+	UPROPERTY(EditAnywhere)
+	TArray<ULocomotionConfigurationAsset*> locomotionConfigs;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* DefaultRootComponent;
-
-	
 
 	UPROPERTY(EditAnywhere)
 	UBoxComponent* inputBox;

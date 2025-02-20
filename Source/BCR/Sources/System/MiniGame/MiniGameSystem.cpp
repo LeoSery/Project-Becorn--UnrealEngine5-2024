@@ -7,6 +7,7 @@
 #include <Kismet/KismetSystemLibrary.h>
 #include "BCR/Headers/System/QTE/QTE_Subsystem.h"
 #include "BCR/Headers/Player/MainPlayer.h"
+#include "BCR/Headers/System/MiniGame/LocomotionConfigurationTypes.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "BCR/Headers/System/QTE/QTETypes.h"
@@ -261,6 +262,12 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 		{
 			snapPointMap.Add(snapPlayerPoint1, nullptr);
 			QTESystem->OnPlayerLeaveSnapPoint(Player, ESnapPointType::First);
+
+			if (Cast<ILocomotional>(Player))
+			{
+				ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[0]);
+			}
+			
 			//set state machine to liberate the player
 			Player->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
 			return;
@@ -269,6 +276,12 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 		{
 			snapPointMap.Add(snapPlayerPoint2, nullptr);
 			QTESystem->OnPlayerLeaveSnapPoint(Player, ESnapPointType::Second);
+
+			if (Cast<ILocomotional>(Player))
+			{
+				ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[1]);
+			}
+			
 			//set state machine to liberate the player
 			Player->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
 			return;

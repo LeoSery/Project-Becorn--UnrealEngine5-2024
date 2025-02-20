@@ -12,6 +12,7 @@
 #include "BCR/Headers/Interfaces/IPickable.h"
 #include "BCR/Headers/Interfaces/Interactable.h"
 #include "BCR/Headers/Interfaces/BCR_Helper.h"
+#include "BCR/Headers/System/MiniGame/LocomotionConfigurationTypes.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -175,4 +176,10 @@ void AMainPlayer::Interact() {
 		}
 
 	}
+}
+
+FLocomotionConfiguration AMainPlayer::SetLocomotionConfig_Implementation(ULocomotionConfigurationAsset* NewConfig)
+{
+	LocomotionConfig = NewConfig;
+	return NewConfig->ToRuntimeConfig();
 }
