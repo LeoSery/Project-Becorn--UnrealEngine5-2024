@@ -26,11 +26,6 @@
 		{
 			"Name": "HDRIBackdrop",
 			"Enabled": true
-		},
-		{
-			"Name": "LDA2",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/4c86d2401aa7424f8ceb23454c48a0db"
 		}
 	]
 }
