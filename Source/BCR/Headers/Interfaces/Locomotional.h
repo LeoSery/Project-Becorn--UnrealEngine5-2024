@@ -23,4 +23,9 @@ public:
 	FLocomotionConfiguration SetLocomotionConfig(ULocomotionConfigurationAsset* NewConfig);
 
 	virtual FLocomotionConfiguration SetLocomotionConfig_Implementation(ULocomotionConfigurationAsset* NewConfig);
+
+	UFUNCTION(BlueprintCallable,BlueprintNativeEvent)
+	FLocomotionConfiguration ResetLocomotionConfig();
+
+	virtual FLocomotionConfiguration ResetLocomotionConfig_Implementation();
 };

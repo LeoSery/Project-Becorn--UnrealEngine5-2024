@@ -48,7 +48,8 @@ public:
 
 	void PickUp();
 	void Interact();
-	
+
+	virtual FLocomotionConfiguration ResetLocomotionConfig_Implementation() override;
 	virtual FLocomotionConfiguration SetLocomotionConfig_Implementation(ULocomotionConfigurationAsset* NewConfig) override;
 
 protected:
@@ -62,7 +63,10 @@ protected:
 	bool PickedUpSomething = false;
 	AActor* PickedUpObject;
 
-	ULocomotionConfigurationAsset* LocomotionConfig;
+	UPROPERTY(EditAnywhere)
+	ULocomotionConfigurationAsset* DefaultLocomotionConfig;
+	
+	ULocomotionConfigurationAsset* CurrentLocomotionConfig;
 	
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

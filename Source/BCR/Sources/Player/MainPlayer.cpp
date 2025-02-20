@@ -1,9 +1,7 @@
 #include "BCR/Headers/Player/MainPlayer.h"
 #include "Engine/LocalPlayer.h"
-#include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/Controller.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
@@ -53,6 +51,8 @@ void AMainPlayer::BeginPlay()
 
 	IBCR_Helper::LogScreen(this, "Player started", 5.0f, FColor::Green);
 
+	ResetLocomotionConfig_Implementation();
+	
 	// Custom log
 	CustomLogAll("Player ready", 5.0f, FColor::Green);
 }
@@ -125,14 +125,17 @@ void AMainPlayer::Look(const FInputActionValue& Value)
 	}
 }
 
-TArray<FHitResult> Detect_Object(AActor* Player) {
+TArray<FHitResult> Detect_Object(AActor* Player)
+{
 	const FVector Pos = Player->GetActorLocation() + Player->GetActorForwardVector();
 	const FName ProfileName = "BlockAll";
 	constexpr ECollisionChannel Channel = ECC_Visibility;
 	const FCollisionShape ColCapsule = FCollisionShape::MakeBox(FVector(100));
 	const TArray<AActor*> ActorsToIgnore = { Player };
 	TArray<FHitResult> OutHits = {};
+	
 	DrawDebugBox(Player->GetWorld(), Pos + Player->GetActorForwardVector() * 100, ColCapsule.GetBox(), Player->GetActorForwardVector().ToOrientationQuat(), FColor::Orange);
+	
 	if (Player->GetWorld()->SweepMultiByChannel(OutHits, Pos, Pos, Player->GetActorUpVector().ToOrientationQuat(), Channel, ColCapsule))
 	{
 		return OutHits;
@@ -141,45 +144,67 @@ TArray<FHitResult> Detect_Object(AActor* Player) {
 	return OutHits;
 }
 
-void AMainPlayer::PickUp() {
-	if (PickedUpSomething) {
+void AMainPlayer::PickUp()
+{
+	if (PickedUpSomething)
+	{
 		IIPickable::Execute_Drop(PickedUpObject, this, PickedUpObject);
 		PickedUpSomething = false;
 		PickedUpObject = __nullptr;
 	}
-	else {
+	else
+	{
 		TArray<FHitResult> OutHits = Detect_Object(this);
+		
 		for (const FHitResult OutHit : OutHits)
 		{
-			if (Cast<IIPickable>(OutHit.GetActor())) {
+			if (Cast<IIPickable>(OutHit.GetActor()))
+			{
 				IIPickable::Execute_PickedUp(OutHit.GetActor(), this, OutHit.GetActor());
-					PickedUpSomething = true;
+				PickedUpSomething = true;
 				PickedUpObject = OutHit.GetActor();
 			}
-				
 		}
-		
 	}
 }
 
-void AMainPlayer::Interact() {
+void AMainPlayer::Interact()
+{
 	TArray<FHitResult> OutHits = Detect_Object(this);
+	
 	for (const FHitResult OutHit : OutHits)
 	{
-		if(PickedUpObject && Cast<IInteractable>(OutHit.GetActor())){
+		if(PickedUpObject && Cast<IInteractable>(OutHit.GetActor()))
+		{
 			IInteractable::Execute_InteractWithObject(OutHit.GetActor(), this,PickedUpObject);
 			return;
 		}
-		else if (Cast<IInteractable>(OutHit.GetActor())) {
+		else if (Cast<IInteractable>(OutHit.GetActor()))
+		{
 			IInteractable::Execute_Interact(OutHit.GetActor(), this);
 			return;
 		}
-
 	}
+}
+
+FLocomotionConfiguration AMainPlayer::ResetLocomotionConfig_Implementation()
+{
+	if (DefaultLocomotionConfig != nullptr)
+	{
+		CurrentLocomotionConfig = DefaultLocomotionConfig;
+		return CurrentLocomotionConfig->ToRuntimeConfig();
+	}
+	IBCR_Helper::LogAll(this, TEXT("AMainPlayer::ResetLocomotionConfig_Implementation: Config Asset is null"), 5.0f, FColor::Red);
+	return FLocomotionConfiguration();
 }
 
 FLocomotionConfiguration AMainPlayer::SetLocomotionConfig_Implementation(ULocomotionConfigurationAsset* NewConfig)
 {
-	LocomotionConfig = NewConfig;
-	return NewConfig->ToRuntimeConfig();
+	if (NewConfig != nullptr)
+	{
+		CurrentLocomotionConfig = NewConfig;
+		return CurrentLocomotionConfig->ToRuntimeConfig();
+	}
+	IBCR_Helper::LogAll(this, TEXT("AMainPlayer::SetLocomotionConfig_Implementation: Invalid machine locomotion Config Asset"), 5.0f, FColor::Red);
+	return FLocomotionConfiguration();
 }

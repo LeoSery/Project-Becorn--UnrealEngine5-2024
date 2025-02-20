@@ -5,3 +5,8 @@ FLocomotionConfiguration ILocomotional::SetLocomotionConfig_Implementation(ULoco
 {
 	return FLocomotionConfiguration();
 }
+
+FLocomotionConfiguration ILocomotional::ResetLocomotionConfig_Implementation()
+{
+	return FLocomotionConfiguration();
+}

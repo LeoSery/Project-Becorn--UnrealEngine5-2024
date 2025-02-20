@@ -46,6 +46,9 @@ struct BCR_API FLocomotionConfiguration
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Locomotion")
 	bool bUseSpecificAnim = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Locomotion")
+	float MaxSpeed = 350.0f;
     
 };
 

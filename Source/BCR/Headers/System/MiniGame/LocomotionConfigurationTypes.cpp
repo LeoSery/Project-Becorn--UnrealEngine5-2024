@@ -14,6 +14,7 @@ FLocomotionConfiguration ULocomotionConfigurationAsset::ToRuntimeConfig() const
 	RuntimeConfig.bLockCapsuleOrientation = Configuration.bLockCapsuleOrientation;
 	RuntimeConfig.bUsePhysicalAnim = Configuration.bUsePhysicalAnim;
 	RuntimeConfig.bUseSpecificAnim = Configuration.bUseSpecificAnim;
+	RuntimeConfig.MaxSpeed = Configuration.MaxSpeed;
 
 	// Validation des données critiques
 	if (!RuntimeConfig.StartAnimToPlay && RuntimeConfig.bUseSpecificAnim)

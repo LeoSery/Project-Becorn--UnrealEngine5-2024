@@ -265,8 +265,9 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 
 			if (Cast<ILocomotional>(Player))
 			{
-				if (locomotionConfigs.Num() > 0) {
-					ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[0]);
+				if (locomotionConfigs.Num() > 0)
+				{
+					ILocomotional::Execute_ResetLocomotionConfig(Player);
 				}
 			}
 			
@@ -281,8 +282,9 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 
 			if (Cast<ILocomotional>(Player))
 			{
-				if (locomotionConfigs.Num() > 0) {
-					ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[1]);
+				if (locomotionConfigs.Num() > 0)
+				{
+					ILocomotional::Execute_ResetLocomotionConfig(Player);
 				}
 			}
 			
@@ -303,7 +305,21 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 	{
 		snapPointMap.Add(closestBillBoard, Player);
 		Player->SetActorLocation(closestBillBoard->GetComponentLocation());
-		//set state machine to stopped /occupied / not moving or something
+
+		if (Cast<ILocomotional>(Player))
+		{
+			if (locomotionConfigs.Num() > 0)
+			{
+				int32 configIndex = (closestBillBoard == snapPlayerPoint1) ? 0 : 1;
+        
+				IBCR_Helper::LogConsole(this,FString::Printf(TEXT("Setting locomotion config %d for player at snap point %d"), configIndex, configIndex + 1));
+            
+				if (locomotionConfigs.IsValidIndex(configIndex))
+				{
+					ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[configIndex]);
+				}
+			}
+		}
 	}
 
 	if (snapPointMap.FindRef(snapPlayerPoint1) != nullptr && snapPointMap.FindRef(snapPlayerPoint2) != nullptr)

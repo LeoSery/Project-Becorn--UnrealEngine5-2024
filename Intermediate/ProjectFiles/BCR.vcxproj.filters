@@ -66,6 +66,9 @@
     <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\IPickable.h">
       <Filter>Source\BCR\Headers\Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\Locomotional.h">
+      <Filter>Source\BCR\Headers\Interfaces</Filter>
+    </ClInclude>
     <Filter Include="Source\BCR\Headers\Player">
       <UniqueIdentifier>{4FC3233E-4FD2-3CE2-9567-E61E443E7FA5}</UniqueIdentifier>
     </Filter>
@@ -90,6 +93,12 @@
     <Filter Include="Source\BCR\Headers\System\MiniGame">
       <UniqueIdentifier>{57BF3B9B-AEE4-3E36-9795-9514F2DDDC8A}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.cpp">
+      <Filter>Source\BCR\Headers\System\MiniGame</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.h">
+      <Filter>Source\BCR\Headers\System\MiniGame</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h">
       <Filter>Source\BCR\Headers\System\MiniGame</Filter>
     </ClInclude>
@@ -130,6 +139,9 @@
       <Filter>Source\BCR\Sources\Interfaces</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\Interfaces\IPickable.cpp">
+      <Filter>Source\BCR\Sources\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\Interfaces\Locomotional.cpp">
       <Filter>Source\BCR\Sources\Interfaces</Filter>
     </ClCompile>
     <Filter Include="Source\BCR\Sources\Player">

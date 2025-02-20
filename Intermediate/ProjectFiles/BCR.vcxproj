@@ -270,18 +270,21 @@
     <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\BCR_Helper.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\Interactable.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\IPickable.h"/>
+    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\Locomotional.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\Player\MainPlayer.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\AWood.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\DeliveryPoint.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\FurnitureAssembler.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.h" />
+    <ClCompile Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\Pickable\PickableItem.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTETypes.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Subsystem.h"/>
-    <ClCompile Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.cpp" />
     <ClCompile Include="..\..\Source\BCR\Sources\Core\MainGamemode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -292,6 +295,9 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\Interfaces\IPickable.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\Interfaces\Locomotional.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\Player\MainPlayer.cpp">
