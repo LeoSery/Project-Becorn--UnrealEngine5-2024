@@ -6512,6 +6512,18 @@
 		{
 			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor.modules",
 			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/SkeletalMerging/Binaries/Win64/UnrealEditor-SkeletalMerging.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/SkeletalMerging/Binaries/Win64/UnrealEditor-SkeletalMerging.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/SkeletalMerging/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
 		}
 	],
 	"RuntimeDependencies": [
@@ -29554,6 +29566,10 @@
 		{
 			"Path": "$(ProjectDir)/Plugins/RokokoIKRigRetargeting-main/RokokoIKRigRetargeting.uplugin",
 			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/SkeletalMerging/SkeletalMerging.uplugin",
+			"Type": "UFS"
 		}
 	],
 	"BuildPlugins": [
@@ -29702,6 +29718,7 @@
 		"SequencerAnimTools",
 		"SequencerScripting",
 		"SignificanceManager",
+		"SkeletalMerging",
 		"SkeletalReduction",
 		"SoundFields",
 		"SpeedTreeImporter",

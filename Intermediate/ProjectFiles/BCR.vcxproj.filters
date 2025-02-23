@@ -33,6 +33,48 @@
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
     </None>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{BB38096A-B391-30DC-A0D4-4F3EA6B44507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\SkeletalMerging">
+      <UniqueIdentifier>{F3125966-BF26-3A5E-9C3B-5C795F34BA9C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\SkeletalMerging\Source">
+      <UniqueIdentifier>{A3AD6F6A-2F9F-3B35-9219-79E3A3A66DF3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\SkeletalMerging\Source\SkeletalMerging">
+      <UniqueIdentifier>{2D173EBF-2F71-3C77-BCD2-3784C8D69437}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\SkeletalMerging\Source\SkeletalMerging\SkeletalMerging.build.cs">
+      <Filter>Plugins\SkeletalMerging\Source\SkeletalMerging</Filter>
+    </None>
+    <Filter Include="Plugins\SkeletalMerging\Source\SkeletalMerging\Private">
+      <UniqueIdentifier>{4F8F9E11-4DDA-30E8-A5E8-EEDD7CEBC1EB}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\SkeletalMerging\Source\SkeletalMerging\Private\SkeletalMergingLibrary.cpp">
+      <Filter>Plugins\SkeletalMerging\Source\SkeletalMerging\Private</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\SkeletalMerging\Source\SkeletalMerging\Public">
+      <UniqueIdentifier>{930F7C3E-FB3C-3D64-AD03-F7A2F3DA50D6}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\SkeletalMerging\Source\SkeletalMerging\Public\SkeletalMergingLibrary.h">
+      <Filter>Plugins\SkeletalMerging\Source\SkeletalMerging\Public</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\RokokoIKRigRetargeting-main">
+      <UniqueIdentifier>{559379EC-179E-3BF7-A2D2-AC4648495624}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\RokokoIKRigRetargeting.uplugin">
+      <Filter>Plugins\RokokoIKRigRetargeting-main</Filter>
+    </None>
+    <Filter Include="Plugins\RokokoIKRigRetargeting-main\Resources">
+      <UniqueIdentifier>{13929219-600B-34FC-A44F-7AEDD125DFF3}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\Resources\Icon128.png">
+      <Filter>Plugins\RokokoIKRigRetargeting-main\Resources</Filter>
+    </None>
+    <None Include="..\..\Plugins\SkeletalMerging\SkeletalMerging.uplugin">
+      <Filter>Plugins\SkeletalMerging</Filter>
+    </None>
     <Filter Include="Source\BCR">
       <UniqueIdentifier>{E7F8E3BB-A0BA-32A2-83DD-C07273E09EDA}</UniqueIdentifier>
     </Filter>
@@ -186,20 +228,5 @@
     <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTE_Subsystem.cpp">
       <Filter>Source\BCR\Sources\System\QTE</Filter>
     </ClCompile>
-    <Filter Include="Plugins">
-      <UniqueIdentifier>{BB38096A-B391-30DC-A0D4-4F3EA6B44507}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Plugins\RokokoIKRigRetargeting-main">
-      <UniqueIdentifier>{559379EC-179E-3BF7-A2D2-AC4648495624}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\RokokoIKRigRetargeting.uplugin">
-      <Filter>Plugins\RokokoIKRigRetargeting-main</Filter>
-    </None>
-    <Filter Include="Plugins\RokokoIKRigRetargeting-main\Resources">
-      <UniqueIdentifier>{13929219-600B-34FC-A44F-7AEDD125DFF3}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\Resources\Icon128.png">
-      <Filter>Plugins\RokokoIKRigRetargeting-main\Resources</Filter>
-    </None>
   </ItemGroup>
 </Project>
