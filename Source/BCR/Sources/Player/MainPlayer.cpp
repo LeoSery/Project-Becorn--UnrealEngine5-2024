@@ -146,6 +146,7 @@ TArray<FHitResult> Detect_Object(AActor* Player)
 
 void AMainPlayer::PickUp()
 {
+	
 	if (PickedUpSomething)
 	{
 		IIPickable::Execute_Drop(PickedUpObject, this, PickedUpObject);
@@ -160,7 +161,6 @@ void AMainPlayer::PickUp()
 		{
 			if (Cast<IIPickable>(OutHit.GetActor()))
 			{
-				IIPickable::Execute_PickedUp(OutHit.GetActor(), this, OutHit.GetActor());
 				PickedUpSomething = true;
 				PickedUpObject = OutHit.GetActor();
 			}
@@ -174,13 +174,16 @@ void AMainPlayer::Interact()
 	
 	for (const FHitResult OutHit : OutHits)
 	{
+
 		if(PickedUpObject && Cast<IInteractable>(OutHit.GetActor()))
 		{
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("PickedUpObject exist"));
 			IInteractable::Execute_InteractWithObject(OutHit.GetActor(), this,PickedUpObject);
 			return;
 		}
 		else if (Cast<IInteractable>(OutHit.GetActor()))
 		{
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("PickedUpObject does not exist"));
 			IInteractable::Execute_Interact(OutHit.GetActor(), this);
 			return;
 		}

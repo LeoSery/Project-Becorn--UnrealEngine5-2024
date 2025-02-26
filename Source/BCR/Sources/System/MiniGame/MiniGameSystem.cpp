@@ -234,7 +234,7 @@ UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TA
 	for (UBillboardComponent* component : Components)
 	{
 		float distance = UKismetMathLibrary::Vector_Distance(component->GetComponentLocation(), ToLocation);
-		if (distance < MinDistance)
+		if ((ClosestComponent == nullptr || snapPointMap.Find(ClosestComponent)[0] != nullptr) && distance < MinDistance)
 		{
 			MinDistance = distance;
 			ClosestComponent = component;
@@ -334,12 +334,16 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 	FVector boxExtent;
 	float sphereRadius;
 	UKismetSystemLibrary::GetComponentBounds(inputBox, boxOrigin, boxExtent, sphereRadius);
-	
-	if (UKismetMathLibrary::IsPointInBox(Player->GetActorLocation(), boxOrigin, boxExtent))
+	APickableItem* item = Cast<APickableItem>(Object);
+	if (item)
 	{
-		APickableItem* item = Cast<APickableItem>(Object);
-		
-		if (item)
+		if (presentItem.Contains(item)) {
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Here"));
+			Player->PickUp();
+			IInteractable::Execute_Interact(this, Player);
+			return;
+		}
+		if (UKismetMathLibrary::IsPointInBox(Player->GetActorLocation(), boxOrigin, boxExtent))
 		{
 			for (int i = 0; i < itemList.Num(); i++)
 			{
@@ -355,6 +359,7 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 			}
 			IBCR_Helper::LogScreen(this, "Item not in itemList");
 		}
+
 	}
 }
 
