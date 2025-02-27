@@ -191,84 +191,24 @@ void AMainCamera::ConstrainPlayerPositions()
 	float horizontalDist = FMath::Abs(FVector::DotProduct(deltaVector, rightVector));
 	float depthDist = FMath::Abs(FVector::DotProduct(deltaVector, forwardVector));
 
-	// Get player velocities
-	FVector player1Vel = Players[0]->GetVelocity();
-	FVector player2Vel = Players[1]->GetVelocity();
-
-	bool isPlayer1Moving = player1Vel.SizeSquared() > 0;
-	bool isPlayer2Moving = player2Vel.SizeSquared() > 0;
+	// Get player displacements
+	FVector player1Displacement = Players[0]->GetVelocity() * GetWorld()->GetDeltaSeconds();
+	FVector player2Displacement = Players[1]->GetVelocity() * GetWorld()->GetDeltaSeconds();
 
 	// Store original positions
 	FVector newPos1 = player1Pos;
 	FVector newPos2 = player2Pos;
 
 	// Handle constraints
-	if (horizontalDist > MaxPlayerHorizontalDistance || depthDist > MaxPlayerDepthDistance)
+	if (horizontalDist > MaxPlayerHorizontalDistance)
 	{
-		// Determine which player to move based on velocity
-		bool movePlayer1 = false;
-		bool movePlayer2 = false;
-
-		if (isPlayer1Moving && !isPlayer2Moving)
-		{
-			movePlayer1 = true;
-		}
-		else if (isPlayer2Moving && !isPlayer1Moving)
-		{
-			movePlayer2 = true;
-		}
-		else if (isPlayer1Moving && isPlayer2Moving)
-		{
-			// If both are moving, move the one that traveled further
-			float dist1 = FVector::DistSquared(player1Pos - player1Vel * GetWorld()->GetDeltaSeconds(), player2Pos);
-			float dist2 = FVector::DistSquared(player2Pos - player2Vel * GetWorld()->GetDeltaSeconds(), player1Pos);
-			movePlayer1 = (dist1 > dist2);
-			movePlayer2 = !movePlayer1;
-		}
-
-		// Apply constraints
-		if (movePlayer1)
-		{
-			// Calculate the constrained position for player 1
-			FVector constrainedDelta = deltaVector;
-
-			if (horizontalDist > MaxPlayerHorizontalDistance)
-			{
-				float horizontalScale = MaxPlayerHorizontalDistance / horizontalDist;
-				FVector horizontalComponent = FVector::DotProduct(deltaVector, rightVector) * rightVector;
-				constrainedDelta = horizontalComponent * horizontalScale + (deltaVector - horizontalComponent);
-			}
-
-			if (depthDist > MaxPlayerDepthDistance)
-			{
-				float depthScale = MaxPlayerDepthDistance / depthDist;
-				FVector depthComponent = FVector::DotProduct(constrainedDelta, forwardVector) * forwardVector;
-				constrainedDelta = depthComponent * depthScale + (constrainedDelta - depthComponent);
-			}
-
-			newPos1 = player2Pos - constrainedDelta;
-		}
-		else if (movePlayer2)
-		{
-			// Calculate the constrained position for player 2
-			FVector constrainedDelta = deltaVector;
-
-			if (horizontalDist > MaxPlayerHorizontalDistance)
-			{
-				float horizontalScale = MaxPlayerHorizontalDistance / horizontalDist;
-				FVector horizontalComponent = FVector::DotProduct(deltaVector, rightVector) * rightVector;
-				constrainedDelta = horizontalComponent * horizontalScale + (deltaVector - horizontalComponent);
-			}
-
-			if (depthDist > MaxPlayerDepthDistance)
-			{
-				float depthScale = MaxPlayerDepthDistance / depthDist;
-				FVector depthComponent = FVector::DotProduct(constrainedDelta, forwardVector) * forwardVector;
-				constrainedDelta = depthComponent * depthScale + (constrainedDelta - depthComponent);
-			}
-
-			newPos2 = player1Pos + constrainedDelta;
-		}
+		newPos1 += -FVector::DotProduct(player1Displacement, rightVector) * rightVector;
+		newPos2 += -FVector::DotProduct(player2Displacement, rightVector) * rightVector;
+	}
+	if (depthDist > MaxPlayerDepthDistance)
+	{
+		newPos1 += -FVector::DotProduct(player1Displacement, forwardVector) * forwardVector;
+		newPos2 += -FVector::DotProduct(player2Displacement, forwardVector) * forwardVector;
 	}
 
 	// Apply the new positions
