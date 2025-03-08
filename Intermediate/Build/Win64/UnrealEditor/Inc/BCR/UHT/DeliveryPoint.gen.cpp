@@ -17,6 +17,7 @@ BCR_API UClass* Z_Construct_UClass_APickableItem_NoRegister();
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_UBillboardComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
@@ -134,9 +135,20 @@ struct Z_Construct_UClass_ADeliveryPoint_Statics
 		{ "Category", "DeliveryPoint" },
 		{ "ModuleRelativePath", "Headers/System/DeliveryPoint.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ObjectToSpawn_MetaData[] = {
+		{ "Category", "DeliveryPoint" },
+		{ "ModuleRelativePath", "Headers/System/DeliveryPoint.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WorldPoint_MetaData[] = {
+		{ "Category", "DeliveryPoint" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Headers/System/DeliveryPoint.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ColliderBox;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_ItemType;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_ObjectToSpawn;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_WorldPoint;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -150,9 +162,13 @@ struct Z_Construct_UClass_ADeliveryPoint_Statics
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADeliveryPoint_Statics::NewProp_ColliderBox = { "ColliderBox", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADeliveryPoint, ColliderBox), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ColliderBox_MetaData), NewProp_ColliderBox_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ADeliveryPoint_Statics::NewProp_ItemType = { "ItemType", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADeliveryPoint, ItemType), Z_Construct_UClass_UClass, Z_Construct_UClass_APickableItem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ItemType_MetaData), NewProp_ItemType_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ADeliveryPoint_Statics::NewProp_ObjectToSpawn = { "ObjectToSpawn", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADeliveryPoint, ObjectToSpawn), Z_Construct_UClass_UClass, Z_Construct_UClass_APickableItem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ObjectToSpawn_MetaData), NewProp_ObjectToSpawn_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADeliveryPoint_Statics::NewProp_WorldPoint = { "WorldPoint", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADeliveryPoint, WorldPoint), Z_Construct_UClass_UBillboardComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WorldPoint_MetaData), NewProp_WorldPoint_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ADeliveryPoint_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADeliveryPoint_Statics::NewProp_ColliderBox,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADeliveryPoint_Statics::NewProp_ItemType,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADeliveryPoint_Statics::NewProp_ObjectToSpawn,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADeliveryPoint_Statics::NewProp_WorldPoint,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ADeliveryPoint_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ADeliveryPoint_Statics::DependentSingletons[])() = {
@@ -192,14 +208,14 @@ ADeliveryPoint::~ADeliveryPoint() {}
 // End Class ADeliveryPoint
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_DeliveryPoint_h_Statics
+struct Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_DeliveryPoint_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ADeliveryPoint, ADeliveryPoint::StaticClass, TEXT("ADeliveryPoint"), &Z_Registration_Info_UClass_ADeliveryPoint, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ADeliveryPoint), 1943409898U) },
+		{ Z_Construct_UClass_ADeliveryPoint, ADeliveryPoint::StaticClass, TEXT("ADeliveryPoint"), &Z_Registration_Info_UClass_ADeliveryPoint, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ADeliveryPoint), 3063282139U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_DeliveryPoint_h_1470048806(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_DeliveryPoint_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_DeliveryPoint_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_DeliveryPoint_h_3242745039(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_DeliveryPoint_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_DeliveryPoint_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
