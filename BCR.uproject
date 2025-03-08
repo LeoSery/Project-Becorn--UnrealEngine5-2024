@@ -29,7 +29,7 @@
 		},
 		{
 			"Name": "SkeletalMerging",
-			"Enabled": true
+			"Enabled": false
 		}
 	]
 }
