@@ -21,6 +21,8 @@ ADeliveryPoint::ADeliveryPoint()
 	RootComponent = CreateDefaultSubobject<USceneComponent>("Root");
 	ColliderBox->SetupAttachment(RootComponent);
 	ColliderBox->OnComponentBeginOverlap.AddDynamic(this, &ADeliveryPoint::OnOverlapBegin);
+	WorldPoint = CreateDefaultSubobject<UBillboardComponent>(TEXT("Snap object point"));
+	WorldPoint->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -32,9 +34,11 @@ void ADeliveryPoint::BeginPlay()
 
 void ADeliveryPoint::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (ItemType == OtherActor->GetClass())
+	if (ItemType == OtherActor->GetClass() && !DoOnce)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Object Deliver !"));
+		GetWorld()->SpawnActor<APickableItem>(ObjectToSpawn, WorldPoint->GetComponentLocation(), FRotator(0.0f, 0.0f, 0.0f));
+		DoOnce = true;
 	}
 }
 

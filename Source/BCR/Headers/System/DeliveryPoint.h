@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Components/BoxComponent.h"
 #include "BCR/Headers/System/Pickable/PickableItem.h"
+#include <Components/BillboardComponent.h>
 #include "DeliveryPoint.generated.h"
 
 UCLASS()
@@ -20,6 +21,10 @@ public:
 	UBoxComponent* ColliderBox;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<APickableItem> ItemType;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<APickableItem> ObjectToSpawn;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UBillboardComponent* WorldPoint;
 
 
 protected:
@@ -27,6 +32,7 @@ protected:
 	virtual void BeginPlay() override;
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	bool DoOnce = false;
 
 
 public:
