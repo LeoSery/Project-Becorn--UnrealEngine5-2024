@@ -132,6 +132,9 @@
     <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h">
       <Filter>Source\BCR\Headers\System</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\UniqueRope.h">
+      <Filter>Source\BCR\Headers\System</Filter>
+    </ClInclude>
     <Filter Include="Source\BCR\Headers\System\MiniGame">
       <UniqueIdentifier>{57BF3B9B-AEE4-3E36-9795-9514F2DDDC8A}</UniqueIdentifier>
     </Filter>
@@ -205,6 +208,9 @@
       <Filter>Source\BCR\Sources\System</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\MainCamera.cpp">
+      <Filter>Source\BCR\Sources\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\UniqueRope.cpp">
       <Filter>Source\BCR\Sources\System</Filter>
     </ClCompile>
     <Filter Include="Source\BCR\Sources\System\MiniGame">

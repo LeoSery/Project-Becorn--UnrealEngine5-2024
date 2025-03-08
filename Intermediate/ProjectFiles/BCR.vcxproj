@@ -541,6 +541,7 @@
     <ClInclude Include="..\..\Source\BCR\Headers\System\DeliveryPoint.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\FurnitureAssembler.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h"/>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\UniqueRope.h"/>
     <ClCompile Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories_1)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_1)</ForcedIncludeFiles>
@@ -588,6 +589,10 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_1)</ForcedIncludeFiles>
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\MainCamera.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories_1)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_1)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\UniqueRope.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories_1)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_1)</ForcedIncludeFiles>
     </ClCompile>
