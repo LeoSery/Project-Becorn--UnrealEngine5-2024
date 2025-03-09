@@ -21,9 +21,48 @@ ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 UPackage* Z_Construct_UPackage__Script_BCR();
 // End Cross Module References
 
+// Begin Class AMainPlayer Function PickUp
+static FName NAME_AMainPlayer_PickUp = FName(TEXT("PickUp"));
+void AMainPlayer::PickUp()
+{
+	ProcessEvent(FindFunctionChecked(NAME_AMainPlayer_PickUp),NULL);
+}
+struct Z_Construct_UFunction_AMainPlayer_PickUp_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/Player/MainPlayer.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AMainPlayer_PickUp_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMainPlayer, nullptr, "PickUp", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AMainPlayer_PickUp_Statics::Function_MetaDataParams), Z_Construct_UFunction_AMainPlayer_PickUp_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AMainPlayer_PickUp()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AMainPlayer_PickUp_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AMainPlayer::execPickUp)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->PickUp_Implementation();
+	P_NATIVE_END;
+}
+// End Class AMainPlayer Function PickUp
+
 // Begin Class AMainPlayer
 void AMainPlayer::StaticRegisterNativesAMainPlayer()
 {
+	UClass* Class = AMainPlayer::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "PickUp", &AMainPlayer::execPickUp },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(AMainPlayer);
 UClass* Z_Construct_UClass_AMainPlayer_NoRegister()
@@ -106,6 +145,10 @@ struct Z_Construct_UClass_AMainPlayer_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultLocomotionConfig;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_AMainPlayer_PickUp, "PickUp" }, // 3231325062
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AMainPlayer>::IsAbstract,
@@ -143,11 +186,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_AMainPlayer_Statics::Cl
 	"Game",
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
+	FuncInfo,
 	Z_Construct_UClass_AMainPlayer_Statics::PropPointers,
 	InterfaceParams,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
 	UE_ARRAY_COUNT(Z_Construct_UClass_AMainPlayer_Statics::PropPointers),
 	UE_ARRAY_COUNT(InterfaceParams),
 	0x009000A4u,
@@ -170,14 +213,14 @@ AMainPlayer::~AMainPlayer() {}
 // End Class AMainPlayer
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 1008676478U) },
+		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 2804421830U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_3559157269(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_4277466060(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

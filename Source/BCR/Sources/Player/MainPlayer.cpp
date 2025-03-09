@@ -144,9 +144,8 @@ TArray<FHitResult> Detect_Object(AActor* Player)
 	return OutHits;
 }
 
-void AMainPlayer::PickUp()
+void AMainPlayer::PickUp_Implementation()
 {
-	
 	if (PickedUpSomething)
 	{
 		IIPickable::Execute_Drop(PickedUpObject, this, PickedUpObject);
@@ -156,7 +155,7 @@ void AMainPlayer::PickUp()
 	else
 	{
 		TArray<FHitResult> OutHits = Detect_Object(this);
-		
+
 		for (const FHitResult OutHit : OutHits)
 		{
 			if (Cast<IIPickable>(OutHit.GetActor()))
@@ -166,6 +165,7 @@ void AMainPlayer::PickUp()
 			}
 		}
 	}
+
 }
 
 void AMainPlayer::Interact()

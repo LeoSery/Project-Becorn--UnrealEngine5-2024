@@ -46,7 +46,11 @@ class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper, public ILocom
 public:
 	AMainPlayer();
 
+	UFUNCTION(BlueprintNativeEvent)
 	void PickUp();
+
+	void PickUp_Implementation();
+
 	void Interact();
 
 	virtual FLocomotionConfiguration ResetLocomotionConfig_Implementation() override;
