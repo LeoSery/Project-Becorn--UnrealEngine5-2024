@@ -177,13 +177,13 @@ void AMainPlayer::Interact()
 
 		if(PickedUpObject && Cast<IInteractable>(OutHit.GetActor()))
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("PickedUpObject exist"));
+
 			IInteractable::Execute_InteractWithObject(OutHit.GetActor(), this,PickedUpObject);
 			return;
 		}
 		else if (Cast<IInteractable>(OutHit.GetActor()))
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("PickedUpObject does not exist"));
+
 			IInteractable::Execute_Interact(OutHit.GetActor(), this);
 			return;
 		}

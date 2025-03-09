@@ -250,6 +250,7 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 
 	if (!itemList.IsEmpty() && (snapPointMap.Find(snapPlayerPoint1)[0] != Player && snapPointMap.Find(snapPlayerPoint2)[0] != Player))
 	{
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, TEXT("Need more resources!"));
 		return;
 	}
 
@@ -294,7 +295,7 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 		}
 	}
 	
-	Player->GetCharacterMovement()->SetMovementMode(MOVE_None);
+	
 	TArray<UBillboardComponent*> SnapArray;
 	SnapArray.Add(snapPlayerPoint1);
 	SnapArray.Add(snapPlayerPoint2);
@@ -303,6 +304,8 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 
 	if (snapPointMap.Find(closestBillBoard)[0] == nullptr)
 	{
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Found a SnapPoint"));
+		Player->GetCharacterMovement()->SetMovementMode(MOVE_None);
 		snapPointMap.Add(closestBillBoard, Player);
 		Player->SetActorLocation(closestBillBoard->GetComponentLocation());
 
@@ -338,7 +341,7 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 	if (item)
 	{
 		if (presentItem.Contains(item)) {
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Here"));
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Player Already Deposited the Item"));
 			Player->PickUp();
 			IInteractable::Execute_Interact(this, Player);
 			return;
