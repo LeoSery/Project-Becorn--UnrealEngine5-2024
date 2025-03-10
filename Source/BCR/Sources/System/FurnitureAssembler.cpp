@@ -41,7 +41,7 @@ void AFurnitureAssembler::BeginPlay()
 
 void AFurnitureAssembler::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Poup"));
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Enter Assembler Zone"));
 }
 
 FRecipiesInfo AFurnitureAssembler::GetActualRecipiesInfo()
@@ -56,7 +56,7 @@ void AFurnitureAssembler::CraftFurniture()
 	{
 		if (ActualRecipies.Material[Ingredient.Key] != 0)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("POIREAUX")));
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("Recipie not complite")));
 			return;
 		}
 	}
@@ -65,12 +65,11 @@ void AFurnitureAssembler::CraftFurniture()
 
 void AFurnitureAssembler::Interact_Implementation(AMainPlayer* Player)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("AAAAAAAAAAAAAAAAAAAAAAAAA")));
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("No Item in Hand, Please grab an item")));
 }
 
 void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("POUP")));
 	if (Cast<IIPickable>(Object))
 	{
 		IIPickable::Execute_Drop(Object, this, Object);
@@ -84,7 +83,7 @@ void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player,
 		}
 		else
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("ouille")));
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("Bad item given to the assembler")));
 			Player->PickUp();
 			Object->Destroy();
 		}
