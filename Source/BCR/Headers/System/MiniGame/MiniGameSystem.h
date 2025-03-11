@@ -89,13 +89,15 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* DefaultRootComponent;
 
-	UPROPERTY(EditAnywhere)
-	UBoxComponent* inputBox;
+	
 
 	UPROPERTY(EditAnywhere)
 	float MaxSnapPointDistance = 200.f;
 
 public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UBoxComponent* inputBox;
 
 	UFUNCTION(BlueprintNativeEvent)
 	void OnFirstSnapPointResult(EQTEResult Result);

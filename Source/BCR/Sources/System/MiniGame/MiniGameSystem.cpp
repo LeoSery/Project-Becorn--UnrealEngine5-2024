@@ -234,7 +234,9 @@ UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TA
 	for (UBillboardComponent* component : Components)
 	{
 		float distance = UKismetMathLibrary::Vector_Distance(component->GetComponentLocation(), ToLocation);
-		if ((ClosestComponent == nullptr || snapPointMap.Find(ClosestComponent)[0] != nullptr) && distance < MinDistance)
+		if (
+			!IsValid(ClosestComponent)
+			|| distance < MinDistance)
 		{
 			MinDistance = distance;
 			ClosestComponent = component;
@@ -251,6 +253,7 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 	if (!itemList.IsEmpty() && (snapPointMap.Find(snapPlayerPoint1)[0] != Player && snapPointMap.Find(snapPlayerPoint2)[0] != Player))
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, TEXT("Need more resources!"));
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, FString::Printf(TEXT("%i"),itemList.Num()));
 		return;
 	}
 
@@ -305,16 +308,17 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 	if (snapPointMap.Find(closestBillBoard)[0] == nullptr)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Found a SnapPoint"));
-		Player->GetCharacterMovement()->SetMovementMode(MOVE_None);
+		//Player->GetCharacterMovement()->SetMovementMode(MOVE_None);
 		snapPointMap.Add(closestBillBoard, Player);
-		Player->SetActorLocation(closestBillBoard->GetComponentLocation());
+		//Player->SetActorLocation(closestBillBoard->GetComponentLocation());
 
 		if (Cast<ILocomotional>(Player))
 		{
 			if (locomotionConfigs.Num() > 0)
 			{
 				int32 configIndex = (closestBillBoard == snapPlayerPoint1) ? 0 : 1;
-        
+				locomotionConfigs[configIndex]->Configuration.PositionToGo.SetLocation(closestBillBoard->GetComponentLocation());
+				locomotionConfigs[configIndex]->Configuration.PositionToGo.SetRotation(closestBillBoard->GetComponentRotation().Quaternion());
 				IBCR_Helper::LogConsole(this,FString::Printf(TEXT("Setting locomotion config %d for player at snap point %d"), configIndex, configIndex + 1));
             
 				if (locomotionConfigs.IsValidIndex(configIndex))
