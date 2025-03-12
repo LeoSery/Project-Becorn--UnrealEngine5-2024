@@ -308,9 +308,9 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 	if (snapPointMap.Find(closestBillBoard)[0] == nullptr)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Found a SnapPoint"));
-		//Player->GetCharacterMovement()->SetMovementMode(MOVE_None);
+
 		snapPointMap.Add(closestBillBoard, Player);
-		//Player->SetActorLocation(closestBillBoard->GetComponentLocation());
+
 
 		if (Cast<ILocomotional>(Player))
 		{
@@ -326,7 +326,12 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 					ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[configIndex]);
 				}
 			}
+			else {
+				Player->GetCharacterMovement()->SetMovementMode(MOVE_None);
+				Player->SetActorLocation(closestBillBoard->GetComponentLocation());
+			}
 		}
+		
 	}
 
 	if (snapPointMap.FindRef(snapPlayerPoint1) != nullptr && snapPointMap.FindRef(snapPlayerPoint2) != nullptr)

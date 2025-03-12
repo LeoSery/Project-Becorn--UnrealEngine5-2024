@@ -51,14 +51,19 @@ FRecipiesInfo AFurnitureAssembler::GetActualRecipiesInfo()
 
 void AFurnitureAssembler::CraftFurniture()
 {
-	int valideIngredients = 0;
+	int i = 0;
 	for (auto Ingredient : ActualRecipies.Material)
 	{
-		if (ActualRecipies.Material[Ingredient.Key] != 0)
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("Item n°%d"),i));
+
+		if (Ingredient.Value != 0)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("Recipie not complite")));
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("%d"), Ingredient.Value));
+			
 			return;
 		}
+		i++;
 	}
 	auto temp = GetWorld()->SpawnActor<APickableItem>(ActualRecipies.Out, GetActorLocation(), FRotator(0.0f, 0.0f, 0.0f));
 }
@@ -72,12 +77,14 @@ void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player,
 {
 	if (Cast<IIPickable>(Object))
 	{
-		IIPickable::Execute_Drop(Object, this, Object);
-		auto requieredMaterials = ActualRecipies.Material.Find(Object->GetClass());
-		if (requieredMaterials && requieredMaterials[0] != 0)
+		int requieredMaterials = ActualRecipies.Material.FindRef(Object->GetClass());
+		if (requieredMaterials != 0)
 		{
-			requieredMaterials[0]--;
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("requiered = %d"), requieredMaterials[0]));
+			requieredMaterials--;
+
+			ActualRecipies.Material.Emplace(Object->GetClass(), requieredMaterials);
+
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("requiered = %d"), ActualRecipies.Material.FindRef(Object->GetClass())));
 			Player->PickUp();
 			Object->Destroy();
 		}
