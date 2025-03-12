@@ -49,12 +49,7 @@ void AMainPlayer::BeginPlay()
 	// Call the base class  
 	Super::BeginPlay();
 
-	IBCR_Helper::LogScreen(this, "Player started", 5.0f, FColor::Green);
-
 	ResetLocomotionConfig_Implementation();
-	
-	// Custom log
-	CustomLogAll("Player ready", 5.0f, FColor::Green);
 }
 
 //////////////////////////////////////////////////////////////////////////
