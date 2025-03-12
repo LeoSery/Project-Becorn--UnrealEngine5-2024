@@ -256,6 +256,8 @@
     <None Include="..\..\Source\BCREditor.Target.cs"/>
     <None Include="..\..\.gitignore"/>
     <None Include="..\..\.vsconfig"/>
+    <None Include="..\..\BCR.sln.DotSettings.user"/>
+    <None Include="..\..\BCR.uproject.DotSettings.user"/>
     <None Include="..\..\BuildSolution.bat"/>
     <None Include="..\..\README.md"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
@@ -277,6 +279,7 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\BCR\BCR.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\Core\MainGamemode.h"/>
+    <ClInclude Include="..\..\Source\BCR\Headers\Core\ProjectDataFunctionLibrary.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\BCR_Helper.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\Interactable.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\IPickable.h"/>
@@ -299,6 +302,11 @@
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTETypes.h"/>
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Subsystem.h"/>
     <ClCompile Include="..\..\Source\BCR\Sources\Core\MainGamemode.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\Core\ProjectDataFunctionLibrary.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>

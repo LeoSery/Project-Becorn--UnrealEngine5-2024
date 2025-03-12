@@ -13,6 +13,8 @@
     </None>
     <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
+    <None Include="..\..\BCR.sln.DotSettings.user" />
+    <None Include="..\..\BCR.uproject.DotSettings.user" />
     <None Include="..\..\BuildSolution.bat" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
@@ -96,6 +98,9 @@
     <ClInclude Include="..\..\Source\BCR\Headers\Core\MainGamemode.h">
       <Filter>Source\BCR\Headers\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\Core\ProjectDataFunctionLibrary.h">
+      <Filter>Source\BCR\Headers\Core</Filter>
+    </ClInclude>
     <Filter Include="Source\BCR\Headers\Interfaces">
       <UniqueIdentifier>{4E95A235-9E41-34F5-AF1E-11EF1607E799}</UniqueIdentifier>
     </Filter>
@@ -172,6 +177,9 @@
       <UniqueIdentifier>{412CEF9E-2291-3837-B931-7E172A8BE7E1}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\BCR\Sources\Core\MainGamemode.cpp">
+      <Filter>Source\BCR\Sources\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\Core\ProjectDataFunctionLibrary.cpp">
       <Filter>Source\BCR\Sources\Core</Filter>
     </ClCompile>
     <Filter Include="Source\BCR\Sources\Interfaces">
