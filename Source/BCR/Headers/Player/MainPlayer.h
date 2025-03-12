@@ -43,6 +43,9 @@ class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper, public ILocom
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* InteractAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* PauseAction;
+
 public:
 	AMainPlayer();
 
