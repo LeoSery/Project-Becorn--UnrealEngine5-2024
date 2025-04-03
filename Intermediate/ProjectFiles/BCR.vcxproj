@@ -256,8 +256,6 @@
     <None Include="..\..\Source\BCREditor.Target.cs"/>
     <None Include="..\..\.gitignore"/>
     <None Include="..\..\.vsconfig"/>
-    <None Include="..\..\BCR.sln.DotSettings.user"/>
-    <None Include="..\..\BCR.uproject.DotSettings.user"/>
     <None Include="..\..\BuildSolution.bat"/>
     <None Include="..\..\README.md"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>

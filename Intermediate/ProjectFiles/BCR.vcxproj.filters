@@ -13,8 +13,6 @@
     </None>
     <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
-    <None Include="..\..\BCR.sln.DotSettings.user" />
-    <None Include="..\..\BCR.uproject.DotSettings.user" />
     <None Include="..\..\BuildSolution.bat" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
