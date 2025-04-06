@@ -36,6 +36,7 @@ public:
 	void CraftFurniture();
 protected:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UBoxComponent* AssemblerZone;
 	UDataTable* AllRecipies;
 	TArray<FName> RowsNames;
@@ -57,6 +58,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FRecipiesInfo ActualRecipies;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool PlayFlowerAnimation;
 };
 
 

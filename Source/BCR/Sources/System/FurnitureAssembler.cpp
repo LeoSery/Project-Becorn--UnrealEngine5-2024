@@ -87,6 +87,9 @@ void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player,
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("requiered = %d"), ActualRecipies.Material.FindRef(Object->GetClass())));
 			Player->PickUp();
 			Object->Destroy();
+
+			if (requieredMaterials == 0)
+				PlayFlowerAnimation = true;
 		}
 		else
 		{
