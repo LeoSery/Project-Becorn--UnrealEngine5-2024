@@ -20,6 +20,7 @@ BCR_API UScriptStruct* Z_Construct_UScriptStruct_FRecipiesInfo();
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTableRowBase();
@@ -283,12 +284,24 @@ struct Z_Construct_UClass_AFurnitureAssembler_Statics
 		{ "IncludePath", "Headers/System/FurnitureAssembler.h" },
 		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AssemblerZone_MetaData[] = {
+		{ "Category", "FurnitureAssembler" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ActualRecipies_MetaData[] = {
 		{ "Category", "FurnitureAssembler" },
 		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlayFlowerAnimation_MetaData[] = {
+		{ "Category", "FurnitureAssembler" },
+		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
+	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_AssemblerZone;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_ActualRecipies;
+	static void NewProp_PlayFlowerAnimation_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_PlayFlowerAnimation;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -303,9 +316,17 @@ struct Z_Construct_UClass_AFurnitureAssembler_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_AssemblerZone = { "AssemblerZone", nullptr, (EPropertyFlags)0x002008000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFurnitureAssembler, AssemblerZone), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AssemblerZone_MetaData), NewProp_AssemblerZone_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_ActualRecipies = { "ActualRecipies", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFurnitureAssembler, ActualRecipies), Z_Construct_UScriptStruct_FRecipiesInfo, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ActualRecipies_MetaData), NewProp_ActualRecipies_MetaData) }; // 1978195637
+void Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_PlayFlowerAnimation_SetBit(void* Obj)
+{
+	((AFurnitureAssembler*)Obj)->PlayFlowerAnimation = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_PlayFlowerAnimation = { "PlayFlowerAnimation", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AFurnitureAssembler), &Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_PlayFlowerAnimation_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlayFlowerAnimation_MetaData), NewProp_PlayFlowerAnimation_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFurnitureAssembler_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_AssemblerZone,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_ActualRecipies,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_PlayFlowerAnimation,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFurnitureAssembler_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AFurnitureAssembler_Statics::DependentSingletons[])() = {
@@ -348,18 +369,18 @@ AFurnitureAssembler::~AFurnitureAssembler() {}
 // End Class AFurnitureAssembler
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics
+struct Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
 		{ FRecipiesInfo::StaticStruct, Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewStructOps, TEXT("RecipiesInfo"), &Z_Registration_Info_UScriptStruct_RecipiesInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FRecipiesInfo), 1978195637U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AFurnitureAssembler, AFurnitureAssembler::StaticClass, TEXT("AFurnitureAssembler"), &Z_Registration_Info_UClass_AFurnitureAssembler, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFurnitureAssembler), 255277653U) },
+		{ Z_Construct_UClass_AFurnitureAssembler, AFurnitureAssembler::StaticClass, TEXT("AFurnitureAssembler"), &Z_Registration_Info_UClass_AFurnitureAssembler, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFurnitureAssembler), 679048662U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_616045427(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_1626099882(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo),
 	nullptr, 0);
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
