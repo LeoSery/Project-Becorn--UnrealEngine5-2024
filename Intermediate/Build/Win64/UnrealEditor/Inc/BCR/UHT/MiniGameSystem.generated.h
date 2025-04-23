@@ -23,7 +23,6 @@ BCR_API void FOnEndQTESignature_DelegateWrapper(const FMulticastScriptDelegate& 
 
 
 #define FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execOnQTEComplete); \
 	DECLARE_FUNCTION(execOnSecondSnapPointProgress); \
 	DECLARE_FUNCTION(execOnFirstSnapPointProgress); \
 	DECLARE_FUNCTION(execOnSecondSnapPointResult); \

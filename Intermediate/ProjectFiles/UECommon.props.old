@@ -15,15 +15,15 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <PropertyGroup>
-    <BuildBatchScript>"C:\Program Files\Epic Games\UE_5.4\Engine\Build\BatchFiles\Build.bat"</BuildBatchScript>
-    <RebuildBatchScript>"C:\Program Files\Epic Games\UE_5.4\Engine\Build\BatchFiles\Rebuild.bat"</RebuildBatchScript>
-    <CleanBatchScript>"C:\Program Files\Epic Games\UE_5.4\Engine\Build\BatchFiles\Clean.bat"</CleanBatchScript>
+    <BuildBatchScript>"D:\Epic Games\UE_5.4\Engine\Build\BatchFiles\Build.bat"</BuildBatchScript>
+    <RebuildBatchScript>"D:\Epic Games\UE_5.4\Engine\Build\BatchFiles\Rebuild.bat"</RebuildBatchScript>
+    <CleanBatchScript>"D:\Epic Games\UE_5.4\Engine\Build\BatchFiles\Clean.bat"</CleanBatchScript>
     <NMakeBuildCommandLine>echo The selected platform/configuration is not valid for this target.</NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>echo The selected platform/configuration is not valid for this target.</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>echo The selected platform/configuration is not valid for this target.</NMakeCleanCommandLine>
     <NMakeOutput>Invalid Output</NMakeOutput>
-    <OutDir>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</OutDir>
-    <IntDir>C:\Program Files\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</IntDir>
+    <OutDir>D:\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</OutDir>
+    <IntDir>D:\Epic Games\UE_5.4\Engine\Intermediate\Build\Unused\</IntDir>
     <IncludePath />
     <ReferencePath />
     <LibraryPath />
