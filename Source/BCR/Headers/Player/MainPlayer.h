@@ -49,7 +49,7 @@ class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper, public ILocom
 public:
 	AMainPlayer();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void PickUp();
 
 	void PickUp_Implementation();
