@@ -56,6 +56,12 @@ void AMiniGameSystem::OnSecondSnapPointProgress_Implementation(const FQTEActionP
 	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 2 action")));
 }
 
+void AMiniGameSystem::OnQTEComplete_Implementation(const bool bSuccess)
+{
+	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("QTE Complete for : %s with result : %s"), 
+		*GetName(), bSuccess ? TEXT("Success") : TEXT("Failure")));
+}
+
 // Called when the game starts or when spawned
 void AMiniGameSystem::BeginPlay()
 {
@@ -115,6 +121,8 @@ void AMiniGameSystem::StartExecute()
 
 					QTESystem->OnSnapPointFirstProgress.AddDynamic(this, &AMiniGameSystem::OnFirstSnapPointProgress);
 					QTESystem->OnSnapPointSecondProgress.AddDynamic(this, &AMiniGameSystem::OnSecondSnapPointProgress);
+
+					QTESystem->OnQTEComplete.AddDynamic(this, &AMiniGameSystem::OnQTEComplete);
 
 					CallQTEReader();
 				}

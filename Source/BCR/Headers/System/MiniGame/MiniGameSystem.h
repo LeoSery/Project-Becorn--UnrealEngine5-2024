@@ -115,6 +115,10 @@ public:
 	void OnSecondSnapPointProgress(const FQTEActionProgress& Progress);
 	void OnSecondSnapPointProgress_Implementation(const FQTEActionProgress& Progress);
 
+	UFUNCTION(BlueprintNativeEvent)
+	void OnQTEComplete(const bool bSuccess);
+	void OnQTEComplete_Implementation(const bool bSuccess);
+
 protected:
 	virtual void BeginPlay() override;
 };
