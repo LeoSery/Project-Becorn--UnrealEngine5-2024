@@ -6,6 +6,7 @@
 
 #include "UObject/GeneratedCppIncludes.h"
 #include "BCR/Headers/System/Event/TriggerZone.h"
+#include "Runtime/Engine/Classes/Engine/HitResult.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeTriggerZone() {}
 
@@ -17,8 +18,10 @@ BCR_API UFunction* Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature_
 BCR_API UFunction* Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature();
 BCR_API UScriptStruct* Z_Construct_UScriptStruct_FTriggerData();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USceneComponent();
 ENGINE_API UClass* Z_Construct_UClass_USphereComponent_NoRegister();
+ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 UPackage* Z_Construct_UPackage__Script_BCR();
 // End Cross Module References
 
@@ -40,26 +43,80 @@ struct Z_Construct_UScriptStruct_FTriggerData_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OverlappedComp_MetaData[] = {
+		{ "Category", "TriggerData" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherActor_MetaData[] = {
+		{ "Category", "TriggerData" },
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[] = {
+		{ "Category", "TriggerData" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherBodyIndex_MetaData[] = {
+		{ "Category", "TriggerData" },
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bFromSweep_MetaData[] = {
+		{ "Category", "TriggerData" },
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SweepResult_MetaData[] = {
+		{ "Category", "TriggerData" },
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
 	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OverlappedComp;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
+	static void NewProp_bFromSweep_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bFromSweep;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SweepResult;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static void* NewStructOps()
 	{
 		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FTriggerData>();
 	}
 	static const UECodeGen_Private::FStructParams StructParams;
 };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_OverlappedComp = { "OverlappedComp", nullptr, (EPropertyFlags)0x001000000008001c, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FTriggerData, OverlappedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OverlappedComp_MetaData), NewProp_OverlappedComp_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FTriggerData, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherActor_MetaData), NewProp_OtherActor_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x001000000008001c, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FTriggerData, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherComp_MetaData), NewProp_OtherComp_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FTriggerData, OtherBodyIndex), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherBodyIndex_MetaData), NewProp_OtherBodyIndex_MetaData) };
+void Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_bFromSweep_SetBit(void* Obj)
+{
+	((FTriggerData*)Obj)->bFromSweep = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_bFromSweep = { "bFromSweep", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(FTriggerData), &Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_bFromSweep_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bFromSweep_MetaData), NewProp_bFromSweep_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_SweepResult = { "SweepResult", nullptr, (EPropertyFlags)0x0010008000000014, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FTriggerData, SweepResult), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SweepResult_MetaData), NewProp_SweepResult_MetaData) }; // 4100991306
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FTriggerData_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_OverlappedComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_OtherActor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_OtherComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_OtherBodyIndex,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_bFromSweep,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FTriggerData_Statics::NewProp_SweepResult,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FTriggerData_Statics::PropPointers) < 2048);
 const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FTriggerData_Statics::StructParams = {
 	(UObject* (*)())Z_Construct_UPackage__Script_BCR,
 	nullptr,
 	&NewStructOps,
 	"TriggerData",
-	nullptr,
-	0,
+	Z_Construct_UScriptStruct_FTriggerData_Statics::PropPointers,
+	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FTriggerData_Statics::PropPointers),
 	sizeof(FTriggerData),
 	alignof(FTriggerData),
 	RF_Public|RF_Transient|RF_MarkAsNative,
-	EStructFlags(0x00000001),
+	EStructFlags(0x00000005),
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FTriggerData_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FTriggerData_Statics::Struct_MetaDataParams)
 };
 UScriptStruct* Z_Construct_UScriptStruct_FTriggerData()
@@ -88,12 +145,12 @@ struct Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__Delegate
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::NewProp_EventTriggerData = { "EventTriggerData", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_BCR_eventOnOnePlayerEnterZoneSignature_Parms, EventTriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(0, nullptr) }; // 880075000
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::NewProp_EventTriggerData = { "EventTriggerData", nullptr, (EPropertyFlags)0x0010008000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_BCR_eventOnOnePlayerEnterZoneSignature_Parms, EventTriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(0, nullptr) }; // 1584464051
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::NewProp_EventTriggerData,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_BCR, nullptr, "OnOnePlayerEnterZoneSignature__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::_Script_BCR_eventOnOnePlayerEnterZoneSignature_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00120000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_BCR, nullptr, "OnOnePlayerEnterZoneSignature__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::_Script_BCR_eventOnOnePlayerEnterZoneSignature_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::Function_MetaDataParams) };
 static_assert(sizeof(Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature_Statics::_Script_BCR_eventOnOnePlayerEnterZoneSignature_Parms) < MAX_uint16);
 UFunction* Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature()
 {
@@ -104,7 +161,7 @@ UFunction* Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__Dele
 	}
 	return ReturnFunction;
 }
-void FOnOnePlayerEnterZoneSignature_DelegateWrapper(const FScriptDelegate& OnOnePlayerEnterZoneSignature, FTriggerData EventTriggerData)
+void FOnOnePlayerEnterZoneSignature_DelegateWrapper(const FMulticastScriptDelegate& OnOnePlayerEnterZoneSignature, FTriggerData EventTriggerData)
 {
 	struct _Script_BCR_eventOnOnePlayerEnterZoneSignature_Parms
 	{
@@ -112,7 +169,7 @@ void FOnOnePlayerEnterZoneSignature_DelegateWrapper(const FScriptDelegate& OnOne
 	};
 	_Script_BCR_eventOnOnePlayerEnterZoneSignature_Parms Parms;
 	Parms.EventTriggerData=EventTriggerData;
-	OnOnePlayerEnterZoneSignature.ProcessDelegate<UObject>(&Parms);
+	OnOnePlayerEnterZoneSignature.ProcessMulticastDelegate<UObject>(&Parms);
 }
 // End Delegate FOnOnePlayerEnterZoneSignature
 
@@ -132,12 +189,12 @@ struct Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSign
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::NewProp_EventTriggerData = { "EventTriggerData", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_BCR_eventOnTwoPlayersZoneSignature_Parms, EventTriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(0, nullptr) }; // 880075000
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::NewProp_EventTriggerData = { "EventTriggerData", nullptr, (EPropertyFlags)0x0010008000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_BCR_eventOnTwoPlayersZoneSignature_Parms, EventTriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(0, nullptr) }; // 1584464051
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::NewProp_EventTriggerData,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_BCR, nullptr, "OnTwoPlayersZoneSignature__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::_Script_BCR_eventOnTwoPlayersZoneSignature_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00120000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_BCR, nullptr, "OnTwoPlayersZoneSignature__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::_Script_BCR_eventOnTwoPlayersZoneSignature_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::Function_MetaDataParams) };
 static_assert(sizeof(Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature_Statics::_Script_BCR_eventOnTwoPlayersZoneSignature_Parms) < MAX_uint16);
 UFunction* Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature()
 {
@@ -148,7 +205,7 @@ UFunction* Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__Delegate
 	}
 	return ReturnFunction;
 }
-void FOnTwoPlayersZoneSignature_DelegateWrapper(const FScriptDelegate& OnTwoPlayersZoneSignature, FTriggerData EventTriggerData)
+void FOnTwoPlayersZoneSignature_DelegateWrapper(const FMulticastScriptDelegate& OnTwoPlayersZoneSignature, FTriggerData EventTriggerData)
 {
 	struct _Script_BCR_eventOnTwoPlayersZoneSignature_Parms
 	{
@@ -156,7 +213,7 @@ void FOnTwoPlayersZoneSignature_DelegateWrapper(const FScriptDelegate& OnTwoPlay
 	};
 	_Script_BCR_eventOnTwoPlayersZoneSignature_Parms Parms;
 	Parms.EventTriggerData=EventTriggerData;
-	OnTwoPlayersZoneSignature.ProcessDelegate<UObject>(&Parms);
+	OnTwoPlayersZoneSignature.ProcessMulticastDelegate<UObject>(&Parms);
 }
 // End Delegate FOnTwoPlayersZoneSignature
 
@@ -176,12 +233,12 @@ struct Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSig
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::NewProp_EventTriggerData = { "EventTriggerData", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_BCR_eventOnPlayersExitZoneSignature_Parms, EventTriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(0, nullptr) }; // 880075000
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::NewProp_EventTriggerData = { "EventTriggerData", nullptr, (EPropertyFlags)0x0010008000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_BCR_eventOnPlayersExitZoneSignature_Parms, EventTriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(0, nullptr) }; // 1584464051
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::NewProp_EventTriggerData,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_BCR, nullptr, "OnPlayersExitZoneSignature__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::_Script_BCR_eventOnPlayersExitZoneSignature_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00120000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_BCR, nullptr, "OnPlayersExitZoneSignature__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::_Script_BCR_eventOnPlayersExitZoneSignature_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::Function_MetaDataParams) };
 static_assert(sizeof(Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature_Statics::_Script_BCR_eventOnPlayersExitZoneSignature_Parms) < MAX_uint16);
 UFunction* Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature()
 {
@@ -192,7 +249,7 @@ UFunction* Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__Delegat
 	}
 	return ReturnFunction;
 }
-void FOnPlayersExitZoneSignature_DelegateWrapper(const FScriptDelegate& OnPlayersExitZoneSignature, FTriggerData EventTriggerData)
+void FOnPlayersExitZoneSignature_DelegateWrapper(const FMulticastScriptDelegate& OnPlayersExitZoneSignature, FTriggerData EventTriggerData)
 {
 	struct _Script_BCR_eventOnPlayersExitZoneSignature_Parms
 	{
@@ -200,13 +257,309 @@ void FOnPlayersExitZoneSignature_DelegateWrapper(const FScriptDelegate& OnPlayer
 	};
 	_Script_BCR_eventOnPlayersExitZoneSignature_Parms Parms;
 	Parms.EventTriggerData=EventTriggerData;
-	OnPlayersExitZoneSignature.ProcessDelegate<UObject>(&Parms);
+	OnPlayersExitZoneSignature.ProcessMulticastDelegate<UObject>(&Parms);
 }
 // End Delegate FOnPlayersExitZoneSignature
+
+// Begin Class UTriggerZone Function OnActorEnterInnerZone
+struct Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics
+{
+	struct TriggerZone_eventOnActorEnterInnerZone_Parms
+	{
+		UPrimitiveComponent* OverlappedComp;
+		AActor* OtherActor;
+		UPrimitiveComponent* OtherComp;
+		int32 OtherBodyIndex;
+		bool bFromSweep;
+		FHitResult SweepResult;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OverlappedComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SweepResult_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OverlappedComp;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
+	static void NewProp_bFromSweep_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bFromSweep;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SweepResult;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_OverlappedComp = { "OverlappedComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterInnerZone_Parms, OverlappedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OverlappedComp_MetaData), NewProp_OverlappedComp_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterInnerZone_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterInnerZone_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherComp_MetaData), NewProp_OtherComp_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterInnerZone_Parms, OtherBodyIndex), METADATA_PARAMS(0, nullptr) };
+void Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_bFromSweep_SetBit(void* Obj)
+{
+	((TriggerZone_eventOnActorEnterInnerZone_Parms*)Obj)->bFromSweep = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_bFromSweep = { "bFromSweep", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(TriggerZone_eventOnActorEnterInnerZone_Parms), &Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_bFromSweep_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_SweepResult = { "SweepResult", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterInnerZone_Parms, SweepResult), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SweepResult_MetaData), NewProp_SweepResult_MetaData) }; // 4100991306
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_OverlappedComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_OtherActor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_OtherComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_OtherBodyIndex,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_bFromSweep,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::NewProp_SweepResult,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UTriggerZone, nullptr, "OnActorEnterInnerZone", nullptr, nullptr, Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::PropPointers), sizeof(Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::TriggerZone_eventOnActorEnterInnerZone_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00480401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::TriggerZone_eventOnActorEnterInnerZone_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UTriggerZone::execOnActorEnterInnerZone)
+{
+	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComp);
+	P_GET_OBJECT(AActor,Z_Param_OtherActor);
+	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
+	P_GET_PROPERTY(FIntProperty,Z_Param_OtherBodyIndex);
+	P_GET_UBOOL(Z_Param_bFromSweep);
+	P_GET_STRUCT_REF(FHitResult,Z_Param_Out_SweepResult);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnActorEnterInnerZone(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult);
+	P_NATIVE_END;
+}
+// End Class UTriggerZone Function OnActorEnterInnerZone
+
+// Begin Class UTriggerZone Function OnActorEnterOuterZone
+struct Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics
+{
+	struct TriggerZone_eventOnActorEnterOuterZone_Parms
+	{
+		UPrimitiveComponent* OverlappedComp;
+		AActor* OtherActor;
+		UPrimitiveComponent* OtherComp;
+		int32 OtherBodyIndex;
+		bool bFromSweep;
+		FHitResult SweepResult;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OverlappedComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SweepResult_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OverlappedComp;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
+	static void NewProp_bFromSweep_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bFromSweep;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SweepResult;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_OverlappedComp = { "OverlappedComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterOuterZone_Parms, OverlappedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OverlappedComp_MetaData), NewProp_OverlappedComp_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterOuterZone_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterOuterZone_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherComp_MetaData), NewProp_OtherComp_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterOuterZone_Parms, OtherBodyIndex), METADATA_PARAMS(0, nullptr) };
+void Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_bFromSweep_SetBit(void* Obj)
+{
+	((TriggerZone_eventOnActorEnterOuterZone_Parms*)Obj)->bFromSweep = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_bFromSweep = { "bFromSweep", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(TriggerZone_eventOnActorEnterOuterZone_Parms), &Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_bFromSweep_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_SweepResult = { "SweepResult", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorEnterOuterZone_Parms, SweepResult), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SweepResult_MetaData), NewProp_SweepResult_MetaData) }; // 4100991306
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_OverlappedComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_OtherActor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_OtherComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_OtherBodyIndex,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_bFromSweep,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::NewProp_SweepResult,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UTriggerZone, nullptr, "OnActorEnterOuterZone", nullptr, nullptr, Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::PropPointers), sizeof(Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::TriggerZone_eventOnActorEnterOuterZone_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00480401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::TriggerZone_eventOnActorEnterOuterZone_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UTriggerZone::execOnActorEnterOuterZone)
+{
+	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComp);
+	P_GET_OBJECT(AActor,Z_Param_OtherActor);
+	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
+	P_GET_PROPERTY(FIntProperty,Z_Param_OtherBodyIndex);
+	P_GET_UBOOL(Z_Param_bFromSweep);
+	P_GET_STRUCT_REF(FHitResult,Z_Param_Out_SweepResult);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnActorEnterOuterZone(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult);
+	P_NATIVE_END;
+}
+// End Class UTriggerZone Function OnActorEnterOuterZone
+
+// Begin Class UTriggerZone Function OnActorExitInnerZone
+struct Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics
+{
+	struct TriggerZone_eventOnActorExitInnerZone_Parms
+	{
+		UPrimitiveComponent* OverlappedComponent;
+		AActor* OtherActor;
+		UPrimitiveComponent* OtherComp;
+		int32 OtherBodyIndex;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OverlappedComponent_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OverlappedComponent;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::NewProp_OverlappedComponent = { "OverlappedComponent", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorExitInnerZone_Parms, OverlappedComponent), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OverlappedComponent_MetaData), NewProp_OverlappedComponent_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorExitInnerZone_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorExitInnerZone_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherComp_MetaData), NewProp_OtherComp_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorExitInnerZone_Parms, OtherBodyIndex), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::NewProp_OverlappedComponent,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::NewProp_OtherActor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::NewProp_OtherComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::NewProp_OtherBodyIndex,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UTriggerZone, nullptr, "OnActorExitInnerZone", nullptr, nullptr, Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::PropPointers), sizeof(Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::TriggerZone_eventOnActorExitInnerZone_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::TriggerZone_eventOnActorExitInnerZone_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UTriggerZone::execOnActorExitInnerZone)
+{
+	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComponent);
+	P_GET_OBJECT(AActor,Z_Param_OtherActor);
+	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
+	P_GET_PROPERTY(FIntProperty,Z_Param_OtherBodyIndex);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnActorExitInnerZone(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex);
+	P_NATIVE_END;
+}
+// End Class UTriggerZone Function OnActorExitInnerZone
+
+// Begin Class UTriggerZone Function OnActorExitOuterZone
+struct Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics
+{
+	struct TriggerZone_eventOnActorExitOuterZone_Parms
+	{
+		UPrimitiveComponent* OverlappedComponent;
+		AActor* OtherActor;
+		UPrimitiveComponent* OtherComp;
+		int32 OtherBodyIndex;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OverlappedComponent_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OverlappedComponent;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::NewProp_OverlappedComponent = { "OverlappedComponent", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorExitOuterZone_Parms, OverlappedComponent), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OverlappedComponent_MetaData), NewProp_OverlappedComponent_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorExitOuterZone_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorExitOuterZone_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherComp_MetaData), NewProp_OtherComp_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventOnActorExitOuterZone_Parms, OtherBodyIndex), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::NewProp_OverlappedComponent,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::NewProp_OtherActor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::NewProp_OtherComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::NewProp_OtherBodyIndex,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UTriggerZone, nullptr, "OnActorExitOuterZone", nullptr, nullptr, Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::PropPointers), sizeof(Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::TriggerZone_eventOnActorExitOuterZone_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::TriggerZone_eventOnActorExitOuterZone_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UTriggerZone::execOnActorExitOuterZone)
+{
+	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComponent);
+	P_GET_OBJECT(AActor,Z_Param_OtherActor);
+	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
+	P_GET_PROPERTY(FIntProperty,Z_Param_OtherBodyIndex);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnActorExitOuterZone(Z_Param_OverlappedComponent,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex);
+	P_NATIVE_END;
+}
+// End Class UTriggerZone Function OnActorExitOuterZone
 
 // Begin Class UTriggerZone
 void UTriggerZone::StaticRegisterNativesUTriggerZone()
 {
+	UClass* Class = UTriggerZone::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "OnActorEnterInnerZone", &UTriggerZone::execOnActorEnterInnerZone },
+		{ "OnActorEnterOuterZone", &UTriggerZone::execOnActorEnterOuterZone },
+		{ "OnActorExitInnerZone", &UTriggerZone::execOnActorExitInnerZone },
+		{ "OnActorExitOuterZone", &UTriggerZone::execOnActorExitOuterZone },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UTriggerZone);
 UClass* Z_Construct_UClass_UTriggerZone_NoRegister()
@@ -223,61 +576,104 @@ struct Z_Construct_UClass_UTriggerZone_Statics
 		{ "IncludePath", "Headers/System/Event/TriggerZone.h" },
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_VFXZoneComponent_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnOnePlayerEnterInnerZone_MetaData[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnTwoPlayerEnterInnerZone_MetaData[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnPlayersExitInnerZone_MetaData[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnOnePlayerEnterOuterZone_MetaData[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnTwoPlayerEnterOuterZone_MetaData[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnPlayersExitOuterZone_MetaData[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InnerZoneComponent_MetaData[] = {
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_VFXZoneSize_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InnerZoneSize_MetaData[] = {
 		{ "Category", "Zone Settings" },
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlayersInVFXZone_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlayersInInnerZone_MetaData[] = {
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_UIZoneComponent_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OuterZoneComponent_MetaData[] = {
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_UIZoneSize_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OuterZoneSize_MetaData[] = {
 		{ "Category", "Zone Settings" },
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlayersInUIZone_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlayersInOuterZone_MetaData[] = {
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_VFXZoneComponent;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_VFXZoneSize;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_PlayersInVFXZone_Inner;
-	static const UECodeGen_Private::FArrayPropertyParams NewProp_PlayersInVFXZone;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_UIZoneComponent;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_UIZoneSize;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_PlayersInUIZone_Inner;
-	static const UECodeGen_Private::FArrayPropertyParams NewProp_PlayersInUIZone;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnOnePlayerEnterInnerZone;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnTwoPlayerEnterInnerZone;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnPlayersExitInnerZone;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnOnePlayerEnterOuterZone;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnTwoPlayerEnterOuterZone;
+	static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnPlayersExitOuterZone;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_InnerZoneComponent;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_InnerZoneSize;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_PlayersInInnerZone_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_PlayersInInnerZone;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_OuterZoneComponent;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_OuterZoneSize;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_PlayersInOuterZone_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_PlayersInOuterZone;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone, "OnActorEnterInnerZone" }, // 3466880428
+		{ &Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone, "OnActorEnterOuterZone" }, // 2801014808
+		{ &Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone, "OnActorExitInnerZone" }, // 613708655
+		{ &Z_Construct_UFunction_UTriggerZone_OnActorExitOuterZone, "OnActorExitOuterZone" }, // 569901885
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UTriggerZone>::IsAbstract,
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_VFXZoneComponent = { "VFXZoneComponent", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, VFXZoneComponent), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_VFXZoneComponent_MetaData), NewProp_VFXZoneComponent_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_VFXZoneSize = { "VFXZoneSize", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, VFXZoneSize), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_VFXZoneSize_MetaData), NewProp_VFXZoneSize_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInVFXZone_Inner = { "PlayersInVFXZone", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInVFXZone = { "PlayersInVFXZone", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, PlayersInVFXZone), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlayersInVFXZone_MetaData), NewProp_PlayersInVFXZone_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_UIZoneComponent = { "UIZoneComponent", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, UIZoneComponent), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UIZoneComponent_MetaData), NewProp_UIZoneComponent_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_UIZoneSize = { "UIZoneSize", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, UIZoneSize), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UIZoneSize_MetaData), NewProp_UIZoneSize_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInUIZone_Inner = { "PlayersInUIZone", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInUIZone = { "PlayersInUIZone", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, PlayersInUIZone), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlayersInUIZone_MetaData), NewProp_PlayersInUIZone_MetaData) };
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnOnePlayerEnterInnerZone = { "OnOnePlayerEnterInnerZone", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, OnOnePlayerEnterInnerZone), Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnOnePlayerEnterInnerZone_MetaData), NewProp_OnOnePlayerEnterInnerZone_MetaData) }; // 3254030534
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnTwoPlayerEnterInnerZone = { "OnTwoPlayerEnterInnerZone", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, OnTwoPlayerEnterInnerZone), Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnTwoPlayerEnterInnerZone_MetaData), NewProp_OnTwoPlayerEnterInnerZone_MetaData) }; // 3798247212
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnPlayersExitInnerZone = { "OnPlayersExitInnerZone", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, OnPlayersExitInnerZone), Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnPlayersExitInnerZone_MetaData), NewProp_OnPlayersExitInnerZone_MetaData) }; // 2631374910
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnOnePlayerEnterOuterZone = { "OnOnePlayerEnterOuterZone", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, OnOnePlayerEnterOuterZone), Z_Construct_UDelegateFunction_BCR_OnOnePlayerEnterZoneSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnOnePlayerEnterOuterZone_MetaData), NewProp_OnOnePlayerEnterOuterZone_MetaData) }; // 3254030534
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnTwoPlayerEnterOuterZone = { "OnTwoPlayerEnterOuterZone", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, OnTwoPlayerEnterOuterZone), Z_Construct_UDelegateFunction_BCR_OnTwoPlayersZoneSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnTwoPlayerEnterOuterZone_MetaData), NewProp_OnTwoPlayerEnterOuterZone_MetaData) }; // 3798247212
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnPlayersExitOuterZone = { "OnPlayersExitOuterZone", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, OnPlayersExitOuterZone), Z_Construct_UDelegateFunction_BCR_OnPlayersExitZoneSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnPlayersExitOuterZone_MetaData), NewProp_OnPlayersExitOuterZone_MetaData) }; // 2631374910
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_InnerZoneComponent = { "InnerZoneComponent", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, InnerZoneComponent), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InnerZoneComponent_MetaData), NewProp_InnerZoneComponent_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_InnerZoneSize = { "InnerZoneSize", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, InnerZoneSize), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InnerZoneSize_MetaData), NewProp_InnerZoneSize_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInInnerZone_Inner = { "PlayersInInnerZone", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInInnerZone = { "PlayersInInnerZone", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, PlayersInInnerZone), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlayersInInnerZone_MetaData), NewProp_PlayersInInnerZone_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_OuterZoneComponent = { "OuterZoneComponent", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, OuterZoneComponent), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OuterZoneComponent_MetaData), NewProp_OuterZoneComponent_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_OuterZoneSize = { "OuterZoneSize", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, OuterZoneSize), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OuterZoneSize_MetaData), NewProp_OuterZoneSize_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInOuterZone_Inner = { "PlayersInOuterZone", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInOuterZone = { "PlayersInOuterZone", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerZone, PlayersInOuterZone), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlayersInOuterZone_MetaData), NewProp_PlayersInOuterZone_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UTriggerZone_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_VFXZoneComponent,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_VFXZoneSize,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInVFXZone_Inner,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInVFXZone,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_UIZoneComponent,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_UIZoneSize,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInUIZone_Inner,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInUIZone,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnOnePlayerEnterInnerZone,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnTwoPlayerEnterInnerZone,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnPlayersExitInnerZone,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnOnePlayerEnterOuterZone,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnTwoPlayerEnterOuterZone,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_OnPlayersExitOuterZone,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_InnerZoneComponent,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_InnerZoneSize,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInInnerZone_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInInnerZone,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_OuterZoneComponent,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_OuterZoneSize,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInOuterZone_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerZone_Statics::NewProp_PlayersInOuterZone,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UTriggerZone_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UTriggerZone_Statics::DependentSingletons[])() = {
@@ -290,11 +686,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UTriggerZone_Statics::C
 	"Engine",
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
+	FuncInfo,
 	Z_Construct_UClass_UTriggerZone_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
 	UE_ARRAY_COUNT(Z_Construct_UClass_UTriggerZone_Statics::PropPointers),
 	0,
 	0x00B000A4u,
@@ -320,13 +716,13 @@ UTriggerZone::~UTriggerZone() {}
 struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FTriggerData::StaticStruct, Z_Construct_UScriptStruct_FTriggerData_Statics::NewStructOps, TEXT("TriggerData"), &Z_Registration_Info_UScriptStruct_TriggerData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FTriggerData), 880075000U) },
+		{ FTriggerData::StaticStruct, Z_Construct_UScriptStruct_FTriggerData_Statics::NewStructOps, TEXT("TriggerData"), &Z_Registration_Info_UScriptStruct_TriggerData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FTriggerData), 1584464051U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UTriggerZone, UTriggerZone::StaticClass, TEXT("UTriggerZone"), &Z_Registration_Info_UClass_UTriggerZone, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTriggerZone), 1360931638U) },
+		{ Z_Construct_UClass_UTriggerZone, UTriggerZone::StaticClass, TEXT("UTriggerZone"), &Z_Registration_Info_UClass_UTriggerZone, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTriggerZone), 641743339U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_2077394871(TEXT("/Script/BCR"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_3059412886(TEXT("/Script/BCR"),
 	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ScriptStructInfo),
 	nullptr, 0);

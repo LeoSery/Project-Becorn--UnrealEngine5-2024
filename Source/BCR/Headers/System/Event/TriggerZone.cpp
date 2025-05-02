@@ -3,27 +3,27 @@
 #include "BCR/Headers/Player/MainPlayer.h"
 #include "BCR/Headers/System/MiniGame/MiniGameSystem.h"
 
-UTriggerZone::UTriggerZone():  VFXZoneSize(150.0f), UIZoneSize(100.0f)
+UTriggerZone::UTriggerZone():  InnerZoneSize(150.0f), OuterZoneSize(100.0f)
 {
 	PrimaryComponentTick.bCanEverTick = true;
 
-	VFXZoneComponent = CreateDefaultSubobject<USphereComponent>(TEXT("VFXBoxColliderZone"));
-	VFXZoneComponent->SetupAttachment(this);
-	VFXZoneComponent->OnComponentBeginOverlap.AddDynamic(this, &UTriggerZone::OnActorEnterVFXZone);
-	VFXZoneComponent->OnComponentEndOverlap.AddDynamic(this, &UTriggerZone::OnActorExitVFXZone);
+	InnerZoneComponent = CreateDefaultSubobject<USphereComponent>(TEXT("InnerBoxColliderZone"));
+	InnerZoneComponent->SetupAttachment(this);
+	InnerZoneComponent->OnComponentBeginOverlap.AddDynamic(this, &UTriggerZone::OnActorEnterInnerZone);
+	InnerZoneComponent->OnComponentEndOverlap.AddDynamic(this, &UTriggerZone::OnActorExitInnerZone);
     
-	UIZoneComponent = CreateDefaultSubobject<USphereComponent>(TEXT("UIBoxColliderZone"));
-	UIZoneComponent->SetupAttachment(this);
-	UIZoneComponent->OnComponentBeginOverlap.AddDynamic(this, &UTriggerZone::OnActorEnterUIZone);
-	UIZoneComponent->OnComponentEndOverlap.AddDynamic(this, &UTriggerZone::OnActorExitUIZone);
+	OuterZoneComponent = CreateDefaultSubobject<USphereComponent>(TEXT("OuterBoxColliderZone"));
+	OuterZoneComponent->SetupAttachment(this);
+	OuterZoneComponent->OnComponentBeginOverlap.AddDynamic(this, &UTriggerZone::OnActorEnterOuterZone);
+	OuterZoneComponent->OnComponentEndOverlap.AddDynamic(this, &UTriggerZone::OnActorExitOuterZone);
 }
 
 void UTriggerZone::OnRegister()
 {
 	Super::OnRegister();
 
-	SetupZone(VFXZoneComponent, VFXZoneSize, FColor::Blue);
-	SetupZone(UIZoneComponent, UIZoneSize, FColor::Red);
+	SetupZone(InnerZoneComponent, InnerZoneSize, FColor::Blue);
+	SetupZone(OuterZoneComponent, OuterZoneSize, FColor::Red);
 }
 
 void UTriggerZone::SetupZone(USphereComponent* ZoneComponent, const float ZoneSize, const FColor ZoneColor) const
@@ -70,7 +70,7 @@ void UTriggerZone::SetTriggerZoneSize(USphereComponent* ZoneComponent, const flo
 	ZoneComponent->SetSphereRadius(NewZoneSize);
 }
 
-void UTriggerZone::OnActorEnterVFXZone(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+void UTriggerZone::OnActorEnterInnerZone(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (!IsValid(OtherActor) || !OtherActor->IsA(AMainPlayer::StaticClass()))
@@ -80,45 +80,59 @@ void UTriggerZone::OnActorEnterVFXZone(UPrimitiveComponent* OverlappedComp, AAct
 	
 	FTriggerData CurrentVFXTriggerData(OverlappedComp, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 	
-	PlayersInVFXZone.AddUnique(CurrentVFXTriggerData.OtherActor);
+	PlayersInInnerZone.AddUnique(CurrentVFXTriggerData.OtherActor);
 
-	if (PlayersInVFXZone.Num() == 1)
+	if (PlayersInInnerZone.Num() == 1 && OnOnePlayerEnterInnerZone.IsBound())
 	{
-		
+		OnOnePlayerEnterInnerZone.Broadcast(CurrentVFXTriggerData);
 	}
-	else if (PlayersInVFXZone.Num() == 2)
+	else if (PlayersInInnerZone.Num() == 2 && OnTwoPlayerEnterInnerZone.IsBound())
 	{
-		
+		OnTwoPlayerEnterInnerZone.Broadcast(CurrentVFXTriggerData);
 	}
 }
 
-void UTriggerZone::OnActorEnterUIZone(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+void UTriggerZone::OnActorEnterOuterZone(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	FTriggerData CurrentUITriggerData(OverlappedComp, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 	
-	PlayersInUIZone.AddUnique(CurrentUITriggerData.OtherActor);
+	PlayersInOuterZone.AddUnique(CurrentUITriggerData.OtherActor);
 
-	if (PlayersInUIZone.Num() == 1)
+	if (PlayersInOuterZone.Num() == 1 && OnOnePlayerEnterOuterZone.IsBound())
 	{
-		
+		OnOnePlayerEnterOuterZone.Broadcast(CurrentUITriggerData);
 	}
-	else if (PlayersInUIZone.Num() == 2)
+	else if (PlayersInOuterZone.Num() == 2 && OnTwoPlayerEnterOuterZone.IsBound())
 	{
-		
+		OnTwoPlayerEnterOuterZone.Broadcast(CurrentUITriggerData);
 	}
 }
 
-void UTriggerZone::OnActorExitVFXZone(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+void UTriggerZone::OnActorExitInnerZone(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex)
 {
-	
+	FTriggerData CurrentVFXTriggerData(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex);
+
+	PlayersInInnerZone.Remove(CurrentVFXTriggerData.OtherActor);
+
+	if (PlayersInInnerZone.Num() == 0 && OnPlayersExitOuterZone.IsBound())
+	{
+		OnPlayersExitOuterZone.Broadcast(CurrentVFXTriggerData);
+	}
 }
 
-void UTriggerZone::OnActorExitUIZone(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+void UTriggerZone::OnActorExitOuterZone(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	
+	FTriggerData CurrentVFXTriggerData(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex);
+
+	PlayersInOuterZone.Remove(CurrentVFXTriggerData.OtherActor);
+
+	if (PlayersInOuterZone.Num() == 0 && OnPlayersExitInnerZone.IsBound())
+	{
+		OnPlayersExitInnerZone.Broadcast(CurrentVFXTriggerData);
+	}
 }
 
 void UTriggerZone::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
@@ -127,13 +141,13 @@ void UTriggerZone::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 
 	FName PropertyName = (PropertyChangedEvent.Property != nullptr) ? PropertyChangedEvent.Property->GetFName() : NAME_None;
                          
-	if (PropertyName == GET_MEMBER_NAME_CHECKED(UTriggerZone, VFXZoneSize))
+	if (PropertyName == GET_MEMBER_NAME_CHECKED(UTriggerZone, InnerZoneSize))
 	{
-		SetTriggerZoneSize(VFXZoneComponent, VFXZoneSize);
+		SetTriggerZoneSize(InnerZoneComponent, InnerZoneSize);
 	}
-	else if (PropertyName == GET_MEMBER_NAME_CHECKED(UTriggerZone, UIZoneSize))
+	else if (PropertyName == GET_MEMBER_NAME_CHECKED(UTriggerZone, OuterZoneSize))
 	{
-		SetTriggerZoneSize(UIZoneComponent, UIZoneSize);
+		SetTriggerZoneSize(OuterZoneComponent, OuterZoneSize);
 	}
 }
 
@@ -141,14 +155,16 @@ void UTriggerZone::BeginDestroy()
 {
 	Super::BeginDestroy();
 
-	if (VFXZoneComponent)
+	if (InnerZoneComponent)
 	{
-		VFXZoneComponent->OnComponentBeginOverlap.RemoveDynamic(this, &UTriggerZone::OnActorEnterVFXZone);
+		InnerZoneComponent->OnComponentBeginOverlap.RemoveDynamic(this, &UTriggerZone::OnActorEnterInnerZone);
+		InnerZoneComponent->OnComponentEndOverlap.RemoveDynamic(this, &UTriggerZone::OnActorExitInnerZone);
 	}
 
-	if (UIZoneComponent)
+	if (OuterZoneComponent)
 	{
-		UIZoneComponent->OnComponentBeginOverlap.RemoveDynamic(this, &UTriggerZone::OnActorEnterUIZone);
+		OuterZoneComponent->OnComponentBeginOverlap.RemoveDynamic(this, &UTriggerZone::OnActorEnterOuterZone);
+		OuterZoneComponent->OnComponentEndOverlap.RemoveDynamic(this, &UTriggerZone::OnActorExitOuterZone);
 	}
 }
 
