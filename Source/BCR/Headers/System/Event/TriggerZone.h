@@ -52,9 +52,6 @@ struct FTriggerData
 	FHitResult SweepResult;
 };
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOnePlayerEnterZoneSignature, FTriggerData, EventTriggerData);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTwoPlayersZoneSignature, FTriggerData, EventTriggerData);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPlayersExitZoneSignature, FTriggerData, EventTriggerData);
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class BCR_API UTriggerZone : public USceneComponent
@@ -71,7 +68,7 @@ public:
 protected:
 
 	void SetupZone(USphereComponent* ZoneComponent, const float ZoneSize, const FColor ZoneColor) const;
-	void SetTriggerZoneSize(USphereComponent* ZoneComponent, const float NewZoneSize) const;
+	void SetTriggerZoneSize(USphereComponent* ZoneComponent, const float NewZoneSize);
 
 	UFUNCTION()
 	void OnActorEnterInnerZone(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
@@ -84,29 +81,11 @@ protected:
 
 	UFUNCTION()
 	void OnActorExitOuterZone(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-
-	UPROPERTY(BlueprintAssignable)
-	FOnOnePlayerEnterZoneSignature OnOnePlayerEnterInnerZone;
-	
-	UPROPERTY(BlueprintAssignable)
-	FOnTwoPlayersZoneSignature OnTwoPlayerEnterInnerZone;
-
-	UPROPERTY(BlueprintAssignable)
-	FOnPlayersExitZoneSignature OnPlayersExitInnerZone;
-	
-	UPROPERTY(BlueprintAssignable)
-	FOnOnePlayerEnterZoneSignature OnOnePlayerEnterOuterZone;
-	
-	UPROPERTY(BlueprintAssignable)
-	FOnTwoPlayersZoneSignature OnTwoPlayerEnterOuterZone;
-
-	UPROPERTY(BlueprintAssignable)
-	FOnPlayersExitZoneSignature OnPlayersExitOuterZone;
 	
 	UPROPERTY()
 	USphereComponent* InnerZoneComponent;
 	
-	UPROPERTY(EditAnywhere , Category = "Zone Settings")
+	UPROPERTY(EditAnywhere , Category = "Zone Settings", meta = (ClampMin = "0.1"))
 	float InnerZoneSize;
 	
 	UPROPERTY()
@@ -115,7 +94,7 @@ protected:
 	UPROPERTY()
 	USphereComponent* OuterZoneComponent;
 	
-	UPROPERTY(EditAnywhere , Category = "Zone Settings")
+	UPROPERTY(EditAnywhere , Category = "Zone Settings", meta = (ClampMin = "0.1"))
 	float OuterZoneSize;
 	
 	UPROPERTY()

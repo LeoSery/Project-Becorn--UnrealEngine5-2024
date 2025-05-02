@@ -147,6 +147,12 @@
     <ClInclude Include="..\..\Source\BCR\Headers\System\Event\TriggerZone.h">
       <Filter>Source\BCR\Headers\System\Event</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\BCR\Headers\System\Event\TriggerZoneListener.cpp">
+      <Filter>Source\BCR\Headers\System\Event</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\Event\TriggerZoneListener.h">
+      <Filter>Source\BCR\Headers\System\Event</Filter>
+    </ClInclude>
     <Filter Include="Source\BCR\Headers\System\MiniGame">
       <UniqueIdentifier>{57BF3B9B-AEE4-3E36-9795-9514F2DDDC8A}</UniqueIdentifier>
     </Filter>
