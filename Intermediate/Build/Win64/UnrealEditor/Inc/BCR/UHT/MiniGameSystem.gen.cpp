@@ -304,6 +304,63 @@ DEFINE_FUNCTION(AMiniGameSystem::execOnFirstSnapPointResult)
 }
 // End Class AMiniGameSystem Function OnFirstSnapPointResult
 
+// Begin Class AMiniGameSystem Function OnQTEComplete
+struct MiniGameSystem_eventOnQTEComplete_Parms
+{
+	bool bSuccess;
+};
+static FName NAME_AMiniGameSystem_OnQTEComplete = FName(TEXT("OnQTEComplete"));
+void AMiniGameSystem::OnQTEComplete(bool bSuccess)
+{
+	MiniGameSystem_eventOnQTEComplete_Parms Parms;
+	Parms.bSuccess=bSuccess ? true : false;
+	ProcessEvent(FindFunctionChecked(NAME_AMiniGameSystem_OnQTEComplete),&Parms);
+}
+struct Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bSuccess_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static void NewProp_bSuccess_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bSuccess;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+void Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::NewProp_bSuccess_SetBit(void* Obj)
+{
+	((MiniGameSystem_eventOnQTEComplete_Parms*)Obj)->bSuccess = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::NewProp_bSuccess = { "bSuccess", nullptr, (EPropertyFlags)0x0010000000000082, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(MiniGameSystem_eventOnQTEComplete_Parms), &Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::NewProp_bSuccess_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bSuccess_MetaData), NewProp_bSuccess_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::NewProp_bSuccess,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMiniGameSystem, nullptr, "OnQTEComplete", nullptr, nullptr, Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::PropPointers), sizeof(MiniGameSystem_eventOnQTEComplete_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::Function_MetaDataParams), Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::Function_MetaDataParams) };
+static_assert(sizeof(MiniGameSystem_eventOnQTEComplete_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AMiniGameSystem::execOnQTEComplete)
+{
+	P_GET_UBOOL(Z_Param_bSuccess);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnQTEComplete_Implementation(Z_Param_bSuccess);
+	P_NATIVE_END;
+}
+// End Class AMiniGameSystem Function OnQTEComplete
+
 // Begin Class AMiniGameSystem Function OnSecondSnapPointProgress
 struct MiniGameSystem_eventOnSecondSnapPointProgress_Parms
 {
@@ -704,6 +761,7 @@ void AMiniGameSystem::StaticRegisterNativesAMiniGameSystem()
 		{ "FinishExecute", &AMiniGameSystem::execFinishExecute },
 		{ "OnFirstSnapPointProgress", &AMiniGameSystem::execOnFirstSnapPointProgress },
 		{ "OnFirstSnapPointResult", &AMiniGameSystem::execOnFirstSnapPointResult },
+		{ "OnQTEComplete", &AMiniGameSystem::execOnQTEComplete },
 		{ "OnSecondSnapPointProgress", &AMiniGameSystem::execOnSecondSnapPointProgress },
 		{ "OnSecondSnapPointResult", &AMiniGameSystem::execOnSecondSnapPointResult },
 		{ "PartialReset", &AMiniGameSystem::execPartialReset },
@@ -816,6 +874,7 @@ struct Z_Construct_UClass_AMiniGameSystem_Statics
 		{ &Z_Construct_UFunction_AMiniGameSystem_FinishExecute, "FinishExecute" }, // 3264773684
 		{ &Z_Construct_UFunction_AMiniGameSystem_OnFirstSnapPointProgress, "OnFirstSnapPointProgress" }, // 3582507693
 		{ &Z_Construct_UFunction_AMiniGameSystem_OnFirstSnapPointResult, "OnFirstSnapPointResult" }, // 1551018372
+		{ &Z_Construct_UFunction_AMiniGameSystem_OnQTEComplete, "OnQTEComplete" }, // 2910951489
 		{ &Z_Construct_UFunction_AMiniGameSystem_OnSecondSnapPointProgress, "OnSecondSnapPointProgress" }, // 3879627677
 		{ &Z_Construct_UFunction_AMiniGameSystem_OnSecondSnapPointResult, "OnSecondSnapPointResult" }, // 2739693518
 		{ &Z_Construct_UFunction_AMiniGameSystem_PartialReset, "PartialReset" }, // 2381177074
@@ -917,10 +976,10 @@ AMiniGameSystem::~AMiniGameSystem() {}
 struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 3750516499U) },
+		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 1763344934U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_897078092(TEXT("/Script/BCR"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_1154135961(TEXT("/Script/BCR"),
 	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

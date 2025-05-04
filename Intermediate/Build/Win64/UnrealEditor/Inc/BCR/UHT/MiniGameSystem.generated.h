@@ -23,6 +23,7 @@ BCR_API void FOnEndQTESignature_DelegateWrapper(const FMulticastScriptDelegate& 
 
 
 #define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execOnQTEComplete); \
 	DECLARE_FUNCTION(execOnSecondSnapPointProgress); \
 	DECLARE_FUNCTION(execOnFirstSnapPointProgress); \
 	DECLARE_FUNCTION(execOnSecondSnapPointResult); \

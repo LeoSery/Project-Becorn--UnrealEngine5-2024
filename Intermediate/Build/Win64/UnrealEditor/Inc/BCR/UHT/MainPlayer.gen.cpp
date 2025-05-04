@@ -37,7 +37,7 @@ struct Z_Construct_UFunction_AMainPlayer_PickUp_Statics
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AMainPlayer_PickUp_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMainPlayer, nullptr, "PickUp", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AMainPlayer_PickUp_Statics::Function_MetaDataParams), Z_Construct_UFunction_AMainPlayer_PickUp_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AMainPlayer_PickUp_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMainPlayer, nullptr, "PickUp", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x0C020C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AMainPlayer_PickUp_Statics::Function_MetaDataParams), Z_Construct_UFunction_AMainPlayer_PickUp_Statics::Function_MetaDataParams) };
 UFunction* Z_Construct_UFunction_AMainPlayer_PickUp()
 {
 	static UFunction* ReturnFunction = nullptr;
@@ -158,7 +158,7 @@ struct Z_Construct_UClass_AMainPlayer_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_AMainPlayer_PickUp, "PickUp" }, // 3231325062
+		{ &Z_Construct_UFunction_AMainPlayer_PickUp, "PickUp" }, // 3781556539
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
@@ -232,10 +232,10 @@ AMainPlayer::~AMainPlayer() {}
 struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 1143677444U) },
+		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 4175690058U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_2510823968(TEXT("/Script/BCR"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_594878333(TEXT("/Script/BCR"),
 	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
