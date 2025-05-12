@@ -61,7 +61,10 @@ class BCR_API UTriggerZone : public USceneComponent
 public:
 	UTriggerZone();
 	
+#if WITH_EDITOR
 	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
+#endif
+	
 	virtual void OnRegister() override;
 	virtual void BeginDestroy() override;
 	

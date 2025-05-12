@@ -195,6 +195,7 @@ void UTriggerZone::OnActorExitOuterZone(UPrimitiveComponent* OverlappedComponent
 	}
 }
 
+#if WITH_EDITOR
 void UTriggerZone::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
 	Super::PostEditChangeProperty(PropertyChangedEvent);
@@ -213,6 +214,7 @@ void UTriggerZone::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 		SetTriggerZoneSize(OuterZoneComponent, OuterZoneSize);
 	}
 }
+#endif
 
 void UTriggerZone::BeginDestroy()
 {
