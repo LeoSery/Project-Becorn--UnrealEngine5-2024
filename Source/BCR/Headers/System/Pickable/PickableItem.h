@@ -25,7 +25,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	FString name;
 
-	UFUNCTION(Blueprintable)
+	UFUNCTION(Blueprintable,BlueprintCallable)
 	FString GetItemName() const { return name; };
 
 	virtual void PickedUp_Implementation(AActor* _player, AActor* _object) override;

@@ -107,6 +107,52 @@ DEFINE_FUNCTION(AMiniGameSystem::execCallQTEReader)
 }
 // End Class AMiniGameSystem Function CallQTEReader
 
+// Begin Class AMiniGameSystem Function checkItemInRecipe
+struct Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics
+{
+	struct MiniGameSystem_eventcheckItemInRecipe_Parms
+	{
+		APickableItem* item;
+		int32 ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_item;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::NewProp_item = { "item", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MiniGameSystem_eventcheckItemInRecipe_Parms, item), Z_Construct_UClass_APickableItem_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MiniGameSystem_eventcheckItemInRecipe_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::NewProp_item,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMiniGameSystem, nullptr, "checkItemInRecipe", nullptr, nullptr, Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::PropPointers), sizeof(Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::MiniGameSystem_eventcheckItemInRecipe_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::Function_MetaDataParams), Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::MiniGameSystem_eventcheckItemInRecipe_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AMiniGameSystem::execcheckItemInRecipe)
+{
+	P_GET_OBJECT(APickableItem,Z_Param_item);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(int32*)Z_Param__Result=P_THIS->checkItemInRecipe(Z_Param_item);
+	P_NATIVE_END;
+}
+// End Class AMiniGameSystem Function checkItemInRecipe
+
 // Begin Class AMiniGameSystem Function checkItemPresent
 struct Z_Construct_UFunction_AMiniGameSystem_checkItemPresent_Statics
 {
@@ -507,6 +553,48 @@ DEFINE_FUNCTION(AMiniGameSystem::execPartialReset)
 }
 // End Class AMiniGameSystem Function PartialReset
 
+// Begin Class AMiniGameSystem Function RemoveItemFromList
+struct Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics
+{
+	struct MiniGameSystem_eventRemoveItemFromList_Parms
+	{
+		int32 i;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FIntPropertyParams NewProp_i;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::NewProp_i = { "i", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MiniGameSystem_eventRemoveItemFromList_Parms, i), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::NewProp_i,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMiniGameSystem, nullptr, "RemoveItemFromList", nullptr, nullptr, Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::PropPointers), sizeof(Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::MiniGameSystem_eventRemoveItemFromList_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::Function_MetaDataParams), Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::MiniGameSystem_eventRemoveItemFromList_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AMiniGameSystem::execRemoveItemFromList)
+{
+	P_GET_PROPERTY(FIntProperty,Z_Param_i);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->RemoveItemFromList(Z_Param_i);
+	P_NATIVE_END;
+}
+// End Class AMiniGameSystem Function RemoveItemFromList
+
 // Begin Class AMiniGameSystem Function Reset
 struct Z_Construct_UFunction_AMiniGameSystem_Reset_Statics
 {
@@ -631,6 +719,48 @@ DEFINE_FUNCTION(AMiniGameSystem::execSetOutputItem)
 	P_NATIVE_END;
 }
 // End Class AMiniGameSystem Function SetOutputItem
+
+// Begin Class AMiniGameSystem Function SetPresentItem
+struct Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics
+{
+	struct MiniGameSystem_eventSetPresentItem_Parms
+	{
+		APickableItem* item;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_item;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::NewProp_item = { "item", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MiniGameSystem_eventSetPresentItem_Parms, item), Z_Construct_UClass_APickableItem_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::NewProp_item,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMiniGameSystem, nullptr, "SetPresentItem", nullptr, nullptr, Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::PropPointers), sizeof(Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::MiniGameSystem_eventSetPresentItem_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::Function_MetaDataParams), Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::MiniGameSystem_eventSetPresentItem_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AMiniGameSystem_SetPresentItem()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AMiniGameSystem_SetPresentItem_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AMiniGameSystem::execSetPresentItem)
+{
+	P_GET_OBJECT(APickableItem,Z_Param_item);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->SetPresentItem(Z_Param_item);
+	P_NATIVE_END;
+}
+// End Class AMiniGameSystem Function SetPresentItem
 
 // Begin Class AMiniGameSystem Function SetQTE
 struct Z_Construct_UFunction_AMiniGameSystem_SetQTE_Statics
@@ -757,6 +887,7 @@ void AMiniGameSystem::StaticRegisterNativesAMiniGameSystem()
 	UClass* Class = AMiniGameSystem::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "CallQTEReader", &AMiniGameSystem::execCallQTEReader },
+		{ "checkItemInRecipe", &AMiniGameSystem::execcheckItemInRecipe },
 		{ "checkItemPresent", &AMiniGameSystem::execcheckItemPresent },
 		{ "FinishExecute", &AMiniGameSystem::execFinishExecute },
 		{ "OnFirstSnapPointProgress", &AMiniGameSystem::execOnFirstSnapPointProgress },
@@ -765,9 +896,11 @@ void AMiniGameSystem::StaticRegisterNativesAMiniGameSystem()
 		{ "OnSecondSnapPointProgress", &AMiniGameSystem::execOnSecondSnapPointProgress },
 		{ "OnSecondSnapPointResult", &AMiniGameSystem::execOnSecondSnapPointResult },
 		{ "PartialReset", &AMiniGameSystem::execPartialReset },
+		{ "RemoveItemFromList", &AMiniGameSystem::execRemoveItemFromList },
 		{ "Reset", &AMiniGameSystem::execReset },
 		{ "SetInputItem", &AMiniGameSystem::execSetInputItem },
 		{ "SetOutputItem", &AMiniGameSystem::execSetOutputItem },
+		{ "SetPresentItem", &AMiniGameSystem::execSetPresentItem },
 		{ "SetQTE", &AMiniGameSystem::execSetQTE },
 		{ "SpawnItem", &AMiniGameSystem::execSpawnItem },
 		{ "StartExecute", &AMiniGameSystem::execStartExecute },
@@ -870,6 +1003,7 @@ struct Z_Construct_UClass_AMiniGameSystem_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AMiniGameSystem_CallQTEReader, "CallQTEReader" }, // 2531769137
+		{ &Z_Construct_UFunction_AMiniGameSystem_checkItemInRecipe, "checkItemInRecipe" }, // 410004104
 		{ &Z_Construct_UFunction_AMiniGameSystem_checkItemPresent, "checkItemPresent" }, // 976824514
 		{ &Z_Construct_UFunction_AMiniGameSystem_FinishExecute, "FinishExecute" }, // 3264773684
 		{ &Z_Construct_UFunction_AMiniGameSystem_OnFirstSnapPointProgress, "OnFirstSnapPointProgress" }, // 3582507693
@@ -878,9 +1012,11 @@ struct Z_Construct_UClass_AMiniGameSystem_Statics
 		{ &Z_Construct_UFunction_AMiniGameSystem_OnSecondSnapPointProgress, "OnSecondSnapPointProgress" }, // 3879627677
 		{ &Z_Construct_UFunction_AMiniGameSystem_OnSecondSnapPointResult, "OnSecondSnapPointResult" }, // 2739693518
 		{ &Z_Construct_UFunction_AMiniGameSystem_PartialReset, "PartialReset" }, // 2381177074
+		{ &Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList, "RemoveItemFromList" }, // 97838842
 		{ &Z_Construct_UFunction_AMiniGameSystem_Reset, "Reset" }, // 2147501930
 		{ &Z_Construct_UFunction_AMiniGameSystem_SetInputItem, "SetInputItem" }, // 2361576206
 		{ &Z_Construct_UFunction_AMiniGameSystem_SetOutputItem, "SetOutputItem" }, // 2554580274
+		{ &Z_Construct_UFunction_AMiniGameSystem_SetPresentItem, "SetPresentItem" }, // 1069298452
 		{ &Z_Construct_UFunction_AMiniGameSystem_SetQTE, "SetQTE" }, // 1789283216
 		{ &Z_Construct_UFunction_AMiniGameSystem_SpawnItem, "SpawnItem" }, // 1656163511
 		{ &Z_Construct_UFunction_AMiniGameSystem_StartExecute, "StartExecute" }, // 1776983624
@@ -973,14 +1109,14 @@ AMiniGameSystem::~AMiniGameSystem() {}
 // End Class AMiniGameSystem
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 1763344934U) },
+		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 1107732998U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_1154135961(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_2764880049(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

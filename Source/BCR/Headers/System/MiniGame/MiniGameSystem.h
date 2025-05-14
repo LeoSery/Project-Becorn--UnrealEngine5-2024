@@ -62,6 +62,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool checkItemPresent();
 
+	UFUNCTION(BlueprintCallable)
+	int checkItemInRecipe(APickableItem* item);
+
+	UFUNCTION(BlueprintCallable)
+	void SetPresentItem(APickableItem* item);
+
+	UFUNCTION(BlueprintCallable)
+	void RemoveItemFromList(int i);
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UBillboardComponent* snapPlayerPoint1;
 

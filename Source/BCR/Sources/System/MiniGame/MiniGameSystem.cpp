@@ -365,17 +365,16 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 		}
 		if (UKismetMathLibrary::IsPointInBox(Player->GetActorLocation(), boxOrigin, boxExtent))
 		{
-			for (int i = 0; i < itemList.Num(); i++)
-			{
-				if (itemList[i].GetDefaultObject()->GetItemName() == item->GetItemName())
-				{
-					/* Get the name of the Object (name is given by the class of the pickable */
-					itemList.RemoveAt(i);
-					presentItem.Add(item,item->GetClass());
-					Player->PickUp();
-					
-					return;
-				}
+			if (int i = checkItemInRecipe(item); i != -1) {
+				itemList.RemoveAt(i);
+				presentItem.Add(item, item->GetClass());
+				Player->PickUp();
+				return;
+			}
+			else if (itemList.Num() == 0) {
+				presentItem.Add(item, item->GetClass());
+				Player->PickUp();
+				return;
 			}
 			IBCR_Helper::LogScreen(this, "Item not in itemList");
 		}
@@ -398,4 +397,32 @@ bool AMiniGameSystem::checkItemPresent()
 		return false;
 	}
 	return true;
+}
+
+int AMiniGameSystem::checkItemInRecipe(APickableItem* item)
+{
+	for (int i = 0; i < itemList.Num(); i++)
+	{
+		if (itemList[i].GetDefaultObject()->GetItemName() == item->GetItemName())
+		{
+			/* Get the name of the Object (name is given by the class of the pickable */
+			
+
+			return i;
+		}
+	}
+	return -1;
+}
+
+void AMiniGameSystem::SetPresentItem(APickableItem* item)
+{
+
+	presentItem.Add(item, item->GetClass());
+
+}
+
+void AMiniGameSystem::RemoveItemFromList(int i)
+{
+
+	itemList.RemoveAt(i);
 }

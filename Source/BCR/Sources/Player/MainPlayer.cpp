@@ -81,6 +81,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 		EnhancedInputComponent->BindAction(PickUpAction, ETriggerEvent::Triggered, this, &AMainPlayer::PickUp);
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AMainPlayer::Interact);
+
 	}
 	else
 	{
