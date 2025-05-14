@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "BCR",
+			"Path": "..\\Source\\BCR.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "BCREditor",
+			"Path": "..\\Source\\BCREditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
