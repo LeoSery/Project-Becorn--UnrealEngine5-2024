@@ -365,7 +365,8 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 		}
 		if (UKismetMathLibrary::IsPointInBox(Player->GetActorLocation(), boxOrigin, boxExtent))
 		{
-			if (int i = checkItemInRecipe(item); i != -1) {
+			int i = checkItemInRecipe(item);
+			if (i != -1) {
 				itemList.RemoveAt(i);
 				presentItem.Add(item, item->GetClass());
 				Player->PickUp();
