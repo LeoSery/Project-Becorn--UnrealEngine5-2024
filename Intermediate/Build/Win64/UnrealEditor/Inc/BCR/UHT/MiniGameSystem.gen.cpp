@@ -970,6 +970,9 @@ struct Z_Construct_UClass_AMiniGameSystem_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Debug_MetaData[] = {
+		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaxSnapPointDistance_MetaData[] = {
 		{ "Category", "MiniGameSystem" },
 		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
@@ -997,6 +1000,7 @@ struct Z_Construct_UClass_AMiniGameSystem_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_locomotionConfigs_Inner;
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_locomotionConfigs;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultRootComponent;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_Debug;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxSnapPointDistance;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_inputBox;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
@@ -1045,6 +1049,7 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMiniGameSyste
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_locomotionConfigs_Inner = { "locomotionConfigs", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_ULocomotionConfigurationAsset_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_locomotionConfigs = { "locomotionConfigs", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, locomotionConfigs), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_locomotionConfigs_MetaData), NewProp_locomotionConfigs_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_DefaultRootComponent = { "DefaultRootComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, DefaultRootComponent), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DefaultRootComponent_MetaData), NewProp_DefaultRootComponent_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_Debug = { "Debug", nullptr, (EPropertyFlags)0x0040000000000000, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, Debug), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Debug_MetaData), NewProp_Debug_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_MaxSnapPointDistance = { "MaxSnapPointDistance", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, MaxSnapPointDistance), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxSnapPointDistance_MetaData), NewProp_MaxSnapPointDistance_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_inputBox = { "inputBox", nullptr, (EPropertyFlags)0x001000000008001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMiniGameSystem, inputBox), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_inputBox_MetaData), NewProp_inputBox_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMiniGameSystem_Statics::PropPointers[] = {
@@ -1065,6 +1070,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMiniGame
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_locomotionConfigs_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_locomotionConfigs,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_DefaultRootComponent,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_Debug,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_MaxSnapPointDistance,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMiniGameSystem_Statics::NewProp_inputBox,
 };
@@ -1112,10 +1118,10 @@ AMiniGameSystem::~AMiniGameSystem() {}
 struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 1107732998U) },
+		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 545565082U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_2764880049(TEXT("/Script/BCR"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_584969168(TEXT("/Script/BCR"),
 	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

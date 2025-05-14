@@ -98,7 +98,8 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* DefaultRootComponent;
 
-	
+	UPROPERTY()
+	int Debug;
 
 	UPROPERTY(EditAnywhere)
 	float MaxSnapPointDistance = 200.f;
