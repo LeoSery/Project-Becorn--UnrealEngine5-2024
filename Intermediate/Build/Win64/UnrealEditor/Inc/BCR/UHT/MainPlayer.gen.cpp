@@ -151,6 +151,10 @@ struct Z_Construct_UClass_AMainPlayer_Statics
 		{ "Category", "MainPlayer" },
 		{ "ModuleRelativePath", "Headers/Player/MainPlayer.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bCanMove_MetaData[] = {
+		{ "Category", "MainPlayer" },
+		{ "ModuleRelativePath", "Headers/Player/MainPlayer.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DefaultLocomotionConfig_MetaData[] = {
 		{ "Category", "MainPlayer" },
 		{ "ModuleRelativePath", "Headers/Player/MainPlayer.h" },
@@ -166,6 +170,8 @@ struct Z_Construct_UClass_AMainPlayer_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_LeftTriggerAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_RightTriggerAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_PickedUpObject;
+	static void NewProp_bCanMove_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bCanMove;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultLocomotionConfig;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
@@ -189,6 +195,11 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayer_St
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayer_Statics::NewProp_LeftTriggerAction = { "LeftTriggerAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainPlayer, LeftTriggerAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LeftTriggerAction_MetaData), NewProp_LeftTriggerAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayer_Statics::NewProp_RightTriggerAction = { "RightTriggerAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainPlayer, RightTriggerAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RightTriggerAction_MetaData), NewProp_RightTriggerAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayer_Statics::NewProp_PickedUpObject = { "PickedUpObject", nullptr, (EPropertyFlags)0x0020080000000004, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainPlayer, PickedUpObject), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PickedUpObject_MetaData), NewProp_PickedUpObject_MetaData) };
+void Z_Construct_UClass_AMainPlayer_Statics::NewProp_bCanMove_SetBit(void* Obj)
+{
+	((AMainPlayer*)Obj)->bCanMove = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AMainPlayer_Statics::NewProp_bCanMove = { "bCanMove", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AMainPlayer), &Z_Construct_UClass_AMainPlayer_Statics::NewProp_bCanMove_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bCanMove_MetaData), NewProp_bCanMove_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayer_Statics::NewProp_DefaultLocomotionConfig = { "DefaultLocomotionConfig", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainPlayer, DefaultLocomotionConfig), Z_Construct_UClass_ULocomotionConfigurationAsset_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DefaultLocomotionConfig_MetaData), NewProp_DefaultLocomotionConfig_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainPlayer_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayer_Statics::NewProp_DefaultMappingContext,
@@ -201,6 +212,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainPlay
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayer_Statics::NewProp_LeftTriggerAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayer_Statics::NewProp_RightTriggerAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayer_Statics::NewProp_PickedUpObject,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayer_Statics::NewProp_bCanMove,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayer_Statics::NewProp_DefaultLocomotionConfig,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AMainPlayer_Statics::PropPointers) < 2048);
@@ -245,14 +257,14 @@ AMainPlayer::~AMainPlayer() {}
 // End Class AMainPlayer
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 818042748U) },
+		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 1079808680U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_2957052007(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_4159800788(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

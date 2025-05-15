@@ -52,6 +52,8 @@ class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper, public ILocom
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* RightTriggerAction;
 
+	
+
 public:
 	AMainPlayer();
 
@@ -79,6 +81,9 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite)
 	AActor* PickedUpObject;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bCanMove = true;
 
 	UPROPERTY(EditAnywhere)
 	ULocomotionConfigurationAsset* DefaultLocomotionConfig;
