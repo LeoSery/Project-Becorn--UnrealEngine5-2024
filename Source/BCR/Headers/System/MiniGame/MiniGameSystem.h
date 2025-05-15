@@ -71,6 +71,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void RemoveItemFromList(int i);
 
+	UFUNCTION(BlueprintCallable)
+	bool PlayerIsInBox(AMainPlayer* Player);
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UBillboardComponent* snapPlayerPoint1;
 

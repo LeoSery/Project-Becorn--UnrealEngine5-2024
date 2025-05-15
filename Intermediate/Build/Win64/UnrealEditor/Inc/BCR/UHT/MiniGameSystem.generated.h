@@ -9,6 +9,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class AMainPlayer;
 class APickableItem;
 class UQTEConfigurationAsset;
 enum class EQTEResult : uint8;
@@ -28,6 +29,7 @@ BCR_API void FOnEndQTESignature_DelegateWrapper(const FMulticastScriptDelegate& 
 	DECLARE_FUNCTION(execOnFirstSnapPointProgress); \
 	DECLARE_FUNCTION(execOnSecondSnapPointResult); \
 	DECLARE_FUNCTION(execOnFirstSnapPointResult); \
+	DECLARE_FUNCTION(execPlayerIsInBox); \
 	DECLARE_FUNCTION(execRemoveItemFromList); \
 	DECLARE_FUNCTION(execSetPresentItem); \
 	DECLARE_FUNCTION(execcheckItemInRecipe); \

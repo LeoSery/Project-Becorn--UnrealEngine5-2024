@@ -350,10 +350,6 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 
 void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
 {
-	FVector boxOrigin;
-	FVector boxExtent;
-	float sphereRadius;
-	UKismetSystemLibrary::GetComponentBounds(inputBox, boxOrigin, boxExtent, sphereRadius);
 	APickableItem* item = Cast<APickableItem>(Object);
 	if (item)
 	{
@@ -363,8 +359,7 @@ void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AAc
 			IInteractable::Execute_Interact(this, Player);
 			return;
 		}
-		if (UKismetMathLibrary::IsPointInBox(Player->GetActorLocation(), boxOrigin, boxExtent))
-		{
+		if (PlayerIsInBox(Player)) {
 			int i = checkItemInRecipe(item);
 			if (i != -1) {
 				itemList.RemoveAt(i);
@@ -426,4 +421,17 @@ void AMiniGameSystem::RemoveItemFromList(int i)
 {
 
 	itemList.RemoveAt(i);
+}
+
+bool AMiniGameSystem::PlayerIsInBox(AMainPlayer* Player)
+{
+	FVector boxOrigin;
+	FVector boxExtent;
+	float sphereRadius;
+	UKismetSystemLibrary::GetComponentBounds(inputBox, boxOrigin, boxExtent, sphereRadius);
+	if (UKismetMathLibrary::IsPointInBox(Player->GetActorLocation(), boxOrigin, boxExtent))
+	{
+		return true;
+	}
+	return false;
 }

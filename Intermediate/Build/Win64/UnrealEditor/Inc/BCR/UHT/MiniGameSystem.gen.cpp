@@ -553,6 +553,57 @@ DEFINE_FUNCTION(AMiniGameSystem::execPartialReset)
 }
 // End Class AMiniGameSystem Function PartialReset
 
+// Begin Class AMiniGameSystem Function PlayerIsInBox
+struct Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics
+{
+	struct MiniGameSystem_eventPlayerIsInBox_Parms
+	{
+		AMainPlayer* Player;
+		bool ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/MiniGame/MiniGameSystem.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
+	static void NewProp_ReturnValue_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::NewProp_Player = { "Player", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MiniGameSystem_eventPlayerIsInBox_Parms, Player), Z_Construct_UClass_AMainPlayer_NoRegister, METADATA_PARAMS(0, nullptr) };
+void Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+{
+	((MiniGameSystem_eventPlayerIsInBox_Parms*)Obj)->ReturnValue = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(MiniGameSystem_eventPlayerIsInBox_Parms), &Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::NewProp_Player,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMiniGameSystem, nullptr, "PlayerIsInBox", nullptr, nullptr, Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::PropPointers), sizeof(Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::MiniGameSystem_eventPlayerIsInBox_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::Function_MetaDataParams), Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::MiniGameSystem_eventPlayerIsInBox_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AMiniGameSystem::execPlayerIsInBox)
+{
+	P_GET_OBJECT(AMainPlayer,Z_Param_Player);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(bool*)Z_Param__Result=P_THIS->PlayerIsInBox(Z_Param_Player);
+	P_NATIVE_END;
+}
+// End Class AMiniGameSystem Function PlayerIsInBox
+
 // Begin Class AMiniGameSystem Function RemoveItemFromList
 struct Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList_Statics
 {
@@ -896,6 +947,7 @@ void AMiniGameSystem::StaticRegisterNativesAMiniGameSystem()
 		{ "OnSecondSnapPointProgress", &AMiniGameSystem::execOnSecondSnapPointProgress },
 		{ "OnSecondSnapPointResult", &AMiniGameSystem::execOnSecondSnapPointResult },
 		{ "PartialReset", &AMiniGameSystem::execPartialReset },
+		{ "PlayerIsInBox", &AMiniGameSystem::execPlayerIsInBox },
 		{ "RemoveItemFromList", &AMiniGameSystem::execRemoveItemFromList },
 		{ "Reset", &AMiniGameSystem::execReset },
 		{ "SetInputItem", &AMiniGameSystem::execSetInputItem },
@@ -1016,6 +1068,7 @@ struct Z_Construct_UClass_AMiniGameSystem_Statics
 		{ &Z_Construct_UFunction_AMiniGameSystem_OnSecondSnapPointProgress, "OnSecondSnapPointProgress" }, // 3879627677
 		{ &Z_Construct_UFunction_AMiniGameSystem_OnSecondSnapPointResult, "OnSecondSnapPointResult" }, // 2739693518
 		{ &Z_Construct_UFunction_AMiniGameSystem_PartialReset, "PartialReset" }, // 2381177074
+		{ &Z_Construct_UFunction_AMiniGameSystem_PlayerIsInBox, "PlayerIsInBox" }, // 849957881
 		{ &Z_Construct_UFunction_AMiniGameSystem_RemoveItemFromList, "RemoveItemFromList" }, // 97838842
 		{ &Z_Construct_UFunction_AMiniGameSystem_Reset, "Reset" }, // 2147501930
 		{ &Z_Construct_UFunction_AMiniGameSystem_SetInputItem, "SetInputItem" }, // 2361576206
@@ -1118,10 +1171,10 @@ AMiniGameSystem::~AMiniGameSystem() {}
 struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 545565082U) },
+		{ Z_Construct_UClass_AMiniGameSystem, AMiniGameSystem::StaticClass, TEXT("AMiniGameSystem"), &Z_Registration_Info_UClass_AMiniGameSystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMiniGameSystem), 1994399644U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_584969168(TEXT("/Script/BCR"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_941078324(TEXT("/Script/BCR"),
 	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_MiniGameSystem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
