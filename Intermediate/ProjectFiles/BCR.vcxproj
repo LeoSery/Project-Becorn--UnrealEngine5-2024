@@ -67,7 +67,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1E2001F1-E237-31CB-B228-B65B9510ED86}</ProjectGuid>
+    <ProjectGuid>{253578E1-DB83-3621-8ED4-07FC2A3016A6}</ProjectGuid>
     <RootNamespace>BCR</RootNamespace>
   </PropertyGroup>
   <Import Project="UECommon.props" />
@@ -256,6 +256,7 @@
     <None Include="..\..\Source\BCREditor.Target.cs"/>
     <None Include="..\..\.gitignore"/>
     <None Include="..\..\.vsconfig"/>
+    <None Include="..\..\BCR.png"/>
     <None Include="..\..\BuildSolution.bat"/>
     <None Include="..\..\README.md"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>

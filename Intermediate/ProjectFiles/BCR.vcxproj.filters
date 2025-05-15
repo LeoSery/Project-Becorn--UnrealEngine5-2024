@@ -13,6 +13,7 @@
     </None>
     <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
+    <None Include="..\..\BCR.png" />
     <None Include="..\..\BuildSolution.bat" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
