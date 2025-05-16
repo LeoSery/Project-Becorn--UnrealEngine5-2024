@@ -61,6 +61,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool PlayFlowerAnimation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool CraftOnce = false;
 };
 
 

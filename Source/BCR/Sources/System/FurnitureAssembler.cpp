@@ -65,7 +65,14 @@ void AFurnitureAssembler::CraftFurniture()
 		}
 		i++;
 	}
-	auto temp = GetWorld()->SpawnActor<APickableItem>(ActualRecipies.Out, GetActorLocation(), FRotator(0.0f, 0.0f, 0.0f));
+
+	if (!CraftOnce)
+	{
+		auto temp = GetWorld()->SpawnActor<APickableItem>(ActualRecipies.Out, GetActorLocation(), FRotator(0.0f, 0.0f, 0.0f));
+		CraftOnce = true;
+	}
+	else
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Emerald, FString::Printf(TEXT("Recipie already realize !"), i));
 }
 
 void AFurnitureAssembler::Interact_Implementation(AMainPlayer* Player)
