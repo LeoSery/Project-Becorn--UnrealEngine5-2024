@@ -24,7 +24,7 @@ public:
 	static FString GetCurrentPlatform();
 	
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetCurrentDate"), Category = "Game Config")
-	static FString GetCurrentDate();
+	static FString GetBuildDate();
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "GetBuildType"), Category = "Game Config")
 	static FString GetBuildType();

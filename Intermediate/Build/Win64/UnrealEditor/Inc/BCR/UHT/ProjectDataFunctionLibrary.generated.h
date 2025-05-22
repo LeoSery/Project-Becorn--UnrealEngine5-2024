@@ -16,7 +16,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_ProjectDataFunctionLibrary_h_10_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execGetBuildType); \
-	DECLARE_FUNCTION(execGetCurrentDate); \
+	DECLARE_FUNCTION(execGetBuildDate); \
 	DECLARE_FUNCTION(execGetCurrentPlatform); \
 	DECLARE_FUNCTION(execGetProjectName); \
 	DECLARE_FUNCTION(execGetProjectVersion); \
