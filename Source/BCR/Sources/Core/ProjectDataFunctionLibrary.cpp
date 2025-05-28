@@ -72,8 +72,21 @@ FString UProjectDataFunctionLibrary::GetCurrentPlatform()
 
 FString UProjectDataFunctionLibrary::GetBuildDate()
 {
+#if WITH_EDITOR
+	const FDateTime Now = FDateTime::Now();
+	return FString::Printf(TEXT("%02d-%02d-%04d"), 
+						  Now.GetDay(),
+						  Now.GetMonth(),
+						  Now.GetYear());
+#else
 	FString CompileDate = FString(__DATE__);
 	
+	static const TMap<FString, int32> MonthMap = {
+		{TEXT("Jan"), 1}, {TEXT("Feb"), 2}, {TEXT("Mar"), 3}, {TEXT("Apr"), 4},
+		{TEXT("May"), 5}, {TEXT("Jun"), 6}, {TEXT("Jul"), 7}, {TEXT("Aug"), 8},
+		{TEXT("Sep"), 9}, {TEXT("Oct"), 10}, {TEXT("Nov"), 11}, {TEXT("Dec"), 12}
+	};
+    
 	TArray<FString> DateParts;
 	CompileDate.ParseIntoArray(DateParts, TEXT(" "), true);
     
@@ -81,30 +94,20 @@ FString UProjectDataFunctionLibrary::GetBuildDate()
 	{
 		const FString MonthStr = DateParts[0];
 		const FString DayStr = DateParts[1];
-		FString YearStr;
-		YearStr = DateParts[2];
-
-		int32 Month = 1;
-		if (MonthStr == TEXT("Jan")) Month = 1;
-		else if (MonthStr == TEXT("Feb")) Month = 2;
-		else if (MonthStr == TEXT("Mar")) Month = 3;
-		else if (MonthStr == TEXT("Apr")) Month = 4;
-		else if (MonthStr == TEXT("May")) Month = 5;
-		else if (MonthStr == TEXT("Jun")) Month = 6;
-		else if (MonthStr == TEXT("Jul")) Month = 7;
-		else if (MonthStr == TEXT("Aug")) Month = 8;
-		else if (MonthStr == TEXT("Sep")) Month = 9;
-		else if (MonthStr == TEXT("Oct")) Month = 10;
-		else if (MonthStr == TEXT("Nov")) Month = 11;
-		else if (MonthStr == TEXT("Dec")) Month = 12;
-		
-		return FString::Printf(TEXT("%s-%02d-%02d"), 
-							  *YearStr, 
-							  Month, 
-							  FCString::Atoi(*DayStr));
+		const FString YearStr = DateParts[2];
+        
+		const int32* MonthPtr = MonthMap.Find(MonthStr);
+		if (MonthPtr)
+		{
+			return FString::Printf(TEXT("%02d-%02d-%s"), 
+								  FCString::Atoi(*DayStr),
+								  *MonthPtr,
+								  *YearStr);
+		}
 	}
-	
+    
 	return TEXT("unknown-date");
+#endif
 }
 
 FString UProjectDataFunctionLibrary::GetBuildType()
