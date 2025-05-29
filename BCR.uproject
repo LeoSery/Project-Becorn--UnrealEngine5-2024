@@ -24,10 +24,6 @@
 			]
 		},
 		{
-			"Name": "HDRIBackdrop",
-			"Enabled": true
-		},
-		{
 			"Name": "SkeletalMerging",
 			"Enabled": false
 		},
