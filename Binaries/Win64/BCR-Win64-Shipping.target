@@ -3071,6 +3071,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Experimental/Animation/SkeletalMeshModelingTools/SkeletalMeshModelingTools.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Experimental/AutomationUtils/AutomationUtils.uplugin",
 			"Type": "UFS"
 		},
@@ -3323,10 +3327,6 @@
 			"Type": "UFS"
 		},
 		{
-			"Path": "$(EngineDir)/Plugins/Runtime/HDRIBackdrop/HDRIBackdrop.uplugin",
-			"Type": "UFS"
-		},
-		{
 			"Path": "$(EngineDir)/Plugins/Runtime/LocationServicesBPLibrary/LocationServicesBPLibrary.uplugin",
 			"Type": "UFS"
 		},
@@ -3528,7 +3528,6 @@
 		"GitSourceControl",
 		"GoogleCloudMessaging",
 		"GooglePAD",
-		"HDRIBackdrop",
 		"IKRig",
 		"IOSDeviceProfileSelector",
 		"ImgMedia",
@@ -3592,6 +3591,7 @@
 		"SequencerAnimTools",
 		"SequencerScripting",
 		"SignificanceManager",
+		"SkeletalMeshModelingTools",
 		"SkeletalReduction",
 		"SoundFields",
 		"SpeedTreeImporter",
