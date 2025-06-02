@@ -42,6 +42,14 @@ void AFurnitureAssembler::BeginPlay()
 void AFurnitureAssembler::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Enter Assembler Zone"));
+	AActor* pick = nullptr;
+	
+	if (Cast<AMainPlayer>(OtherActor) && Cast<AMainPlayer>(OtherActor)->PickedUpObject)
+	{
+		pick = Cast<AMainPlayer>(OtherActor)->PickedUpObject;
+		PlayerHolding.Add(Cast<AMainPlayer>(OtherActor), pick);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, pick->GetName());
+	}
 }
 
 FRecipiesInfo AFurnitureAssembler::GetActualRecipiesInfo()
@@ -112,5 +120,33 @@ void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player,
 void AFurnitureAssembler::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	for (auto It = PlayerHolding.CreateConstIterator(); It; ++It)
+	{
+		if (!It.Key()->PickedUpObject && IsOverlappingActor(It.Value()))
+		{
+			int requieredMaterials = ActualRecipies.Material.FindRef(It.Value()->GetClass());
+			if (requieredMaterials != 0)
+			{
+				requieredMaterials--;
+
+				ActualRecipies.Material.Emplace(It.Value()->GetClass(), requieredMaterials);
+
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("requiered = %d"), ActualRecipies.Material.FindRef(It.Value()->GetClass())));
+				It.Value()->Destroy();
+				PlayerHolding.Remove(It.Key());
+
+				if (requieredMaterials == 0)
+					PlayFlowerAnimation = true;
+			}
+			else
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("Bad item given to the assembler")));
+				It.Value()->Destroy();
+				PlayerHolding.Remove(It.Key());
+
+			}
+		}
+	}
 }
 

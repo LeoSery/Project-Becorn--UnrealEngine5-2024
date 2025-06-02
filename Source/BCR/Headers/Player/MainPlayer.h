@@ -67,6 +67,9 @@ public:
 	virtual FLocomotionConfiguration ResetLocomotionConfig_Implementation() override;
 	virtual FLocomotionConfiguration SetLocomotionConfig_Implementation(ULocomotionConfigurationAsset* NewConfig) override;
 
+	UPROPERTY(BlueprintReadWrite)
+	AActor* PickedUpObject;
+
 protected:
 
 	/** Called for movement input */
@@ -74,13 +77,7 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
-	
-
-	
 	bool PickedUpSomething = false;
-
-	UPROPERTY(BlueprintReadWrite)
-	AActor* PickedUpObject;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bCanMove = true;

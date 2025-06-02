@@ -40,6 +40,7 @@ protected:
 	UBoxComponent* AssemblerZone;
 	UDataTable* AllRecipies;
 	TArray<FName> RowsNames;
+	TMap<AMainPlayer*, AActor*> PlayerHolding;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
