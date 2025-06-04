@@ -234,8 +234,8 @@ void UQTE_Subsystem::ProcessPlayerInput(AMainPlayer* Player, ESnapPointType Snap
         if (GEngine)
         {
             FString PlayerText = (SnapPoint == ESnapPointType::First) ? TEXT("Player 1") : TEXT("Player 2");
-            GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green,
-                FString::Printf(TEXT("%s: Success!"), *PlayerText));
+            // GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green,
+            //     FString::Printf(TEXT("%s: Success!"), *PlayerText));
         }
         ////////////////////////////////////////////////
         
