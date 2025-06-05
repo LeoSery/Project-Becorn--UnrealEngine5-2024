@@ -60,6 +60,14 @@ void AMainCamera::InitParam()
 	FollowCamera->FocusSettings.TrackingFocusSettings.ActorToTrack = this;
 	FollowCamera->LensSettings.MinFStop = MinFStop;
 	FollowCamera->LensSettings.MaxFStop = MaxFStop;
+
+	TArray<AActor*> Fogs;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AExponentialHeightFog::StaticClass(), Fogs);
+
+	if (IsValid(Fogs[0]))
+	{
+		FogComp = Cast<AExponentialHeightFog>(Fogs[0])->GetComponent();
+	}
 }
 
 void AMainCamera::UpdatePosition()
@@ -133,6 +141,7 @@ void AMainCamera::UpdateArmLenght()
 	MaxPlayerHorizontalDistance = MaximumArmLength * TanDemiAngleHor * 2;
 	MaxPlayerDepthDistance = (MaximumArmLength * TanDemiAngleDepth) / (UKismetMathLibrary::DegCos(-GetActorRotation().Pitch) * TanDemiAngleDepth + UKismetMathLibrary::DegSin(-GetActorRotation().Pitch));
 
+	UpdateFog(PlayerDistDepth);
 	UpdateBlur(PlayerDistDepth);
 
 	if (DebugVariables)
@@ -166,6 +175,14 @@ void AMainCamera::UpdateArmAngle()
 
 		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("ANGLE VARIABLES")));
 	}
+}
+
+void AMainCamera::UpdateFog(float DepthPlayerDistance)
+{
+	float FogDist = CameraBoom->TargetArmLength + FogDistanceToPlayer + DepthPlayerDistance / 2;
+	FogComp->SetStartDistance(FogDist);
+
+	FogComp->MarkRenderStateDirty();
 }
 
 void AMainCamera::UpdateBlur(float DepthPlayerDistance)
