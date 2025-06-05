@@ -130,7 +130,7 @@ TArray<FHitResult> Detect_Object(AActor* Player)
 	const FVector Pos = Player->GetActorLocation() + Player->GetActorForwardVector();
 	const FName ProfileName = "BlockAll";
 	constexpr ECollisionChannel Channel = ECC_Visibility;
-	const FCollisionShape ColCapsule = FCollisionShape::MakeBox(FVector(100));
+	const FCollisionShape ColCapsule = FCollisionShape::MakeBox(FVector(150));
 	const TArray<AActor*> ActorsToIgnore = { Player };
 	TArray<FHitResult> OutHits = {};
 	
@@ -174,16 +174,16 @@ void AMainPlayer::Interact()
 	
 	for (const FHitResult OutHit : OutHits)
 	{
-
+		
 		if(PickedUpObject && Cast<IInteractable>(OutHit.GetActor()))
 		{
-
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, TEXT("Found Interactable with object"));
 			IInteractable::Execute_InteractWithObject(OutHit.GetActor(), this,PickedUpObject);
 			return;
 		}
 		else if (Cast<IInteractable>(OutHit.GetActor()))
 		{
-
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, TEXT("Found Interactable"));
 			IInteractable::Execute_Interact(OutHit.GetActor(), this);
 			return;
 		}
