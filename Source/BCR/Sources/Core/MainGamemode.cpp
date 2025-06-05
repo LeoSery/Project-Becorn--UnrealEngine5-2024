@@ -15,7 +15,11 @@ AMainGamemode::AMainGamemode()
 
 void AMainGamemode::BeginPlay()
 {
+	GetGameInstance()->GetGameViewportClient()->MaxSplitscreenPlayers = 2;
+
 	Super::BeginPlay();
+
+
 
 	CreateLocalPlayer();
 }
