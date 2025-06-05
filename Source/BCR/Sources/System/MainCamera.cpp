@@ -180,9 +180,13 @@ void AMainCamera::UpdateArmAngle()
 void AMainCamera::UpdateFog(float DepthPlayerDistance)
 {
 	float FogDist = CameraBoom->TargetArmLength + FogDistanceToPlayer + DepthPlayerDistance / 2;
-	FogComp->SetStartDistance(FogDist);
-
+	FogComp->VolumetricFogStartDistance = FogDist;
 	FogComp->MarkRenderStateDirty();
+
+	if (DebugVariables)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Orange, FString::Printf(TEXT("Fog distance = %f"), FogComp->StartDistance));
+	}
 }
 
 void AMainCamera::UpdateBlur(float DepthPlayerDistance)
