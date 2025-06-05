@@ -7,6 +7,8 @@
 #include <GameFramework/SpringArmComponent.h>
 #include <Components/SphereComponent.h>
 #include "GameFramework/Character.h"
+#include "Engine/ExponentialHeightFog.h"
+#include "Components/ExponentialHeightFogComponent.h"
 #include "MainCamera.generated.h"
 
 UCLASS()
@@ -107,6 +109,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Tilt shift")
 	float BlurMultiplier = 1.f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Parameters|Fog")
+	float FogDistanceToPlayer = 1000.f;
+
 // Private variables
 private:
 
@@ -114,6 +119,8 @@ private:
 
 	float MaxPlayerHorizontalDistance = MAX_FLT;
 	float MaxPlayerDepthDistance = MAX_FLT;
+
+	UExponentialHeightFogComponent* FogComp = nullptr;
 
 //Public functions
 public:
@@ -127,6 +134,7 @@ private:
 	void UpdatePosition();
 	void UpdateArmLenght();
 	void UpdateArmAngle();
+	void UpdateFog(float DepthPlayerDistance);
 	void UpdateBlur(float DepthPlayerDistance);
 	void ConstrainPlayerPositions();
 

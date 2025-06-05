@@ -217,6 +217,10 @@ struct Z_Construct_UClass_AMainCamera_Statics
 		{ "Category", "Parameters|Tilt shift" },
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FogDistanceToPlayer_MetaData[] = {
+		{ "Category", "Parameters|Fog" },
+		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultRootComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CameraBoom;
@@ -245,6 +249,7 @@ struct Z_Construct_UClass_AMainCamera_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxBlurAtDistance;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MinBlurAtDistance;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_BlurMultiplier;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_FogDistanceToPlayer;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -295,6 +300,7 @@ const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Sta
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_MaxBlurAtDistance = { "MaxBlurAtDistance", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, MaxBlurAtDistance), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxBlurAtDistance_MetaData), NewProp_MaxBlurAtDistance_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_MinBlurAtDistance = { "MinBlurAtDistance", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, MinBlurAtDistance), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MinBlurAtDistance_MetaData), NewProp_MinBlurAtDistance_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_BlurMultiplier = { "BlurMultiplier", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, BlurMultiplier), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BlurMultiplier_MetaData), NewProp_BlurMultiplier_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_FogDistanceToPlayer = { "FogDistanceToPlayer", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, FogDistanceToPlayer), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FogDistanceToPlayer_MetaData), NewProp_FogDistanceToPlayer_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainCamera_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DefaultRootComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_CameraBoom,
@@ -319,6 +325,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainCame
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_MaxBlurAtDistance,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_MinBlurAtDistance,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_BlurMultiplier,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_FogDistanceToPlayer,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AMainCamera_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AMainCamera_Statics::DependentSingletons[])() = {
@@ -358,14 +365,14 @@ AMainCamera::~AMainCamera() {}
 // End Class AMainCamera
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MainCamera_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainCamera, AMainCamera::StaticClass, TEXT("AMainCamera"), &Z_Registration_Info_UClass_AMainCamera, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainCamera), 2812861535U) },
+		{ Z_Construct_UClass_AMainCamera, AMainCamera::StaticClass, TEXT("AMainCamera"), &Z_Registration_Info_UClass_AMainCamera, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainCamera), 3050862977U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MainCamera_h_4029123559(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MainCamera_h_1651126092(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
