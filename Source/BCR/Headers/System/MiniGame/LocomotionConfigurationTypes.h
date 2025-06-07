@@ -45,6 +45,9 @@ struct BCR_API FLocomotionConfiguration
 	bool bUsePhysicalAnim = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Locomotion")
+	bool bToggleReachTarget = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Locomotion")
 	bool bUseSpecificAnim = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Locomotion")

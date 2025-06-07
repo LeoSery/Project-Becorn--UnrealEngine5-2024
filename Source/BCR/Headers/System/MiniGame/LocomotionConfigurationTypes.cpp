@@ -13,6 +13,7 @@ FLocomotionConfiguration ULocomotionConfigurationAsset::ToRuntimeConfig() const
 	RuntimeConfig.Mode = Configuration.Mode;
 	RuntimeConfig.bLockCapsuleOrientation = Configuration.bLockCapsuleOrientation;
 	RuntimeConfig.bUsePhysicalAnim = Configuration.bUsePhysicalAnim;
+	RuntimeConfig.bToggleReachTarget = Configuration.bToggleReachTarget;
 	RuntimeConfig.bUseSpecificAnim = Configuration.bUseSpecificAnim;
 	RuntimeConfig.MaxSpeed = Configuration.MaxSpeed;
 
