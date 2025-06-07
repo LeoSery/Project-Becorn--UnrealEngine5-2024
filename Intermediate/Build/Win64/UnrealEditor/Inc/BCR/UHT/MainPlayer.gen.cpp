@@ -223,7 +223,7 @@ UObject* (*const Z_Construct_UClass_AMainPlayer_Statics::DependentSingletons[])(
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AMainPlayer_Statics::DependentSingletons) < 16);
 const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AMainPlayer_Statics::InterfaceParams[] = {
 	{ Z_Construct_UClass_UBCR_Helper_NoRegister, (int32)VTABLE_OFFSET(AMainPlayer, IBCR_Helper), false },  // 311689699
-	{ Z_Construct_UClass_ULocomotional_NoRegister, (int32)VTABLE_OFFSET(AMainPlayer, ILocomotional), false },  // 1737802759
+	{ Z_Construct_UClass_ULocomotional_NoRegister, (int32)VTABLE_OFFSET(AMainPlayer, ILocomotional), false },  // 1998569576
 };
 const UECodeGen_Private::FClassParams Z_Construct_UClass_AMainPlayer_Statics::ClassParams = {
 	&AMainPlayer::StaticClass,
@@ -257,14 +257,14 @@ AMainPlayer::~AMainPlayer() {}
 // End Class AMainPlayer
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics
+struct Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 3091116467U) },
+		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 3637065572U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_2281083209(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_3668041042(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
