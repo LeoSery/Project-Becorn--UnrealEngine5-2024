@@ -1,14 +1,8 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
-
-
-#include "BCR/Headers/System/FurnitureAssembler.h"
+﻿#include "BCR/Headers/System/FurnitureAssembler.h"
 #include "BCR/Headers/Player/MainPlayer.h"
 
-
-// Sets default values
 AFurnitureAssembler::AFurnitureAssembler()
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
 	// Create Collision Box
@@ -24,7 +18,6 @@ AFurnitureAssembler::AFurnitureAssembler()
 	AssemblerZone->OnComponentBeginOverlap.AddDynamic(this, &AFurnitureAssembler::OnOverlapBegin);
 }
 
-// Called when the game starts or when spawned
 void AFurnitureAssembler::BeginPlay()
 {
 	Super::BeginPlay();
@@ -50,6 +43,11 @@ void AFurnitureAssembler::OnOverlapBegin(UPrimitiveComponent* OverlappedComponen
 		PlayerHolding.Add(Cast<AMainPlayer>(OtherActor), pick);
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, pick->GetName());
 	}
+}
+
+void AFurnitureAssembler::OnElementDropOnAssembler_Implementation()
+{
+	
 }
 
 FRecipiesInfo AFurnitureAssembler::GetActualRecipiesInfo()
@@ -92,7 +90,7 @@ void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player,
 {
 	if (Cast<IIPickable>(Object))
 	{
-		int requieredMaterials = ActualRecipies.Material.FindRef(Object->GetClass());
+		requieredMaterials = ActualRecipies.Material.FindRef(Object->GetClass());
 		if (requieredMaterials != 0)
 		{
 			requieredMaterials--;
@@ -103,8 +101,12 @@ void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player,
 			Player->PickUp();
 			Object->Destroy();
 
+			OnElementDropOnAssembler();
+			
 			if (requieredMaterials == 0)
+			{
 				PlayFlowerAnimation = true;
+			}
 		}
 		else
 		{
@@ -112,11 +114,9 @@ void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player,
 			Player->PickUp();
 			Object->Destroy();
 		}
-
 	}
 }
 
-// Called every frame
 void AFurnitureAssembler::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -125,7 +125,7 @@ void AFurnitureAssembler::Tick(float DeltaTime)
 	{
 		if (!It.Key()->PickedUpObject && IsOverlappingActor(It.Value()))
 		{
-			int requieredMaterials = ActualRecipies.Material.FindRef(It.Value()->GetClass());
+			requieredMaterials = ActualRecipies.Material.FindRef(It.Value()->GetClass());
 			if (requieredMaterials != 0)
 			{
 				requieredMaterials--;
@@ -144,9 +144,7 @@ void AFurnitureAssembler::Tick(float DeltaTime)
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("Bad item given to the assembler")));
 				It.Value()->Destroy();
 				PlayerHolding.Remove(It.Key());
-
 			}
 		}
 	}
 }
-

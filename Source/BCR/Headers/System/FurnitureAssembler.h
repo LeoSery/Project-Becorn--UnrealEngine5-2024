@@ -51,6 +51,10 @@ protected:
 	void Interact_Implementation(AMainPlayer* Player);
 	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
 
+	UFUNCTION(BlueprintNativeEvent)
+	void OnElementDropOnAssembler();
+	void OnElementDropOnAssembler_Implementation();
+
 public:
 	UFUNCTION(BlueprintCallable)
 	FRecipiesInfo GetActualRecipiesInfo();
@@ -64,6 +68,8 @@ public:
 	bool PlayFlowerAnimation;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool CraftOnce = false;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int requieredMaterials = 3;
 };
 
 
