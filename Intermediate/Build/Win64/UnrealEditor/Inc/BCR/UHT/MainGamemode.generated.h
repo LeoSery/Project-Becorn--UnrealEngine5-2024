@@ -14,11 +14,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define BCR_MainGamemode_generated_h
 
-#define FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execCreateLocalPlayer);
 
 
-#define FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_INCLASS_NO_PURE_DECLS \
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMainGamemode(); \
 	friend struct Z_Construct_UClass_AMainGamemode_Statics; \
@@ -27,7 +27,7 @@ public: \
 	DECLARE_SERIALIZER(AMainGamemode)
 
 
-#define FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_ENHANCED_CONSTRUCTORS \
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AMainGamemode(AMainGamemode&&); \
@@ -39,13 +39,13 @@ public: \
 	BCR_API virtual ~AMainGamemode();
 
 
-#define FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_9_PROLOG
-#define FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_GENERATED_BODY \
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_9_PROLOG
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_INCLASS_NO_PURE_DECLS \
-	FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_ENHANCED_CONSTRUCTORS \
+	FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_INCLASS_NO_PURE_DECLS \
+	FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_12_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -53,7 +53,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> BCR_API UClass* StaticClass<class AMainGamemode>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_M2_Project_Source_BCR_Headers_Core_MainGamemode_h
+#define CURRENT_FILE_ID FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_Core_MainGamemode_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
