@@ -180,6 +180,40 @@ DEFINE_FUNCTION(AFurnitureAssembler::execGetActualRecipiesInfo)
 }
 // End Class AFurnitureAssembler Function GetActualRecipiesInfo
 
+// Begin Class AFurnitureAssembler Function OnElementDropOnAssembler
+static FName NAME_AFurnitureAssembler_OnElementDropOnAssembler = FName(TEXT("OnElementDropOnAssembler"));
+void AFurnitureAssembler::OnElementDropOnAssembler()
+{
+	ProcessEvent(FindFunctionChecked(NAME_AFurnitureAssembler_OnElementDropOnAssembler),NULL);
+}
+struct Z_Construct_UFunction_AFurnitureAssembler_OnElementDropOnAssembler_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFurnitureAssembler_OnElementDropOnAssembler_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFurnitureAssembler, nullptr, "OnElementDropOnAssembler", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08080C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFurnitureAssembler_OnElementDropOnAssembler_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFurnitureAssembler_OnElementDropOnAssembler_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AFurnitureAssembler_OnElementDropOnAssembler()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFurnitureAssembler_OnElementDropOnAssembler_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AFurnitureAssembler::execOnElementDropOnAssembler)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnElementDropOnAssembler_Implementation();
+	P_NATIVE_END;
+}
+// End Class AFurnitureAssembler Function OnElementDropOnAssembler
+
 // Begin Class AFurnitureAssembler Function OnOverlapBegin
 struct Z_Construct_UFunction_AFurnitureAssembler_OnOverlapBegin_Statics
 {
@@ -268,6 +302,7 @@ void AFurnitureAssembler::StaticRegisterNativesAFurnitureAssembler()
 	static const FNameNativePtrPair Funcs[] = {
 		{ "CraftFurniture", &AFurnitureAssembler::execCraftFurniture },
 		{ "GetActualRecipiesInfo", &AFurnitureAssembler::execGetActualRecipiesInfo },
+		{ "OnElementDropOnAssembler", &AFurnitureAssembler::execOnElementDropOnAssembler },
 		{ "OnOverlapBegin", &AFurnitureAssembler::execOnOverlapBegin },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -301,6 +336,10 @@ struct Z_Construct_UClass_AFurnitureAssembler_Statics
 		{ "Category", "FurnitureAssembler" },
 		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_requieredMaterials_MetaData[] = {
+		{ "Category", "FurnitureAssembler" },
+		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_AssemblerZone;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_ActualRecipies;
@@ -308,11 +347,13 @@ struct Z_Construct_UClass_AFurnitureAssembler_Statics
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_PlayFlowerAnimation;
 	static void NewProp_CraftOnce_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_CraftOnce;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_requieredMaterials;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AFurnitureAssembler_CraftFurniture, "CraftFurniture" }, // 313351073
 		{ &Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo, "GetActualRecipiesInfo" }, // 1053763627
+		{ &Z_Construct_UFunction_AFurnitureAssembler_OnElementDropOnAssembler, "OnElementDropOnAssembler" }, // 1437273182
 		{ &Z_Construct_UFunction_AFurnitureAssembler_OnOverlapBegin, "OnOverlapBegin" }, // 1080084143
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -334,11 +375,13 @@ void Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_CraftOnce_SetBit(vo
 	((AFurnitureAssembler*)Obj)->CraftOnce = 1;
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_CraftOnce = { "CraftOnce", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AFurnitureAssembler), &Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_CraftOnce_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CraftOnce_MetaData), NewProp_CraftOnce_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_requieredMaterials = { "requieredMaterials", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFurnitureAssembler, requieredMaterials), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_requieredMaterials_MetaData), NewProp_requieredMaterials_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFurnitureAssembler_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_AssemblerZone,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_ActualRecipies,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_PlayFlowerAnimation,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_CraftOnce,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFurnitureAssembler_Statics::NewProp_requieredMaterials,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFurnitureAssembler_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AFurnitureAssembler_Statics::DependentSingletons[])() = {
@@ -381,18 +424,18 @@ AFurnitureAssembler::~AFurnitureAssembler() {}
 // End Class AFurnitureAssembler
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
 		{ FRecipiesInfo::StaticStruct, Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewStructOps, TEXT("RecipiesInfo"), &Z_Registration_Info_UScriptStruct_RecipiesInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FRecipiesInfo), 1978195637U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AFurnitureAssembler, AFurnitureAssembler::StaticClass, TEXT("AFurnitureAssembler"), &Z_Registration_Info_UClass_AFurnitureAssembler, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFurnitureAssembler), 3755581311U) },
+		{ Z_Construct_UClass_AFurnitureAssembler, AFurnitureAssembler::StaticClass, TEXT("AFurnitureAssembler"), &Z_Registration_Info_UClass_AFurnitureAssembler, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFurnitureAssembler), 1986242204U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_4082140925(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_1332179244(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo),
 	nullptr, 0);
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
