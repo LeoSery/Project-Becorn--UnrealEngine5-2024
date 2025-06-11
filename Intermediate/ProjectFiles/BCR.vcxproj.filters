@@ -184,6 +184,15 @@
     <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Subsystem.h">
       <Filter>Source\BCR\Headers\System\QTE</Filter>
     </ClInclude>
+    <Filter Include="Source\BCR\Headers\System\UI_Quest">
+      <UniqueIdentifier>{55FA34F8-1455-3E17-AF98-99906BC79D55}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\UI_Quest\QuestData.h">
+      <Filter>Source\BCR\Headers\System\UI_Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\UI_Quest\UI_Subsystem.h">
+      <Filter>Source\BCR\Headers\System\UI_Quest</Filter>
+    </ClInclude>
     <Filter Include="Source\BCR\Sources">
       <UniqueIdentifier>{A091F1B4-EB37-3D7C-8B60-3BC3FD2E36B1}</UniqueIdentifier>
     </Filter>
@@ -255,6 +264,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\QTE\QTE_Subsystem.cpp">
       <Filter>Source\BCR\Sources\System\QTE</Filter>
+    </ClCompile>
+    <Filter Include="Source\BCR\Sources\System\UI_Quest">
+      <UniqueIdentifier>{E8D0D50F-E126-33F1-A496-FAEDC8730BFC}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\UI_Quest\QuestData.cpp">
+      <Filter>Source\BCR\Sources\System\UI_Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\UI_Quest\UI_Subsystem.cpp">
+      <Filter>Source\BCR\Sources\System\UI_Quest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
