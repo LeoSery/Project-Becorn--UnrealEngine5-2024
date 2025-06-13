@@ -27,8 +27,14 @@ struct Z_Construct_UFunction_APickableItem_GetItemName_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// METHODS ////////\n/// Item information\n" },
+#endif
 		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Headers/System/Pickable/PickableItem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "METHODS\nItem information" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_ReturnValue;
@@ -78,19 +84,31 @@ struct Z_Construct_UClass_APickableItem_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Base class for all pickable objects in the game\n * @details Implements the IPickable interface and provides item identification functionality\n */" },
+#endif
 		{ "IncludePath", "Headers/System/Pickable/PickableItem.h" },
 		{ "ModuleRelativePath", "Headers/System/Pickable/PickableItem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Base class for all pickable objects in the game\n@details Implements the IPickable interface and provides item identification functionality" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_name_MetaData[] = {
 		{ "Category", "PickableItem" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// PROPERTIES ////////\n/// Item identification\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/Pickable/PickableItem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "PROPERTIES\nItem identification" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_name;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_APickableItem_GetItemName, "GetItemName" }, // 3381321719
+		{ &Z_Construct_UFunction_APickableItem_GetItemName, "GetItemName" }, // 2853608680
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
@@ -110,7 +128,7 @@ UObject* (*const Z_Construct_UClass_APickableItem_Statics::DependentSingletons[]
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_APickableItem_Statics::DependentSingletons) < 16);
 const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_APickableItem_Statics::InterfaceParams[] = {
-	{ Z_Construct_UClass_UIPickable_NoRegister, (int32)VTABLE_OFFSET(APickableItem, IIPickable), false },  // 3735236945
+	{ Z_Construct_UClass_UIPickable_NoRegister, (int32)VTABLE_OFFSET(APickableItem, IIPickable), false },  // 23792606
 };
 const UECodeGen_Private::FClassParams Z_Construct_UClass_APickableItem_Statics::ClassParams = {
 	&APickableItem::StaticClass,
@@ -144,14 +162,14 @@ APickableItem::~APickableItem() {}
 // End Class APickableItem
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Pickable_PickableItem_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_APickableItem, APickableItem::StaticClass, TEXT("APickableItem"), &Z_Registration_Info_UClass_APickableItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APickableItem), 4199429101U) },
+		{ Z_Construct_UClass_APickableItem, APickableItem::StaticClass, TEXT("APickableItem"), &Z_Registration_Info_UClass_APickableItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APickableItem), 741256649U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Pickable_PickableItem_h_857404552(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Pickable_PickableItem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Pickable_PickableItem_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_3329486220(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Pickable_PickableItem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

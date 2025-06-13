@@ -2,7 +2,12 @@
 #include "Kismet/KismetMathLibrary.h"
 #include <Kismet/GameplayStatics.h>
 
-// Sets default values
+#include "Engine/ExponentialHeightFog.h"
+
+/**
+ * @brief Initializes the camera system with all components
+ * @details Sets up spring arm, cine camera, and debug sphere with default settings
+ */
 AMainCamera::AMainCamera()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -24,15 +29,22 @@ AMainCamera::AMainCamera()
 	DebugSphere->SetupAttachment(RootComponent);
 }
 
-// Called when the game starts or when spawned
+/**
+ * @brief Initializes camera parameters and finds fog component
+ * @details Sets up focus settings, F-stop values, and locates the fog component in the scene
+ */
 void AMainCamera::BeginPlay()
 {
 	Super::BeginPlay();
-
 	InitParam();
 }
 
-// Called every frame
+/**
+ * @brief Updates all camera systems each frame
+ * @details Manages position, distance, angle, effects, and player constraints
+ * 
+ * @param DeltaTime Time elapsed since the last frame in seconds
+ */
 void AMainCamera::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -48,11 +60,22 @@ void AMainCamera::Tick(float DeltaTime)
 	ConstrainPlayerPositions();
 }
 
+/**
+ * @brief Assigns the two player characters to track
+ * @details Sets the players that the camera system will follow and frame
+ * 
+ * @param Player1 First player character to track
+ * @param Player2 Second player character to track
+ */
 void AMainCamera::SetPlayers(ACharacter* Player1, ACharacter* Player2)
 {
 	Players = { Player1, Player2 };
 }
 
+/**
+ * @brief Initializes camera parameters and fog component references
+ * @details Configures focus settings, F-stop range, and finds fog component in the world
+ */
 void AMainCamera::InitParam()
 {
 	DebugSphere->SetHiddenInGame(!DebugLocation);
@@ -70,6 +93,10 @@ void AMainCamera::InitParam()
 	}
 }
 
+/**
+ * @brief Updates camera position to maintain both players in frame
+ * @details Calculates average position between players and applies vertical offset
+ */
 void AMainCamera::UpdatePosition()
 {
 	FVector AveragePosition;
@@ -95,6 +122,10 @@ void AMainCamera::UpdatePosition()
 	SetActorLocation(AveragePosition);
 }
 
+/**
+ * @brief Dynamically adjusts camera distance based on player separation
+ * @details Calculates optimal spring arm length using FOV and player distance math
+ */
 void AMainCamera::UpdateArmLenght()
 {
 	/** TESTS
@@ -158,6 +189,10 @@ void AMainCamera::UpdateArmLenght()
 	}
 }
 
+/**
+ * @brief Adjusts camera angle based on distance from players
+ * @details Interpolates between min/max angles based on current arm length
+ */
 void AMainCamera::UpdateArmAngle()
 {
 	if (!UseAngleChange)
@@ -177,6 +212,12 @@ void AMainCamera::UpdateArmAngle()
 	}
 }
 
+/**
+ * @brief Updates fog distance to maintain visual consistency
+ * @details Adjusts volumetric fog start distance relative to camera and players
+ * 
+ * @param DepthPlayerDistance Distance between players along the depth axis
+ */
 void AMainCamera::UpdateFog(float DepthPlayerDistance)
 {
 	float FogDist = CameraBoom->TargetArmLength + FogDistanceToPlayer + DepthPlayerDistance / 2;
@@ -189,6 +230,12 @@ void AMainCamera::UpdateFog(float DepthPlayerDistance)
 	}
 }
 
+/**
+ * @brief Updates depth of field blur for tilt-shift effect
+ * @details Adjusts camera aperture based on player distance for cinematic effect
+ * 
+ * @param DepthPlayerDistance Distance between players along the depth axis
+ */
 void AMainCamera::UpdateBlur(float DepthPlayerDistance)
 {
 	float FStopAlpha = GetAlpha(DepthPlayerDistance, MaxBlurAtDistance, MinBlurAtDistance);
@@ -196,6 +243,10 @@ void AMainCamera::UpdateBlur(float DepthPlayerDistance)
 	FollowCamera->CurrentAperture = Aperture / BlurMultiplier;
 }
 
+/**
+ * @brief Constrains player movement to keep them within camera frame
+ * @details Prevents players from moving outside the viewable area by limiting their positions
+ */
 void AMainCamera::ConstrainPlayerPositions()
 {
 	FVector player1Pos = Players[0]->GetActorLocation();
@@ -243,16 +294,41 @@ void AMainCamera::ConstrainPlayerPositions()
 	}
 }
 
+/**
+ * @brief Converts 3D vector to 2D by removing Z component
+ * @details Utility function for 2D distance calculations
+ * 
+ * @param vect3d 3D vector to convert
+ * @return 2D vector with X and Y components
+ */
 FVector2D AMainCamera::Get2DVect(FVector vect3d)
 {
 	return { vect3d.X, vect3d.Y };
 }
 
+/**
+ * @brief Calculates normalized alpha value between min and max
+ * @details Linear interpolation utility function
+ * 
+ * @param value Current value to normalize
+ * @param min Minimum value in range
+ * @param max Maximum value in range
+ * @return Alpha value between 0 and 1
+ */
 float AMainCamera::GetAlpha(float value, float min, float max)
 {
 	return (value - min) / (max - min);
 }
 
+/**
+ * @brief Calculates interpolated value using alpha
+ * @details Reverse interpolation utility function
+ * 
+ * @param alpha Normalized value between 0 and 1
+ * @param min Minimum value in range
+ * @param max Maximum value in range
+ * @return Interpolated value between min and max
+ */
 float AMainCamera::GetValue(float alpha, float min, float max)
 {
 	return alpha * (max - min) + min;

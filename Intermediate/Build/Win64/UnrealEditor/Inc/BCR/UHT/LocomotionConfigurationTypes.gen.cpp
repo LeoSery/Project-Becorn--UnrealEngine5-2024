@@ -44,6 +44,9 @@ struct Z_Construct_UEnum_BCR_ELocomotionMode_Statics
 		{ "BlueprintType", "true" },
 		{ "Climb.DisplayName", "Climb" },
 		{ "Climb.Name", "ELocomotionMode::Climb" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Available locomotion modes for player positioning on machines\n * @details Different interaction styles that modify player movement and animation behavior\n */" },
+#endif
 		{ "HoldingBox.DisplayName", "HoldingBox" },
 		{ "HoldingBox.Name", "ELocomotionMode::HoldingBox" },
 		{ "ModuleRelativePath", "Headers/System/MiniGame/LocomotionConfigurationTypes.h" },
@@ -55,6 +58,9 @@ struct Z_Construct_UEnum_BCR_ELocomotionMode_Statics
 		{ "Sap.Name", "ELocomotionMode::Sap" },
 		{ "Test.DisplayName", "Test" },
 		{ "Test.Name", "ELocomotionMode::Test" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Available locomotion modes for player positioning on machines\n@details Different interaction styles that modify player movement and animation behavior" },
+#endif
 		{ "WoodCuttingCrank.DisplayName", "WoodCutting_Crank" },
 		{ "WoodCuttingCrank.Name", "ELocomotionMode::WoodCuttingCrank" },
 		{ "WoodCuttingRope.DisplayName", "WoodCutting_Rope" },
@@ -115,7 +121,13 @@ struct Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Complete locomotion configuration for player positioning and animation\n * @details Defines target position, animations, movement constraints, and behavior settings\n */" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/MiniGame/LocomotionConfigurationTypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Complete locomotion configuration for player positioning and animation\n@details Defines target position, animations, movement constraints, and behavior settings" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PositionToGo_MetaData[] = {
 		{ "Category", "Locomotion" },
@@ -185,7 +197,7 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FLocomo
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_StartMontageSection = { "StartMontageSection", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLocomotionConfiguration, StartMontageSection), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StartMontageSection_MetaData), NewProp_StartMontageSection_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_EndAnimToPlay = { "EndAnimToPlay", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLocomotionConfiguration, EndAnimToPlay), Z_Construct_UClass_UAnimSequence_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EndAnimToPlay_MetaData), NewProp_EndAnimToPlay_MetaData) };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_Mode_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_Mode = { "Mode", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLocomotionConfiguration, Mode), Z_Construct_UEnum_BCR_ELocomotionMode, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Mode_MetaData), NewProp_Mode_MetaData) }; // 2945942732
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_Mode = { "Mode", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLocomotionConfiguration, Mode), Z_Construct_UEnum_BCR_ELocomotionMode, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Mode_MetaData), NewProp_Mode_MetaData) }; // 262580088
 void Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_bLockCapsuleOrientation_SetBit(void* Obj)
 {
 	((FLocomotionConfiguration*)Obj)->bLockCapsuleOrientation = 1;
@@ -257,12 +269,24 @@ struct Z_Construct_UClass_ULocomotionConfigurationAsset_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Asset container for locomotion configuration data\n * @details Provides validation and runtime conversion for player movement setups on machines\n */" },
+#endif
 		{ "IncludePath", "Headers/System/MiniGame/LocomotionConfigurationTypes.h" },
 		{ "ModuleRelativePath", "Headers/System/MiniGame/LocomotionConfigurationTypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Asset container for locomotion configuration data\n@details Provides validation and runtime conversion for player movement setups on machines" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ConfigurationName_MetaData[] = {
 		{ "Category", "Locomotion|Info" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// PROPERTIES ////////\n/// Asset information\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/MiniGame/LocomotionConfigurationTypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "PROPERTIES\nAsset information" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Description_MetaData[] = {
 		{ "Category", "Locomotion|Info" },
@@ -271,7 +295,13 @@ struct Z_Construct_UClass_ULocomotionConfigurationAsset_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Configuration_MetaData[] = {
 		{ "Category", "Locomotion|Configuration" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/// Locomotion configuration\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/MiniGame/LocomotionConfigurationTypes.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Locomotion configuration" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_ConfigurationName;
@@ -286,7 +316,7 @@ struct Z_Construct_UClass_ULocomotionConfigurationAsset_Statics
 };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_ConfigurationName = { "ConfigurationName", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULocomotionConfigurationAsset, ConfigurationName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ConfigurationName_MetaData), NewProp_ConfigurationName_MetaData) };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_Description = { "Description", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULocomotionConfigurationAsset, Description), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Description_MetaData), NewProp_Description_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_Configuration = { "Configuration", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULocomotionConfigurationAsset, Configuration), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Configuration_MetaData), NewProp_Configuration_MetaData) }; // 3991398504
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_Configuration = { "Configuration", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULocomotionConfigurationAsset, Configuration), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Configuration_MetaData), NewProp_Configuration_MetaData) }; // 404476540
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_ConfigurationName,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_Description,
@@ -331,21 +361,21 @@ ULocomotionConfigurationAsset::~ULocomotionConfigurationAsset() {}
 // End Class ULocomotionConfigurationAsset
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics
 {
 	static constexpr FEnumRegisterCompiledInInfo EnumInfo[] = {
-		{ ELocomotionMode_StaticEnum, TEXT("ELocomotionMode"), &Z_Registration_Info_UEnum_ELocomotionMode, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2945942732U) },
+		{ ELocomotionMode_StaticEnum, TEXT("ELocomotionMode"), &Z_Registration_Info_UEnum_ELocomotionMode, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 262580088U) },
 	};
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FLocomotionConfiguration::StaticStruct, Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewStructOps, TEXT("LocomotionConfiguration"), &Z_Registration_Info_UScriptStruct_LocomotionConfiguration, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLocomotionConfiguration), 3991398504U) },
+		{ FLocomotionConfiguration::StaticStruct, Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewStructOps, TEXT("LocomotionConfiguration"), &Z_Registration_Info_UScriptStruct_LocomotionConfiguration, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLocomotionConfiguration), 404476540U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ULocomotionConfigurationAsset, ULocomotionConfigurationAsset::StaticClass, TEXT("ULocomotionConfigurationAsset"), &Z_Registration_Info_UClass_ULocomotionConfigurationAsset, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULocomotionConfigurationAsset), 15386905U) },
+		{ Z_Construct_UClass_ULocomotionConfigurationAsset, ULocomotionConfigurationAsset::StaticClass, TEXT("ULocomotionConfigurationAsset"), &Z_Registration_Info_UClass_ULocomotionConfigurationAsset, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULocomotionConfigurationAsset), 2228756051U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_3968210194(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ScriptStructInfo),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::EnumInfo));
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_821283739(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ScriptStructInfo),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::EnumInfo));
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -1,30 +1,32 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
-
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "BCR/Headers/Interfaces/Interactable.h"
 #include "UniqueRope.generated.h"
 
+//////// CLASS ////////
+
+/**
+ * @brief Special rope object for cooperative interactions
+ * @details Implements interactive functionality for rope-based mini-games
+ */
 UCLASS()
 class BCR_API AUniqueRope : public AActor, public IInteractable
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
+
+	//////// UNREAL LIFECYCLE ////////
 	AUniqueRope();
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
-	// Interface Methods
+	//////// INTERFACE IMPLEMENTATION ////////
+	/// IInteractable methods
 	void Interact_Implementation(AMainPlayer* Player);
 	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
-
-public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 };

@@ -7,9 +7,10 @@
 
 //////// ENUMS ////////
 
-/** 
-* @brief Résultats possibles d'une action QTE
-*/
+/**
+ * @brief Results of QTE action validation
+ * @details None = no action, Success = valid action, Failure = invalid action
+ */
 UENUM(BlueprintType)
 enum class EQTEResult : uint8 {
     None        UMETA(DisplayName = "None"),
@@ -17,9 +18,10 @@ enum class EQTEResult : uint8 {
     Failure     UMETA(DisplayName = "Failure")
 };
 
-/** 
-* @brief Types d'actions possibles dans le QTE 
-*/
+/**
+ * @brief Types of input actions required in QTE
+ * @details Press = single press, Hold = continuous, Release = key release, Rotate = analog stick movement
+ */
 UENUM(BlueprintType)
 enum class EQTEActionType : uint8 {
     None        UMETA(DisplayName = "None"),
@@ -29,9 +31,10 @@ enum class EQTEActionType : uint8 {
     Rotate      UMETA(DisplayName = "Rotate")
 };
 
-/** 
-* @brief État actuel du système QTE
-*/
+/**
+ * @brief Current state of the QTE system
+ * @details Tracks QTE lifecycle from Inactive through WaitingForPlayers, Running, to Completed/Failed
+ */
 UENUM(BlueprintType)
 enum class EQTEState : uint8 {
     Inactive,
@@ -42,15 +45,22 @@ enum class EQTEState : uint8 {
     Failed
 };
 
-/** 
-* @brief Point d'interaction sur une machine
-*/
+/**
+ * @brief Player interaction positions for cooperative QTEs
+ * @details First = Player 1 position, Second = Player 2 position
+ */
 UENUM(BlueprintType)
 enum class ESnapPointType : uint8 {
     First,
     Second
 };
 
+//////// STRUCTS ////////
+
+/**
+ * @brief Internal progress tracking for QTE actions
+ * @details Maintains success count and completion state per snap point
+ */
 USTRUCT()
 struct FQTEProgressData 
 {
@@ -62,10 +72,10 @@ struct FQTEProgressData
     FQTEProgressData() {}
 };
 
-//////// STRUCTS ////////
-/** 
-* @brief Configuration d'un point d'interaction
-*/
+/**
+ * @brief Configuration for a single snap point in QTE
+ * @details Defines input requirements, repeat count, and validation criteria
+ */
 USTRUCT(BlueprintType)
 struct BCR_API FSnapPointConfig {
     GENERATED_BODY()
@@ -90,9 +100,10 @@ struct BCR_API FSnapPointConfig {
     float MinRotationSpeed = 0.5f;
 };
 
-/** 
-* @brief Configuration complète d'une séquence QTE
-*/
+/**
+ * @brief Complete QTE sequence configuration
+ * @details Contains snap points, timing, UI widget, and synchronization settings
+ */
 USTRUCT(BlueprintType)
 struct BCR_API FQTEConfiguration {
     GENERATED_BODY()
@@ -117,9 +128,10 @@ struct BCR_API FQTEConfiguration {
     bool ActionShouldWaitOtherPlayer = false;
 };
 
-/** 
-* @brief Information de progression d'une action
-*/
+/**
+ * @brief Real-time QTE action progress information
+ * @details Provides progress, stick position, and active state for UI feedback
+ */
 USTRUCT(BlueprintType)
 struct BCR_API FQTEActionProgress {
     GENERATED_BODY()

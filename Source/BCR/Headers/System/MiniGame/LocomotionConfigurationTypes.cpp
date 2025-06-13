@@ -1,6 +1,12 @@
 ﻿#include "LocomotionConfigurationTypes.h"
 #include "BCR/Headers/Interfaces/BCR_Helper.h"
 
+/**
+ * @brief Converts the asset configuration to runtime format
+ * @details Performs validation and creates a runtime-ready locomotion configuration with safety checks
+ * 
+ * @return Valid runtime configuration with validation warnings for invalid setups
+ */
 FLocomotionConfiguration ULocomotionConfigurationAsset::ToRuntimeConfig() const
 {
 	FLocomotionConfiguration RuntimeConfig;

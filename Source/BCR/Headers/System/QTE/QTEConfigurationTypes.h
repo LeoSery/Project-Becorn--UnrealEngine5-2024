@@ -1,16 +1,16 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
-#include "InputCoreTypes.h"
 #include "Engine/DataAsset.h"
 #include "BCR/Headers/System/QTE/QTETypes.h"
 #include "QTEConfigurationTypes.generated.h"
 
+//////// FORWARD DECLARATIONS ////////
+/// Class
 class AMainPlayer;
 
-/**
-* @brief Configuration d'une séquence QTE pour un point d'interaction
-*/
+//////// STRUCTS ////////
+/// QTE snap point configuration data
 USTRUCT(BlueprintType)
 struct FQTESnapPointData {
     GENERATED_BODY()
@@ -22,25 +22,29 @@ struct FQTESnapPointData {
     FSnapPointConfig Config;
 };
 
-/**
-* @brief Asset de configuration QTE principal
-*/
+//////// CLASS ////////
+/// Asset container for QTE configuration data
+/// Provides validation and runtime conversion for Quick Time Event setups
 UCLASS(BlueprintType)
 class BCR_API UQTEConfigurationAsset : public UDataAsset
 {
     GENERATED_BODY()
 
 public:
+
+    //////// PROPERTIES ////////
+    /// Asset information
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "QTE|Info")
     FString ConfigurationName = TEXT("New QTE");
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "QTE|Info", Meta = (MultiLine = true))
     FString Description;
     
-    // La configuration directement, plus besoin de structures intermédiaires
+    /// QTE configuration
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "QTE|Configuration")
     FQTEConfiguration Configuration;
 
-    // Simple fonction de copie/validation
+    //////// METHODS ////////
+    /// Runtime conversion
     FQTEConfiguration ToRuntimeConfig() const;
 };

@@ -1,41 +1,51 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
-
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/BoxComponent.h"
 #include "BCR/Headers/System/Pickable/PickableItem.h"
-#include <Components/BillboardComponent.h>
 #include "DeliveryPoint.generated.h"
 
+//////// CLASS ////////
+
+/**
+ * @brief Delivery point for transforming items into new objects
+ * @details Detects specific item types and spawns corresponding output objects
+ */
 UCLASS()
 class BCR_API ADeliveryPoint : public AActor
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
+
+	//////// UNREAL LIFECYCLE ////////
 	ADeliveryPoint();
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
+
+	//////// COMPONENTS ////////
+	/// Collision and positioning
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UBoxComponent* ColliderBox;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UBillboardComponent* WorldPoint;
+
+	//////// CONFIGURATION ////////
+	/// Item transformation setup
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<APickableItem> ItemType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<APickableItem> ObjectToSpawn;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UBillboardComponent* WorldPoint;
-
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	
+	//////// EVENT CALLBACKS ////////
+	/// Collision detection
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	//////// STATE TRACKING ////////
+	/// Delivery state
 	bool DoOnce = false;
-
-
-public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 };

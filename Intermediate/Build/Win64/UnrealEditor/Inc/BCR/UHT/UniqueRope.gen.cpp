@@ -30,8 +30,14 @@ struct Z_Construct_UClass_AUniqueRope_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Special rope object for cooperative interactions\n * @details Implements interactive functionality for rope-based mini-games\n */" },
+#endif
 		{ "IncludePath", "Headers/System/UniqueRope.h" },
 		{ "ModuleRelativePath", "Headers/System/UniqueRope.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Special rope object for cooperative interactions\n@details Implements interactive functionality for rope-based mini-games" },
+#endif
 	};
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
@@ -47,7 +53,7 @@ UObject* (*const Z_Construct_UClass_AUniqueRope_Statics::DependentSingletons[])(
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AUniqueRope_Statics::DependentSingletons) < 16);
 const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AUniqueRope_Statics::InterfaceParams[] = {
-	{ Z_Construct_UClass_UInteractable_NoRegister, (int32)VTABLE_OFFSET(AUniqueRope, IInteractable), false },  // 188668673
+	{ Z_Construct_UClass_UInteractable_NoRegister, (int32)VTABLE_OFFSET(AUniqueRope, IInteractable), false },  // 34120701
 };
 const UECodeGen_Private::FClassParams Z_Construct_UClass_AUniqueRope_Statics::ClassParams = {
 	&AUniqueRope::StaticClass,
@@ -81,14 +87,14 @@ AUniqueRope::~AUniqueRope() {}
 // End Class AUniqueRope
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UniqueRope_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UniqueRope_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AUniqueRope, AUniqueRope::StaticClass, TEXT("AUniqueRope"), &Z_Registration_Info_UClass_AUniqueRope, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AUniqueRope), 2728782241U) },
+		{ Z_Construct_UClass_AUniqueRope, AUniqueRope::StaticClass, TEXT("AUniqueRope"), &Z_Registration_Info_UClass_AUniqueRope, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AUniqueRope), 264581993U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UniqueRope_h_2900044483(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UniqueRope_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UniqueRope_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UniqueRope_h_3452855971(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UniqueRope_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UniqueRope_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

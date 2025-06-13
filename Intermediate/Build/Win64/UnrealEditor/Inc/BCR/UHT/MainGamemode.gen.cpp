@@ -22,11 +22,11 @@ struct Z_Construct_UFunction_AMainGamemode_CreateLocalPlayer_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Create second player and add a mapping context\n\x09*/" },
+		{ "Comment", "//////// PLAYER MANAGEMENT ////////\n/// Local multiplayer setup\n" },
 #endif
 		{ "ModuleRelativePath", "Headers/Core/MainGamemode.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Create second player and add a mapping context" },
+		{ "ToolTip", "PLAYER MANAGEMENT\nLocal multiplayer setup" },
 #endif
 	};
 #endif // WITH_METADATA
@@ -69,15 +69,21 @@ struct Z_Construct_UClass_AMainGamemode_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Main game mode for cooperative gameplay\n * @details Manages local multiplayer setup and camera configuration for two-player sessions\n */" },
+#endif
 		{ "HideCategories", "Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering HLOD WorldPartition DataLayers Transformation" },
 		{ "IncludePath", "Headers/Core/MainGamemode.h" },
 		{ "ModuleRelativePath", "Headers/Core/MainGamemode.h" },
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Main game mode for cooperative gameplay\n@details Manages local multiplayer setup and camera configuration for two-player sessions" },
+#endif
 	};
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_AMainGamemode_CreateLocalPlayer, "CreateLocalPlayer" }, // 1404511720
+		{ &Z_Construct_UFunction_AMainGamemode_CreateLocalPlayer, "CreateLocalPlayer" }, // 2097248588
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -122,14 +128,14 @@ AMainGamemode::~AMainGamemode() {}
 // End Class AMainGamemode
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Core_MainGamemode_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainGamemode, AMainGamemode::StaticClass, TEXT("AMainGamemode"), &Z_Registration_Info_UClass_AMainGamemode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainGamemode), 3861842392U) },
+		{ Z_Construct_UClass_AMainGamemode, AMainGamemode::StaticClass, TEXT("AMainGamemode"), &Z_Registration_Info_UClass_AMainGamemode, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainGamemode), 2105987921U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Core_MainGamemode_h_326226366(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Core_MainGamemode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Core_MainGamemode_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_4035130214(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_MainGamemode_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

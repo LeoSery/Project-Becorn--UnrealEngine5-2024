@@ -4,6 +4,12 @@
 #include "Engine/DataAsset.h"
 #include "LocomotionConfigurationTypes.generated.h"
 
+//////// ENUMS ////////
+
+/**
+ * @brief Available locomotion modes for player positioning on machines
+ * @details Different interaction styles that modify player movement and animation behavior
+ */
 UENUM(BlueprintType)
 enum class ELocomotionMode : uint8
 {
@@ -18,6 +24,12 @@ enum class ELocomotionMode : uint8
 	Test              UMETA(DisplayName = "Test")
 };
 
+//////// STRUCTS ////////
+
+/**
+ * @brief Complete locomotion configuration for player positioning and animation
+ * @details Defines target position, animations, movement constraints, and behavior settings
+ */
 USTRUCT(BlueprintType)
 struct BCR_API FLocomotionConfiguration
 {
@@ -55,20 +67,31 @@ struct BCR_API FLocomotionConfiguration
     
 };
 
+//////// CLASS ////////
+
+/**
+ * @brief Asset container for locomotion configuration data
+ * @details Provides validation and runtime conversion for player movement setups on machines
+ */
 UCLASS()
 class BCR_API ULocomotionConfigurationAsset : public UDataAsset
 {
 	GENERATED_BODY()
 	
 public:
+	
+	//////// PROPERTIES ////////
+	/// Asset information
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Locomotion|Info")
 	FString ConfigurationName = TEXT("New Locomotion Configuration");
-
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Locomotion|Info", Meta = (MultiLine = true))
 	FString Description;
-    
+
+	/// Locomotion configuration
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Locomotion|Configuration")
 	FLocomotionConfiguration Configuration;
-    
+
+	//////// METHODS ////////
+	/// Runtime conversion
 	FLocomotionConfiguration ToRuntimeConfig() const;
 };

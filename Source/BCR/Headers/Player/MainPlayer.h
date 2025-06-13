@@ -7,96 +7,108 @@
 #include "BCR/Headers/Interfaces/Locomotional.h"
 #include "MainPlayer.generated.h"
 
+//////// FORWARD DECLARATIONS ////////
+/// Class
 class USpringArmComponent;
 class UCameraComponent;
 class UInputMappingContext;
 class UInputAction;
-struct FInputActionValue;
 class ULocomotionConfigurationAsset;
 
+/// Stuct
+struct FInputActionValue;
+
+//////// LOG CATEGORY ////////
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
+//////// CLASS ////////
+
+/**
+ * @brief Main player character for cooperative gameplay
+ * @details Handles input processing, locomotion configuration, object interaction, and pickup system
+ */
 UCLASS(config=Game)
 class BCR_API AMainPlayer : public ACharacter, public IBCR_Helper, public ILocomotional
 {
 	GENERATED_BODY()
-	
-	/** MappingContext */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputMappingContext* DefaultMappingContext;
-
-	/** Jump Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* JumpAction;
-
-	/** Move Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* MoveAction;
-
-	/** Look Input Action */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* LookAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* PickUpAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* InteractAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* PauseAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* LeftTriggerAction;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	UInputAction* RightTriggerAction;
-
-	
 
 public:
-	AMainPlayer();
 
+	//////// UNREAL LIFECYCLE ////////
+	AMainPlayer();
+	virtual void BeginPlay();
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	//////// PICKUP SYSTEM ////////
+	/// Object manipulation
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void PickUp();
-
 	void PickUp_Implementation();
-
-	void Interact();
-
-	virtual FLocomotionConfiguration ResetLocomotionConfig_Implementation() override;
-	virtual FLocomotionConfiguration SetLocomotionConfig_Implementation(ULocomotionConfigurationAsset* NewConfig) override;
 
 	UPROPERTY(BlueprintReadWrite)
 	AActor* PickedUpObject;
 
+	//////// INTERACTION SYSTEM ////////
+	/// World interactions
+	void Interact();
+
+	//////// INTERFACE IMPLEMENTATIONS ////////
+	/// ILocomotional interface
+	virtual FLocomotionConfiguration ResetLocomotionConfig_Implementation() override;
+	virtual FLocomotionConfiguration SetLocomotionConfig_Implementation(ULocomotionConfigurationAsset* NewConfig) override;
+
+	/// IBCR_Helper interface
+	virtual FString GetCustomLogInfo() const override
+	{
+		return FString::Printf(TEXT("Velocity: %.1f"), GetVelocity().Size());
+	}
+
 protected:
+	
+	//////// INPUT MAPPING ////////
+	/// Enhanced Input System
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputMappingContext* DefaultMappingContext;
 
-	/** Called for movement input */
+	/// Movement actions
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* JumpAction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* MoveAction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* LookAction;
+
+	/// Interaction actions
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* PickUpAction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* InteractAction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* PauseAction;
+
+	/// Trigger actions
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* LeftTriggerAction;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* RightTriggerAction;
+	
+	//////// INPUT HANDLERS ////////
+	/// Movement processing
 	void Move(const FInputActionValue& Value);
-
-	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
-	bool PickedUpSomething = false;
 
+	//////// MOVEMENT SYSTEM ////////
+	/// Movement configuration
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool bCanMove = true;
 
+	//////// LOCOMOTION SYSTEM ////////
+	/// Locomotion configuration
 	UPROPERTY(EditAnywhere)
 	ULocomotionConfigurationAsset* DefaultLocomotionConfig;
-	
 	ULocomotionConfigurationAsset* CurrentLocomotionConfig;
-	
-	// APawn interface
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
-	// To add mapping context
-	virtual void BeginPlay();
 
-	virtual FString GetCustomLogInfo() const override
-	{
-		return FString::Printf(TEXT("Velocity: %.1f"),
-			GetVelocity().Size());
-	}
+	//////// PICKUP STATE ////////
+	/// Pickup tracking
+	bool PickedUpSomething = false;
 };
-

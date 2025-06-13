@@ -51,14 +51,20 @@ struct Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/// Configuration reset\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/Interfaces/Locomotional.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Configuration reset" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStructPropertyParams NewProp_ReturnValue;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventResetLocomotionConfig_Parms, ReturnValue), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(0, nullptr) }; // 3991398504
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventResetLocomotionConfig_Parms, ReturnValue), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(0, nullptr) }; // 404476540
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics::NewProp_ReturnValue,
 };
@@ -117,7 +123,13 @@ struct Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// LOCOMOTION MANAGEMENT ////////\n/// Configuration setup\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/Interfaces/Locomotional.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "LOCOMOTION MANAGEMENT\nConfiguration setup" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_NewConfig;
@@ -126,7 +138,7 @@ struct Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_NewConfig = { "NewConfig", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventSetLocomotionConfig_Parms, NewConfig), Z_Construct_UClass_ULocomotionConfigurationAsset_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventSetLocomotionConfig_Parms, ReturnValue), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(0, nullptr) }; // 3991398504
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventSetLocomotionConfig_Parms, ReturnValue), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(0, nullptr) }; // 404476540
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_NewConfig,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_ReturnValue,
@@ -179,8 +191,8 @@ struct Z_Construct_UClass_ULocomotional_Statics
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig, "ResetLocomotionConfig" }, // 1818990971
-		{ &Z_Construct_UFunction_ULocomotional_SetLocomotionConfig, "SetLocomotionConfig" }, // 3395672545
+		{ &Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig, "ResetLocomotionConfig" }, // 413343940
+		{ &Z_Construct_UFunction_ULocomotional_SetLocomotionConfig, "SetLocomotionConfig" }, // 471757486
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -226,14 +238,14 @@ ULocomotional::~ULocomotional() {}
 // End Interface ULocomotional
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_Locomotional_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Locomotional_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ULocomotional, ULocomotional::StaticClass, TEXT("ULocomotional"), &Z_Registration_Info_UClass_ULocomotional, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULocomotional), 1998569576U) },
+		{ Z_Construct_UClass_ULocomotional, ULocomotional::StaticClass, TEXT("ULocomotional"), &Z_Registration_Info_UClass_ULocomotional, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULocomotional), 4026962811U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_Locomotional_h_1551715966(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_Locomotional_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_Locomotional_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Locomotional_h_3861701353(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Locomotional_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Locomotional_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

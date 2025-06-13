@@ -48,7 +48,13 @@ struct Z_Construct_UFunction_UInteractable_Interact_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// INTERACTION METHODS ////////\n/// Basic interaction\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/Interfaces/Interactable.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "INTERACTION METHODS\nBasic interaction" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
@@ -113,7 +119,13 @@ struct Z_Construct_UFunction_UInteractable_InteractWithObject_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/// Object-specific interaction\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/Interfaces/Interactable.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Object-specific interaction" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
@@ -174,8 +186,8 @@ struct Z_Construct_UClass_UInteractable_Statics
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UInteractable_Interact, "Interact" }, // 3056260752
-		{ &Z_Construct_UFunction_UInteractable_InteractWithObject, "InteractWithObject" }, // 981055072
+		{ &Z_Construct_UFunction_UInteractable_Interact, "Interact" }, // 2497988382
+		{ &Z_Construct_UFunction_UInteractable_InteractWithObject, "InteractWithObject" }, // 3991776401
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -221,14 +233,14 @@ UInteractable::~UInteractable() {}
 // End Interface UInteractable
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_Interactable_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UInteractable, UInteractable::StaticClass, TEXT("UInteractable"), &Z_Registration_Info_UClass_UInteractable, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInteractable), 188668673U) },
+		{ Z_Construct_UClass_UInteractable, UInteractable::StaticClass, TEXT("UInteractable"), &Z_Registration_Info_UClass_UInteractable, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInteractable), 34120701U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_Interactable_h_2881419735(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_Interactable_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_Interactable_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_3491667863(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_Interactable_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

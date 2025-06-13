@@ -1,27 +1,30 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "BCR/Headers/System/AWood.h"
 
-// Sets default values
+/**
+ * @brief Initializes the wood object with default settings
+ * @details Sets up tick functionality and pickable properties
+ */
 AAWood::AAWood()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
-// Called when the game starts or when spawned
+/**
+ * @brief Called when the wood object is spawned in the world
+ * @details Performs initialization logic for the wood resource
+ */
 void AAWood::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
-// Called every frame
+/**
+ * @brief Updates the wood object each frame
+ * @details Handles any per-frame logic for the wood resource
+ * 
+ * @param DeltaTime Time elapsed since the last frame in seconds
+ */
 void AAWood::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
-

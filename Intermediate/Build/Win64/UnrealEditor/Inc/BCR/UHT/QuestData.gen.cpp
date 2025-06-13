@@ -37,7 +37,13 @@ struct Z_Construct_UScriptStruct_FQuestStruct_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Individual quest information and progression data\n * @details Contains quest identification, description, completion requirements, and chain linking\n */" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/UI_Quest/QuestData.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Individual quest information and progression data\n@details Contains quest identification, description, completion requirements, and chain linking" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Tag_MetaData[] = {
 		{ "Category", "Quest|Info" },
@@ -127,7 +133,13 @@ struct Z_Construct_UScriptStruct_FQuestLineStruct_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Complete quest line containing multiple linked quests\n * @details Represents a sequence of related quests with shared narrative or gameplay theme\n */" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/UI_Quest/QuestData.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Complete quest line containing multiple linked quests\n@details Represents a sequence of related quests with shared narrative or gameplay theme" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Tag_MetaData[] = {
 		{ "Category", "QuestLine|Info" },
@@ -149,8 +161,8 @@ struct Z_Construct_UScriptStruct_FQuestLineStruct_Statics
 	static const UECodeGen_Private::FStructParams StructParams;
 };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FQuestLineStruct_Statics::NewProp_Tag = { "Tag", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQuestLineStruct, Tag), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Tag_MetaData), NewProp_Tag_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FQuestLineStruct_Statics::NewProp_QuestLineData_Inner = { "QuestLineData", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FQuestStruct, METADATA_PARAMS(0, nullptr) }; // 3474267280
-const UECodeGen_Private::FArrayPropertyParams Z_Construct_UScriptStruct_FQuestLineStruct_Statics::NewProp_QuestLineData = { "QuestLineData", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQuestLineStruct, QuestLineData), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_QuestLineData_MetaData), NewProp_QuestLineData_MetaData) }; // 3474267280
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FQuestLineStruct_Statics::NewProp_QuestLineData_Inner = { "QuestLineData", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FQuestStruct, METADATA_PARAMS(0, nullptr) }; // 3577498120
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UScriptStruct_FQuestLineStruct_Statics::NewProp_QuestLineData = { "QuestLineData", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FQuestLineStruct, QuestLineData), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_QuestLineData_MetaData), NewProp_QuestLineData_MetaData) }; // 3577498120
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FQuestLineStruct_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQuestLineStruct_Statics::NewProp_Tag,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FQuestLineStruct_Statics::NewProp_QuestLineData_Inner,
@@ -194,10 +206,13 @@ struct Z_Construct_UClass_UQuestData_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
+		{ "Comment", "/**\n * @brief Data asset container for quest line configurations\n * @details Provides designer-friendly interface for creating and managing quest sequences\n */" },
 #endif
 		{ "IncludePath", "Headers/System/UI_Quest/QuestData.h" },
 		{ "ModuleRelativePath", "Headers/System/UI_Quest/QuestData.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Data asset container for quest line configurations\n@details Provides designer-friendly interface for creating and managing quest sequences" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ConfigurationName_MetaData[] = {
 		{ "Category", "Quest|Info" },
@@ -225,7 +240,7 @@ struct Z_Construct_UClass_UQuestData_Statics
 };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuestData_Statics::NewProp_ConfigurationName = { "ConfigurationName", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQuestData, ConfigurationName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ConfigurationName_MetaData), NewProp_ConfigurationName_MetaData) };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuestData_Statics::NewProp_Description = { "Description", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQuestData, Description), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Description_MetaData), NewProp_Description_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UQuestData_Statics::NewProp_QuestLine = { "QuestLine", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQuestData, QuestLine), Z_Construct_UScriptStruct_FQuestLineStruct, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_QuestLine_MetaData), NewProp_QuestLine_MetaData) }; // 3414275804
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UQuestData_Statics::NewProp_QuestLine = { "QuestLine", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQuestData, QuestLine), Z_Construct_UScriptStruct_FQuestLineStruct, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_QuestLine_MetaData), NewProp_QuestLine_MetaData) }; // 3197539372
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UQuestData_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuestData_Statics::NewProp_ConfigurationName,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuestData_Statics::NewProp_Description,
@@ -270,19 +285,19 @@ UQuestData::~UQuestData() {}
 // End Class UQuestData
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FQuestStruct::StaticStruct, Z_Construct_UScriptStruct_FQuestStruct_Statics::NewStructOps, TEXT("QuestStruct"), &Z_Registration_Info_UScriptStruct_QuestStruct, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQuestStruct), 3474267280U) },
-		{ FQuestLineStruct::StaticStruct, Z_Construct_UScriptStruct_FQuestLineStruct_Statics::NewStructOps, TEXT("QuestLineStruct"), &Z_Registration_Info_UScriptStruct_QuestLineStruct, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQuestLineStruct), 3414275804U) },
+		{ FQuestStruct::StaticStruct, Z_Construct_UScriptStruct_FQuestStruct_Statics::NewStructOps, TEXT("QuestStruct"), &Z_Registration_Info_UScriptStruct_QuestStruct, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQuestStruct), 3577498120U) },
+		{ FQuestLineStruct::StaticStruct, Z_Construct_UScriptStruct_FQuestLineStruct_Statics::NewStructOps, TEXT("QuestLineStruct"), &Z_Registration_Info_UScriptStruct_QuestLineStruct, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FQuestLineStruct), 3197539372U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UQuestData, UQuestData::StaticClass, TEXT("UQuestData"), &Z_Registration_Info_UClass_UQuestData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuestData), 815869179U) },
+		{ Z_Construct_UClass_UQuestData, UQuestData::StaticClass, TEXT("UQuestData"), &Z_Registration_Info_UClass_UQuestData, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuestData), 3888548738U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_QuestData_h_1379644608(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics::ScriptStructInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_QuestData_h_1169607237(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_QuestData_h_Statics::ScriptStructInfo),
 	nullptr, 0);
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

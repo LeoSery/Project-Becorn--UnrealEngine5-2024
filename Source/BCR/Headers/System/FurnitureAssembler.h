@@ -1,16 +1,19 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
-
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "Components/BoxComponent.h"
-#include "DynamicMesh/ColliderMesh.h"
 #include "GameFramework/Actor.h"
 #include "BCR/Headers/System/Pickable/PickableItem.h"
 #include "BCR/Headers/Interfaces/Interactable.h"
 #include "BCR/Headers/System/DeliveryPoint.h"
 #include "FurnitureAssembler.generated.h"
 
+//////// STRUCTS ////////
+
+/**
+ * @brief Recipe data for furniture crafting
+ * @details Contains material requirements, output item, and delivery point information
+ */
 USTRUCT(BlueprintType)
 struct FRecipiesInfo : public FTableRowBase
 {
@@ -18,58 +21,79 @@ struct FRecipiesInfo : public FTableRowBase
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TMap<TSubclassOf<APickableItem>, int> Material;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<APickableItem> Out;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<ADeliveryPoint> DelivreryPoint;
 };
 
+//////// CLASS ////////
+
+/**
+ * @brief Furniture assembly station for crafting items from recipes
+ * @details Manages recipe-based crafting system with material validation and output generation
+ */
 UCLASS()
 class BCR_API AFurnitureAssembler : public AActor, public IInteractable
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
+
+	//////// UNREAL LIFECYCLE ////////
 	AFurnitureAssembler();
-	UFUNCTION(BlueprintCallable)
-	void CraftFurniture();
-protected:
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UBoxComponent* AssemblerZone;
-	UDataTable* AllRecipies;
-	TArray<FName> RowsNames;
-	TMap<AMainPlayer*, AActor*> PlayerHolding;
-
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	UFUNCTION()
-	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	virtual void Tick(float DeltaTime) override;
 
-	// Interface Methods
-	void Interact_Implementation(AMainPlayer* Player);
-	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
-
-	UFUNCTION(BlueprintNativeEvent)
-	void OnElementDropOnAssembler();
-	void OnElementDropOnAssembler_Implementation();
-
-public:
+	//////// CRAFTING SYSTEM ////////
+	/// Recipe management
 	UFUNCTION(BlueprintCallable)
 	FRecipiesInfo GetActualRecipiesInfo();
+	
+	UFUNCTION(BlueprintCallable)
+	void CraftFurniture();
 
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	//////// PROPERTIES ////////
+	/// Current recipe data
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FRecipiesInfo ActualRecipies;
 
+	/// Animation and state
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool PlayFlowerAnimation;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool CraftOnce = false;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int requieredMaterials = 3;
+	
+protected:
+
+	//////// COMPONENTS ////////
+	/// Interaction zone
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UBoxComponent* AssemblerZone;
+
+	//////// RECIPE SYSTEM ////////
+	/// Recipe data management
+	UDataTable* AllRecipies;
+	TArray<FName> RowsNames;
+	TMap<AMainPlayer*, AActor*> PlayerHolding;
+
+	//////// EVENT CALLBACKS ////////
+	/// Collision detection
+	UFUNCTION()
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	//////// INTERFACE IMPLEMENTATION ////////
+	/// IInteractable methods
+	void Interact_Implementation(AMainPlayer* Player);
+	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
+
+	//////// CRAFTING EVENTS ////////
+	/// Blueprint events
+	UFUNCTION(BlueprintNativeEvent)
+	void OnElementDropOnAssembler();
+	void OnElementDropOnAssembler_Implementation();
 };
-
-

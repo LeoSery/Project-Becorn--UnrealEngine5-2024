@@ -1,13 +1,13 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
+﻿#include "BCR/Headers/System/DeliveryPoint.h"
 
+#include "Components/BillboardComponent.h"
 
-#include "BCR/Headers/System/DeliveryPoint.h"
-
-
-// Sets default values
+/**
+ * @brief Initializes the delivery point with collision detection
+ * @details Sets up collision box and overlap events for item detection
+ */
 ADeliveryPoint::ADeliveryPoint()
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Create Collision Box
@@ -25,13 +25,26 @@ ADeliveryPoint::ADeliveryPoint()
 	WorldPoint->SetupAttachment(RootComponent);
 }
 
-// Called when the game starts or when spawned
+/**
+ * @brief Called when the delivery point is spawned in the world
+ * @details Performs initialization logic for the delivery system
+ */
 void ADeliveryPoint::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
+/**
+ * @brief Handles item overlap detection and transformation
+ * @details Spawns output object when the correct item type is delivered
+ * 
+ * @param OverlappedComponent The component that was overlapped
+ * @param OtherActor The actor that entered the delivery zone
+ * @param OtherComp The component of the overlapping actor
+ * @param OtherBodyIndex Body index of the collision
+ * @param bFromSweep Whether this was from a sweep operation
+ * @param SweepResult Hit result from sweep if applicable
+ */
 void ADeliveryPoint::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (ItemType == OtherActor->GetClass() && !DoOnce)
@@ -42,9 +55,13 @@ void ADeliveryPoint::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AA
 	}
 }
 
-// Called every frame
+/**
+ * @brief Updates the delivery point each frame
+ * @details Handles any per-frame logic for the delivery system
+ * 
+ * @param DeltaTime Time elapsed since the last frame in seconds
+ */
 void ADeliveryPoint::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
-

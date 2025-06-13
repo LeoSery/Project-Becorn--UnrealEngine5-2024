@@ -31,7 +31,13 @@ struct Z_Construct_UFunction_AMainCamera_SetPlayers_Statics
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// PLAYER MANAGEMENT ////////\n/// Player assignment\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "PLAYER MANAGEMENT\nPlayer assignment" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player1;
@@ -86,54 +92,24 @@ struct Z_Construct_UClass_AMainCamera_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Dynamic cooperative camera system for two-player gameplay\n * @details Automatically adjusts position, distance, angle, and effects based on player positioning\n */" },
+#endif
 		{ "IncludePath", "Headers/System/MainCamera.h" },
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DefaultRootComponent_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Camera" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CameraBoom_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Camera" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Camera boom positioning the camera behind the character */" },
-#endif
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Camera boom positioning the camera behind the character" },
-#endif
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FollowCamera_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Camera" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Follow camera */" },
-#endif
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Follow camera" },
-#endif
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DebugSphere_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Camera" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/** Debug sphere */" },
-#endif
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Debug sphere" },
+		{ "ToolTip", "@brief Dynamic cooperative camera system for two-player gameplay\n@details Automatically adjusts position, distance, angle, and effects based on player positioning" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DebugLocation_MetaData[] = {
 		{ "Category", "Parameters|Debug" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// DEBUG PARAMETERS ////////\n/// Debug configuration\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "DEBUG PARAMETERS\nDebug configuration" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DebugVariables_MetaData[] = {
 		{ "Category", "Parameters|Debug" },
@@ -141,7 +117,13 @@ struct Z_Construct_UClass_AMainCamera_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_EnableVerticalMovement_MetaData[] = {
 		{ "Category", "Parameters|Translation" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// TRANSLATION PARAMETERS ////////\n/// Position behavior\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "TRANSLATION PARAMETERS\nPosition behavior" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_VerticalOffset_MetaData[] = {
 		{ "Category", "Parameters|Translation" },
@@ -149,7 +131,13 @@ struct Z_Construct_UClass_AMainCamera_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MinimumArmLength_MetaData[] = {
 		{ "Category", "Parameters|Distance" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// DISTANCE PARAMETERS ////////\n/// Camera distance configuration\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "DISTANCE PARAMETERS\nCamera distance configuration" },
+#endif
 		{ "UIMin", "0.000000" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaximumArmLength_MetaData[] = {
@@ -169,7 +157,13 @@ struct Z_Construct_UClass_AMainCamera_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_UseAngleChange_MetaData[] = {
 		{ "Category", "Parameters|Angle" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// ANGLE PARAMETERS ////////\n/// Camera angle configuration\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "ANGLE PARAMETERS\nCamera angle configuration" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MinAngleReachedAtArmLength_MetaData[] = {
 		{ "Category", "Parameters|Angle" },
@@ -203,7 +197,13 @@ struct Z_Construct_UClass_AMainCamera_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaxFStop_MetaData[] = {
 		{ "Category", "Parameters|Tilt shift" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// TILT SHIFT PARAMETERS ////////\n/// Depth of field configuration\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "TILT SHIFT PARAMETERS\nDepth of field configuration" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaxBlurAtDistance_MetaData[] = {
 		{ "Category", "Parameters|Tilt shift" },
@@ -219,13 +219,45 @@ struct Z_Construct_UClass_AMainCamera_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FogDistanceToPlayer_MetaData[] = {
 		{ "Category", "Parameters|Fog" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// FOG PARAMETERS ////////\n/// Atmospheric effects\n" },
+#endif
+		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "FOG PARAMETERS\nAtmospheric effects" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DefaultRootComponent_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Camera" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// COMPONENTS ////////\n/// Camera components\n" },
+#endif
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "COMPONENTS\nCamera components" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CameraBoom_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Camera" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FollowCamera_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Camera" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DebugSphere_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Camera" },
+		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Headers/System/MainCamera.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultRootComponent;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_CameraBoom;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_FollowCamera;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_DebugSphere;
 	static void NewProp_DebugLocation_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_DebugLocation;
 	static void NewProp_DebugVariables_SetBit(void* Obj);
@@ -250,10 +282,14 @@ struct Z_Construct_UClass_AMainCamera_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MinBlurAtDistance;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_BlurMultiplier;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_FogDistanceToPlayer;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultRootComponent;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_CameraBoom;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_FollowCamera;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_DebugSphere;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_AMainCamera_SetPlayers, "SetPlayers" }, // 2693384593
+		{ &Z_Construct_UFunction_AMainCamera_SetPlayers, "SetPlayers" }, // 2139884864
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -261,10 +297,6 @@ struct Z_Construct_UClass_AMainCamera_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_DefaultRootComponent = { "DefaultRootComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, DefaultRootComponent), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DefaultRootComponent_MetaData), NewProp_DefaultRootComponent_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_CameraBoom = { "CameraBoom", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, CameraBoom), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CameraBoom_MetaData), NewProp_CameraBoom_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_FollowCamera = { "FollowCamera", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, FollowCamera), Z_Construct_UClass_UCineCameraComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FollowCamera_MetaData), NewProp_FollowCamera_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_DebugSphere = { "DebugSphere", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, DebugSphere), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DebugSphere_MetaData), NewProp_DebugSphere_MetaData) };
 void Z_Construct_UClass_AMainCamera_Statics::NewProp_DebugLocation_SetBit(void* Obj)
 {
 	((AMainCamera*)Obj)->DebugLocation = 1;
@@ -301,11 +333,11 @@ const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Sta
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_MinBlurAtDistance = { "MinBlurAtDistance", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, MinBlurAtDistance), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MinBlurAtDistance_MetaData), NewProp_MinBlurAtDistance_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_BlurMultiplier = { "BlurMultiplier", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, BlurMultiplier), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BlurMultiplier_MetaData), NewProp_BlurMultiplier_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_FogDistanceToPlayer = { "FogDistanceToPlayer", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, FogDistanceToPlayer), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FogDistanceToPlayer_MetaData), NewProp_FogDistanceToPlayer_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_DefaultRootComponent = { "DefaultRootComponent", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, DefaultRootComponent), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DefaultRootComponent_MetaData), NewProp_DefaultRootComponent_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_CameraBoom = { "CameraBoom", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, CameraBoom), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CameraBoom_MetaData), NewProp_CameraBoom_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_FollowCamera = { "FollowCamera", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, FollowCamera), Z_Construct_UClass_UCineCameraComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FollowCamera_MetaData), NewProp_FollowCamera_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainCamera_Statics::NewProp_DebugSphere = { "DebugSphere", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainCamera, DebugSphere), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DebugSphere_MetaData), NewProp_DebugSphere_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainCamera_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DefaultRootComponent,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_CameraBoom,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_FollowCamera,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DebugSphere,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DebugLocation,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DebugVariables,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_EnableVerticalMovement,
@@ -326,6 +358,10 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainCame
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_MinBlurAtDistance,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_BlurMultiplier,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_FogDistanceToPlayer,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DefaultRootComponent,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_CameraBoom,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_FollowCamera,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainCamera_Statics::NewProp_DebugSphere,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AMainCamera_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AMainCamera_Statics::DependentSingletons[])() = {
@@ -365,14 +401,14 @@ AMainCamera::~AMainCamera() {}
 // End Class AMainCamera
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MainCamera_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainCamera, AMainCamera::StaticClass, TEXT("AMainCamera"), &Z_Registration_Info_UClass_AMainCamera, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainCamera), 3050862977U) },
+		{ Z_Construct_UClass_AMainCamera, AMainCamera::StaticClass, TEXT("AMainCamera"), &Z_Registration_Info_UClass_AMainCamera, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainCamera), 695461510U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MainCamera_h_1651126092(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MainCamera_h_2213115451(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_MainCamera_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
