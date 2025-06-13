@@ -49,7 +49,13 @@ struct Z_Construct_UFunction_UIPickable_Drop_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/// Drop interaction\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/Interfaces/IPickable.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Drop interaction" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
@@ -118,7 +124,13 @@ struct Z_Construct_UFunction_UIPickable_PickedUp_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// PICKUP SYSTEM ////////\n/// Pickup interaction\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/Interfaces/IPickable.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "PICKUP SYSTEM\nPickup interaction" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
@@ -181,8 +193,8 @@ struct Z_Construct_UClass_UIPickable_Statics
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UIPickable_Drop, "Drop" }, // 3665441402
-		{ &Z_Construct_UFunction_UIPickable_PickedUp, "PickedUp" }, // 494300072
+		{ &Z_Construct_UFunction_UIPickable_Drop, "Drop" }, // 255385020
+		{ &Z_Construct_UFunction_UIPickable_PickedUp, "PickedUp" }, // 2452717663
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -228,14 +240,14 @@ UIPickable::~UIPickable() {}
 // End Interface UIPickable
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_IPickable_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_IPickable_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UIPickable, UIPickable::StaticClass, TEXT("UIPickable"), &Z_Registration_Info_UClass_UIPickable, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UIPickable), 3735236945U) },
+		{ Z_Construct_UClass_UIPickable, UIPickable::StaticClass, TEXT("UIPickable"), &Z_Registration_Info_UClass_UIPickable, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UIPickable), 23792606U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_IPickable_h_1233461996(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_IPickable_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Interfaces_IPickable_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_IPickable_h_34521094(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_IPickable_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Interfaces_IPickable_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

@@ -1,5 +1,11 @@
 ﻿#include "BCR/Headers/Core/ProjectDataFunctionLibrary.h"
 
+/**
+ * @brief Generates a comprehensive application version string
+ * @details Combines project name, version, build date, platform, and build type into a single identifier
+ * 
+ * @return Formatted version string: ProjectName_Version_Date_Platform_BuildType
+ */
 FString UProjectDataFunctionLibrary::GetAppVersion()
 {
 	const FString ProjectName = GetProjectName();
@@ -16,6 +22,12 @@ FString UProjectDataFunctionLibrary::GetAppVersion()
 						  *BuildType);
 }
 
+/**
+ * @brief Retrieves the project version from game configuration
+ * @details Reads the ProjectVersion setting from the project's .ini file
+ * 
+ * @return Project version string as defined in project settings
+ */
 FString UProjectDataFunctionLibrary::GetProjectVersion()
 {
 	FString ProjectVersion;
@@ -29,6 +41,12 @@ FString UProjectDataFunctionLibrary::GetProjectVersion()
 	return ProjectVersion;
 }
 
+/**
+ * @brief Retrieves the project name from game configuration
+ * @details Reads the ProjectName setting from the project's .ini file
+ * 
+ * @return Project name string as defined in project settings
+ */
 FString UProjectDataFunctionLibrary::GetProjectName()
 {
 	FString ProjectName;
@@ -42,6 +60,12 @@ FString UProjectDataFunctionLibrary::GetProjectName()
 	return ProjectName;
 }
 
+/**
+ * @brief Determines the current target platform
+ * @details Uses preprocessor macros to identify the build platform and architecture
+ * 
+ * @return Platform identifier (win64, win32, mac, linux, android, ios, unknown)
+ */
 FString UProjectDataFunctionLibrary::GetCurrentPlatform()
 {
 	FString Platform;
@@ -70,6 +94,12 @@ FString UProjectDataFunctionLibrary::GetCurrentPlatform()
 	return Platform;
 }
 
+/**
+ * @brief Gets the build compilation date
+ * @details Returns current date in editor or parses __DATE__ macro in builds
+ * 
+ * @return Build date in DD-MM-YYYY format
+ */
 FString UProjectDataFunctionLibrary::GetBuildDate()
 {
 #if WITH_EDITOR
@@ -110,6 +140,12 @@ FString UProjectDataFunctionLibrary::GetBuildDate()
 #endif
 }
 
+/**
+ * @brief Identifies whether this is an editor or build version
+ * @details Distinguishes between development and shipping builds
+ * 
+ * @return "Editor" for development builds, "Build" for packaged builds
+ */
 FString UProjectDataFunctionLibrary::GetBuildType()
 {
 #if WITH_EDITOR

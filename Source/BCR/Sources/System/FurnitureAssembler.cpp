@@ -1,6 +1,10 @@
 ﻿#include "BCR/Headers/System/FurnitureAssembler.h"
 #include "BCR/Headers/Player/MainPlayer.h"
 
+/**
+ * @brief Initializes the furniture assembler with collision detection
+ * @details Sets up assembler zone and overlap events for player detection
+ */
 AFurnitureAssembler::AFurnitureAssembler()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -18,6 +22,10 @@ AFurnitureAssembler::AFurnitureAssembler()
 	AssemblerZone->OnComponentBeginOverlap.AddDynamic(this, &AFurnitureAssembler::OnOverlapBegin);
 }
 
+/**
+ * @brief Loads recipe data and initializes the first recipe
+ * @details Reads recipes from DataTable and sets up the initial crafting target
+ */
 void AFurnitureAssembler::BeginPlay()
 {
 	Super::BeginPlay();
@@ -32,6 +40,17 @@ void AFurnitureAssembler::BeginPlay()
 	}
 }
 
+/**
+ * @brief Handles player entry into the assembler zone
+ * @details Tracks players and their held objects for automatic item processing
+ * 
+ * @param OverlappedComponent The component that was overlapped
+ * @param OtherActor The actor that entered the assembler zone
+ * @param OtherComp The component of the overlapping actor
+ * @param OtherBodyIndex Body index of the collision
+ * @param bFromSweep Whether this was from a sweep operation
+ * @param SweepResult Hit result from sweep if applicable
+ */
 void AFurnitureAssembler::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("Enter Assembler Zone"));
@@ -45,16 +64,30 @@ void AFurnitureAssembler::OnOverlapBegin(UPrimitiveComponent* OverlappedComponen
 	}
 }
 
+/**
+ * @brief Blueprint event triggered when an element is dropped on the assembler
+ * @details Called when a valid material is successfully added to the recipe
+ */
 void AFurnitureAssembler::OnElementDropOnAssembler_Implementation()
 {
 	
 }
 
+/**
+ * @brief Gets the current active recipe information
+ * @details Returns the recipe data for the furniture currently being crafted
+ * 
+ * @return Current recipe information including materials and output
+ */
 FRecipiesInfo AFurnitureAssembler::GetActualRecipiesInfo()
 {
 	return ActualRecipies;
 }
 
+/**
+ * @brief Attempts to craft furniture with the current materials
+ * @details Validates all required materials are present and spawns the output item
+ */
 void AFurnitureAssembler::CraftFurniture()
 {
 	int i = 0;
@@ -81,11 +114,24 @@ void AFurnitureAssembler::CraftFurniture()
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Emerald, FString::Printf(TEXT("Recipie already realize !"), i));
 }
 
+/**
+ * @brief Handles player interaction without held objects
+ * @details Provides feedback when player approaches without required items
+ * 
+ * @param Player The player interacting with the assembler
+ */
 void AFurnitureAssembler::Interact_Implementation(AMainPlayer* Player)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("No Item in Hand, Please grab an item")));
 }
 
+/**
+ * @brief Handles player interaction with held objects
+ * @details Validates and processes material deposits for crafting
+ * 
+ * @param Player The player interacting with the assembler
+ * @param Object The object the player is holding
+ */
 void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
 {
 	if (Cast<IIPickable>(Object))
@@ -117,6 +163,12 @@ void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player,
 	}
 }
 
+/**
+ * @brief Updates the assembler and processes automatic item deposits
+ * @details Monitors dropped items in the zone and processes valid materials
+ * 
+ * @param DeltaTime Time elapsed since the last frame in seconds
+ */
 void AFurnitureAssembler::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);

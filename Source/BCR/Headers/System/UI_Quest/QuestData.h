@@ -1,14 +1,18 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
 #include "QuestData.generated.h"
 
-USTRUCT(BlueprintType)
-struct BCR_API FQuestStruct {
+//////// STRUCTS ////////
 
+/**
+ * @brief Individual quest information and progression data
+ * @details Contains quest identification, description, completion requirements, and chain linking
+ */
+USTRUCT(BlueprintType)
+struct BCR_API FQuestStruct
+{
     GENERATED_BODY()
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Quest|Info")
@@ -25,13 +29,15 @@ struct BCR_API FQuestStruct {
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Quest|Info")
     FString PreviousQuestTag;
-
 };
 
-
+/**
+ * @brief Complete quest line containing multiple linked quests
+ * @details Represents a sequence of related quests with shared narrative or gameplay theme
+ */
 USTRUCT(BlueprintType)
-struct BCR_API FQuestLineStruct {
-
+struct BCR_API FQuestLineStruct
+{
     GENERATED_BODY()
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "QuestLine|Info")
@@ -39,19 +45,18 @@ struct BCR_API FQuestLineStruct {
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "QuestLine|Info")
     TArray<FQuestStruct> QuestLineData;
-
 };
 
-
+//////// CLASS ////////
 
 /**
- * 
+ * @brief Data asset container for quest line configurations
+ * @details Provides designer-friendly interface for creating and managing quest sequences
  */
 UCLASS()
 class BCR_API UQuestData : public UDataAsset
 {
 	GENERATED_BODY()
-	
 
 public :
 
@@ -63,5 +68,4 @@ public :
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Quest|QuestLine")
     FQuestLineStruct QuestLine;
-
 };

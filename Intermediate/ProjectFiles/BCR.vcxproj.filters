@@ -142,15 +142,9 @@
     <Filter Include="Source\BCR\Headers\System\Event">
       <UniqueIdentifier>{6B514B8B-5E8D-3A56-AB65-E6B8D7B8ADCE}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\BCR\Headers\System\Event\TriggerZone.cpp">
-      <Filter>Source\BCR\Headers\System\Event</Filter>
-    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\Event\TriggerZone.h">
       <Filter>Source\BCR\Headers\System\Event</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\BCR\Headers\System\Event\TriggerZoneListener.cpp">
-      <Filter>Source\BCR\Headers\System\Event</Filter>
-    </ClCompile>
     <ClInclude Include="..\..\Source\BCR\Headers\System\Event\TriggerZoneListener.h">
       <Filter>Source\BCR\Headers\System\Event</Filter>
     </ClInclude>
@@ -243,6 +237,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\BCR\Sources\System\UniqueRope.cpp">
       <Filter>Source\BCR\Sources\System</Filter>
+    </ClCompile>
+    <Filter Include="Source\BCR\Sources\System\Event">
+      <UniqueIdentifier>{CCE3703D-DB7C-30D9-933A-8C958E7BF954}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\Event\TriggerZone.cpp">
+      <Filter>Source\BCR\Sources\System\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BCR\Sources\System\Event\TriggerZoneListener.cpp">
+      <Filter>Source\BCR\Sources\System\Event</Filter>
     </ClCompile>
     <Filter Include="Source\BCR\Sources\System\MiniGame">
       <UniqueIdentifier>{A35DB486-DB2D-3F66-970C-B3563008B97E}</UniqueIdentifier>

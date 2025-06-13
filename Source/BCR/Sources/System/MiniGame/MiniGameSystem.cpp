@@ -12,6 +12,10 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "BCR/Headers/System/QTE/QTETypes.h"
 
+/**
+ * @brief Initializes the mini-game system with default components
+ * @details Sets up snap points, collision box, and enables tick functionality
+ */
 AMiniGameSystem::AMiniGameSystem()
 {
 	DefaultRootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultRootComponent"));
@@ -32,6 +36,12 @@ AMiniGameSystem::AMiniGameSystem()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
+/**
+ * @brief Callback for first snap point QTE results
+ * @details Handles and logs QTE action results for player 1
+ * 
+ * @param Result The result of the QTE action (Success/Failure/None)
+ */
 void AMiniGameSystem::OnFirstSnapPointResult_Implementation(EQTEResult Result)
 {
 	// Technical log
@@ -39,6 +49,12 @@ void AMiniGameSystem::OnFirstSnapPointResult_Implementation(EQTEResult Result)
 		*UEnum::GetValueAsString(Result)));
 }
 
+/**
+ * @brief Callback for second snap point QTE results
+ * @details Handles and logs QTE action results for player 2
+ * 
+ * @param Result The result of the QTE action (Success/Failure/None)
+ */
 void AMiniGameSystem::OnSecondSnapPointResult_Implementation(EQTEResult Result)
 {
 	// Technical log
@@ -46,23 +62,44 @@ void AMiniGameSystem::OnSecondSnapPointResult_Implementation(EQTEResult Result)
 		*UEnum::GetValueAsString(Result)));
 }
 
+/**
+ * @brief Callback for first snap point progress updates
+ * @details Receives real-time progress information for player 1
+ * 
+ * @param Progress Current progress data for the QTE action
+ */
 void AMiniGameSystem::OnFirstSnapPointProgress_Implementation(const FQTEActionProgress& Progress)
 {
 	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 1 action")));
 }
 
+/**
+ * @brief Callback for second snap point progress updates
+ * @details Receives real-time progress information for player 2
+ * 
+ * @param Progress Current progress data for the QTE action
+ */
 void AMiniGameSystem::OnSecondSnapPointProgress_Implementation(const FQTEActionProgress& Progress)
 {
 	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Player 2 action")));
 }
 
+/**
+ * @brief Callback for overall QTE completion
+ * @details Handles the final result of the entire QTE sequence
+ * 
+ * @param bSuccess Whether the complete QTE sequence was successful
+ */
 void AMiniGameSystem::OnQTEComplete_Implementation(const bool bSuccess)
 {
 	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("QTE Complete for : %s with result : %s"), 
 		*GetName(), bSuccess ? TEXT("Success") : TEXT("Failure")));
 }
 
-// Called when the game starts or when spawned
+/**
+ * @brief Initializes snap point mappings and item lists
+ * @details Sets up the initial state for player tracking and item management
+ */
 void AMiniGameSystem::BeginPlay()
 {
 	snapPointMap.Add(snapPlayerPoint1,nullptr);
@@ -72,27 +109,55 @@ void AMiniGameSystem::BeginPlay()
 	Super::BeginPlay();
 }
 
+/**
+ * @brief Updates the system each frame
+ * @details Currently handles any per-frame logic for the mini-game system
+ * 
+ * @param DeltaTime Time elapsed since the last frame in seconds
+ */
 void AMiniGameSystem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
+/**
+ * @brief Sets the required input items for this machine
+ * @details Configures which items are needed to activate the mini-game
+ * 
+ * @param _items Array of pickable item classes required as input
+ */
 void AMiniGameSystem::SetInputItem(TArray<TSubclassOf<APickableItem>> _items)
 {
 	inputItems = _items;
 	itemList = _items;
 }
 
+/**
+ * @brief Sets the QTE configuration for this machine
+ * @details Assigns the Quick Time Event sequence to be executed
+ * 
+ * @param _datas QTE configuration asset containing the sequence setup
+ */
 void AMiniGameSystem::SetQTE(UQTEConfigurationAsset* _datas)
 {
 	QTEConfig = _datas;
 }
 
+/**
+ * @brief Sets the items that will be produced upon successful completion
+ * @details Configures the output items spawned after QTE success
+ * 
+ * @param _items Array of pickable item classes to produce as output
+ */
 void AMiniGameSystem::SetOutputItem(TArray<TSubclassOf<APickableItem>> _items)
 {
 	outputItems = _items;
 }
 
+/**
+ * @brief Initiates the QTE execution if all conditions are met
+ * @details Checks item requirements and player positioning before starting QTE
+ */
 void AMiniGameSystem::StartExecute()
 {
 	if (itemList.IsEmpty())
@@ -148,6 +213,10 @@ void AMiniGameSystem::StartExecute()
 	}
 }
 
+/**
+ * @brief Starts the QTE sequence using the configured asset
+ * @details Initializes the QTE subsystem with the assigned configuration
+ */
 void AMiniGameSystem::CallQTEReader()
 {
 	if (UGameInstance* GameInstance = GetGameInstance())
@@ -159,6 +228,12 @@ void AMiniGameSystem::CallQTEReader()
 	}
 }
 
+/**
+ * @brief Handles QTE completion and triggers item production
+ * @details Cleans up QTE callbacks and spawns output items on success
+ * 
+ * @param _success Whether the QTE was completed successfully
+ */
 void AMiniGameSystem::FinishExecute(bool _success)
 {
 	if (UGameInstance* GameInstance = GetGameInstance())
@@ -198,6 +273,12 @@ void AMiniGameSystem::FinishExecute(bool _success)
 	}
 }
 
+/**
+ * @brief Spawns output items sequentially with delays
+ * @details Recursively spawns items from the output list with timed intervals
+ * 
+ * @param i Index of the item to spawn in the output array
+ */
 void AMiniGameSystem::SpawnItem(int i)
 {
 	if (i >= outputItems.Num())
@@ -220,20 +301,36 @@ void AMiniGameSystem::SpawnItem(int i)
 
 	// technical log
 	IBCR_Helper::LogConsole(this, FString::Printf(TEXT("Spawning item: %s"), *outputItems[i].GetDefaultObject()->GetItemName()));
-
-	
 }
 
+/**
+ * @brief Resets the machine to its initial state
+ * @details Restores the required item list to its original configuration
+ */
 void AMiniGameSystem::Reset()
 {
 	itemList = inputItems;
 }
 
+/**
+ * @brief Partially restores an item to the required list
+ * @details Used when an item is removed from the machine area
+ * 
+ * @param itemClass The item class to restore to the required list
+ */
 void AMiniGameSystem::PartialReset(TSubclassOf<APickableItem> itemClass)
 {
 	itemList.Add(itemClass);
 }
 
+/**
+ * @brief Finds the nearest snap point component to a given location
+ * @details Utility method for determining optimal player positioning
+ * 
+ * @param ToLocation The reference location to measure distance from
+ * @param Components Array of billboard components to check
+ * @return The closest billboard component to the specified location
+ */
 UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TArray<UBillboardComponent*> Components)
 {
 	float MinDistance = MAX_FLT;
@@ -242,9 +339,8 @@ UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TA
 	for (UBillboardComponent* component : Components)
 	{
 		float distance = UKismetMathLibrary::Vector_Distance(component->GetComponentLocation(), ToLocation);
-		if (
-			!IsValid(ClosestComponent)
-			|| distance < MinDistance)
+		
+		if (!IsValid(ClosestComponent) || distance < MinDistance)
 		{
 			MinDistance = distance;
 			ClosestComponent = component;
@@ -254,6 +350,12 @@ UBillboardComponent* AMiniGameSystem::GetNearestComponent(FVector ToLocation, TA
 	return ClosestComponent;
 }
 
+/**
+ * @brief Handles player interaction without held objects
+ * @details Manages snap point assignment and locomotion configuration
+ * 
+ * @param Player The player attempting to interact with the machine
+ */
 void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 {
 	checkItemPresent();
@@ -306,7 +408,6 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 		}
 	}
 	
-	
 	TArray<UBillboardComponent*> SnapArray;
 	SnapArray.Add(snapPlayerPoint1);
 	SnapArray.Add(snapPlayerPoint2);
@@ -316,9 +417,7 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 	if (snapPointMap.Find(closestBillBoard)[0] == nullptr)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Found a SnapPoint"));
-
 		snapPointMap.Add(closestBillBoard, Player);
-
 
 		if (Cast<ILocomotional>(Player))
 		{
@@ -334,50 +433,67 @@ void AMiniGameSystem::Interact_Implementation(AMainPlayer* Player)
 					ILocomotional::Execute_SetLocomotionConfig(Player, locomotionConfigs[configIndex]);
 				}
 			}
-			else {
+			else
+			{
 				Player->GetCharacterMovement()->SetMovementMode(MOVE_None);
 				Player->SetActorLocation(closestBillBoard->GetComponentLocation());
 			}
 		}
-		
 	}
-
 	if (snapPointMap.FindRef(snapPlayerPoint1) != nullptr && snapPointMap.FindRef(snapPlayerPoint2) != nullptr)
 	{
 		StartExecute();
 	}
 }
 
+/**
+ * @brief Handles player interaction with held objects
+ * @details Validates and processes item deposits into the machine
+ * 
+ * @param Player The player interacting with the machine
+ * @param Object The object the player is holding
+ */
 void AMiniGameSystem::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
 {
 	APickableItem* item = Cast<APickableItem>(Object);
+	
 	if (item)
 	{
-		if (presentItem.Contains(item)) {
+		if (presentItem.Contains(item))
+		{
 			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Player Already Deposited the Item"));
 			Player->PickUp();
 			IInteractable::Execute_Interact(this, Player);
 			return;
 		}
-		if (PlayerIsInBox(Player)) {
+		if (PlayerIsInBox(Player))
+		{
 			int i = checkItemInRecipe(item);
-			if (i != -1) {
+			
+			if (i != -1)
+			{
 				itemList.RemoveAt(i);
 				presentItem.Add(item, item->GetClass());
 				Player->PickUp();
 				return;
 			}
-			else if (itemList.Num() == 0) {
+			else if (itemList.Num() == 0)
+			{
 				presentItem.Add(item, item->GetClass());
 				Player->PickUp();
 				return;
 			}
 			IBCR_Helper::LogScreen(this, "Item not in itemList");
 		}
-
 	}
 }
 
+/**
+ * @brief Validates the presence and state of deposited items
+ * @details Checks if deposited items are still valid and removes invalid ones
+ * 
+ * @return True if items are present, false if the machine is empty
+ */
 bool AMiniGameSystem::checkItemPresent()
 {
 	for (auto [item,CLASS] : presentItem)
@@ -395,6 +511,13 @@ bool AMiniGameSystem::checkItemPresent()
 	return true;
 }
 
+/**
+ * @brief Checks if an item is required by the current recipe
+ * @details Searches the required item list for a matching item type
+ * 
+ * @param item The pickable item to validate against the recipe
+ * @return Index of the item in the recipe, or -1 if not found
+ */
 int AMiniGameSystem::checkItemInRecipe(APickableItem* item)
 {
 	for (int i = 0; i < itemList.Num(); i++)
@@ -402,33 +525,48 @@ int AMiniGameSystem::checkItemInRecipe(APickableItem* item)
 		if (itemList[i].GetDefaultObject()->GetItemName() == item->GetItemName())
 		{
 			/* Get the name of the Object (name is given by the class of the pickable */
-			
-
 			return i;
 		}
 	}
 	return -1;
 }
 
+/**
+ * @brief Adds an item to the present items tracking
+ * @details Registers a deposited item with its class for validation
+ * 
+ * @param item The pickable item to track as present
+ */
 void AMiniGameSystem::SetPresentItem(APickableItem* item)
 {
-
 	presentItem.Add(item, item->GetClass());
-
 }
 
+/**
+ * @brief Removes an item from the required list by index
+ * @details Used when an item requirement has been fulfilled
+ * 
+ * @param i Index of the item to remove from the required list
+ */
 void AMiniGameSystem::RemoveItemFromList(int i)
 {
-
 	itemList.RemoveAt(i);
 }
 
+/**
+ * @brief Checks if a player is within the machine's interaction area
+ * @details Validates player position against the input box bounds
+ * 
+ * @param Player The player to check positioning for
+ * @return True if the player is within the interaction box
+ */
 bool AMiniGameSystem::PlayerIsInBox(AMainPlayer* Player)
 {
 	FVector boxOrigin;
 	FVector boxExtent;
 	float sphereRadius;
 	UKismetSystemLibrary::GetComponentBounds(inputBox, boxOrigin, boxExtent, sphereRadius);
+	
 	if (UKismetMathLibrary::IsPointInBox(Player->GetActorLocation(), boxOrigin, boxExtent))
 	{
 		return true;

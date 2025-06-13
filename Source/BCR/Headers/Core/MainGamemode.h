@@ -1,33 +1,35 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "MainGamemode.generated.h"
 
+//////// CLASS ////////
+
+/**
+ * @brief Main game mode for cooperative gameplay
+ * @details Manages local multiplayer setup and camera configuration for two-player sessions
+ */
 UCLASS(minimalapi)
 class AMainGamemode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
+
+	//////// UNREAL LIFECYCLE ////////
 	AMainGamemode();
-
-protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-public:
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	/** Create second player and add a mapping context
-	*/
+	//////// PLAYER MANAGEMENT ////////
+	/// Local multiplayer setup
 	UFUNCTION(BlueprintCallable)
-	void CreateLocalPlayer();
+	void CreateLocalPlayer(); // Create second player and add a mapping context
 
 private:
 
+	//////// CAMERA SYSTEM ////////
+	/// Camera configuration
 	void SetupCamera();
 };

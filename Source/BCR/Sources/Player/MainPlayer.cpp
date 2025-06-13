@@ -14,9 +14,10 @@
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
-//////////////////////////////////////////////////////////////////////////
-// AMainPlayer
-
+/**
+ * @brief Initializes the main player with default character settings
+ * @details Sets up collision capsule, character movement, and default physics properties
+ */
 AMainPlayer::AMainPlayer()
 {
 	// Set size for collision capsule
@@ -44,17 +45,23 @@ AMainPlayer::AMainPlayer()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
+/**
+ * @brief Initializes the player when spawned in the world
+ * @details Sets up enhanced input mapping context and resets locomotion configuration
+ */
 void AMainPlayer::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
-
 	ResetLocomotionConfig_Implementation();
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Input
-
+/**
+ * @brief Configures input action bindings for the player
+ * @details Sets up Enhanced Input system with movement, interaction, and pickup controls
+ * 
+ * @param PlayerInputComponent The input component to bind actions to
+ */
 void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Add Input Mapping Context
@@ -79,9 +86,9 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMainPlayer::Look);
 
+		// Pick-up
 		EnhancedInputComponent->BindAction(PickUpAction, ETriggerEvent::Triggered, this, &AMainPlayer::PickUp);
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AMainPlayer::Interact);
-
 	}
 	else
 	{
@@ -89,6 +96,12 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	}
 }
 
+/**
+ * @brief Handles player movement input
+ * @details Processes 2D movement vector and applies it relative to camera orientation
+ * 
+ * @param Value Input action value containing movement vector
+ */
 void AMainPlayer::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
@@ -112,6 +125,12 @@ void AMainPlayer::Move(const FInputActionValue& Value)
 	}
 }
 
+/**
+ * @brief Handles player camera look input
+ * @details Processes look input for camera control (currently disabled for fixed camera)
+ * 
+ * @param Value Input action value containing look vector
+ */
 void AMainPlayer::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
@@ -125,6 +144,13 @@ void AMainPlayer::Look(const FInputActionValue& Value)
 	}
 }
 
+/**
+ * @brief Detects interactable objects in front of the player
+ * @details Performs a box sweep collision check to find objects the player can interact with
+ * 
+ * @param Player The player actor to detect objects for
+ * @return Array of hit results containing all detected objects
+ */
 TArray<FHitResult> Detect_Object(AActor* Player)
 {
 	const FVector Pos = Player->GetActorLocation() + Player->GetActorForwardVector();
@@ -144,6 +170,10 @@ TArray<FHitResult> Detect_Object(AActor* Player)
 	return OutHits;
 }
 
+/**
+ * @brief Toggles pickup state for objects in front of the player
+ * @details Picks up objects if hands are empty, drops held objects if carrying something
+ */
 void AMainPlayer::PickUp_Implementation()
 {
 	if (PickedUpSomething)
@@ -165,9 +195,12 @@ void AMainPlayer::PickUp_Implementation()
 			}
 		}
 	}
-
 }
 
+/**
+ * @brief Handles interaction with world objects
+ * @details Detects interactable objects and calls appropriate interaction methods
+ */
 void AMainPlayer::Interact()
 {
 	TArray<FHitResult> OutHits = Detect_Object(this);
@@ -190,6 +223,12 @@ void AMainPlayer::Interact()
 	}
 }
 
+/**
+ * @brief Resets locomotion configuration to default settings
+ * @details Restores normal movement behavior from the default configuration asset
+ * 
+ * @return The default locomotion configuration that was applied
+ */
 FLocomotionConfiguration AMainPlayer::ResetLocomotionConfig_Implementation()
 {
 	if (DefaultLocomotionConfig != nullptr)
@@ -201,6 +240,13 @@ FLocomotionConfiguration AMainPlayer::ResetLocomotionConfig_Implementation()
 	return FLocomotionConfiguration();
 }
 
+/**
+ * @brief Applies a new locomotion configuration
+ * @details Sets movement constraints and positioning for machine interactions
+ * 
+ * @param NewConfig The locomotion configuration asset to apply
+ * @return The runtime locomotion configuration that was applied
+ */
 FLocomotionConfiguration AMainPlayer::SetLocomotionConfig_Implementation(ULocomotionConfigurationAsset* NewConfig)
 {
 	if (NewConfig != nullptr)
@@ -208,6 +254,7 @@ FLocomotionConfiguration AMainPlayer::SetLocomotionConfig_Implementation(ULocomo
 		CurrentLocomotionConfig = NewConfig;
 		return CurrentLocomotionConfig->ToRuntimeConfig();
 	}
+	
 	IBCR_Helper::LogAll(this, TEXT("AMainPlayer::SetLocomotionConfig_Implementation: Invalid machine locomotion Config Asset"), 5.0f, FColor::Red);
 	return FLocomotionConfiguration();
 }

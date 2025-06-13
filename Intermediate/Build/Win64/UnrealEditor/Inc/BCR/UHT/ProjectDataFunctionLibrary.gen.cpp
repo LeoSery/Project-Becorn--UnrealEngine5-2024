@@ -26,8 +26,14 @@ struct Z_Construct_UFunction_UProjectDataFunctionLibrary_GetAppVersion_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "Game Config" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// VERSION INFORMATION ////////\n/// Application and project versioning\n" },
+#endif
 		{ "DisplayName", "GetAppVersion" },
 		{ "ModuleRelativePath", "Headers/Core/ProjectDataFunctionLibrary.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "VERSION INFORMATION\nApplication and project versioning" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_ReturnValue;
@@ -155,8 +161,14 @@ struct Z_Construct_UFunction_UProjectDataFunctionLibrary_GetCurrentPlatform_Stat
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "Game Config" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// PLATFORM INFORMATION ////////\n/// Build and platform details\n" },
+#endif
 		{ "DisplayName", "GetCurrentPlatform" },
 		{ "ModuleRelativePath", "Headers/Core/ProjectDataFunctionLibrary.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "PLATFORM INFORMATION\nBuild and platform details" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_ReturnValue;
@@ -297,16 +309,22 @@ struct Z_Construct_UClass_UProjectDataFunctionLibrary_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Static function library for project and build information\n * @details Provides Blueprint-accessible functions to retrieve project metadata and build details\n */" },
+#endif
 		{ "IncludePath", "Headers/Core/ProjectDataFunctionLibrary.h" },
 		{ "ModuleRelativePath", "Headers/Core/ProjectDataFunctionLibrary.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Static function library for project and build information\n@details Provides Blueprint-accessible functions to retrieve project metadata and build details" },
+#endif
 	};
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UProjectDataFunctionLibrary_GetAppVersion, "GetAppVersion" }, // 3403325128
+		{ &Z_Construct_UFunction_UProjectDataFunctionLibrary_GetAppVersion, "GetAppVersion" }, // 2715237107
 		{ &Z_Construct_UFunction_UProjectDataFunctionLibrary_GetBuildDate, "GetBuildDate" }, // 99891827
 		{ &Z_Construct_UFunction_UProjectDataFunctionLibrary_GetBuildType, "GetBuildType" }, // 1353944824
-		{ &Z_Construct_UFunction_UProjectDataFunctionLibrary_GetCurrentPlatform, "GetCurrentPlatform" }, // 2823843723
+		{ &Z_Construct_UFunction_UProjectDataFunctionLibrary_GetCurrentPlatform, "GetCurrentPlatform" }, // 1940541438
 		{ &Z_Construct_UFunction_UProjectDataFunctionLibrary_GetProjectName, "GetProjectName" }, // 3207837166
 		{ &Z_Construct_UFunction_UProjectDataFunctionLibrary_GetProjectVersion, "GetProjectVersion" }, // 4131412969
 	};
@@ -354,14 +372,14 @@ UProjectDataFunctionLibrary::~UProjectDataFunctionLibrary() {}
 // End Class UProjectDataFunctionLibrary
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Core_ProjectDataFunctionLibrary_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_ProjectDataFunctionLibrary_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UProjectDataFunctionLibrary, UProjectDataFunctionLibrary::StaticClass, TEXT("UProjectDataFunctionLibrary"), &Z_Registration_Info_UClass_UProjectDataFunctionLibrary, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UProjectDataFunctionLibrary), 4177686343U) },
+		{ Z_Construct_UClass_UProjectDataFunctionLibrary, UProjectDataFunctionLibrary::StaticClass, TEXT("UProjectDataFunctionLibrary"), &Z_Registration_Info_UClass_UProjectDataFunctionLibrary, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UProjectDataFunctionLibrary), 1122516984U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Core_ProjectDataFunctionLibrary_h_2259159251(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Core_ProjectDataFunctionLibrary_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Core_ProjectDataFunctionLibrary_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_ProjectDataFunctionLibrary_h_2314695823(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_ProjectDataFunctionLibrary_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Core_ProjectDataFunctionLibrary_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

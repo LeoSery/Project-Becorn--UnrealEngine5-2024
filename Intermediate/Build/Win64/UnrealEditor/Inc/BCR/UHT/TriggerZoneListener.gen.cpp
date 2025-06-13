@@ -48,7 +48,13 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterInnerZone_Stat
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// INNER ZONE EVENTS ////////\n/// Enter\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZoneListener.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "INNER ZONE EVENTS\nEnter" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TriggerData_MetaData[] = {
 		{ "NativeConst", "" },
@@ -58,7 +64,7 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterInnerZone_Stat
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterInnerZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnOnePlayerEnterInnerZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1584464051
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterInnerZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnOnePlayerEnterInnerZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1974293367
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterInnerZone_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterInnerZone_Statics::NewProp_TriggerData,
 };
@@ -114,7 +120,13 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterOuterZone_Stat
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// OUTER ZONE EVENTS ////////\n/// Enter\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZoneListener.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "OUTER ZONE EVENTS\nEnter" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TriggerData_MetaData[] = {
 		{ "NativeConst", "" },
@@ -124,7 +136,7 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterOuterZone_Stat
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterOuterZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnOnePlayerEnterOuterZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1584464051
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterOuterZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnOnePlayerEnterOuterZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1974293367
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterOuterZone_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterOuterZone_Statics::NewProp_TriggerData,
 };
@@ -180,7 +192,13 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitInnerZone_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/// Exit\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZoneListener.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Exit" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TriggerData_MetaData[] = {
 		{ "NativeConst", "" },
@@ -190,7 +208,7 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitInnerZone_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitInnerZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnPlayersExitInnerZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1584464051
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitInnerZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnPlayersExitInnerZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1974293367
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitInnerZone_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitInnerZone_Statics::NewProp_TriggerData,
 };
@@ -246,7 +264,13 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitOuterZone_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/// Exit\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/Event/TriggerZoneListener.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Exit" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TriggerData_MetaData[] = {
 		{ "NativeConst", "" },
@@ -256,7 +280,7 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitOuterZone_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitOuterZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnPlayersExitOuterZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1584464051
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitOuterZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnPlayersExitOuterZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1974293367
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitOuterZone_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitOuterZone_Statics::NewProp_TriggerData,
 };
@@ -322,7 +346,7 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterInnerZone_Sta
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterInnerZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnTwoPlayersEnterInnerZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1584464051
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterInnerZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnTwoPlayersEnterInnerZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1974293367
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterInnerZone_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterInnerZone_Statics::NewProp_TriggerData,
 };
@@ -388,7 +412,7 @@ struct Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterOuterZone_Sta
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterOuterZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnTwoPlayersEnterOuterZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1584464051
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterOuterZone_Statics::NewProp_TriggerData = { "TriggerData", nullptr, (EPropertyFlags)0x0010008008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZoneListener_eventOnTwoPlayersEnterOuterZone_Parms, TriggerData), Z_Construct_UScriptStruct_FTriggerData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TriggerData_MetaData), NewProp_TriggerData_MetaData) }; // 1974293367
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterOuterZone_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterOuterZone_Statics::NewProp_TriggerData,
 };
@@ -444,12 +468,12 @@ struct Z_Construct_UClass_UTriggerZoneListener_Statics
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterInnerZone, "OnOnePlayerEnterInnerZone" }, // 2100891977
-		{ &Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterOuterZone, "OnOnePlayerEnterOuterZone" }, // 2609971005
-		{ &Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitInnerZone, "OnPlayersExitInnerZone" }, // 2447057998
-		{ &Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitOuterZone, "OnPlayersExitOuterZone" }, // 2280693311
-		{ &Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterInnerZone, "OnTwoPlayersEnterInnerZone" }, // 3505229631
-		{ &Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterOuterZone, "OnTwoPlayersEnterOuterZone" }, // 2358178503
+		{ &Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterInnerZone, "OnOnePlayerEnterInnerZone" }, // 3962415870
+		{ &Z_Construct_UFunction_UTriggerZoneListener_OnOnePlayerEnterOuterZone, "OnOnePlayerEnterOuterZone" }, // 4231957974
+		{ &Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitInnerZone, "OnPlayersExitInnerZone" }, // 3912209086
+		{ &Z_Construct_UFunction_UTriggerZoneListener_OnPlayersExitOuterZone, "OnPlayersExitOuterZone" }, // 3861295403
+		{ &Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterInnerZone, "OnTwoPlayersEnterInnerZone" }, // 1523422958
+		{ &Z_Construct_UFunction_UTriggerZoneListener_OnTwoPlayersEnterOuterZone, "OnTwoPlayersEnterOuterZone" }, // 1063751302
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -495,14 +519,14 @@ UTriggerZoneListener::~UTriggerZoneListener() {}
 // End Interface UTriggerZoneListener
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZoneListener_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZoneListener_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UTriggerZoneListener, UTriggerZoneListener::StaticClass, TEXT("UTriggerZoneListener"), &Z_Registration_Info_UClass_UTriggerZoneListener, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTriggerZoneListener), 3319428137U) },
+		{ Z_Construct_UClass_UTriggerZoneListener, UTriggerZoneListener::StaticClass, TEXT("UTriggerZoneListener"), &Z_Registration_Info_UClass_UTriggerZoneListener, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTriggerZoneListener), 1378071258U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZoneListener_h_1821889842(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZoneListener_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZoneListener_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZoneListener_h_3011188900(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZoneListener_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_Event_TriggerZoneListener_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

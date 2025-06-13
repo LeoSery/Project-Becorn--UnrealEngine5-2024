@@ -1,31 +1,42 @@
 #include "BCR/Headers/System/Pickable/PickableItem.h"
 
-// Sets default values
+/**
+ * @brief Initializes the pickable item with default settings
+ * @details Sets up tick functionality and default actor properties
+ */
 APickableItem::APickableItem()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
-// Called when the game starts or when spawned
+/**
+ * @brief Called when the item is spawned in the world
+ * @details Performs any initialization logic required when the item becomes active
+ */
 void APickableItem::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
-// Called every frame
+/**
+ * @brief Updates the item each frame
+ * @details Handles any per-frame logic for the pickable item
+ * 
+ * @param DeltaTime Time elapsed since the last frame in seconds
+ */
 void APickableItem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
+/**
+ * @brief Handles the pickup action when a player takes this item
+ * @details Implements the IPickable interface for pickup behavior
+ * 
+ * @param _player The player actor picking up the item
+ * @param _object The object being picked up (typically this item)
+ */
 void APickableItem::PickedUp_Implementation(AActor* _player, AActor* _object)
 {
-
 	IIPickable::PickedUp_Implementation(_player, _object);
 }
-
-

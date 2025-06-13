@@ -30,8 +30,14 @@ struct Z_Construct_UClass_AAWood_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * @brief Wood resource object that can be picked up by players\n * @details Basic pickable wood item implementing the IPickable interface\n */" },
+#endif
 		{ "IncludePath", "Headers/System/AWood.h" },
 		{ "ModuleRelativePath", "Headers/System/AWood.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Wood resource object that can be picked up by players\n@details Basic pickable wood item implementing the IPickable interface" },
+#endif
 	};
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
@@ -47,7 +53,7 @@ UObject* (*const Z_Construct_UClass_AAWood_Statics::DependentSingletons[])() = {
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AAWood_Statics::DependentSingletons) < 16);
 const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AAWood_Statics::InterfaceParams[] = {
-	{ Z_Construct_UClass_UIPickable_NoRegister, (int32)VTABLE_OFFSET(AAWood, IIPickable), false },  // 3735236945
+	{ Z_Construct_UClass_UIPickable_NoRegister, (int32)VTABLE_OFFSET(AAWood, IIPickable), false },  // 23792606
 };
 const UECodeGen_Private::FClassParams Z_Construct_UClass_AAWood_Statics::ClassParams = {
 	&AAWood::StaticClass,
@@ -81,14 +87,14 @@ AAWood::~AAWood() {}
 // End Class AAWood
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_AWood_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_AWood_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AAWood, AAWood::StaticClass, TEXT("AAWood"), &Z_Registration_Info_UClass_AAWood, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AAWood), 1705446042U) },
+		{ Z_Construct_UClass_AAWood, AAWood::StaticClass, TEXT("AAWood"), &Z_Registration_Info_UClass_AAWood, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AAWood), 767261759U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_AWood_h_1397875300(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_AWood_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_AWood_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_AWood_h_440791641(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_AWood_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_AWood_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration

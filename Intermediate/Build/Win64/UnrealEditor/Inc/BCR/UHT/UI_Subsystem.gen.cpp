@@ -29,7 +29,13 @@ struct Z_Construct_UDelegateFunction_BCR_OnQuestCompleted__DelegateSignature_Sta
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// DELEGATES ////////\n/// Quest event notifications\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/UI_Quest/UI_Subsystem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "DELEGATES\nQuest event notifications" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_tag;
@@ -118,7 +124,13 @@ struct Z_Construct_UFunction_UQuest_Subsystem_CompleteQuest_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "Quest" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/// Progress tracking\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/UI_Quest/UI_Subsystem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Progress tracking" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_Tag;
@@ -203,7 +215,13 @@ struct Z_Construct_UFunction_UQuest_Subsystem_GetCurrentQuestDesc_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "Quest" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// QUEST INFORMATION ////////\n/// Current quest data\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/UI_Quest/UI_Subsystem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "QUEST INFORMATION\nCurrent quest data" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStrPropertyParams NewProp_ReturnValue;
@@ -329,7 +347,13 @@ struct Z_Construct_UFunction_UQuest_Subsystem_LoadQuestLine_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "Quest" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// QUEST MANAGEMENT ////////\n/// Quest line control\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/UI_Quest/UI_Subsystem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "QUEST MANAGEMENT\nQuest line control" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_NewQuestLine;
@@ -430,14 +454,23 @@ struct Z_Construct_UClass_UQuest_Subsystem_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
+		{ "Comment", "/**\n * @brief Quest management subsystem for tracking player progress\n * @details Handles quest line loading, progress tracking, completion validation, and event broadcasting\n */" },
 #endif
 		{ "IncludePath", "Headers/System/UI_Quest/UI_Subsystem.h" },
 		{ "ModuleRelativePath", "Headers/System/UI_Quest/UI_Subsystem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "@brief Quest management subsystem for tracking player progress\n@details Handles quest line loading, progress tracking, completion validation, and event broadcasting" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnQuestCompleted_MetaData[] = {
 		{ "Category", "Quest" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// DELEGATES ////////\n/// Event broadcasting\n" },
+#endif
 		{ "ModuleRelativePath", "Headers/System/UI_Quest/UI_Subsystem.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "DELEGATES\nEvent broadcasting" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnQuestLineCompleted_MetaData[] = {
 		{ "Category", "Quest" },
@@ -449,12 +482,12 @@ struct Z_Construct_UClass_UQuest_Subsystem_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UQuest_Subsystem_CompleteQuest, "CompleteQuest" }, // 143853020
+		{ &Z_Construct_UFunction_UQuest_Subsystem_CompleteQuest, "CompleteQuest" }, // 1560190571
 		{ &Z_Construct_UFunction_UQuest_Subsystem_GetCurrentQuestAmount, "GetCurrentQuestAmount" }, // 1395422551
-		{ &Z_Construct_UFunction_UQuest_Subsystem_GetCurrentQuestDesc, "GetCurrentQuestDesc" }, // 3290449017
+		{ &Z_Construct_UFunction_UQuest_Subsystem_GetCurrentQuestDesc, "GetCurrentQuestDesc" }, // 3289995628
 		{ &Z_Construct_UFunction_UQuest_Subsystem_GetCurrentQuestProgress, "GetCurrentQuestProgress" }, // 1339659804
 		{ &Z_Construct_UFunction_UQuest_Subsystem_GetCurrentQuestTag, "GetCurrentQuestTag" }, // 62676265
-		{ &Z_Construct_UFunction_UQuest_Subsystem_LoadQuestLine, "LoadQuestLine" }, // 1984762731
+		{ &Z_Construct_UFunction_UQuest_Subsystem_LoadQuestLine, "LoadQuestLine" }, // 807951105
 		{ &Z_Construct_UFunction_UQuest_Subsystem_ProgressQuest, "ProgressQuest" }, // 3450141236
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -463,7 +496,7 @@ struct Z_Construct_UClass_UQuest_Subsystem_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQuest_Subsystem_Statics::NewProp_OnQuestCompleted = { "OnQuestCompleted", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQuest_Subsystem, OnQuestCompleted), Z_Construct_UDelegateFunction_BCR_OnQuestCompleted__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnQuestCompleted_MetaData), NewProp_OnQuestCompleted_MetaData) }; // 3302465235
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQuest_Subsystem_Statics::NewProp_OnQuestCompleted = { "OnQuestCompleted", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQuest_Subsystem, OnQuestCompleted), Z_Construct_UDelegateFunction_BCR_OnQuestCompleted__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnQuestCompleted_MetaData), NewProp_OnQuestCompleted_MetaData) }; // 2321146309
 const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UQuest_Subsystem_Statics::NewProp_OnQuestLineCompleted = { "OnQuestLineCompleted", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UQuest_Subsystem, OnQuestLineCompleted), Z_Construct_UDelegateFunction_BCR_OnQuestLineCompleted__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnQuestLineCompleted_MetaData), NewProp_OnQuestLineCompleted_MetaData) }; // 3173388573
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UQuest_Subsystem_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuest_Subsystem_Statics::NewProp_OnQuestCompleted,
@@ -508,14 +541,14 @@ UQuest_Subsystem::~UQuest_Subsystem() {}
 // End Class UQuest_Subsystem
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_UI_Subsystem_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_UI_Subsystem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UQuest_Subsystem, UQuest_Subsystem::StaticClass, TEXT("UQuest_Subsystem"), &Z_Registration_Info_UClass_UQuest_Subsystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuest_Subsystem), 275420964U) },
+		{ Z_Construct_UClass_UQuest_Subsystem, UQuest_Subsystem::StaticClass, TEXT("UQuest_Subsystem"), &Z_Registration_Info_UClass_UQuest_Subsystem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuest_Subsystem), 4150125463U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_UI_Subsystem_h_1531425344(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_UI_Subsystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_UI_Quest_UI_Subsystem_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_UI_Subsystem_h_1043491845(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_UI_Subsystem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_System_UI_Quest_UI_Subsystem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
