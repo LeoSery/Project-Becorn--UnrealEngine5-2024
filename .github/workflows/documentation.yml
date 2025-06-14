@@ -39,6 +39,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Clean previous artifacts
+        run: |
+          rm -rf generated
+          docker system prune -f
+
       - name: Build documentation files
         uses: docker/build-push-action@v5
         with:
@@ -49,17 +54,24 @@ jobs:
       
       - name: Get generated files
         run: |
-          mkdir generated
-          docker create --name doxygen-generated-files doxygen-generated-files
-          docker cp doxygen-generated-files:/docs/html generated
+          mkdir -p generated
+          docker create --name doxygen-container doxygen-generated-files
+          docker cp doxygen-container:/docs/html generated/
+          docker rm doxygen-container
+
+      - name: Check generated files
+        run: |
+          echo "Checking generated files size and content..."
+          du -sh generated/
+          find generated/ -type l -ls || echo "No symlinks found"
+          ls -la generated/html/
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
-          name: 'github-pages'
           path: 'generated/html'
 
       - name: Deploy to GitHub Pages
