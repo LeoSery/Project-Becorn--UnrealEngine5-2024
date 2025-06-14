@@ -501,9 +501,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-
-
-# Doxygen documentation
-
-/docs/*
-!/docs/doxyfile
