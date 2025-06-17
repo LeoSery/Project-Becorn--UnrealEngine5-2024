@@ -169,6 +169,10 @@ struct Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics
 		{ "Category", "Locomotion" },
 		{ "ModuleRelativePath", "Headers/System/MiniGame/LocomotionConfigurationTypes.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DistanceToStopAutoWalking_MetaData[] = {
+		{ "Category", "Locomotion" },
+		{ "ModuleRelativePath", "Headers/System/MiniGame/LocomotionConfigurationTypes.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FStructPropertyParams NewProp_PositionToGo;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_StartAnimToPlay;
@@ -185,6 +189,7 @@ struct Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics
 	static void NewProp_bUseSpecificAnim_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bUseSpecificAnim;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxSpeed;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_DistanceToStopAutoWalking;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static void* NewStructOps()
 	{
@@ -219,6 +224,7 @@ void Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_bUseSpe
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_bUseSpecificAnim = { "bUseSpecificAnim", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(FLocomotionConfiguration), &Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_bUseSpecificAnim_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bUseSpecificAnim_MetaData), NewProp_bUseSpecificAnim_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_MaxSpeed = { "MaxSpeed", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLocomotionConfiguration, MaxSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxSpeed_MetaData), NewProp_MaxSpeed_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_DistanceToStopAutoWalking = { "DistanceToStopAutoWalking", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLocomotionConfiguration, DistanceToStopAutoWalking), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DistanceToStopAutoWalking_MetaData), NewProp_DistanceToStopAutoWalking_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_PositionToGo,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_StartAnimToPlay,
@@ -231,6 +237,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FL
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_bToggleReachTarget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_bUseSpecificAnim,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_MaxSpeed,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewProp_DistanceToStopAutoWalking,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::PropPointers) < 2048);
 const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::StructParams = {
@@ -316,7 +323,7 @@ struct Z_Construct_UClass_ULocomotionConfigurationAsset_Statics
 };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_ConfigurationName = { "ConfigurationName", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULocomotionConfigurationAsset, ConfigurationName), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ConfigurationName_MetaData), NewProp_ConfigurationName_MetaData) };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_Description = { "Description", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULocomotionConfigurationAsset, Description), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Description_MetaData), NewProp_Description_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_Configuration = { "Configuration", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULocomotionConfigurationAsset, Configuration), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Configuration_MetaData), NewProp_Configuration_MetaData) }; // 404476540
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_Configuration = { "Configuration", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ULocomotionConfigurationAsset, Configuration), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Configuration_MetaData), NewProp_Configuration_MetaData) }; // 3205474725
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_ConfigurationName,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ULocomotionConfigurationAsset_Statics::NewProp_Description,
@@ -367,13 +374,13 @@ struct Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_MiniGame_L
 		{ ELocomotionMode_StaticEnum, TEXT("ELocomotionMode"), &Z_Registration_Info_UEnum_ELocomotionMode, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 262580088U) },
 	};
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FLocomotionConfiguration::StaticStruct, Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewStructOps, TEXT("LocomotionConfiguration"), &Z_Registration_Info_UScriptStruct_LocomotionConfiguration, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLocomotionConfiguration), 404476540U) },
+		{ FLocomotionConfiguration::StaticStruct, Z_Construct_UScriptStruct_FLocomotionConfiguration_Statics::NewStructOps, TEXT("LocomotionConfiguration"), &Z_Registration_Info_UScriptStruct_LocomotionConfiguration, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLocomotionConfiguration), 3205474725U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ULocomotionConfigurationAsset, ULocomotionConfigurationAsset::StaticClass, TEXT("ULocomotionConfigurationAsset"), &Z_Registration_Info_UClass_ULocomotionConfigurationAsset, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULocomotionConfigurationAsset), 2228756051U) },
+		{ Z_Construct_UClass_ULocomotionConfigurationAsset, ULocomotionConfigurationAsset::StaticClass, TEXT("ULocomotionConfigurationAsset"), &Z_Registration_Info_UClass_ULocomotionConfigurationAsset, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULocomotionConfigurationAsset), 2311581125U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_821283739(TEXT("/Script/BCR"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_1175731413(TEXT("/Script/BCR"),
 	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::ScriptStructInfo),
 	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_Statics::EnumInfo));

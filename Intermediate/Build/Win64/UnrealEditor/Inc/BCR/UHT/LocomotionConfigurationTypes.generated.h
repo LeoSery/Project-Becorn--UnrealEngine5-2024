@@ -21,7 +21,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 template<> BCR_API UScriptStruct* StaticStruct<struct FLocomotionConfiguration>();
 
-#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_79_INCLASS_NO_PURE_DECLS \
+#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_82_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesULocomotionConfigurationAsset(); \
 	friend struct Z_Construct_UClass_ULocomotionConfigurationAsset_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(ULocomotionConfigurationAsset)
 
 
-#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_79_ENHANCED_CONSTRUCTORS \
+#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_82_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ULocomotionConfigurationAsset(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -44,12 +44,12 @@ public: \
 	NO_API virtual ~ULocomotionConfigurationAsset();
 
 
-#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_76_PROLOG
-#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_79_GENERATED_BODY \
+#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_79_PROLOG
+#define FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_82_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_79_INCLASS_NO_PURE_DECLS \
-	FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_79_ENHANCED_CONSTRUCTORS \
+	FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_82_INCLASS_NO_PURE_DECLS \
+	FID_M2_Project_Source_BCR_Headers_System_MiniGame_LocomotionConfigurationTypes_h_82_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
