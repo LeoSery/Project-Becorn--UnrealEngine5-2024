@@ -64,6 +64,9 @@ struct BCR_API FLocomotionConfiguration
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Locomotion")
 	float MaxSpeed = 350.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Locomotion")
+	float DistanceToStopAutoWalking = 50.0f;
     
 };
 

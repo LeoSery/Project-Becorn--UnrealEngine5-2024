@@ -64,7 +64,7 @@ struct Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventResetLocomotionConfig_Parms, ReturnValue), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(0, nullptr) }; // 404476540
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventResetLocomotionConfig_Parms, ReturnValue), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(0, nullptr) }; // 3205474725
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig_Statics::NewProp_ReturnValue,
 };
@@ -138,7 +138,7 @@ struct Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_NewConfig = { "NewConfig", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventSetLocomotionConfig_Parms, NewConfig), Z_Construct_UClass_ULocomotionConfigurationAsset_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventSetLocomotionConfig_Parms, ReturnValue), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(0, nullptr) }; // 404476540
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(Locomotional_eventSetLocomotionConfig_Parms, ReturnValue), Z_Construct_UScriptStruct_FLocomotionConfiguration, METADATA_PARAMS(0, nullptr) }; // 3205474725
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_NewConfig,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ULocomotional_SetLocomotionConfig_Statics::NewProp_ReturnValue,
@@ -191,8 +191,8 @@ struct Z_Construct_UClass_ULocomotional_Statics
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig, "ResetLocomotionConfig" }, // 413343940
-		{ &Z_Construct_UFunction_ULocomotional_SetLocomotionConfig, "SetLocomotionConfig" }, // 471757486
+		{ &Z_Construct_UFunction_ULocomotional_ResetLocomotionConfig, "ResetLocomotionConfig" }, // 1227023069
+		{ &Z_Construct_UFunction_ULocomotional_SetLocomotionConfig, "SetLocomotionConfig" }, // 1629732797
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -241,10 +241,10 @@ ULocomotional::~ULocomotional() {}
 struct Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Interfaces_Locomotional_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ULocomotional, ULocomotional::StaticClass, TEXT("ULocomotional"), &Z_Registration_Info_UClass_ULocomotional, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULocomotional), 4026962811U) },
+		{ Z_Construct_UClass_ULocomotional, ULocomotional::StaticClass, TEXT("ULocomotional"), &Z_Registration_Info_UClass_ULocomotional, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ULocomotional), 3422161264U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Interfaces_Locomotional_h_3861701353(TEXT("/Script/BCR"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Interfaces_Locomotional_h_1995872876(TEXT("/Script/BCR"),
 	Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Interfaces_Locomotional_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_M2_Project_Source_BCR_Headers_Interfaces_Locomotional_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

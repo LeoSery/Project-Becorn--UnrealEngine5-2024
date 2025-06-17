@@ -22,6 +22,7 @@ FLocomotionConfiguration ULocomotionConfigurationAsset::ToRuntimeConfig() const
 	RuntimeConfig.bToggleReachTarget = Configuration.bToggleReachTarget;
 	RuntimeConfig.bUseSpecificAnim = Configuration.bUseSpecificAnim;
 	RuntimeConfig.MaxSpeed = Configuration.MaxSpeed;
+	RuntimeConfig.DistanceToStopAutoWalking = Configuration.DistanceToStopAutoWalking;
 
 	// Validation des données critiques
 	if (!RuntimeConfig.StartAnimToPlay && RuntimeConfig.bUseSpecificAnim)
