@@ -187,6 +187,8 @@ void AFurnitureAssembler::Tick(float DeltaTime)
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("requiered = %d"), ActualRecipies.Material.FindRef(It.Value()->GetClass())));
 				It.Value()->Destroy();
 				PlayerHolding.Remove(It.Key());
+				OnElementDropOnAssembler();
+
 
 				if (requieredMaterials == 0)
 					PlayFlowerAnimation = true;
