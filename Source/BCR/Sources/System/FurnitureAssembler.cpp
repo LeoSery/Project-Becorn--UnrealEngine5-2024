@@ -1,6 +1,12 @@
 ﻿#include "BCR/Headers/System/FurnitureAssembler.h"
 #include "BCR/Headers/Player/MainPlayer.h"
 
+#define DELAY(time, block)\
+	{\
+	FTimerHandle TimerHandle;\
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [&]()block, time, false);\
+	}
+
 /**
  * @brief Initializes the furniture assembler with collision detection
  * @details Sets up assembler zone and overlap events for player detection
@@ -71,6 +77,15 @@ void AFurnitureAssembler::OnOverlapBegin(UPrimitiveComponent* OverlappedComponen
 void AFurnitureAssembler::OnElementDropOnAssembler_Implementation()
 {
 	
+}
+
+void AFurnitureAssembler::TimerElapsed(AActor* Value, AMainPlayer* Player)
+{
+	Value->Destroy();
+	OnElementDropOnAssembler();
+
+	if (requieredMaterials == 0)
+		PlayFlowerAnimation = true;
 }
 
 /**
@@ -185,13 +200,13 @@ void AFurnitureAssembler::Tick(float DeltaTime)
 				ActualRecipies.Material.Emplace(It.Value()->GetClass(), requieredMaterials);
 
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("requiered = %d"), ActualRecipies.Material.FindRef(It.Value()->GetClass())));
-				It.Value()->Destroy();
 				PlayerHolding.Remove(It.Key());
-				OnElementDropOnAssembler();
+				InMemActor = It.Value();
+				InMemPlayer = It.Key();
+				DELAY(2.0f, {
+					AFurnitureAssembler::TimerElapsed(InMemActor, InMemPlayer);
+					})
 
-
-				if (requieredMaterials == 0)
-					PlayFlowerAnimation = true;
 			}
 			else
 			{

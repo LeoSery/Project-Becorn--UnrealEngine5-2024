@@ -80,6 +80,8 @@ protected:
 	UDataTable* AllRecipies;
 	TArray<FName> RowsNames;
 	TMap<AMainPlayer*, AActor*> PlayerHolding;
+	AActor* InMemActor;
+	AMainPlayer* InMemPlayer;
 
 	//////// EVENT CALLBACKS ////////
 	/// Collision detection
@@ -96,4 +98,5 @@ protected:
 	UFUNCTION(BlueprintNativeEvent)
 	void OnElementDropOnAssembler();
 	void OnElementDropOnAssembler_Implementation();
+	void TimerElapsed(AActor* Value, AMainPlayer* Player);
 };
