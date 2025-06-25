@@ -58,10 +58,10 @@ void UQuest_Subsystem::CompleteQuest(FString Tag)
 		if (Quest.Tag == CurrentQuest.NextQuestTag)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, TEXT("Next Quest : Next Quest Found"));
-
+			OnQuestCompleted.Broadcast(CurrentQuest.Tag);
 			CurrentQuest = Quest;
 			QuestTarget = 0;
-			OnQuestCompleted.Broadcast(CurrentQuestLine.Tag);
+			
 			return;
 		}
 	}
