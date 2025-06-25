@@ -90,8 +90,8 @@ protected:
 
 	//////// INTERFACE IMPLEMENTATION ////////
 	/// IInteractable methods
-	void Interact_Implementation(AMainPlayer* Player);
-	void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
+	//void Interact_Implementation(AMainPlayer* Player);
+	//void InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object);
 
 	//////// CRAFTING EVENTS ////////
 	/// Blueprint events
