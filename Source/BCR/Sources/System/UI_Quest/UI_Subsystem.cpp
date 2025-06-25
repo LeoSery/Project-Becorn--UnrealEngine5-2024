@@ -61,6 +61,7 @@ void UQuest_Subsystem::CompleteQuest(FString Tag)
 
 			CurrentQuest = Quest;
 			QuestTarget = 0;
+			OnQuestCompleted.Broadcast(CurrentQuestLine.Tag);
 			return;
 		}
 	}
