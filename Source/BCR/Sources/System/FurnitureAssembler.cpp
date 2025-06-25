@@ -135,10 +135,10 @@ void AFurnitureAssembler::CraftFurniture()
  * 
  * @param Player The player interacting with the assembler
  */
-void AFurnitureAssembler::Interact_Implementation(AMainPlayer* Player)
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("No Item in Hand, Please grab an item")));
-}
+//void AFurnitureAssembler::Interact_Implementation(AMainPlayer* Player)
+//{
+//	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("No Item in Hand, Please grab an item")));
+//}
 
 /**
  * @brief Handles player interaction with held objects
@@ -147,36 +147,36 @@ void AFurnitureAssembler::Interact_Implementation(AMainPlayer* Player)
  * @param Player The player interacting with the assembler
  * @param Object The object the player is holding
  */
-void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
-{
-	if (Cast<IIPickable>(Object))
-	{
-		requieredMaterials = ActualRecipies.Material.FindRef(Object->GetClass());
-		if (requieredMaterials != 0)
-		{
-			requieredMaterials--;
-
-			ActualRecipies.Material.Emplace(Object->GetClass(), requieredMaterials);
-
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("requiered = %d"), ActualRecipies.Material.FindRef(Object->GetClass())));
-			Player->PickUp();
-			Object->Destroy();
-
-			OnElementDropOnAssembler();
-			
-			if (requieredMaterials == 0)
-			{
-				PlayFlowerAnimation = true;
-			}
-		}
-		else
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("Bad item given to the assembler")));
-			Player->PickUp();
-			Object->Destroy();
-		}
-	}
-}
+//void AFurnitureAssembler::InteractWithObject_Implementation(AMainPlayer* Player, AActor* Object)
+//{
+//	if (Cast<IIPickable>(Object))
+//	{
+//		requieredMaterials = ActualRecipies.Material.FindRef(Object->GetClass());
+//		if (requieredMaterials != 0)
+//		{
+//			requieredMaterials--;
+//
+//			ActualRecipies.Material.Emplace(Object->GetClass(), requieredMaterials);
+//
+//			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("requiered = %d"), ActualRecipies.Material.FindRef(Object->GetClass())));
+//			Player->PickUp();
+//			Object->Destroy();
+//
+//			OnElementDropOnAssembler();
+//			
+//			if (requieredMaterials == 0)
+//			{
+//				PlayFlowerAnimation = true;
+//			}
+//		}
+//		else
+//		{
+//			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("Bad item given to the assembler")));
+//			Player->PickUp();
+//			Object->Destroy();
+//		}
+//	}
+//}
 
 /**
  * @brief Updates the assembler and processes automatic item deposits
