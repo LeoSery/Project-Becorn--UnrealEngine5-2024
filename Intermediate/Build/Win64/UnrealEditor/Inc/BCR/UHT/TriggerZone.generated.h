@@ -11,27 +11,30 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
 class UPrimitiveComponent;
+class USphereComponent;
 struct FHitResult;
 #ifdef BCR_TriggerZone_generated_h
 #error "TriggerZone.generated.h already included, missing '#pragma once' in TriggerZone.h"
 #endif
 #define BCR_TriggerZone_generated_h
 
-#define FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_17_GENERATED_BODY \
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_17_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FTriggerData_Statics; \
 	BCR_API static class UScriptStruct* StaticStruct();
 
 
 template<> BCR_API UScriptStruct* StaticStruct<struct FTriggerData>();
 
-#define FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_69_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_69_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execOnActorExitOuterZone); \
 	DECLARE_FUNCTION(execOnActorEnterOuterZone); \
 	DECLARE_FUNCTION(execOnActorExitInnerZone); \
-	DECLARE_FUNCTION(execOnActorEnterInnerZone);
+	DECLARE_FUNCTION(execOnActorEnterInnerZone); \
+	DECLARE_FUNCTION(execGetOuterZoneComponent); \
+	DECLARE_FUNCTION(execGetInnerZoneComponent);
 
 
-#define FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_69_INCLASS_NO_PURE_DECLS \
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_69_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUTriggerZone(); \
 	friend struct Z_Construct_UClass_UTriggerZone_Statics; \
@@ -40,7 +43,7 @@ public: \
 	DECLARE_SERIALIZER(UTriggerZone)
 
 
-#define FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_69_ENHANCED_CONSTRUCTORS \
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_69_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	UTriggerZone(UTriggerZone&&); \
@@ -52,13 +55,13 @@ public: \
 	NO_API virtual ~UTriggerZone();
 
 
-#define FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_66_PROLOG
-#define FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_69_GENERATED_BODY \
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_66_PROLOG
+#define FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_69_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_69_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_69_INCLASS_NO_PURE_DECLS \
-	FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_69_ENHANCED_CONSTRUCTORS \
+	FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_69_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_69_INCLASS_NO_PURE_DECLS \
+	FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_69_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -66,7 +69,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> BCR_API UClass* StaticClass<class UTriggerZone>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h
+#define CURRENT_FILE_ID FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

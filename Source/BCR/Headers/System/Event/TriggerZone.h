@@ -74,6 +74,12 @@ public:
 	UTriggerZone();
 	virtual void OnRegister() override;
 	virtual void BeginDestroy() override;
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	FORCEINLINE USphereComponent* GetInnerZoneComponent() { return InnerZoneComponent; }
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	FORCEINLINE USphereComponent* GetOuterZoneComponent() { return OuterZoneComponent; }
 	
 #if WITH_EDITOR
 	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
