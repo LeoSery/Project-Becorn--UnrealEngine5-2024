@@ -6,6 +6,8 @@
 #include "BCR/Headers/System/Pickable/PickableItem.h"
 #include "DeliveryPoint.generated.h"
 
+class UBillboardComponent;
+
 //////// CLASS ////////
 
 /**
