@@ -132,6 +132,94 @@ UScriptStruct* Z_Construct_UScriptStruct_FTriggerData()
 }
 // End ScriptStruct FTriggerData
 
+// Begin Class UTriggerZone Function GetInnerZoneComponent
+struct Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics
+{
+	struct TriggerZone_eventGetInnerZoneComponent_Parms
+	{
+		USphereComponent* ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ReturnValue_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000080588, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventGetInnerZoneComponent_Parms, ReturnValue), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ReturnValue_MetaData), NewProp_ReturnValue_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UTriggerZone, nullptr, "GetInnerZoneComponent", nullptr, nullptr, Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::PropPointers), sizeof(Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::TriggerZone_eventGetInnerZoneComponent_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::TriggerZone_eventGetInnerZoneComponent_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UTriggerZone::execGetInnerZoneComponent)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(USphereComponent**)Z_Param__Result=P_THIS->GetInnerZoneComponent();
+	P_NATIVE_END;
+}
+// End Class UTriggerZone Function GetInnerZoneComponent
+
+// Begin Class UTriggerZone Function GetOuterZoneComponent
+struct Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics
+{
+	struct TriggerZone_eventGetOuterZoneComponent_Parms
+	{
+		USphereComponent* ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/Event/TriggerZone.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ReturnValue_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000080588, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TriggerZone_eventGetOuterZoneComponent_Parms, ReturnValue), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ReturnValue_MetaData), NewProp_ReturnValue_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UTriggerZone, nullptr, "GetOuterZoneComponent", nullptr, nullptr, Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::PropPointers), sizeof(Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::TriggerZone_eventGetOuterZoneComponent_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::TriggerZone_eventGetOuterZoneComponent_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UTriggerZone::execGetOuterZoneComponent)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(USphereComponent**)Z_Param__Result=P_THIS->GetOuterZoneComponent();
+	P_NATIVE_END;
+}
+// End Class UTriggerZone Function GetOuterZoneComponent
+
 // Begin Class UTriggerZone Function OnActorEnterInnerZone
 struct Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone_Statics
 {
@@ -437,6 +525,8 @@ void UTriggerZone::StaticRegisterNativesUTriggerZone()
 {
 	UClass* Class = UTriggerZone::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "GetInnerZoneComponent", &UTriggerZone::execGetInnerZoneComponent },
+		{ "GetOuterZoneComponent", &UTriggerZone::execGetOuterZoneComponent },
 		{ "OnActorEnterInnerZone", &UTriggerZone::execOnActorEnterInnerZone },
 		{ "OnActorEnterOuterZone", &UTriggerZone::execOnActorEnterOuterZone },
 		{ "OnActorExitInnerZone", &UTriggerZone::execOnActorExitInnerZone },
@@ -519,6 +609,8 @@ struct Z_Construct_UClass_UTriggerZone_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_UTriggerZone_GetInnerZoneComponent, "GetInnerZoneComponent" }, // 2970482870
+		{ &Z_Construct_UFunction_UTriggerZone_GetOuterZoneComponent, "GetOuterZoneComponent" }, // 3607939616
 		{ &Z_Construct_UFunction_UTriggerZone_OnActorEnterInnerZone, "OnActorEnterInnerZone" }, // 878777935
 		{ &Z_Construct_UFunction_UTriggerZone_OnActorEnterOuterZone, "OnActorEnterOuterZone" }, // 142420971
 		{ &Z_Construct_UFunction_UTriggerZone_OnActorExitInnerZone, "OnActorExitInnerZone" }, // 613708655
@@ -586,18 +678,18 @@ UTriggerZone::~UTriggerZone() {}
 // End Class UTriggerZone
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_Statics
+struct Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
 		{ FTriggerData::StaticStruct, Z_Construct_UScriptStruct_FTriggerData_Statics::NewStructOps, TEXT("TriggerData"), &Z_Registration_Info_UScriptStruct_TriggerData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FTriggerData), 1974293367U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UTriggerZone, UTriggerZone::StaticClass, TEXT("UTriggerZone"), &Z_Registration_Info_UClass_UTriggerZone, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTriggerZone), 796808120U) },
+		{ Z_Construct_UClass_UTriggerZone, UTriggerZone::StaticClass, TEXT("UTriggerZone"), &Z_Registration_Info_UClass_UTriggerZone, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTriggerZone), 3866576778U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_1787812597(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Shadow_Documents_GitHub_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ScriptStructInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_1926305827(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_Event_TriggerZone_h_Statics::ScriptStructInfo),
 	nullptr, 0);
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
