@@ -55,10 +55,14 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void CraftFurniture();
 
+	UFUNCTION(BlueprintCallable)
+	void ResetAssembler();
+
 	//////// PROPERTIES ////////
 	/// Current recipe data
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FRecipiesInfo ActualRecipies;
+	FRecipiesInfo ActualRecipiesCopy;
 
 	/// Animation and state
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

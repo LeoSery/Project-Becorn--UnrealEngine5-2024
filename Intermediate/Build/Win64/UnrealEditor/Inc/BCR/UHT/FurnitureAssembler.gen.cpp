@@ -319,6 +319,35 @@ DEFINE_FUNCTION(AFurnitureAssembler::execOnOverlapBegin)
 }
 // End Class AFurnitureAssembler Function OnOverlapBegin
 
+// Begin Class AFurnitureAssembler Function ResetAssembler
+struct Z_Construct_UFunction_AFurnitureAssembler_ResetAssembler_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Headers/System/FurnitureAssembler.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFurnitureAssembler_ResetAssembler_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AFurnitureAssembler, nullptr, "ResetAssembler", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFurnitureAssembler_ResetAssembler_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFurnitureAssembler_ResetAssembler_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AFurnitureAssembler_ResetAssembler()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFurnitureAssembler_ResetAssembler_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AFurnitureAssembler::execResetAssembler)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ResetAssembler();
+	P_NATIVE_END;
+}
+// End Class AFurnitureAssembler Function ResetAssembler
+
 // Begin Class AFurnitureAssembler
 void AFurnitureAssembler::StaticRegisterNativesAFurnitureAssembler()
 {
@@ -328,6 +357,7 @@ void AFurnitureAssembler::StaticRegisterNativesAFurnitureAssembler()
 		{ "GetActualRecipiesInfo", &AFurnitureAssembler::execGetActualRecipiesInfo },
 		{ "OnElementDropOnAssembler", &AFurnitureAssembler::execOnElementDropOnAssembler },
 		{ "OnOverlapBegin", &AFurnitureAssembler::execOnOverlapBegin },
+		{ "ResetAssembler", &AFurnitureAssembler::execResetAssembler },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -403,6 +433,7 @@ struct Z_Construct_UClass_AFurnitureAssembler_Statics
 		{ &Z_Construct_UFunction_AFurnitureAssembler_GetActualRecipiesInfo, "GetActualRecipiesInfo" }, // 2692077301
 		{ &Z_Construct_UFunction_AFurnitureAssembler_OnElementDropOnAssembler, "OnElementDropOnAssembler" }, // 376924406
 		{ &Z_Construct_UFunction_AFurnitureAssembler_OnOverlapBegin, "OnOverlapBegin" }, // 1441322253
+		{ &Z_Construct_UFunction_AFurnitureAssembler_ResetAssembler, "ResetAssembler" }, // 3231075521
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
@@ -472,18 +503,18 @@ AFurnitureAssembler::~AFurnitureAssembler() {}
 // End Class AFurnitureAssembler
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics
+struct Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
 		{ FRecipiesInfo::StaticStruct, Z_Construct_UScriptStruct_FRecipiesInfo_Statics::NewStructOps, TEXT("RecipiesInfo"), &Z_Registration_Info_UScriptStruct_RecipiesInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FRecipiesInfo), 791859934U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AFurnitureAssembler, AFurnitureAssembler::StaticClass, TEXT("AFurnitureAssembler"), &Z_Registration_Info_UClass_AFurnitureAssembler, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFurnitureAssembler), 2361643208U) },
+		{ Z_Construct_UClass_AFurnitureAssembler, AFurnitureAssembler::StaticClass, TEXT("AFurnitureAssembler"), &Z_Registration_Info_UClass_AFurnitureAssembler, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFurnitureAssembler), 103857674U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_4202598289(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_mathi_Documents_GitHub_M2_Project_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_2457499264(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_System_FurnitureAssembler_h_Statics::ScriptStructInfo),
 	nullptr, 0);
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -1,9 +1,9 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\mathi\\Documents\\GitHub\\M2_Project\\Source\\BCR\\BCR.Build.cs",
-		"C:\\Users\\mathi\\Documents\\GitHub\\M2_Project\\Plugins\\SkeletalMerging\\Source\\SkeletalMerging\\SkeletalMerging.build.cs",
-		"C:\\Users\\mathi\\Documents\\GitHub\\M2_Project\\Source\\BCR.Target.cs",
-		"C:\\Users\\mathi\\Documents\\GitHub\\M2_Project\\Source\\BCREditor.Target.cs"
+		"E:\\Project-Becorn--UnrealEngine5-2024\\Source\\BCR\\BCR.Build.cs",
+		"E:\\Project-Becorn--UnrealEngine5-2024\\Plugins\\SkeletalMerging\\Source\\SkeletalMerging\\SkeletalMerging.build.cs",
+		"E:\\Project-Becorn--UnrealEngine5-2024\\Source\\BCR.Target.cs",
+		"E:\\Project-Becorn--UnrealEngine5-2024\\Source\\BCREditor.Target.cs"
 	],
 	"EngineVersion": "5.4.4"
 }
