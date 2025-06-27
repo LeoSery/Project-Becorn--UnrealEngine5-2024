@@ -42,7 +42,8 @@ void AFurnitureAssembler::BeginPlay()
 	{
 		RowsNames = AllRecipies->GetRowNames();
 		ActualRecipies = *AllRecipies->FindRow<FRecipiesInfo>(RowsNames[0], TEXT(""));
-		RowsNames.RemoveAt(0, 1);
+		ActualRecipiesCopy = *AllRecipies->FindRow<FRecipiesInfo>(RowsNames[0], TEXT(""));
+		//RowsNames.RemoveAt(0, 1);
 	}
 }
 
@@ -127,6 +128,12 @@ void AFurnitureAssembler::CraftFurniture()
 	}
 	else
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Emerald, FString::Printf(TEXT("Recipie already realize !"), i));
+}
+
+void AFurnitureAssembler::ResetAssembler()
+{
+	ActualRecipies = ActualRecipiesCopy;
+	requieredMaterials = 3;
 }
 
 /**
