@@ -26,6 +26,9 @@ AFurnitureAssembler::AFurnitureAssembler()
 	RootComponent = CreateDefaultSubobject<USceneComponent>("Root");
 	AssemblerZone->SetupAttachment(RootComponent);
 	AssemblerZone->OnComponentBeginOverlap.AddDynamic(this, &AFurnitureAssembler::OnOverlapBegin);
+
+	PackagePosition = CreateDefaultSubobject<UStaticMeshComponent>(FName("Package Position"));
+	PackagePosition->SetupAttachment(RootComponent);
 }
 
 /**
@@ -123,7 +126,7 @@ void AFurnitureAssembler::CraftFurniture()
 
 	if (!CraftOnce)
 	{
-		auto temp = GetWorld()->SpawnActor<APickableItem>(ActualRecipies.Out, GetActorLocation(), FRotator(0.0f, 0.0f, 0.0f));
+		auto temp = GetWorld()->SpawnActor<APickableItem>(ActualRecipies.Out, PackagePosition->GetComponentLocation(), FRotator(0.0f, 0.0f, 0.0f));
 		CraftOnce = true;
 	}
 	else
