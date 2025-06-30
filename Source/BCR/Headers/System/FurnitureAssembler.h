@@ -71,6 +71,8 @@ public:
 	bool CraftOnce = false;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int requieredMaterials = 3;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMeshComponent* PackagePosition;
 	
 protected:
 
