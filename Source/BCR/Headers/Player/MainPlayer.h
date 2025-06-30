@@ -50,6 +50,7 @@ public:
 
 	//////// INTERACTION SYSTEM ////////
 	/// World interactions
+	UFUNCTION(BlueprintCallable)
 	void Interact();
 
 	//////// INTERFACE IMPLEMENTATIONS ////////
