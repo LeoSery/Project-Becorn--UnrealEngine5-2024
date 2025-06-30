@@ -22,6 +22,41 @@ ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 UPackage* Z_Construct_UPackage__Script_BCR();
 // End Cross Module References
 
+// Begin Class AMainPlayer Function Interact
+struct Z_Construct_UFunction_AMainPlayer_Interact_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//////// INTERACTION SYSTEM ////////\n/// World interactions\n" },
+#endif
+		{ "ModuleRelativePath", "Headers/Player/MainPlayer.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "INTERACTION SYSTEM\nWorld interactions" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AMainPlayer_Interact_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AMainPlayer, nullptr, "Interact", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AMainPlayer_Interact_Statics::Function_MetaDataParams), Z_Construct_UFunction_AMainPlayer_Interact_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AMainPlayer_Interact()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AMainPlayer_Interact_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AMainPlayer::execInteract)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Interact();
+	P_NATIVE_END;
+}
+// End Class AMainPlayer Function Interact
+
 // Begin Class AMainPlayer Function PickUp
 static FName NAME_AMainPlayer_PickUp = FName(TEXT("PickUp"));
 void AMainPlayer::PickUp()
@@ -67,6 +102,7 @@ void AMainPlayer::StaticRegisterNativesAMainPlayer()
 {
 	UClass* Class = AMainPlayer::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "Interact", &AMainPlayer::execInteract },
 		{ "PickUp", &AMainPlayer::execPickUp },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -200,6 +236,7 @@ struct Z_Construct_UClass_AMainPlayer_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_AMainPlayer_Interact, "Interact" }, // 2577871403
 		{ &Z_Construct_UFunction_AMainPlayer_PickUp, "PickUp" }, // 4190766001
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -281,14 +318,14 @@ AMainPlayer::~AMainPlayer() {}
 // End Class AMainPlayer
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics
+struct Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 4117972486U) },
+		{ Z_Construct_UClass_AMainPlayer, AMainPlayer::StaticClass, TEXT("AMainPlayer"), &Z_Registration_Info_UClass_AMainPlayer, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayer), 3701173321U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_3260605422(TEXT("/Script/BCR"),
-	Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_seryl_Desktop_Fichiers_Ynov_cours_M2_ProjetM2_M2_Project_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_2695040064(TEXT("/Script/BCR"),
+	Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Project_Becorn__UnrealEngine5_2024_Source_BCR_Headers_Player_MainPlayer_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
 // End Registration
