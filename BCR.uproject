@@ -31,5 +31,9 @@
 			"Name": "SkeletalMeshModelingTools",
 			"Enabled": true
 		}
+	],
+	"TargetPlatforms": [
+		"Mac",
+		"Windows"
 	]
 }
