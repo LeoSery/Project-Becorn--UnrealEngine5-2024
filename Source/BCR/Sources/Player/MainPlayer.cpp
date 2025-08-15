@@ -258,3 +258,8 @@ FLocomotionConfiguration AMainPlayer::SetLocomotionConfig_Implementation(ULocomo
 	IBCR_Helper::LogAll(this, TEXT("AMainPlayer::SetLocomotionConfig_Implementation: Invalid machine locomotion Config Asset"), 5.0f, FColor::Red);
 	return FLocomotionConfiguration();
 }
+
+bool AMainPlayer::GetPickedUpSomething()
+{
+	return PickedUpSomething;
+}

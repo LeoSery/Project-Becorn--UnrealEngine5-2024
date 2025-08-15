@@ -47,10 +47,13 @@ public:
     /// Customizable log information
     virtual FString GetCustomLogInfo() const = 0;
 
+    //////// UTILITY METHODS ////////
+    /// Helper functions
+    static FString GetBasicObjectInfo(const UObject* Object);
+
 private:
 
     //////// UTILITY METHODS ////////
     /// Helper functions
-    static FString GetBasicObjectInfo(const UObject* Object);
     FString BuildLogMessage(const FString& Message) const;
 };

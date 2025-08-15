@@ -64,6 +64,8 @@ public:
 		return FString::Printf(TEXT("Velocity: %.1f"), GetVelocity().Size());
 	}
 
+	bool GetPickedUpSomething();
+
 protected:
 	
 	//////// INPUT MAPPING ////////
