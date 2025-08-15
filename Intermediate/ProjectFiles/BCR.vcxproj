@@ -67,7 +67,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{71DB4E60-2A2D-3CFF-ADB2-301CA524653A}</ProjectGuid>
+    <ProjectGuid>{359A4EED-E387-3DD8-89F8-0B030FE60A6F}</ProjectGuid>
     <RootNamespace>BCR</RootNamespace>
   </PropertyGroup>
   <Import Project="UECommon.props" />
@@ -251,59 +251,60 @@
     <ClCompile_AdditionalOptions>$(AdditionalOptions) /Yu"$(SolutionDir)Intermediate\Build\Win64\x64\BCREditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"</ClCompile_AdditionalOptions>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\..\BCR.uproject"/>
-    <None Include="..\..\Source\BCR.Target.cs"/>
-    <None Include="..\..\Source\BCREditor.Target.cs"/>
-    <None Include="..\..\.gitignore"/>
-    <None Include="..\..\.vsconfig"/>
-    <None Include="..\..\BCR.png"/>
-    <None Include="..\..\BuildSolution.bat"/>
-    <None Include="..\..\README.md"/>
-    <None Include="..\..\Config\DefaultEditor.ini"/>
-    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini"/>
-    <None Include="..\..\Config\DefaultEngine.ini"/>
-    <None Include="..\..\Config\DefaultGame.ini"/>
-    <None Include="..\..\Config\DefaultInput.ini"/>
-    <None Include="..\..\Plugins\SkeletalMerging\Source\SkeletalMerging\SkeletalMerging.build.cs"/>
-    <ClCompile Include="..\..\Plugins\SkeletalMerging\Source\SkeletalMerging\Private\SkeletalMergingLibrary.cpp"/>
-    <ClInclude Include="..\..\Plugins\SkeletalMerging\Source\SkeletalMerging\Public\SkeletalMergingLibrary.h"/>
-    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\RokokoIKRigRetargeting.uplugin"/>
-    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\Resources\Icon128.png"/>
-    <None Include="..\..\Plugins\SkeletalMerging\SkeletalMerging.uplugin"/>
-    <None Include="..\..\Source\BCR\BCR.Build.cs"/>
+    <ClCompile Include="..\..\Source\BCR\Sources\Test\PlayerTests.cpp" />
+    <None Include="..\..\BCR.uproject" />
+    <None Include="..\..\Source\BCR.Target.cs" />
+    <None Include="..\..\Source\BCREditor.Target.cs" />
+    <None Include="..\..\.gitignore" />
+    <None Include="..\..\.vsconfig" />
+    <None Include="..\..\BCR.png" />
+    <None Include="..\..\BuildSolution.bat" />
+    <None Include="..\..\README.md" />
+    <None Include="..\..\Config\DefaultEditor.ini" />
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini" />
+    <None Include="..\..\Config\DefaultEngine.ini" />
+    <None Include="..\..\Config\DefaultGame.ini" />
+    <None Include="..\..\Config\DefaultInput.ini" />
+    <None Include="..\..\Plugins\SkeletalMerging\Source\SkeletalMerging\SkeletalMerging.build.cs" />
+    <ClCompile Include="..\..\Plugins\SkeletalMerging\Source\SkeletalMerging\Private\SkeletalMergingLibrary.cpp" />
+    <ClInclude Include="..\..\Plugins\SkeletalMerging\Source\SkeletalMerging\Public\SkeletalMergingLibrary.h" />
+    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\RokokoIKRigRetargeting.uplugin" />
+    <None Include="..\..\Plugins\RokokoIKRigRetargeting-main\Resources\Icon128.png" />
+    <None Include="..\..\Plugins\SkeletalMerging\SkeletalMerging.uplugin" />
+    <None Include="..\..\Source\BCR\BCR.Build.cs" />
     <ClCompile Include="..\..\Source\BCR\BCR.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClInclude Include="..\..\Source\BCR\BCR.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\Core\MainGamemode.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\Core\ProjectDataFunctionLibrary.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\BCR_Helper.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\Interactable.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\IPickable.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\Locomotional.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\Player\MainPlayer.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\AWood.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\DeliveryPoint.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\FurnitureAssembler.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\UniqueRope.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\Event\TriggerZone.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\Event\TriggerZoneListener.h"/>
+    <ClInclude Include="..\..\Source\BCR\BCR.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\Core\MainGamemode.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\Core\ProjectDataFunctionLibrary.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\BCR_Helper.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\Interactable.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\IPickable.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\Interfaces\Locomotional.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\Player\MainPlayer.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\AWood.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\DeliveryPoint.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\FurnitureAssembler.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\MainCamera.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\UniqueRope.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\Event\TriggerZone.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\Event\TriggerZoneListener.h" />
     <ClCompile Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\Pickable\PickableItem.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTETypes.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Subsystem.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\UI_Quest\QuestData.h"/>
-    <ClInclude Include="..\..\Source\BCR\Headers\System\UI_Quest\UI_Subsystem.h"/>
+    <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\LocomotionConfigurationTypes.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\MiniGame\MiniGameSystem.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\Pickable\PickableItem.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTEConfigurationTypes.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTETypes.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\QTE\QTE_Subsystem.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\UI_Quest\QuestData.h" />
+    <ClInclude Include="..\..\Source\BCR\Headers\System\UI_Quest\UI_Subsystem.h" />
     <ClCompile Include="..\..\Source\BCR\Sources\Core\MainGamemode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
