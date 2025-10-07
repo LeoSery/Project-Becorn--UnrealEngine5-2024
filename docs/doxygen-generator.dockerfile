@@ -12,6 +12,7 @@ WORKDIR /sources
 ADD ./README.md ./README.md
 ADD ./docs ./docs
 ADD ./Source ./Source
+ADD ./ReadmeContent ./ReadmeContent
 
 # --------------------------------------------
 # Generate documentation
