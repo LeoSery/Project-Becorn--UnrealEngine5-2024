@@ -76,7 +76,7 @@ During cooperative mini-games, different button combinations are required:
 
 ### Art Team
 - **[Mathis Desage](https://www.artstation.com/mathis_desage16)** - Lead Artist
-    - **[Macélie Fouchier](https://www.linkedin.com/in/maceliefouchier/)** - Artist
+    - **[Macélie Fouchier](https://www.linkedin.com/in/maceliefouchier/)** - Lead enviro DA
     - **[Thomas Boufrioua](https://www.linkedin.com/in/thomas-boufrioua-983b3322a/)** - Artist  
     - **[Loïc Dubar](https://www.artstation.com/loicdub)** - Artist
     - **[Arthur Fernandez](https://www.artstation.com/arthurfernandez3d1)** - Artist
